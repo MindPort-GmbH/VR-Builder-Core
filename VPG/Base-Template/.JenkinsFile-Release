@@ -1,0 +1,208 @@
+// Load all global variables from the jenkins-shared-library for Unity
+// see https://github.com/burnedikt/jenkins-shared-library-unity for source
+@Library('jenkins-shared-library-unity@v1.0') _
+
+pipeline
+{
+    agent
+    {
+        label 'unity-ng'
+    }
+
+    parameters 
+    {
+        string(name: 'UNITY_VERSION', defaultValue: '2018.4.15f1', description: 'The Unity Version to build for')
+        booleanParam(name: 'SKIP_TESTS', defaultValue: true, description: 'If set to true, the test will be skipped')
+        booleanParam(name: 'BUILD_UNITYPACKAGE', defaultValue: true, description: 'If set to true, a unity package containing the SDK will be created and attached as artifact.')
+    }
+
+    options
+    {
+        disableConcurrentBuilds()
+        skipDefaultCheckout true
+    }
+
+    environment
+    {
+        // Path to unity project created.
+        PROJECT_PATH = "z:\\${BUILD_TAG}"
+        // Path where the SDK should be checked out to
+        INNOACTIVE_PATH = "${PROJECT_PATH}\\Assets\\Innoactive\\Creator"
+        // Path to the Innoactive Creator Core
+        MODULE_DIRECTORY_IN_ASSETS = "${INNOACTIVE_PATH}\\Core"
+        // Path to the Innoactive Basic Template
+        TEMPLATE_DIRECTORY_IN_ASSETS = "${INNOACTIVE_PATH}\\Template"
+        //Path where shared jenkins file was located initially.
+        SHARED_INITIAL = "Core\\.JenkinsFile-Shared"
+        // Path to the file with shared methods.
+        SHARED = "${WORKSPACE}\\.JenkinsFile-Shared"
+        // Path to U3D rules
+        // U3D commands need to use a dedicated set of rules for logging to get more verbose output from e.g. Common.Logging,
+        // see more at https://github.com/DragonBox/u3d/blob/master/LOG_RULES.md
+        U3D_RULES_PATH = "z:\\u3d_log_rules.json"        
+        // Path to export config file.
+        EXPORT_CONFIG = "z:\\.export-config"
+    }
+
+    stages
+    {
+        stage('Setup')
+        {
+            steps
+            {
+                // Initial clean up
+                powershell "Remove-Item .\\* -Force -Recurse -ErrorAction SilentlyContinue"            
+                powershell "git config --system core.longpaths true"
+                // Checkout project
+                checkout scm            
+                // Checkout Core repository
+                script
+                {
+                    def file = readJSON file: '.dependencies.json'
+                    def dependency = file.dependencies[0]
+                    checkout([$class: 'GitSCM', branches: [[name: "${dependency.branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true, recursiveSubmodules: true, reference: '', trackingSubmodules: false], [$class: 'RelativeTargetDirectory', relativeTargetDir: "${WORKSPACE}\\${dependency.name}"], [$class: 'GitLFSPull']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-github-ssh', url: "${dependency.repository}"]]])
+                }
+                // Copy shared lib
+                powershell "Copy-Item ${SHARED_INITIAL} -Destination ${WORKSPACE}"
+
+                script 
+                {
+                    load(SHARED).InitialSetup()   
+                }
+            }
+        }
+
+        stage('Setup Unity')
+        {
+            steps
+            {
+                script
+                {                  
+                    dir ('z:\\Core') 
+                    {
+                        echo "Initial training setup"
+                        load(SHARED).InitialTrainingSetup()
+                    }
+
+                    load(SHARED).SetupUnity()
+
+                    dir ('z:\\Core') 
+                    {
+                        echo "Copy training module to: ${MODULE_DIRECTORY_IN_ASSETS}"
+                        load(SHARED).CopyTrainingModule(MODULE_DIRECTORY_IN_ASSETS)
+                    }
+                    // Resolve Core dependencies
+                    file = readJSON file: 'Core\\.dependencies.json'
+                    for (int i = 0; i < file.dependencies.size(); ++i) 
+                    {
+                        echo "Loading Core dependency ${file.dependencies[i].name}"
+                        dependency = file.dependencies[i]
+                        load(SHARED).CheckoutComponent(dependency.repository, dependency.branch, "z:\\${BUILD_TAG}\\Assets\\Innoactive\\Creator\\${dependency.name}")
+                    }
+
+                    echo "Copy template to ${TEMPLATE_DIRECTORY_IN_ASSETS}"
+                    powershell """
+                    Remove-Item ${TEMPLATE_DIRECTORY_IN_ASSETS} -Force -Recurse -ErrorAction SilentlyContinue
+
+                    New-Item ${TEMPLATE_DIRECTORY_IN_ASSETS} -ItemType Directory
+
+                    Move-Item -Path .\\ -Destination ${TEMPLATE_DIRECTORY_IN_ASSETS}
+                    Move-Item -Path .\\NOTICE -Destination ${TEMPLATE_DIRECTORY_IN_ASSETS}
+                    Move-Item -Path .\\LICENSE -Destination ${TEMPLATE_DIRECTORY_IN_ASSETS}
+                    Move-Item -Path .\\readme.md -Destination ${TEMPLATE_DIRECTORY_IN_ASSETS}
+                    Move-Item -Path Extensions -Destination ${TEMPLATE_DIRECTORY_IN_ASSETS}
+                    Move-Item -Path Resources -Destination ${TEMPLATE_DIRECTORY_IN_ASSETS}
+                    Move-Item -Path Scenes -Destination ${TEMPLATE_DIRECTORY_IN_ASSETS}
+                    Move-Item -Path Source -Destination ${TEMPLATE_DIRECTORY_IN_ASSETS}
+                    Move-Item -Path Tests -Destination ${TEMPLATE_DIRECTORY_IN_ASSETS}
+                    """
+                }
+            }
+        }
+
+        stage('Build Unity 2018+') 
+        {
+            when { expression { params.UNITY_VERSION !=~ /2017.*/ } }
+            steps
+            {
+                script
+                {
+                    load(SHARED).Build()
+                }
+            }
+        }
+        
+        stage('Test')
+        {
+            when { expression { params.SKIP_TESTS == false } }
+            steps
+            {
+                script
+                {
+                    load(SHARED).Test()
+                }
+            }
+        }
+
+        stage('Export Unity Package')
+        {
+            when
+            {
+                anyOf 
+                {
+                    tag pattern: "v(\\d+\\.\\d+\\.\\d+)", comparator: "REGEXP"
+                    expression { params.BUILD_UNITYPACKAGE == true }
+                }
+            }
+            steps
+            {
+                script
+                {
+                    writeFile file: "${EXPORT_CONFIG}", text: $/
+                    {
+                        "AssetDirectory" : "Assets/Innoactive/Creator/",
+                        "Version" : "${TAG_NAME}",
+                        "OutputPath" : "./Builds/innoactive-training-template-${TAG_NAME}.unitypackage",
+                        "Excludes" : [
+                            "*/Tests/*",
+                            "*/VRTK/Examples/*",
+                            "*/LegacyExampleFiles/*",
+                            "*.sh",
+                        ]
+                    }
+                    /$
+
+                    load(SHARED).CreateUnityPackage(EXPORT_CONFIG)
+                }
+            }
+        }
+    }
+
+    post
+    {
+        always
+        {
+            archiveArtifacts allowEmptyArchive: true, artifacts: "${BUILD_TAG}/*.log"
+        }
+
+        cleanup
+        {
+            dir("${PROJECT_PATH}")
+            {
+                script 
+                {
+                    if (env.SKIP_TESTS == false) 
+                    {
+                        // Publish the results of the test
+                        nunit testResultsPattern: "TestResults*.xml"
+                    }
+                }
+            }
+
+            powershell """
+            subst z: /D
+            exit(0)
+            """
+        }
+    }
+}
