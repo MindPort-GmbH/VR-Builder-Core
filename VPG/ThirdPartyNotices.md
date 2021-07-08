@@ -1,15 +1,9 @@
 # Third Party Notices
 
-Some parts of the project are Copyright 2019 Innoactive GmbH, provided under the Apache 2.0 license.
+This package contains third-party software components governed by the license(s) indicated below:
 
-A copy of the license can be found [here](Core/LICENSE).
+Component Name: Innoactive Creator
 
-The license covers all files in these folders:
+License Type: "Apache 2.0"
 
-* Core
-* Base-Template
-* Basic-Conditions-And-Behaviors
-* Basic-Interaction-Component
-* Basic-UI-Component
-* TextToSpeech-Component
-* XR-Interaction-Component
+[Link to license](Core/LICENSE)

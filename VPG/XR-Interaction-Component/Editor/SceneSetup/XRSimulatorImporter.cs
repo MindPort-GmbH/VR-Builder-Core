@@ -28,8 +28,8 @@ namespace VPG.Editor.PackageManager.XRInteraction
         /// <remarks>The generated prefab is imported into the `XR Interaction Component`’s `Resources` folder.</remarks>
         public void ImportSimulatorRig()
         {
-            GameObject simulator = LoadPrefab(SamplePrefabName, "Samples", out string simulatorRigPath);
-            GameObject actionRig = LoadPrefab(ActionRigName, "VPG", out string actionRigPath);
+            GameObject simulator = LoadPrefab(SamplePrefabName, "Assets/Samples", out string simulatorRigPath);
+            GameObject actionRig = LoadPrefab(ActionRigName, "Packages/com.mindport.builder.core/VPG", out string actionRigPath);
 
             if (simulator == null || actionRig == null)
             {
@@ -49,7 +49,7 @@ namespace VPG.Editor.PackageManager.XRInteraction
         private GameObject LoadPrefab(string prefabName, string searchFolder, out string assetPath)
         {
             string filter = $"t:Prefab {prefabName}";
-            string prefabGUID = AssetDatabase.FindAssets(filter, new[] {$"Assets/{searchFolder}"}).FirstOrDefault();
+            string prefabGUID = AssetDatabase.FindAssets(filter, new[] {searchFolder}).FirstOrDefault();
 
             if (string.IsNullOrEmpty(prefabGUID) == false)
             {

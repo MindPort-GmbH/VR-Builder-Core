@@ -1,8 +1,6 @@
-﻿using System.Linq;
+using System.Linq;
 using VPG.Core;
 using VPG.Core.Configuration;
-using VPG.Tests.Builder;
-using VPG.Tests.Utils.Mocks;
 using VPG.Unity;
 using VPG.Editor.Utils;
 using NUnit.Framework;

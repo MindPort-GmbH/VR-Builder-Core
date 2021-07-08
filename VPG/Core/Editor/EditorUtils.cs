@@ -143,7 +143,9 @@ namespace VPG.Editor
         [DidReloadScripts]
         private static void ResolveCoreFolder()
         {
-            string[] roots = Directory.GetFiles(Application.dataPath, $"{nameof(EditorUtils)}.cs", SearchOption.AllDirectories);
+            string projectFolder = Application.dataPath.Replace("/Assets", "");
+            string packagePath = "/Packages/com.mindport.builder.core";
+            string[] roots = Directory.GetFiles(projectFolder + packagePath, $"{nameof(EditorUtils)}.cs", SearchOption.AllDirectories);
 
             if (roots.Length == 0)
             {
@@ -151,10 +153,9 @@ namespace VPG.Editor
             }
 
             coreFolder = Path.GetDirectoryName(roots.First());
-            coreFolder = coreFolder.Substring(Application.dataPath.Length);
-            coreFolder = coreFolder.Substring(0, coreFolder.LastIndexOf(Path.DirectorySeparatorChar));
-            // Assets folder was removed on previous step, put it back.
-            coreFolder = "Assets" + coreFolder;
+
+            coreFolder = coreFolder.Substring(projectFolder.Length);
+            coreFolder = coreFolder.Substring(1, coreFolder.LastIndexOf(Path.DirectorySeparatorChar));
             // Replace backslashes with forward slashes.
             coreFolder = coreFolder.Replace('/', Path.AltDirectorySeparatorChar);
         }

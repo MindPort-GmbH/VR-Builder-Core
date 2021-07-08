@@ -106,7 +106,7 @@ namespace VPG.Editor.UI.Wizard
                     GUILayout.EndHorizontal();
                 }
 
-                if(EditorReflectionUtils.AssemblyExists("VPG.Editor.SampleScene"))
+                if(EditorReflectionUtils.AssemblyExists("VPG.Editor.DemoScene"))
                 {
                     loadDemoScene = GUILayout.Toggle(loadDemoScene, "Load Scene from Demo Package", VPGEditorStyles.RadioButton);
                     if(loadDemoScene)
@@ -164,8 +164,8 @@ namespace VPG.Editor.UI.Wizard
             if (loadDemoScene)
             {
 
-                Assembly sampleSceneAssembly = AppDomain.CurrentDomain.GetAssemblies().First(assembly => assembly.GetName().Name == "VPG.Editor.SampleScene");
-                Type sceneLoaderClass = sampleSceneAssembly.GetType("VPG.Editor.SampleScene.DemoSceneLoader");
+                Assembly sampleSceneAssembly = AppDomain.CurrentDomain.GetAssemblies().First(assembly => assembly.GetName().Name == "VPG.Editor.DemoScene");
+                Type sceneLoaderClass = sampleSceneAssembly.GetType("VPG.Editor.DemoScene.DemoSceneLoader");
                 MethodInfo loadScene = sceneLoaderClass.GetMethod("LoadDemoScene");
                 loadScene.Invoke(null, new object[0]);
                 return;

@@ -7,7 +7,7 @@ namespace VPG.Editor.Configuration
     /// Interface for editor configuration extension definition.
     /// </summary>
     public interface IEditorConfigurationExtension
-    {
+    {      
         /// <summary>
         /// Menu items required by this configuration.
         /// </summary>
