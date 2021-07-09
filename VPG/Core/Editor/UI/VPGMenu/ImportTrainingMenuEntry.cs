@@ -7,7 +7,7 @@ using VRBuilder.Core.Serialization;
 using UnityEditor;
 using UnityEngine;
 
-namespace VRBuilder.Editor.VPGMenu
+namespace VRBuilder.Editor.BuilderMenu
 {
     internal static class ImportTrainingMenuEntry
     {

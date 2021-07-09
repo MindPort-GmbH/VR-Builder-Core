@@ -5,7 +5,7 @@ using VRBuilder.Core.Serialization;
 using UnityEditor;
 using UnityEngine;
 
-namespace VRBuilder.Editor.VPGMenu
+namespace VRBuilder.Editor.BuilderMenu
 {
     /// <summary>
     /// Allows user to select which serializer they want to use.

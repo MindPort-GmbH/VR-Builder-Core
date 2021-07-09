@@ -237,7 +237,7 @@ namespace VRBuilder.Editor.UI.Wizard
 
         protected Rect GetContentRect()
         {
-            return new Rect(Settings.Size.x * Settings.NavigationBarRatio + VPGEditorStyles.Indent, VPGEditorStyles.Indent / 2, Settings.Size.x - (Settings.Size.x * Settings.NavigationBarRatio) - (2 * VPGEditorStyles.Indent), Settings.Size.y - Settings.BottomBarHeight - VPGEditorStyles.Indent);
+            return new Rect(Settings.Size.x * Settings.NavigationBarRatio + BuilderEditorStyles.Indent, BuilderEditorStyles.Indent / 2, Settings.Size.x - (Settings.Size.x * Settings.NavigationBarRatio) - (2 * BuilderEditorStyles.Indent), Settings.Size.y - Settings.BottomBarHeight - BuilderEditorStyles.Indent);
         }
 
         protected Rect GetBottomBarRect()

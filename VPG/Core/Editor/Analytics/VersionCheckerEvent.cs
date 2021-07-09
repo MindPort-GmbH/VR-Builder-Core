@@ -20,7 +20,7 @@ namespace VRBuilder.Core.Editor
                 return;
             }
 
-            VPGProjectSettings settings = VPGProjectSettings.Load();
+            BuilderProjectSettings settings = BuilderProjectSettings.Load();
             if (settings == null || string.IsNullOrEmpty(settings.ProjectVPGVersion))
             {
                 return;

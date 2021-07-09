@@ -16,7 +16,7 @@ namespace VRBuilder.Editor.UI.Wizard
 #if UNITY_2019_4_OR_NEWER && !UNITY_EDITOR_OSX
     [InitializeOnLoad]
 #endif
-    public static class VPGSetupWizard
+    public static class BuilderSetupWizard
     {
         /// <summary>
         /// Will be called when the VR Builder Setup wizard is closed.
@@ -25,7 +25,7 @@ namespace VRBuilder.Editor.UI.Wizard
 
         private const string XRDefaultAssemblyName = "VRBuilder.XRInteraction";
         private const string XRAssemblyName = "Unity.XR.Management";
-        static VPGSetupWizard()
+        static BuilderSetupWizard()
         {
             if (Application.isBatchMode == false)
             {
@@ -35,7 +35,7 @@ namespace VRBuilder.Editor.UI.Wizard
 
         private static void OnDependenciesRetrieved(object sender, DependencyManager.DependenciesEnabledEventArgs e)
         {
-            VPGProjectSettings settings = VPGProjectSettings.Load();
+            BuilderProjectSettings settings = BuilderProjectSettings.Load();
 
             if (settings.IsFirstTimeStarted)
             {

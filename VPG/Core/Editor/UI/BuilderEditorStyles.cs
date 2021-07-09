@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using UnityEditor;
 using UnityEditor.Graphs;
 using UnityEngine;
 
 namespace VRBuilder.Editor.UI
 {
-    public static class VPGEditorStyles
+    public static class BuilderEditorStyles
     {
         public const int BaseIndent = 2;
 

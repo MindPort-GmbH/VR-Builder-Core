@@ -13,7 +13,7 @@ namespace VRBuilder.Editor.UI
     /// <summary>
     /// Layout extension for the VR Builder.
     /// </summary>
-    public static class VPGGUILayout
+    public static class BuilderGUILayout
     {
         /// <summary>
         /// Draws a clickable link which opens a website.
@@ -21,7 +21,7 @@ namespace VRBuilder.Editor.UI
         /// <param name="text">Text to be displayed</param>
         /// <param name="url">url to be opened inside the browser</param>
         /// <param name="indent">Intend on the left</param>
-        public static void DrawLink(string text, string url, int indent = VPGEditorStyles.Indent)
+        public static void DrawLink(string text, string url, int indent = BuilderEditorStyles.Indent)
         {
             DrawLink(text, () =>
             {
@@ -42,15 +42,15 @@ namespace VRBuilder.Editor.UI
         /// <param name="text">Text to be displayed</param>
         /// <param name="action">action done on click</param>
         /// <param name="indent">Intend on the left</param>
-        public static void DrawLink(string text, Action action, int indent = VPGEditorStyles.Indent)
+        public static void DrawLink(string text, Action action, int indent = BuilderEditorStyles.Indent)
         {
-            if (GUILayout.Button(text, VPGEditorStyles.ApplyPadding(VPGEditorStyles.Link, indent)))
+            if (GUILayout.Button(text, BuilderEditorStyles.ApplyPadding(BuilderEditorStyles.Link, indent)))
             {
                 action.Invoke();
             }
 
             Rect buttonRect = GUILayoutUtility.GetLastRect();
-            GUI.Label(new Rect(buttonRect.x, buttonRect.y + 1, buttonRect.width, buttonRect.height), new String('_', 256), VPGEditorStyles.ApplyPadding(VPGEditorStyles.Link, indent));
+            GUI.Label(new Rect(buttonRect.x, buttonRect.y + 1, buttonRect.width, buttonRect.height), new String('_', 256), BuilderEditorStyles.ApplyPadding(BuilderEditorStyles.Link, indent));
             EditorGUIUtility.AddCursorRect(buttonRect, MouseCursor.Link);
         }
 
@@ -63,10 +63,10 @@ namespace VRBuilder.Editor.UI
         {
             GUILayout.BeginHorizontal();
             {
-                GUIStyle style = VPGEditorStyles.TextField;
+                GUIStyle style = BuilderEditorStyles.TextField;
                 if (indent != 0)
                 {
-                    style = VPGEditorStyles.ApplyPadding(style, indent);
+                    style = BuilderEditorStyles.ApplyPadding(style, indent);
                 }
 
                 content = GUILayout.TextField(content, charLimit, style, options);
@@ -91,7 +91,7 @@ namespace VRBuilder.Editor.UI
         {
             for (int i = 0; i < entries.Count; i++)
             {
-                if (GUILayout.Toggle(entries[i].Equals(selection), content[i], VPGEditorStyles.Toggle))
+                if (GUILayout.Toggle(entries[i].Equals(selection), content[i], BuilderEditorStyles.Toggle))
                 {
                     if (!selection.Equals(entries[i]))
                     {

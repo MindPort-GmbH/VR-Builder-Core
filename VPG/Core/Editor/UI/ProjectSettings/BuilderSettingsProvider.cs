@@ -2,11 +2,11 @@ using UnityEditor;
 
 namespace VRBuilder.Editor.UI
 {
-    internal class VPGSettingsProvider : BaseSettingsProvider
+    internal class BuilderSettingsProvider : BaseSettingsProvider
     {
         const string Path = "Project/VR Builder/Settings";
 
-        public VPGSettingsProvider() : base(Path, SettingsScope.Project)
+        public BuilderSettingsProvider() : base(Path, SettingsScope.Project)
         {
         }
 
@@ -18,7 +18,7 @@ namespace VRBuilder.Editor.UI
         [SettingsProvider]
         public static SettingsProvider Provider()
         {
-            SettingsProvider provider = new VPGSettingsProvider();
+            SettingsProvider provider = new BuilderSettingsProvider();
             return provider;
         }
     }

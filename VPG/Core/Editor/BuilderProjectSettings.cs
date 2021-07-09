@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// Settings for a VR Builder Unity project.
 /// </summary>
-public partial class VPGProjectSettings : ScriptableObject
+public partial class BuilderProjectSettings : ScriptableObject
 {
     /// <summary>
     /// Was the VR Builder imported and therefore started for the first time.
@@ -24,9 +24,9 @@ public partial class VPGProjectSettings : ScriptableObject
     /// Loads the VR Builder settings for this Unity project from Resources.
     /// </summary>
     /// <returns>VPG Settings</returns>
-    public static VPGProjectSettings Load()
+    public static BuilderProjectSettings Load()
     {
-        VPGProjectSettings settings = Resources.Load<VPGProjectSettings>("VPGProjectSettings");
+        BuilderProjectSettings settings = Resources.Load<BuilderProjectSettings>("VPGProjectSettings");
         if (settings == null)
         {
             if (!Directory.Exists("Assets/Resources"))
@@ -34,7 +34,7 @@ public partial class VPGProjectSettings : ScriptableObject
                 Directory.CreateDirectory("Assets/Resources");
             }
             // Create an instance
-            settings = CreateInstance<VPGProjectSettings>();
+            settings = CreateInstance<BuilderProjectSettings>();
             AssetDatabase.CreateAsset(settings, "Assets/Resources/VPGProjectSettings.asset");
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();

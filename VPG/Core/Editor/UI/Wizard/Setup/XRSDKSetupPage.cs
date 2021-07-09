@@ -54,17 +54,17 @@ namespace VRBuilder.Editor.UI.Wizard
 
             GUILayout.BeginArea(window);
             {
-                GUILayout.Label("VR Hardware Setup", VPGEditorStyles.Title);
-                GUILayout.Label("Select the VR hardware you are working with:", VPGEditorStyles.Header);
-                selectedLoader = VPGGUILayout.DrawToggleGroup(selectedLoader, options, nameplates);
+                GUILayout.Label("VR Hardware Setup", BuilderEditorStyles.Title);
+                GUILayout.Label("Select the VR hardware you are working with:", BuilderEditorStyles.Header);
+                selectedLoader = BuilderGUILayout.DrawToggleGroup(selectedLoader, options, nameplates);
 
                 if (selectedLoader == XRLoader.Other)
                 {
-                    GUILayout.Label("The VR Builder does not provide an automated setup for your device. You need to refer to your device's vendor documentation in order to enable a compatible loader in the Unity's XR Plugin Management.", VPGEditorStyles.Paragraph);
+                    GUILayout.Label("The VR Builder does not provide an automated setup for your device. You need to refer to your device's vendor documentation in order to enable a compatible loader in the Unity's XR Plugin Management.", BuilderEditorStyles.Paragraph);
 
                     GUILayout.BeginHorizontal();
-                        GUILayout.Label("Please tell us which VR Hardware you are using:", VPGEditorStyles.Label);
-                        otherHardwareText = VPGGUILayout.DrawTextField(otherHardwareText, -1,GUILayout.Width(window.width * 0.4f));
+                        GUILayout.Label("Please tell us which VR Hardware you are using:", BuilderEditorStyles.Label);
+                        otherHardwareText = BuilderGUILayout.DrawTextField(otherHardwareText, -1,GUILayout.Width(window.width * 0.4f));
                     GUILayout.EndHorizontal();
                 }
             }

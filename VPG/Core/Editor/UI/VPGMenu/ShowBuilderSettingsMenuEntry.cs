@@ -1,9 +1,9 @@
 using VRBuilder.Editor.Configuration;
 using UnityEditor;
 
-namespace VRBuilder.Editor.VPGMenu
+namespace VRBuilder.Editor.BuilderMenu
 {
-    internal static class ShowVPGSettingsMenuEntry
+    internal static class ShowBuilderSettingsMenuEntry
     {
         /// <summary>
         /// Setup the current unity scene to be a functioning training scene.

@@ -56,7 +56,7 @@ namespace VRBuilder.Editor.UI.Wizard
                 get
                 {
                     GUIStyle style = new GUIStyle(GUI.skin.label);
-                    style.normal.textColor = VPGEditorStyles.HighlightTextColor;
+                    style.normal.textColor = BuilderEditorStyles.HighlightTextColor;
                     return style;
                 }
             }

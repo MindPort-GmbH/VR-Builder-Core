@@ -1,7 +1,7 @@
 using VRBuilder.Editor.Configuration;
 using UnityEditor;
 
-namespace VRBuilder.Editor.VPGMenu
+namespace VRBuilder.Editor.BuilderMenu
 {
     internal static class SetupSceneEntry
     {

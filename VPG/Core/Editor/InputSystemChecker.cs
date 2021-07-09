@@ -22,7 +22,7 @@ public static class InputSystemChecker
         }
         catch (InvalidOperationException)
         {
-            if (VPGProjectSettings.Load().IsFirstTimeStarted == false)
+            if (BuilderProjectSettings.Load().IsFirstTimeStarted == false)
             {
                 EditorUtility.DisplayDialog("Attention required!", message, "Understood");
             }

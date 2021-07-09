@@ -47,30 +47,30 @@ namespace VRBuilder.Editor.UI.Wizard
         {
             GUILayout.BeginArea(window);
 
-            GUILayout.Label("Setup Training", VPGEditorStyles.Title);
+            GUILayout.Label("Setup Training", BuilderEditorStyles.Title);
 
             GUI.enabled = loadSampleScene == false;
-            GUILayout.Label("Name of your VR Training", VPGEditorStyles.Header);
-            courseName = VPGGUILayout.DrawTextField(courseName, MaxCourseNameLength, GUILayout.Width(window.width * 0.7f));
+            GUILayout.Label("Name of your VR Training", BuilderEditorStyles.Header);
+            courseName = BuilderGUILayout.DrawTextField(courseName, MaxCourseNameLength, GUILayout.Width(window.width * 0.7f));
             GUI.enabled = true;
 
             if (CourseAssetUtils.CanCreate(courseName, out string errorMessage) == false && lastCreatedCourse != courseName)
             {
                 GUIContent courseWarningContent = warningContent;
                 courseWarningContent.text = errorMessage;
-                GUILayout.Label(courseWarningContent, VPGEditorStyles.Label, GUILayout.MinHeight(MinHeightOfInfoText));
+                GUILayout.Label(courseWarningContent, BuilderEditorStyles.Label, GUILayout.MinHeight(MinHeightOfInfoText));
                 CanProceed = false;
             }
             else
             {
-                GUILayout.Space(MinHeightOfInfoText + VPGEditorStyles.BaseIndent);
+                GUILayout.Space(MinHeightOfInfoText + BuilderEditorStyles.BaseIndent);
                 CanProceed = true;
             }
 
             GUILayout.BeginHorizontal();
-                GUILayout.Space(VPGEditorStyles.Indent);
+                GUILayout.Space(BuilderEditorStyles.Indent);
                 GUILayout.BeginVertical();
-                bool isUseCurrentScene = GUILayout.Toggle(useCurrentScene, "Take my current scene", VPGEditorStyles.RadioButton);
+                bool isUseCurrentScene = GUILayout.Toggle(useCurrentScene, "Take my current scene", BuilderEditorStyles.RadioButton);
                 if (useCurrentScene == false && isUseCurrentScene)
                 {
                     useCurrentScene = true;
@@ -79,7 +79,7 @@ namespace VRBuilder.Editor.UI.Wizard
                     loadDemoScene = false;
                 }
 
-                bool isCreateNewScene = GUILayout.Toggle(createNewScene, "Create a new scene", VPGEditorStyles.RadioButton);
+                bool isCreateNewScene = GUILayout.Toggle(createNewScene, "Create a new scene", BuilderEditorStyles.RadioButton);
                 if (createNewScene == false && isCreateNewScene)
                 {
                     createNewScene = true;
@@ -90,7 +90,7 @@ namespace VRBuilder.Editor.UI.Wizard
 
                 EditorGUILayout.Space();
 
-                loadSampleScene = GUILayout.Toggle(loadSampleScene, "Load Step by Step Guide Scene", VPGEditorStyles.RadioButton);
+                loadSampleScene = GUILayout.Toggle(loadSampleScene, "Load Step by Step Guide Scene", BuilderEditorStyles.RadioButton);
                 if (loadSampleScene)
                 {
                     createNewScene = false;
@@ -100,15 +100,15 @@ namespace VRBuilder.Editor.UI.Wizard
 
                     GUILayout.BeginHorizontal();
                     {
-                        GUILayout.Space(VPGEditorStyles.Indent);
-                        VPGGUILayout.DrawLink("Hello Creator – a 5-step guide to a basic training application", "https://developers.innoactive.de/documentation/creator/latest/articles/step-by-step-guides/hello-creator.html");
+                        GUILayout.Space(BuilderEditorStyles.Indent);
+                        BuilderGUILayout.DrawLink("Hello Creator – a 5-step guide to a basic training application", "https://developers.innoactive.de/documentation/creator/latest/articles/step-by-step-guides/hello-creator.html");
                     }
                     GUILayout.EndHorizontal();
                 }
 
                 if(EditorReflectionUtils.AssemblyExists("VR Builder.Editor.DemoScene"))
                 {
-                    loadDemoScene = GUILayout.Toggle(loadDemoScene, "Load Scene from Demo Package", VPGEditorStyles.RadioButton);
+                    loadDemoScene = GUILayout.Toggle(loadDemoScene, "Load Scene from Demo Package", BuilderEditorStyles.RadioButton);
                     if(loadDemoScene)
                     {
                         createNewScene = false;
@@ -138,8 +138,8 @@ namespace VRBuilder.Editor.UI.Wizard
                 helpContent.text = sceneInfoText;
                 GUILayout.BeginHorizontal();
                 {
-                    GUILayout.Space(VPGEditorStyles.Indent);
-                    EditorGUILayout.LabelField(helpContent, VPGEditorStyles.Label, GUILayout.MinHeight(MinHeightOfInfoText));
+                    GUILayout.Space(BuilderEditorStyles.Indent);
+                    EditorGUILayout.LabelField(helpContent, BuilderEditorStyles.Label, GUILayout.MinHeight(MinHeightOfInfoText));
                 }
                 GUILayout.EndHorizontal();
             }

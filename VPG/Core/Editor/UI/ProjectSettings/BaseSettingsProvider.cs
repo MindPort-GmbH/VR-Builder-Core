@@ -40,7 +40,7 @@ namespace VRBuilder.Editor.UI
 
                     sections.ForEach(section =>
                     {
-                        GUILayout.Label(section.Title, VPGEditorStyles.Header);
+                        GUILayout.Label(section.Title, BuilderEditorStyles.Header);
                         section.OnGUI(searchContext);
                     });
                 GUILayout.EndVertical();
