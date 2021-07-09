@@ -2,11 +2,11 @@
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
-using VPG.Core.Utils;
-using VPG.Editor.Configuration;
+using VRBuilder.Core.Utils;
+using VRBuilder.Editor.Configuration;
 using UnityEngine;
 
-namespace VPG.Editor
+namespace VRBuilder.Editor
 {
     /// <summary>
     /// Can be run to setup the current scene as a training scene.

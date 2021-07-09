@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Reflection;
-using VPG.Core;
+using VRBuilder.Core;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     [DefaultTrainingDrawer(typeof(TransitionCollection))]
     internal class TransitionCollectionDrawer : DataOwnerDrawer

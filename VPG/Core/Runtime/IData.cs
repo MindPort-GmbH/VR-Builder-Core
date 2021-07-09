@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Abstract data structure.

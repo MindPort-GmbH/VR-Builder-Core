@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace VPG.Editor.Tabs
+namespace VRBuilder.Editor.Tabs
 {
     /// <summary>
     /// Draws a view with multiple tabs.

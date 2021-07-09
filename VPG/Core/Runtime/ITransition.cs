@@ -1,4 +1,4 @@
-﻿namespace VPG.Core
+﻿namespace VRBuilder.Core
 {
     /// <summary>
     /// An interface for a transition that determines when a <see cref="IStep"/> is completed and what is the next <see cref="IStep"/>.

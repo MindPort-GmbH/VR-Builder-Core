@@ -1,4 +1,4 @@
-﻿namespace VPG.Core.Exceptions
+﻿namespace VRBuilder.Core.Exceptions
 {
     public class InvalidStateException : TrainingException
     {

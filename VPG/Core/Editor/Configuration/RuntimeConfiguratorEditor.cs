@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using VPG.Core.Configuration;
-using VPG.Core.Utils;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.Configuration
+namespace VRBuilder.Editor.Configuration
 {
     /// <summary>
     /// Custom editor for choosing the training configuration in the Unity game object inspector.

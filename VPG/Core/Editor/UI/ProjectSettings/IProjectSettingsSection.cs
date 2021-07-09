@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VPG.Editor.UI
+namespace VRBuilder.Editor.UI
 {
     /// <summary>
     /// Allows to inject a settings section into a setting provider.

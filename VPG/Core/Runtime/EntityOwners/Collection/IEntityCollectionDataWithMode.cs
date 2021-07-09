@@ -1,6 +1,6 @@
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Configuration.Modes;
 
-namespace VPG.Core.EntityOwners
+namespace VRBuilder.Core.EntityOwners
 {
     /// <summary>
     /// A generic version of <seealso cref="IEntityCollectionDataWithMode"/>

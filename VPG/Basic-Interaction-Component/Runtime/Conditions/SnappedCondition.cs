@@ -1,14 +1,14 @@
 ﻿using System.Runtime.Serialization;
-using VPG.BasicInteraction.Properties;
-using VPG.Core;
-using VPG.Core.Attributes;
-using VPG.Core.Conditions;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.SceneObjects;
-using VPG.Core.Utils;
-using VPG.Core.Validation;
+using VRBuilder.BasicInteraction.Properties;
+using VRBuilder.Core;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Utils;
+using VRBuilder.Core.Validation;
 
-namespace VPG.BasicInteraction.Conditions
+namespace VRBuilder.BasicInteraction.Conditions
 {
     /// <summary>
     /// Condition which is completed when `Target` is snapped into `ZoneToSnapInto`.

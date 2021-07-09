@@ -1,17 +1,17 @@
-using VPG.Editor.Configuration;
+using VRBuilder.Editor.Configuration;
 using UnityEditor;
 
-namespace VPG.Editor.VPGMenu
+namespace VRBuilder.Editor.VPGMenu
 {
     internal static class ShowVPGSettingsMenuEntry
     {
         /// <summary>
         /// Setup the current unity scene to be a functioning training scene.
         /// </summary>
-        [MenuItem("Tools/VR Process Gizmo/Settings", false, 16)]
+        [MenuItem("Tools/VR Builder/Settings", false, 16)]
         public static void Show()
         {
-            SettingsService.OpenProjectSettings("Project/VR Process Gizmo");
+            SettingsService.OpenProjectSettings("Project/VR Builder");
         }
     }
 }

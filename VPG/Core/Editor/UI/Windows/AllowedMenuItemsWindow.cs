@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core.Behaviors;
-using VPG.Core.Conditions;
-using VPG.Core.Utils;
-using VPG.Editor.Configuration;
-using VPG.Editor.UI.StepInspector.Menu;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Utils;
+using VRBuilder.Editor.Configuration;
+using VRBuilder.Editor.UI.StepInspector.Menu;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Windows
+namespace VRBuilder.Editor.UI.Windows
 {
     /// <summary>
     /// Window that allows to manage the allowed menu items.
@@ -18,7 +18,7 @@ namespace VPG.Editor.UI.Windows
     {
         private static AllowedMenuItemsWindow window;
 
-        private const string menuPath = "Tools/VR Process Gizmo/Developer/Allowed Menu Items Configuration";
+        private const string menuPath = "Tools/VR Builder/Developer/Allowed Menu Items Configuration";
 
         private bool isEditUnlocked;
         private static IList<EntityEntry> behaviorList;
@@ -113,7 +113,7 @@ namespace VPG.Editor.UI.Windows
 
             GUILayout.Space(20f);
 
-            EditorGUILayout.HelpBox("This window provides editor configuration settings for the VR Process Gizmo. "
+            EditorGUILayout.HelpBox("This window provides editor configuration settings for the VR Builder. "
                 + "It is supposed to be changed only by a software developer. "
                 + "Modification of these values may lead to various issues.", MessageType.Warning);
 

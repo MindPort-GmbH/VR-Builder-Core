@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using VPG.Core.Properties;
-using VPG.Core.SceneObjects;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.SceneObjects;
 
-namespace VPG.Core.Behaviors
+namespace VRBuilder.Core.Behaviors
 {
     /// <summary>
     /// Serializable reference to a <see cref="LockableProperty"/>

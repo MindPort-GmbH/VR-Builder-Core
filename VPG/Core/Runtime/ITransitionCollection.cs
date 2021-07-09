@@ -1,4 +1,4 @@
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Interface for a collection of transitions.

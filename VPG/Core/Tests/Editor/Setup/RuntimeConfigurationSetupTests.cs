@@ -1,13 +1,13 @@
 using System.Linq;
-using VPG.Core;
-using VPG.Core.Configuration;
-using VPG.Unity;
-using VPG.Editor.Utils;
+using VRBuilder.Core;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Unity;
+using VRBuilder.Editor.Utils;
 using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.Tests
+namespace VRBuilder.Editor.Tests
 {
     public class RuntimeConfigurationSetupTests
     {

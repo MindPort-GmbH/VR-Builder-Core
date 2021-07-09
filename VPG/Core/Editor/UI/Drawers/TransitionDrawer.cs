@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
-using VPG.Core;
-using VPG.Core.Attributes;
+using VRBuilder.Core;
+using VRBuilder.Core.Attributes;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
     /// Drawer for a transition which displays name of the target step as part of its label.

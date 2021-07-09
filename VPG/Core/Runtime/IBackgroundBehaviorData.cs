@@ -1,8 +1,8 @@
 ﻿using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.Behaviors;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Behaviors;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Interface that enables non-blocking background behaviors.

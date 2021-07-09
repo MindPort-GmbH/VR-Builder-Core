@@ -1,7 +1,7 @@
 ﻿using System;
-using VPG.Core.Input;
+using VRBuilder.Core.Input;
 
-namespace VPG.UX
+namespace VRBuilder.UX
 {
     /// <summary>
     /// Controller for a spectator to toggle UI visibility.

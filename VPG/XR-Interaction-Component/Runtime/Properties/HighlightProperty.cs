@@ -1,10 +1,10 @@
 ﻿using System;
-using VPG.BasicInteraction;
+using VRBuilder.BasicInteraction;
 using UnityEngine;
-using VPG.Core.Properties;
-using VPG.Unity;
+using VRBuilder.Core.Properties;
+using VRBuilder.Unity;
 
-namespace VPG.XRInteraction.Properties
+namespace VRBuilder.XRInteraction.Properties
 {
     /// <summary>
     /// Highlight property which enables an attached <see cref="InteractableObject"/>.

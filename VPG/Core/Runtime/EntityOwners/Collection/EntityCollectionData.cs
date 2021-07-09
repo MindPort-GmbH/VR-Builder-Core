@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VPG.Core.EntityOwners
+namespace VRBuilder.Core.EntityOwners
 {
     /// <summary>
     /// A base class for data classes that are collections of other entities.

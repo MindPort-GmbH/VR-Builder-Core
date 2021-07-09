@@ -1,10 +1,10 @@
 ﻿using UnityEditor;
 
-namespace VPG.Editor.UI
+namespace VRBuilder.Editor.UI
 {
     public class SpectatorSettingsProvider : BaseSettingsProvider
     {
-        const string Path = "Project/VR Process Gizmo/Spectator";
+        const string Path = "Project/VR Builder/Spectator";
 
         public SpectatorSettingsProvider() : base(Path, SettingsScope.Project)
         {

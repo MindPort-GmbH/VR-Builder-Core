@@ -1,12 +1,12 @@
 using UnityEngine;
 using NUnit.Framework;
 using System.Collections.Generic;
-using VPG.Core;
-using VPG.Editor.TestTools;
-using VPG.Editor.UI.Windows;
+using VRBuilder.Core;
+using VRBuilder.Editor.TestTools;
+using VRBuilder.Editor.UI.Windows;
 using UnityEditor;
 
-namespace VPG.Editor.Tests.CourseWindowTests
+namespace VRBuilder.Editor.Tests.CourseWindowTests
 {
     /// <summary>
     /// Base class for all training window tests.

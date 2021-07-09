@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace VPG.Core.Configuration.Modes
+namespace VRBuilder.Core.Configuration.Modes
 {
     /// <summary>
     /// Base class for list-based implementations of the <see cref="TypeRule{TValueBase}"/> class.

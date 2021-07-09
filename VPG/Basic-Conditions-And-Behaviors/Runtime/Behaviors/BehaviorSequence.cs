@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.EntityOwners;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.EntityOwners;
 
-namespace VPG.Core.Behaviors
+namespace VRBuilder.Core.Behaviors
 {
     /// <summary>
     /// A collection of behaviors that are activated and deactivated after each other.

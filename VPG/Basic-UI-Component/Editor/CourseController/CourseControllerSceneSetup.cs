@@ -1,8 +1,8 @@
-﻿using VPG.Unity;
-using VPG.UX;
+﻿using VRBuilder.Unity;
+using VRBuilder.UX;
 using UnityEngine;
 
-namespace VPG.Editor.UX
+namespace VRBuilder.Editor.UX
 {
     /// <summary>
     /// Will be called on OnSceneSetup to add the course controller menu.

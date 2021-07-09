@@ -1,7 +1,7 @@
 ﻿﻿using System;
  using System.Runtime.Serialization;
 
-namespace VPG.Core.SceneObjects
+namespace VRBuilder.Core.SceneObjects
 {
     /// <summary>
     /// Simple container for UniqueName.

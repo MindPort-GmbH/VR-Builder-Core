@@ -1,6 +1,6 @@
-﻿using VPG.Core;
+﻿using VRBuilder.Core;
 
-namespace VPG.Editor.CourseValidation
+namespace VRBuilder.Editor.CourseValidation
 {
     /// <summary>
     /// Retrieves <see cref="IContext"/> from any provided <see cref="IData"/>.

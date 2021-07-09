@@ -1,7 +1,7 @@
-﻿using VPG.BasicInteraction;
+﻿using VRBuilder.BasicInteraction;
 using UnityEngine;
 
-namespace VPG.XRInteraction
+namespace VRBuilder.XRInteraction
 {
     /// <summary>
     /// Locomotion handler for Unity XR.

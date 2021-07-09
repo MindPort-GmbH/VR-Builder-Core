@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI
+namespace VRBuilder.Editor.UI
 {
     /// <summary>
     /// Helper class for drawing primitives in custom editors.

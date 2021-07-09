@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VPG.Core.IO
+namespace VRBuilder.Core.IO
 {
     /// <summary>
     /// Handles runtime operations that allow reading and writing to files in Unity.

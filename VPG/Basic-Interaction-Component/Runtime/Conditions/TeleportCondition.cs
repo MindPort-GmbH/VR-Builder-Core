@@ -1,13 +1,13 @@
 using System.Runtime.Serialization;
-using VPG.Core;
-using VPG.Core.Utils;
-using VPG.Core.Validation;
-using VPG.Core.Attributes;
-using VPG.Core.Conditions;
-using VPG.Core.SceneObjects;
-using VPG.BasicInteraction.Properties;
+using VRBuilder.Core;
+using VRBuilder.Core.Utils;
+using VRBuilder.Core.Validation;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.BasicInteraction.Properties;
 
-namespace VPG.BasicInteraction.Conditions
+namespace VRBuilder.BasicInteraction.Conditions
 {
     /// <summary>
     /// Condition which is completed when a teleportation action was executed into the referenced <see cref="ITeleportationProperty"/>.

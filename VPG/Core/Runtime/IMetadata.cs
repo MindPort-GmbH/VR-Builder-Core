@@ -1,7 +1,7 @@
-﻿namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
-    /// Utility data which is used by the VR Process Gizmo SDK custom editors.
+    /// Utility data which is used by the VR Builder SDK custom editors.
     /// </summary>
     public interface IMetadata { }
 }

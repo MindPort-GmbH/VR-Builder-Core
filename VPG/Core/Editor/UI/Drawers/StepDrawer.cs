@@ -1,11 +1,11 @@
 using System;
-using VPG.Core;
-using VPG.Editor.Configuration;
-using VPG.Editor.Tabs;
+using VRBuilder.Core;
+using VRBuilder.Editor.Configuration;
+using VRBuilder.Editor.Tabs;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
     /// Drawer for a step to skip NameableDrawer.

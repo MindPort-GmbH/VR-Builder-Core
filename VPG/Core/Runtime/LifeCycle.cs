@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using VPG.Core.Exceptions;
+using VRBuilder.Core.Exceptions;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// The implementation of the <seealso cref="ILifeCycle"/> interface.

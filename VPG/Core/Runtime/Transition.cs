@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.Conditions;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.EntityOwners;
-using VPG.Core.RestrictiveEnvironment;
-using VPG.Core.Utils.Logging;
-using VPG.Unity;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.EntityOwners;
+using VRBuilder.Core.RestrictiveEnvironment;
+using VRBuilder.Core.Utils.Logging;
+using VRBuilder.Unity;
 using UnityEngine;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// A class for a transition from one step to another.

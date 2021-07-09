@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
- namespace VPG.Editor
+ namespace VRBuilder.Editor
  {
      /// <summary>
      /// Modal Window that helps setting the 'API Compatibility Level' to '.Net 4.x'.

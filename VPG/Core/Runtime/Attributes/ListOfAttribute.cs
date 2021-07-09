@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using UnityEngine;
 
-namespace VPG.Core.Attributes
+namespace VRBuilder.Core.Attributes
 {
     /// <summary>
     /// Declares that children of this list have metadata attributes.

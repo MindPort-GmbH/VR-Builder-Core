@@ -1,4 +1,4 @@
-﻿namespace VPG.Core.Input
+﻿namespace VRBuilder.Core.Input
 {
     /// <summary>
     /// Can be used to mark a GameObject focusable.

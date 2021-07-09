@@ -2,11 +2,11 @@ using UnityEditor;
 using UnityEngine;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
-using VPG.Core;
-using VPG.Editor.UI.Windows;
-using VPG.Core.Configuration;
+using VRBuilder.Core;
+using VRBuilder.Editor.UI.Windows;
+using VRBuilder.Core.Configuration;
 
-namespace VPG.Editor
+namespace VRBuilder.Editor
 {
     /// <summary>
     /// A class that handles interactions between VPG windows and course assets by using selected <seealso cref="IEditingStrategy"/> strategy.

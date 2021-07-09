@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.SceneObjects;
-using VPG.Core.Utils;
-using VPG.Core.Validation;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Utils;
+using VRBuilder.Core.Validation;
 
-namespace VPG.Core.Behaviors
+namespace VRBuilder.Core.Behaviors
 {
     /// <summary>
     /// Behavior that moves target SceneObject to the position and rotation of another TargetObject.

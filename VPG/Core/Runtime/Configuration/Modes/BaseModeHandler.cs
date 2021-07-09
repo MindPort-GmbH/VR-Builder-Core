@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using VPG.Core.Exceptions;
+using VRBuilder.Core.Exceptions;
 
-namespace VPG.Core.Configuration.Modes
+namespace VRBuilder.Core.Configuration.Modes
 {
     /// <summary>
     /// Simple ModeHandler.

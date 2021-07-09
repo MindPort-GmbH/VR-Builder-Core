@@ -1,8 +1,8 @@
-﻿using VPG.Core.Configuration;
+﻿using VRBuilder.Core.Configuration;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.Input
+namespace VRBuilder.Editor.Input
 {
     /// <summary>
     /// Static utility class which provides methods to help managing assets and functionalities of the new input system.

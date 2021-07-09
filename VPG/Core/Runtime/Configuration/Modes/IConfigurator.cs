@@ -1,4 +1,4 @@
-namespace VPG.Core.Configuration.Modes
+namespace VRBuilder.Core.Configuration.Modes
 {
     /// <summary>
     /// An interface for entities' configurators.

@@ -1,10 +1,10 @@
 ﻿using System;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.SceneObjects;
-using VPG.Core.Properties;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Properties;
 using UnityEngine;
 
-namespace VPG.BasicInteraction.Properties
+namespace VRBuilder.BasicInteraction.Properties
 {
     public interface ISnapZoneProperty : ISceneObjectProperty, ILockable
     {

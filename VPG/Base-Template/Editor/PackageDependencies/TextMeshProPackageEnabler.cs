@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace VPG.Editor.PackageManager.BasicTemplate
+namespace VRBuilder.Editor.PackageManager.BasicTemplate
 {
     /// <summary>
     /// Adds Unity's Text Mesh Pro package as a dependency and prompts the 'TMP Importer' window if the 'TMP Essentials' are missing in the project.

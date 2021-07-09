@@ -1,4 +1,4 @@
-namespace VPG.Editor.UI.StepInspector.Menu
+namespace VRBuilder.Editor.UI.StepInspector.Menu
 {
     /// <summary>
     /// A base class for options displayed in the "Add Behavior" and "Add Condition" buttons' dropdown menus.

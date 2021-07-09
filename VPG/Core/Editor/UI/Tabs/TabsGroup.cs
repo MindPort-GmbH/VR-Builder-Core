@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using VPG.Core;
+using VRBuilder.Core;
 using UnityEngine;
 
-namespace VPG.Editor.Tabs
+namespace VRBuilder.Editor.Tabs
 {
     /// <inheritdoc cref="ITabsGroup"/>
     [DataContract]

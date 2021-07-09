@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using VPG.BasicInteraction.Properties;
-using VPG.Core;
-using VPG.Core.Attributes;
-using VPG.Core.Conditions;
-using VPG.Core.RestrictiveEnvironment;
-using VPG.Core.SceneObjects;
-using VPG.Core.Utils;
-using VPG.Core.Validation;
+using VRBuilder.BasicInteraction.Properties;
+using VRBuilder.Core;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.RestrictiveEnvironment;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Utils;
+using VRBuilder.Core.Validation;
 
-namespace VPG.BasicInteraction.Conditions
+namespace VRBuilder.BasicInteraction.Conditions
 {
     /// <summary>
     /// Condition which becomes completed when UsableProperty is used.

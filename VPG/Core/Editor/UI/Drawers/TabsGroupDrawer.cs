@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
-using VPG.Editor.Tabs;
+using VRBuilder.Editor.Tabs;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     [DefaultTrainingDrawer(typeof(ITabsGroup))]
     internal class TabsGroupDrawer : AbstractDrawer

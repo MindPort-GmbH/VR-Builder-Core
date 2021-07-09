@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace VPG.Core.EntityOwners
+namespace VRBuilder.Core.EntityOwners
 {
     /// <summary>
     /// A process that stops activation of a current entity in the entity sequence.

@@ -1,5 +1,5 @@
-﻿using VPG.Core;
-using VPG.Editor.CourseValidation;
+﻿using VRBuilder.Core;
+using VRBuilder.Editor.CourseValidation;
 
 /// <summary>
 /// Does not validate, used to disabled the validation system.

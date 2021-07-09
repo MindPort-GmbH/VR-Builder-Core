@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Runtime.Serialization;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.EntityOwners;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.EntityOwners;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Abstract helper class that can be used for instances that implement <see cref="IEntity"/>. Provides implementation of the events and properties, and also

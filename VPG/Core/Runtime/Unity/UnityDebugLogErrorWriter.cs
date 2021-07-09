@@ -2,7 +2,7 @@
 using System.Text;
 using UnityEngine;
 
-namespace VPG.Unity
+namespace VRBuilder.Unity
 {
     /// <summary>
     /// A TextWriter implementation that outputs any added text to Unity's DebugLogger

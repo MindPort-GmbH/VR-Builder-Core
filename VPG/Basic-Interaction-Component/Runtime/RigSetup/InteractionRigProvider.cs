@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VPG.BasicInteraction.RigSetup
+namespace VRBuilder.BasicInteraction.RigSetup
 {
     /// <summary>
     /// Provides all information and methods to setup a scene with a fitting and working rig.

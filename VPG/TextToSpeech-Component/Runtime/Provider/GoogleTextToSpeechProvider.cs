@@ -1,7 +1,7 @@
-﻿using VPG.Core.Internationalization;
+﻿using VRBuilder.Core.Internationalization;
 using UnityEngine.Networking;
 
-namespace VPG.TextToSpeech
+namespace VRBuilder.TextToSpeech
 {
     /// <summary>
     /// Uses the Google text to speech api

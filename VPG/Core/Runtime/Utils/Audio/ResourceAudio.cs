@@ -1,9 +1,9 @@
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.Internationalization;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Internationalization;
 using UnityEngine;
 
-namespace VPG.Core.Audio
+namespace VRBuilder.Core.Audio
 {
     /// <summary>
     /// Unity resource based audio data.

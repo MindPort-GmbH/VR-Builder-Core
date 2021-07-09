@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VPG.Core.Properties
+namespace VRBuilder.Core.Properties
 {
     /// <summary>
     /// Highlight property which enables a referenced <see cref="highlightObject"/>,

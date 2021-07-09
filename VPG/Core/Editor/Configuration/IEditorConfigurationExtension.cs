@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace VPG.Editor.Configuration
+namespace VRBuilder.Editor.Configuration
 {
     /// <summary>
     /// Interface for editor configuration extension definition.

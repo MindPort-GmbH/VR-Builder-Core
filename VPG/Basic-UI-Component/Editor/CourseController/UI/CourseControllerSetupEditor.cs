@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using VPG.Core;
-using VPG.Core.Utils;
-using VPG.UX;
+using VRBuilder.Core;
+using VRBuilder.Core.Utils;
+using VRBuilder.UX;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UX
+namespace VRBuilder.Editor.UX
 {
     /// <summary>
     /// Custom editor for <see cref="ICourseController"/>s.

@@ -1,10 +1,10 @@
 using System;
-using VPG.Core;
-using VPG.Editor.CourseValidation;
-using VPG.Editor.UI.Graphics.Renderers;
+using VRBuilder.Core;
+using VRBuilder.Editor.CourseValidation;
+using VRBuilder.Editor.UI.Graphics.Renderers;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Graphics
+namespace VRBuilder.Editor.UI.Graphics
 {
     /// <summary>
     /// Represents step node of the Workflow window.

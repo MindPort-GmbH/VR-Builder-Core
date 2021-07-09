@@ -1,6 +1,6 @@
-using VPG.Core.EntityOwners;
+using VRBuilder.Core.EntityOwners;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// The interface for a step's data.

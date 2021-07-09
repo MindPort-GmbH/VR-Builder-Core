@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VPG.TextToSpeech
+namespace VRBuilder.TextToSpeech
 {
     public class UnableToParseAudioFormatException : Exception
     {

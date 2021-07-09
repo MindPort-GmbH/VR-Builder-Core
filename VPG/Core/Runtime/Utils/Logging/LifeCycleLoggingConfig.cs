@@ -1,7 +1,7 @@
-﻿using VPG.Core.Runtime.Utils;
+﻿using VRBuilder.Core.Runtime.Utils;
 using UnityEngine;
 
-namespace VPG.Core.Utils.Logging
+namespace VRBuilder.Core.Utils.Logging
 {
     /// <summary>
     /// ScriptableObject which allows you to configure what of the course life cycle should be logged.

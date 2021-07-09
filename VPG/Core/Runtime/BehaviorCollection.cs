@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.Behaviors;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.EntityOwners;
-using VPG.Core.EntityOwners.ParallelEntityCollection;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.EntityOwners;
+using VRBuilder.Core.EntityOwners.ParallelEntityCollection;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// A collection of <see cref="IBehavior"/>s of a <see cref="IStep"/>.

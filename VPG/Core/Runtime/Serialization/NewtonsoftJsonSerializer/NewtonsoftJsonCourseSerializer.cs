@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using VPG.Core.UI.Drawers.Metadata;
-using VPG.Core.Utils;
+using VRBuilder.Core.UI.Drawers.Metadata;
+using VRBuilder.Core.Utils;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 
-namespace VPG.Core.Serialization.NewtonsoftJson
+namespace VRBuilder.Core.Serialization.NewtonsoftJson
 {
     /// <summary>
     /// This serializer uses NewtonsoftJson to serialize data, the outcome is a json file in the UTF-8 encoding.

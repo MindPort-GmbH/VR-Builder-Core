@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using VPG.Core.Runtime.Properties;
+using VRBuilder.Core.Runtime.Properties;
 
-namespace VPG.Core.Utils
+namespace VRBuilder.Core.Utils
 {
     public static class ReflectionUtils
     {

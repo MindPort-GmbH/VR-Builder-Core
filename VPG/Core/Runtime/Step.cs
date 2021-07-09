@@ -3,17 +3,17 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.Behaviors;
-using VPG.Core.Configuration;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.EntityOwners;
-using VPG.Core.EntityOwners.FoldedEntityCollection;
-using VPG.Core.RestrictiveEnvironment;
-using VPG.Core.Utils.Logging;
-using VPG.Unity;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.EntityOwners;
+using VRBuilder.Core.EntityOwners.FoldedEntityCollection;
+using VRBuilder.Core.RestrictiveEnvironment;
+using VRBuilder.Core.Utils.Logging;
+using VRBuilder.Unity;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// An implementation of <see cref="IStep"/> interface.

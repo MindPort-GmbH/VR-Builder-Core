@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
-using VPG.Core.Utils;
+using VRBuilder.Core.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
     /// A default training drawer for types implementing `IList`.

@@ -1,6 +1,6 @@
-﻿using VPG.Core.Configuration;
+﻿using VRBuilder.Core.Configuration;
 
-namespace VPG.TextToSpeech
+namespace VRBuilder.TextToSpeech
 {
     /// <summary>
     /// TextToSpeech extensions methods for <see cref="BaseRuntimeConfiguration"/>.

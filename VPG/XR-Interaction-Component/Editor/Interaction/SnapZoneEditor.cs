@@ -1,8 +1,8 @@
-﻿using VPG.XRInteraction;
+﻿using VRBuilder.XRInteraction;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.XRInteraction
+namespace VRBuilder.Editor.XRInteraction
 {
     /// <summary>
     /// Drawer class for <see cref="SnapZone"/>.

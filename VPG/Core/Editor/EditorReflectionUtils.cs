@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
-using VPG.Core;
-using VPG.Core.Attributes;
-using VPG.Editor.UI.Drawers;
+using VRBuilder.Core;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Editor.UI.Drawers;
 using UnityEditor.Callbacks;
 
-namespace VPG.Editor
+namespace VRBuilder.Editor
 {
     /// <summary>
     /// Helper class for reflection.

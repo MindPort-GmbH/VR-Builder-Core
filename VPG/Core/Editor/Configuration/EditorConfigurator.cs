@@ -1,15 +1,15 @@
 using System;
 using System.Linq;
-using VPG.Core.Utils;
+using VRBuilder.Core.Utils;
 using UnityEngine;
 using UnityEditor.Callbacks;
 using System.Collections.Generic;
-using VPG.Editor.UI.Behaviors;
-using VPG.Editor.UI.StepInspector.Menu;
-using VPG.Core.Behaviors;
-using VPG.Core.Conditions;
+using VRBuilder.Editor.UI.Behaviors;
+using VRBuilder.Editor.UI.StepInspector.Menu;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Conditions;
 
-namespace VPG.Editor.Configuration
+namespace VRBuilder.Editor.Configuration
 {
     /// <summary>
     /// Configurator to set the training editor configuration which is used by the training creation editor tools (like Step Inspector).

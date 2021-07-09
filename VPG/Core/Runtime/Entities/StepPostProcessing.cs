@@ -1,4 +1,4 @@
-﻿namespace VPG.Core
+﻿namespace VRBuilder.Core
 {
     /// <summary>
     /// <see cref="IStep"/> implementation of <see cref="EntityPostProcessing{T}"/>.

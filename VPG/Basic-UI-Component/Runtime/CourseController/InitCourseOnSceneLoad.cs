@@ -1,9 +1,9 @@
 ﻿using System;
-using VPG.Core;
-using VPG.Core.Configuration;
+using VRBuilder.Core;
+using VRBuilder.Core.Configuration;
 using UnityEngine;
 
-namespace VPG.UX
+namespace VRBuilder.UX
 {
     /// <summary>
     /// Initializes the <see cref="CourseRunner"/> with the current selected course on scene start.

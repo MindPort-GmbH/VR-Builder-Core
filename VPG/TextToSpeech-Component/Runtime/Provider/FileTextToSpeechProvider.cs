@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using VPG.Core.IO;
+using VRBuilder.Core.IO;
 using UnityEngine;
 
-namespace VPG.TextToSpeech
+namespace VRBuilder.TextToSpeech
 {
     /// <summary>
     /// The disk based provider for text to speech, which is using the streaming assets folder.

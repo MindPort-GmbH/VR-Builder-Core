@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace VPG.Core.Attributes
+namespace VRBuilder.Core.Attributes
 {
     /// <summary>
     /// Declares that "Delete" button has to be drawn.

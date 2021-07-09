@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace VPG.Core.Input
+namespace VRBuilder.Core.Input
 {
     /// <summary>
     /// Base class for InputActionListener.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace VPG.Core.Utils
+namespace VRBuilder.Core.Utils
 {
     /// <summary>
     /// Utilities related to sorting elements in collections.

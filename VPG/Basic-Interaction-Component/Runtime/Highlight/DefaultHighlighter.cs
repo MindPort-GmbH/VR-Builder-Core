@@ -5,9 +5,9 @@ using UnityEngine;
 
 
 
-namespace VPG.BasicInteraction
+namespace VRBuilder.BasicInteraction
 {
-    /// <inheritdoc cref="VPG.BasicInteraction.IHighlighter" />
+    /// <inheritdoc cref="VRBuilder.BasicInteraction.IHighlighter" />
     /// <remarks>
     /// Highlights are always queued following a LIFO (Last In First Out) scheme. 
     /// </remarks>

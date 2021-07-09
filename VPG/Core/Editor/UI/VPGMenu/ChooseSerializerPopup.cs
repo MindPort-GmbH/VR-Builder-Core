@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core.Serialization;
+using VRBuilder.Core.Serialization;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.VPGMenu
+namespace VRBuilder.Editor.VPGMenu
 {
     /// <summary>
     /// Allows user to select which serializer they want to use.

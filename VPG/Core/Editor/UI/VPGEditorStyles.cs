@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditor.Graphs;
 using UnityEngine;
 
-namespace VPG.Editor.UI
+namespace VRBuilder.Editor.UI
 {
     public static class VPGEditorStyles
     {

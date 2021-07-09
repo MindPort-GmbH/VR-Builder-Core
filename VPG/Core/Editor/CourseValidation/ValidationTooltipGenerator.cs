@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace VPG.Editor.CourseValidation
+namespace VRBuilder.Editor.CourseValidation
 {
     internal class ValidationTooltipGenerator
     {

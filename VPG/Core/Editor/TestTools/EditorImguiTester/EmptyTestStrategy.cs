@@ -1,8 +1,8 @@
-using VPG.Core;
-using VPG.Editor.UI.Windows;
+using VRBuilder.Core;
+using VRBuilder.Editor.UI.Windows;
 using UnityEngine;
 
-namespace VPG.Editor.TestTools
+namespace VRBuilder.Editor.TestTools
 {
     /// <summary>
     /// An editing strategy that does nothing. Use it to isolate windows logic during testing.

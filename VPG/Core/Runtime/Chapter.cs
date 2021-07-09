@@ -2,14 +2,14 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.EntityOwners;
-using VPG.Core.Exceptions;
-using VPG.Core.Utils;
-using VPG.Core.Utils.Logging;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.EntityOwners;
+using VRBuilder.Core.Exceptions;
+using VRBuilder.Core.Utils;
+using VRBuilder.Core.Utils.Logging;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// A chapter of a training <see cref="Course"/>.

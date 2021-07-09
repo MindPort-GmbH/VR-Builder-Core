@@ -1,13 +1,13 @@
 using System;
 using UnityEngine;
 
-namespace VPG.Core.Internationalization
+namespace VRBuilder.Core.Internationalization
 {
     /// <summary>
     /// Localization configuration data structure. Will load all sources in an ordered way overwriting all
     /// keys already existing.
     /// </summary>
-    [CreateAssetMenu(fileName = "LocalizationConfig", menuName = "VPG/Localization Config", order = 0)]
+    [CreateAssetMenu(fileName = "LocalizationConfig", menuName = "VR Builder/Localization Config", order = 0)]
     public class LocalizationConfig : ScriptableObject
     {
         /// <summary>

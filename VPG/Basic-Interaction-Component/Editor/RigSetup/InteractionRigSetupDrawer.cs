@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using VPG.BasicInteraction.RigSetup;
-using VPG.Core.Utils;
+using VRBuilder.BasicInteraction.RigSetup;
+using VRBuilder.Core.Utils;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace VPG.Editor.BasicInteraction.RigSetup
+namespace VRBuilder.Editor.BasicInteraction.RigSetup
 {
     
     [CustomEditor(typeof(InteractionRigSetup))]

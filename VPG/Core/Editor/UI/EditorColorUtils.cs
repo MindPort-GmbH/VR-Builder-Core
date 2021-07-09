@@ -2,7 +2,7 @@ using System.Globalization;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI
+namespace VRBuilder.Editor.UI
 {
     [InitializeOnLoad]
     internal static class EditorColorUtils

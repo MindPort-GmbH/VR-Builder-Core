@@ -2,7 +2,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI
+namespace VRBuilder.Editor.UI
 {
     /// <summary>
     /// Helper editor class that allows retrieving or drawing a logo that

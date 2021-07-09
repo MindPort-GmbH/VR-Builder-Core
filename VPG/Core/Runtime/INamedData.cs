@@ -1,7 +1,7 @@
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
+using VRBuilder.Core.Attributes;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Data structure with an <see cref="IStep"/>'s name.

@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using VPG.Core;
-using VPG.Core.Configuration;
+using VRBuilder.Core;
+using VRBuilder.Core.Configuration;
 
-namespace VPG.BaseTemplate
+namespace VRBuilder.BaseTemplate
 {
     /// <summary>
     /// Loads and starts the training course currently selected in the '[TRAINING_CONFIGURATION]' gameObject.

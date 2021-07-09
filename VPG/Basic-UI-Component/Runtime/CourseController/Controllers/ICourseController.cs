@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VPG.UX
+namespace VRBuilder.UX
 {
     /// <summary>
     /// Controller for managing the course.

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace VPG.Core.Validation
+namespace VRBuilder.Core.Validation
 {
     /// <summary>
     /// Can be used to validate variables in any EntityData.

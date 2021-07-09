@@ -1,4 +1,4 @@
-﻿namespace VPG.Editor.Analytics
+﻿namespace VRBuilder.Editor.Analytics
 {
     internal struct AnalyticsEvent
     {

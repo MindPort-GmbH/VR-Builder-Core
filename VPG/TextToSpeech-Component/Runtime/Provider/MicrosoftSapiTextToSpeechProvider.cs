@@ -3,9 +3,9 @@ using System.IO;
 using SpeechLib;
 using UnityEngine;
 using System.Threading.Tasks;
-using VPG.Core.Internationalization;
+using VRBuilder.Core.Internationalization;
 
-namespace VPG.TextToSpeech
+namespace VRBuilder.TextToSpeech
 {
     /// <summary>
     /// Training TTS provider which uses Microsoft SAPI to generate audio.

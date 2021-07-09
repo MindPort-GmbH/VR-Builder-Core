@@ -1,4 +1,4 @@
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Interface of a training course.

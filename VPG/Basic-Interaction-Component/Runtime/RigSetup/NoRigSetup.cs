@@ -1,4 +1,4 @@
-﻿namespace VPG.BasicInteraction.RigSetup
+﻿namespace VRBuilder.BasicInteraction.RigSetup
 {
     
     /// <summary>

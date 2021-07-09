@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core.Behaviors;
-using VPG.Editor.Configuration;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Editor.Configuration;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
     /// Draws a dropdown button with all <see cref="InstantiationOption{IBehavior}"/> in the project, and creates a new instance of choosen behavior on click.
@@ -34,7 +34,7 @@ namespace VPG.Editor.UI.Drawers
             {
                 rect.y += rect.height + EditorDrawingHelper.VerticalSpacing;
                 rect.width -= EditorDrawingHelper.IndentationWidth;
-                EditorGUI.HelpBox(rect, "Your project does not contain any Behaviors. Either create one or import a VR Process Gizmo Component.", MessageType.Error);
+                EditorGUI.HelpBox(rect, "Your project does not contain any Behaviors. Either create one or import a VR Builder Component.", MessageType.Error);
                 rect.height += rect.height + EditorDrawingHelper.VerticalSpacing;
             }
 

@@ -1,4 +1,4 @@
-﻿namespace VPG.Components.Runtime.Rigs
+﻿namespace VRBuilder.Components.Runtime.Rigs
 {
     /// <summary>
     /// Setup for XR Device Simulator.

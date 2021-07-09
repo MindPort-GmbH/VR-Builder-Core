@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEditor;
 using UnityEngine;
-using VPG.Core.Utils;
+using VRBuilder.Core.Utils;
 
-namespace VPG.Editor.TestTools
+namespace VRBuilder.Editor.TestTools
 {
     /// <summary>
     /// Editor window which allows user to manage editor IMGUI tests.
@@ -79,7 +79,7 @@ namespace VPG.Editor.TestTools
             };
         }
 
-        [MenuItem("Tools/VR Process Gizmo/Developer/Editor IMGUI Tests Explorer", false, 81)]
+        [MenuItem("Tools/VR Builder/Developer/Editor IMGUI Tests Explorer", false, 81)]
         private static void ShowFromMenu()
         {
             GetWindow<EditorImguiTestsExplorer>();

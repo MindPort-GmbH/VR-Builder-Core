@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// A process which consists of multiple processes which execute at the same time. It ends when all its child processes end.

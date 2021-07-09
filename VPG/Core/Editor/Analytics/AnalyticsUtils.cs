@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.Analytics
+namespace VRBuilder.Editor.Analytics
 {
     internal class AnalyticsUtils
     {

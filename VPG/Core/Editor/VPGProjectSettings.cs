@@ -1,15 +1,15 @@
 using System.IO;
-using VPG.Editor;
+using VRBuilder.Editor;
 using UnityEditor;
 using UnityEngine;
 
 /// <summary>
-/// Settings for a VR Process Gizmo Unity project.
+/// Settings for a VR Builder Unity project.
 /// </summary>
 public partial class VPGProjectSettings : ScriptableObject
 {
     /// <summary>
-    /// Was the VR Process Gizmo imported and therefore started for the first time.
+    /// Was the VR Builder imported and therefore started for the first time.
     /// </summary>
     [HideInInspector]
     public bool IsFirstTimeStarted = true;
@@ -21,7 +21,7 @@ public partial class VPGProjectSettings : ScriptableObject
     public string ProjectVPGVersion = null;
 
     /// <summary>
-    /// Loads the VR Process Gizmo settings for this Unity project from Resources.
+    /// Loads the VR Builder settings for this Unity project from Resources.
     /// </summary>
     /// <returns>VPG Settings</returns>
     public static VPGProjectSettings Load()
@@ -53,7 +53,7 @@ public partial class VPGProjectSettings : ScriptableObject
     }
 
     /// <summary>
-    /// Saves the VR Process Gizmo settings.
+    /// Saves the VR Builder settings.
     /// </summary>
     public void Save()
     {

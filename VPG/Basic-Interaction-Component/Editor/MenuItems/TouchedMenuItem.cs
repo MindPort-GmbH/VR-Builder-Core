@@ -1,8 +1,8 @@
-﻿using VPG.BasicInteraction.Conditions;
-using VPG.Core.Conditions;
-using VPG.Editor.UI.StepInspector.Menu;
+﻿using VRBuilder.BasicInteraction.Conditions;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Editor.UI.StepInspector.Menu;
 
-namespace VPG.Editor.BasicInteraction.UI.Conditions
+namespace VRBuilder.Editor.BasicInteraction.UI.Conditions
 {
     public class TouchedMenuItem : MenuItem<ICondition>
     {

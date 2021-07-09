@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Core.Attributes
+namespace VRBuilder.Core.Attributes
 {
     /// <summary>
     /// Use this attribute to explicitly specify an implementation of `ITrainingDrawer` that should be used.

@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 
-namespace VPG.Core.Serialization
+namespace VRBuilder.Core.Serialization
 {
     /// <summary>
     /// Converts Vector4 into json and back.

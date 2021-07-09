@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using VPG.BasicInteraction.Properties;
+using VRBuilder.BasicInteraction.Properties;
 
-namespace VPG.Core.Properties
+namespace VRBuilder.Core.Properties
 {
     /// <summary>
     /// XR implementation of <see cref="ITeleportationProperty"/>.

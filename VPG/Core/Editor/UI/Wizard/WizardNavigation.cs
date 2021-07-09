@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using VPG.Editor.UI;
+using VRBuilder.Editor.UI;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Wizard
+namespace VRBuilder.Editor.UI.Wizard
 {
     internal class WizardNavigation
     {

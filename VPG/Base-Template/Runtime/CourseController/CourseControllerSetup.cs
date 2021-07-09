@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 
-namespace VPG.BaseTemplate
+namespace VRBuilder.BaseTemplate
 {
     /// <summary>
     /// Allows to select a desired CourseController.

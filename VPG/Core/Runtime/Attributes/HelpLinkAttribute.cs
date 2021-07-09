@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Core.Attributes
+namespace VRBuilder.Core.Attributes
 {
     /// <summary>
     /// Adds a link to a documentation that explains a behavior or condition.

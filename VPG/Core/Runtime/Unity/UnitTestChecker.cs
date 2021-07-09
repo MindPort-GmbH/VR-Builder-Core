@@ -1,4 +1,4 @@
-﻿namespace VPG.Unity
+﻿namespace VRBuilder.Unity
 {
     /// <summary>
     /// Allows to check if we are unit testing right now.

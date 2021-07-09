@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// EventArgs for fast forward course events.

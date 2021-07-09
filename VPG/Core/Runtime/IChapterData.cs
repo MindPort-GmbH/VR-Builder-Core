@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using VPG.Core.EntityOwners;
+using VRBuilder.Core.EntityOwners;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// The <see cref="IChapter"/>'s data interface.

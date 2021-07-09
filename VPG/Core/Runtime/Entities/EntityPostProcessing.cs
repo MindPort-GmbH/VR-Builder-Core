@@ -1,4 +1,4 @@
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Base class for implementing post processing after a <see cref="IEntity"/> creation.

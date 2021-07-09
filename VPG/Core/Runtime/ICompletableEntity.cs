@@ -1,4 +1,4 @@
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// An <see cref="IEntity"/> which can be completed.

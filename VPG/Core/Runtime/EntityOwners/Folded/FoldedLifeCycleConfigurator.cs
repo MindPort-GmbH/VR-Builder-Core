@@ -1,7 +1,7 @@
 using System;
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Configuration.Modes;
 
-namespace VPG.Core.EntityOwners
+namespace VRBuilder.Core.EntityOwners
 {
     /// <summary>
     /// A configurator for a sequence of entities.

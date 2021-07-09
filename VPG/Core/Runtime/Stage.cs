@@ -1,4 +1,4 @@
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// All possible states of an <see cref="IEntity"/>.

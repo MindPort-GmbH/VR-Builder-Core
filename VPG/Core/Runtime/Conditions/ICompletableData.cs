@@ -1,4 +1,4 @@
-namespace VPG.Core.Conditions
+namespace VRBuilder.Core.Conditions
 {
     public interface ICompletableData : IData
     {

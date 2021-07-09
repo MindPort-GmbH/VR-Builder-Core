@@ -1,12 +1,12 @@
-using VPG.Editor.UI;
+using VRBuilder.Editor.UI;
 using UnityEditor;
 using UnityEngine;
-using VPG.Editor;
+using VRBuilder.Editor;
 #if CREATOR_PRO
 using Innoactive.CreatorPro.Account;
 #endif
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Overlay for the workflow editor showing basic instructions on how to get started,

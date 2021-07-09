@@ -1,10 +1,10 @@
-using VPG.Core;
-using VPG.Editor.UI.Windows;
+using VRBuilder.Core;
+using VRBuilder.Editor.UI.Windows;
 
-namespace VPG.Editor
+namespace VRBuilder.Editor
 {
     /// <summary>
-    /// An interface for a strategy that defines how various events should be handled by the VR Process Gizmo editor.
+    /// An interface for a strategy that defines how various events should be handled by the VR Builder editor.
     /// </summary>
     internal interface IEditingStrategy
     {

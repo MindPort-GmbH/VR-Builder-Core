@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using VPG.Core;
-using VPG.Editor.Configuration;
+using VRBuilder.Core;
+using VRBuilder.Editor.Configuration;
 using UnityEngine;
 
-namespace VPG.Editor
+namespace VRBuilder.Editor
 {
     /// <summary>
     /// A collection of helper functions which are related to course asset handling.

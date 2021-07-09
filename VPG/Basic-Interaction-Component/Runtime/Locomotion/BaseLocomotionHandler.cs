@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VPG.BasicInteraction
+namespace VRBuilder.BasicInteraction
 {
     /// <summary>
     /// Handles basic locomotion for e.g. rigs and provides an abstract locomotion layer.

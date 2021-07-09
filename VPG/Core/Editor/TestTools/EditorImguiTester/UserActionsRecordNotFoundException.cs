@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace VPG.Editor.ImguiTester
+namespace VRBuilder.Editor.ImguiTester
 {
     /// <summary>
     /// Exception that is thrown when file with recorded user actions is not found by the Editor IMGUI Tester.

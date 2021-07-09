@@ -1,11 +1,11 @@
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using VPG.Core;
-using VPG.Editor.UI.Windows;
-using VPG.Editor.Configuration;
+using VRBuilder.Core;
+using VRBuilder.Editor.UI.Windows;
+using VRBuilder.Editor.Configuration;
 
-namespace VPG.Editor
+namespace VRBuilder.Editor
 {
     /// <summary>
     /// This strategy is used by default and it handles interaction between course assets and various VPG windows.

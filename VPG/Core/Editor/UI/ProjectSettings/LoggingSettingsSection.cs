@@ -1,9 +1,9 @@
 ﻿using System;
-using VPG.Core.Utils.Logging;
+using VRBuilder.Core.Utils.Logging;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI
+namespace VRBuilder.Editor.UI
 {
     internal class LoggingSettingsSection : IProjectSettingsSection
     {

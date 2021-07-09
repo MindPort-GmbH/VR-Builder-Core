@@ -1,10 +1,10 @@
-using VPG.Core;
-using VPG.Core.Configuration;
+using VRBuilder.Core;
+using VRBuilder.Core.Configuration;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Windows
+namespace VRBuilder.Editor.UI.Windows
 {
     /// <summary>
     /// Wizard for training course creation and management.
@@ -15,7 +15,7 @@ namespace VPG.Editor.UI.Windows
 
         // CourseCreationWizard is obsolete and was replaced by VPGSetupWizard
 #if !UNITY_2019_4_OR_NEWER || UNITY_EDITOR_OSX
-        [MenuItem("Tools/VR Process Gizmo/Create New Course...")]
+        [MenuItem("Tools/VR Builder/Create New Course...")]
 #endif
         private static void ShowWizard()
         {

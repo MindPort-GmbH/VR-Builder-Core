@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEditor;
 using Object = UnityEngine.Object;
 
-namespace VPG.Editor.PackageManager
+namespace VRBuilder.Editor.PackageManager
 {
     /// <summary>
     /// Utility class for adding missing layers to the Unity's TagManager.

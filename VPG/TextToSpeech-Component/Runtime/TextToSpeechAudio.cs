@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 using System.Runtime.Serialization;
-using VPG.Core.Audio;
-using VPG.Core.Attributes;
-using VPG.Core.Configuration;
-using VPG.Core.Internationalization;
+using VRBuilder.Core.Audio;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.Internationalization;
 
-namespace VPG.TextToSpeech.Audio
+namespace VRBuilder.TextToSpeech.Audio
 {
     /// <summary>
     /// This class retrieves and stores AudioClips generated based in a provided localized text. 

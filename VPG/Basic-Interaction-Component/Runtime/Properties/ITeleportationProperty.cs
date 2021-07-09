@@ -1,8 +1,8 @@
 ﻿using System;
-using VPG.Core.Properties;
-using VPG.Core.SceneObjects;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.SceneObjects;
 
-namespace VPG.BasicInteraction.Properties
+namespace VRBuilder.BasicInteraction.Properties
 {
     /// <summary>
     /// Interface for <see cref="ISceneObjectProperty"/>s that can be used for teleport into.

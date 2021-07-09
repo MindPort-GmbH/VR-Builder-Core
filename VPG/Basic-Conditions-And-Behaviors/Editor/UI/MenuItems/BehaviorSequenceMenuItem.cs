@@ -1,7 +1,7 @@
-﻿using VPG.Core.Behaviors;
-using VPG.Editor.UI.StepInspector.Menu;
+﻿using VRBuilder.Core.Behaviors;
+using VRBuilder.Editor.UI.StepInspector.Menu;
 
-namespace VPG.Editor.UI.Behaviors
+namespace VRBuilder.Editor.UI.Behaviors
 {
     /// <inheritdoc />
     public class BehaviorSequenceMenuItem : MenuItem<IBehavior>

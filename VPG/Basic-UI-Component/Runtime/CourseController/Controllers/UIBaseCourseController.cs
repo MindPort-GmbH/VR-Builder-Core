@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using VPG.Core.Input;
+using VRBuilder.Core.Input;
 using UnityEngine;
 
-namespace VPG.UX
+namespace VRBuilder.UX
 {
     /// <summary>
     /// Base course controller which also takes care that a course menu is spawned.

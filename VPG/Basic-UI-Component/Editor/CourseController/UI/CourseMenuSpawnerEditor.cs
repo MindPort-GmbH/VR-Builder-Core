@@ -1,8 +1,8 @@
-﻿using VPG.UX;
+﻿using VRBuilder.UX;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UX
+namespace VRBuilder.Editor.UX
 {
     /// <summary>
     /// Custom editor for <see cref="ICourseController"/>s.

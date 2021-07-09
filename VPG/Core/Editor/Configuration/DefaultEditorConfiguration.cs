@@ -1,13 +1,13 @@
 using System.Collections.ObjectModel;
 using System.Linq;
-using VPG.Core.Behaviors;
-using VPG.Core.Conditions;
-using VPG.Core.Serialization;
-using VPG.Core.Serialization.NewtonsoftJson;
-using VPG.Editor.CourseValidation;
-using VPG.Editor.UI.StepInspector.Menu;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Serialization;
+using VRBuilder.Core.Serialization.NewtonsoftJson;
+using VRBuilder.Editor.CourseValidation;
+using VRBuilder.Editor.UI.StepInspector.Menu;
 
-namespace VPG.Editor.Configuration
+namespace VRBuilder.Editor.Configuration
 {
     /// <summary>
     /// Default editor configuration definition which is used if no other was implemented.

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Runtime.Serialization;
-using VPG.Core.RestrictiveEnvironment;
-using VPG.Core.Utils.Logging;
-using VPG.Unity;
+using VRBuilder.Core.RestrictiveEnvironment;
+using VRBuilder.Core.Utils.Logging;
+using VRBuilder.Unity;
 
-namespace VPG.Core.Conditions
+namespace VRBuilder.Core.Conditions
 {
     /// <summary>
     /// An implementation of <see cref="ICondition"/>. Use it as the base class for your custom conditions.

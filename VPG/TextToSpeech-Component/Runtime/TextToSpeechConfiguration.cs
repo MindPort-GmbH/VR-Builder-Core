@@ -1,10 +1,10 @@
 using System;
 using System.IO;
-using VPG.Core.Configuration;
-using VPG.Core.Runtime.Utils;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.Runtime.Utils;
 using UnityEngine;
 
-namespace VPG.TextToSpeech
+namespace VRBuilder.TextToSpeech
 {
     public class TextToSpeechConfiguration : SettingsObject<TextToSpeechConfiguration>
     {

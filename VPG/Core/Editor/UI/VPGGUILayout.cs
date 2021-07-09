@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using VPG.Editor.UI;
+using VRBuilder.Editor.UI;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Debug = UnityEngine.Debug;
 
-namespace VPG.Editor.UI
+namespace VRBuilder.Editor.UI
 {
     /// <summary>
-    /// Layout extension for the VR Process Gizmo.
+    /// Layout extension for the VR Builder.
     /// </summary>
     public static class VPGGUILayout
     {

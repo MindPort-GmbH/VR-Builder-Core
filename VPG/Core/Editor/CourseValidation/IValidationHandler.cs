@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using VPG.Core;
+using VRBuilder.Core;
 
-namespace VPG.Editor.CourseValidation
+namespace VRBuilder.Editor.CourseValidation
 {
     /// <summary>
     /// ValidationHandler validates data objects, e.g. steps or conditions, of a given course and reports whether

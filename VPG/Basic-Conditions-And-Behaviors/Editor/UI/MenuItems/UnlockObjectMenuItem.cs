@@ -1,8 +1,8 @@
 ﻿using System;
-using VPG.Core.Behaviors;
-using VPG.Editor.UI.StepInspector.Menu;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Editor.UI.StepInspector.Menu;
 
-namespace VPG.Editor.UI.Behaviors
+namespace VRBuilder.Editor.UI.Behaviors
 {
     /// <inheritdoc />
     [Obsolete("Locking scene objects is obsoleted, consider using the 'Unlocked Objects' list in the Step window.")]

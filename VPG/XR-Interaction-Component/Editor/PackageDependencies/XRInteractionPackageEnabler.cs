@@ -1,4 +1,4 @@
-﻿namespace VPG.Editor.PackageManager.XRInteraction
+﻿namespace VRBuilder.Editor.PackageManager.XRInteraction
 {
     /// <summary>
     /// Adds Unity's XR-Interaction-Toolkit package as a dependency and sets specified symbol for script compilation.

@@ -8,7 +8,7 @@
 //{
 //    internal class AnalyticsSettingsProvider : BaseSettingsProvider
 //    {
-//        const string Path = "Project/VR Process Gizmo/Analytics";
+//        const string Path = "Project/VR Builder/Analytics";
 
 //        public AnalyticsSettingsProvider() : base(Path, SettingsScope.Project)
 //        {

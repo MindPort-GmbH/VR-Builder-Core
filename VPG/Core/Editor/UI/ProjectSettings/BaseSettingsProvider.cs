@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using VPG.Core.Utils;
+using VRBuilder.Core.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI
+namespace VRBuilder.Editor.UI
 {
     /// <summary>
     /// Base Settings provider which allows to inject additional sections which implement <see cref="IProjectSettingsSection"/>.

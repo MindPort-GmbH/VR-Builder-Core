@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core.Configuration;
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.Configuration.Modes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Runs a <see cref="ICourse"/>, expects to be run only once.

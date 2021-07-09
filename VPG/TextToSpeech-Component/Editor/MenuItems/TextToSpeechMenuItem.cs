@@ -1,9 +1,9 @@
-﻿using VPG.Core.Behaviors;
-using VPG.TextToSpeech.Audio;
-using VPG.Core.Internationalization;
-using VPG.Editor.UI.StepInspector.Menu;
+﻿using VRBuilder.Core.Behaviors;
+using VRBuilder.TextToSpeech.Audio;
+using VRBuilder.Core.Internationalization;
+using VRBuilder.Editor.UI.StepInspector.Menu;
 
-namespace VPG.Editor.TextToSpeech.UI.Behaviors
+namespace VRBuilder.Editor.TextToSpeech.UI.Behaviors
 {
     /// <inheritdoc />
     public class TextToSpeechMenuItem : MenuItem<IBehavior>

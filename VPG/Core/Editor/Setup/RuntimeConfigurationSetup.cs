@@ -1,8 +1,8 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using VPG.Core.Configuration;
+using VRBuilder.Core.Configuration;
 
-namespace VPG.Editor
+namespace VRBuilder.Editor
 {
     /// <summary>
     /// Will setup a <see cref="RuntimeConfigurator"/> when none is existent in scene.

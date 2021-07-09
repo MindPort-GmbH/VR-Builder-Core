@@ -2,12 +2,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
-using VPG.Core;
-using VPG.Editor.UndoRedo;
-using VPG.Core.Configuration;
-using VPG.Editor.Configuration;
+using VRBuilder.Core;
+using VRBuilder.Editor.UndoRedo;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Editor.Configuration;
 
-namespace VPG.Editor.UI.Windows
+namespace VRBuilder.Editor.UI.Windows
 {
     /// <summary>
     /// This class draws the Workflow window..

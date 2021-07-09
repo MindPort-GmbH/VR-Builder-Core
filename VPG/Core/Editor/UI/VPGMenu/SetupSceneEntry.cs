@@ -1,14 +1,14 @@
-using VPG.Editor.Configuration;
+using VRBuilder.Editor.Configuration;
 using UnityEditor;
 
-namespace VPG.Editor.VPGMenu
+namespace VRBuilder.Editor.VPGMenu
 {
     internal static class SetupSceneEntry
     {
         /// <summary>
         /// Setup the current unity scene to be a functioning training scene.
         /// </summary>
-        [MenuItem("Tools/VR Process Gizmo/Setup Training Scene", false, 16)]
+        [MenuItem("Tools/VR Builder/Setup Training Scene", false, 16)]
         public static void SetupScene()
         {
             TrainingSceneSetup.Run();

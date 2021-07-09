@@ -1,6 +1,6 @@
-﻿using VPG.Core.Internationalization;
+﻿using VRBuilder.Core.Internationalization;
 
-namespace VPG.UX
+namespace VRBuilder.UX
 {
     /// <summary>
     /// Interface which provides a <see cref="LocalizationConfig"/>.

@@ -1,4 +1,4 @@
-﻿namespace VPG.Core.Runtime.Properties
+﻿namespace VRBuilder.Core.Runtime.Properties
 {
     /// <summary>
     /// Interface which allows validation to check if the object validated is empty.

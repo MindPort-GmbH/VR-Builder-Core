@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VPG.Editor.UI.Graphics
+namespace VRBuilder.Editor.UI.Graphics
 {
     internal class GraphicalElementEventArgs : EventArgs
     {

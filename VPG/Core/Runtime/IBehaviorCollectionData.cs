@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using VPG.Core.Behaviors;
-using VPG.Core.EntityOwners;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.EntityOwners;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// A data that contains a list of <see cref="IBehavior"/>s.

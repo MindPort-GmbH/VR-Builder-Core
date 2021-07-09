@@ -1,8 +1,8 @@
-﻿using VPG.Core.Internationalization;
+﻿using VRBuilder.Core.Internationalization;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace VPG.TextToSpeech
+namespace VRBuilder.TextToSpeech
 {
     /// <summary>
     /// Uses the Watson text to speech api

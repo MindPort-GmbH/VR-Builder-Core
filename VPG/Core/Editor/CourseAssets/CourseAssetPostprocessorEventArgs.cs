@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Editor
+namespace VRBuilder.Editor
 {
     /// <summary>
     /// Event args for <see cref="CourseAssetPostprocessor"/> events.

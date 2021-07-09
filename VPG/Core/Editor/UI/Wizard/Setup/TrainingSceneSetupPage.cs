@@ -3,9 +3,9 @@ using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-using VPG.Editor.Setup;
+using VRBuilder.Editor.Setup;
 
-namespace VPG.Editor.UI.Wizard
+namespace VRBuilder.Editor.UI.Wizard
 {
     /// <summary>
     /// Wizard page which handles the training scene setup.

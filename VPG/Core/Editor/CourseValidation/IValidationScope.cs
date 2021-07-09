@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace VPG.Editor.CourseValidation
+namespace VRBuilder.Editor.CourseValidation
 {
     /// <summary>
     /// ValidationScope limits the scope of the validation done. For example scopes are:

@@ -4,7 +4,7 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-namespace VPG.Core.Runtime.Utils
+namespace VRBuilder.Core.Runtime.Utils
 {
     /// <summary>
     /// ScriptableObject with additional load and save mechanic to make it a singleton.
@@ -56,7 +56,7 @@ namespace VPG.Core.Runtime.Utils
         }
 
         /// <summary>
-        /// Saves the VR Process Gizmo settings, only works in editor.
+        /// Saves the VR Builder settings, only works in editor.
         /// </summary>
         public void Save()
         {

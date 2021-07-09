@@ -1,9 +1,9 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using VPG.XRInteraction;
+using VRBuilder.XRInteraction;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace VPG.Editor.XRInteraction
+namespace VRBuilder.Editor.XRInteraction
 {
     /// <summary>
     /// Drawer class for <see cref="DirectInteractor"/>.

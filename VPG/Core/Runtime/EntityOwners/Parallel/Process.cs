@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Configuration.Modes;
 
-namespace VPG.Core.EntityOwners.ParallelEntityCollection
+namespace VRBuilder.Core.EntityOwners.ParallelEntityCollection
 {
     /// <summary>
     /// A base process for entity collection.

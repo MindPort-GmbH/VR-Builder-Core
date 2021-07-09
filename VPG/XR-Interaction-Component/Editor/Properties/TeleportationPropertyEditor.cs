@@ -1,14 +1,14 @@
 using System;
 using UnityEditor;
 using UnityEngine;
-using VPG.Core.Properties;
+using VRBuilder.Core.Properties;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace VPG.Editor.XRInteraction
+namespace VRBuilder.Editor.XRInteraction
 {
     /// <summary>
-    /// Custom inspector for <see cref="TeleportationProperty"/>, adding a button to automatically configure <see cref="VPG.XRInteraction.TeleportationAnchor"/>s.
+    /// Custom inspector for <see cref="TeleportationProperty"/>, adding a button to automatically configure <see cref="VRBuilder.XRInteraction.TeleportationAnchor"/>s.
     /// </summary>
     [CustomEditor(typeof(TeleportationProperty)), CanEditMultipleObjects]
     internal class TeleportationPropertyEditor : UnityEditor.Editor

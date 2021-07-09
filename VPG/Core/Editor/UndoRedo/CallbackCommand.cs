@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Editor.UndoRedo
+namespace VRBuilder.Editor.UndoRedo
 {
     /// <summary>
     /// A revertable command which defines Do/Undo logic through callbacks.

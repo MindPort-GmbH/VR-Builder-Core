@@ -1,12 +1,12 @@
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.SceneObjects;
-using VPG.Core.Properties;
-using VPG.Core.Utils;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.Utils;
 using UnityEngine;
 
-namespace VPG.Core.Behaviors
+namespace VRBuilder.Core.Behaviors
 {
     /// <summary>
     /// Behavior that highlights the target <see cref="ISceneObject"/> with the specified color until the behavior is being deactivated.

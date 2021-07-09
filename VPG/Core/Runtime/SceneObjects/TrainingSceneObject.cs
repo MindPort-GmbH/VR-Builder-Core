@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System;
 using System.Collections.Generic;
-using VPG.Core.Configuration;
-using VPG.Core.Exceptions;
-using VPG.Core.Properties;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.Exceptions;
+using VRBuilder.Core.Properties;
 
-namespace VPG.Core.SceneObjects
+namespace VRBuilder.Core.SceneObjects
 {
     /// <inheritdoc cref="ISceneObject"/>
     [ExecuteInEditMode]

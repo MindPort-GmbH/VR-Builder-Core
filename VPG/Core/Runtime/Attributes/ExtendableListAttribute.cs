@@ -1,9 +1,9 @@
 using System;
 using System.Reflection;
 using System.Runtime.Serialization;
-using VPG.Core.Utils;
+using VRBuilder.Core.Utils;
 
-namespace VPG.Core.Attributes
+namespace VRBuilder.Core.Attributes
 {
     /// <summary>
     /// Declares that new elements can be added to this list.

@@ -1,7 +1,7 @@
-using VPG.Editor.UI.Windows;
+using VRBuilder.Editor.UI.Windows;
 using NUnit.Framework;
 
-namespace VPG.Core.Tests.Editor.StepWindowTests
+namespace VRBuilder.Core.Tests.Editor.StepWindowTests
 {
     internal class RenameTest : BaseStepWindowTest
     {

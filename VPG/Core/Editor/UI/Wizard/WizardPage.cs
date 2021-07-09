@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Wizard
+namespace VRBuilder.Editor.UI.Wizard
 {
     /// <summary>
     /// Wizard pages which allows you to implement your content.

@@ -1,12 +1,12 @@
 using System;
 using System.Linq;
-using VPG.Core;
-using VPG.Core.Properties;
-using VPG.Core.SceneObjects;
+using VRBuilder.Core;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.SceneObjects;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     [DefaultTrainingDrawer(typeof(LockableObjectsCollection))]
     internal class LockableObjectsDrawer : DataOwnerDrawer

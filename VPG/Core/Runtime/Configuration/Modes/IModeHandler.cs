@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 
-namespace VPG.Core.Configuration.Modes
+namespace VRBuilder.Core.Configuration.Modes
 {
     /// <summary>
     /// Interface for the ModeHandler used to configure modes during runtime.

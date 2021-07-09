@@ -2,11 +2,11 @@
 
 using System;
 using System.Collections.Generic;
-using VPG.Core.Configuration;
+using VRBuilder.Core.Configuration;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace VPG.Core.Input
+namespace VRBuilder.Core.Input
 {
     /// <summary>
     /// Input controller based on Unity's InputSystem.

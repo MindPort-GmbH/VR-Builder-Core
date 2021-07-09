@@ -1,13 +1,13 @@
 using System;
 using System.IO;
-using VPG.Core;
-using VPG.Core.Configuration;
+using VRBuilder.Core;
+using VRBuilder.Core.Configuration;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
 
-namespace VPG.Editor.Setup
+namespace VRBuilder.Editor.Setup
 {
     /// <summary>
     /// Helper class to setup scenes and trainings.

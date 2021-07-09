@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using VPG.Core.SceneObjects;
+using VRBuilder.Core.SceneObjects;
 using UnityEngine;
 
-namespace VPG.BasicInteraction.Validation
+namespace VRBuilder.BasicInteraction.Validation
 {
     /// <summary>
     /// Checks if the training scene object attached to the given GameObject is listed as accepted trainin scene object.

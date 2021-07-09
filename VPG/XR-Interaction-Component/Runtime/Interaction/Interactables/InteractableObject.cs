@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using VPG.BasicInteraction;
+using VRBuilder.BasicInteraction;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-namespace VPG.XRInteraction
+namespace VRBuilder.XRInteraction
 {
     /// <summary>
     /// Interactable component that allows basic "grab" functionality.

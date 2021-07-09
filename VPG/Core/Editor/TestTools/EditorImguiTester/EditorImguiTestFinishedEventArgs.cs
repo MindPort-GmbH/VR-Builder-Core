@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Editor.TestTools
+namespace VRBuilder.Editor.TestTools
 {
     /// <summary>
     /// Event args for event which is fired when a <see cref="IEditorImguiTest"/> test finishes its execution.

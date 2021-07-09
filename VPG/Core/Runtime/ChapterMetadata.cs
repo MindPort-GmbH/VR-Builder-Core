@@ -1,7 +1,7 @@
 using System.Runtime.Serialization;
 using UnityEngine;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Implementation of <see cref="IMetadata"/> adapted for <see cref="IChapter"/> data.

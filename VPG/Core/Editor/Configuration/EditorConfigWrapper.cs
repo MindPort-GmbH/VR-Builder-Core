@@ -1,10 +1,10 @@
 ﻿using System.Collections.ObjectModel;
-using VPG.Core.Behaviors;
-using VPG.Core.Conditions;
-using VPG.Core.Serialization;
-using VPG.Editor.UI.StepInspector.Menu;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Serialization;
+using VRBuilder.Editor.UI.StepInspector.Menu;
 
-namespace VPG.Editor.Configuration
+namespace VRBuilder.Editor.Configuration
 {
     internal class EditorConfigWrapper : DefaultEditorConfiguration
     {

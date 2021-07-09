@@ -1,7 +1,7 @@
-﻿using VPG.Core.SceneObjects;
-using VPG.Core.Properties;
+﻿using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Properties;
 
-namespace VPG.BasicInteraction.Properties
+namespace VRBuilder.BasicInteraction.Properties
 {
     public interface ITouchableProperty : ISceneObjectProperty, ILockable
     {

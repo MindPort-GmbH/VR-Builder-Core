@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VPG.Editor.UI.Graphics
+namespace VRBuilder.Editor.UI.Graphics
 {
     internal class PointerDraggedGraphicalElementEventArgs : PointerGraphicalElementEventArgs
     {

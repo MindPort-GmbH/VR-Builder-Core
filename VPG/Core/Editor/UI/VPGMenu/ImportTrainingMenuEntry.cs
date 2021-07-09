@@ -2,19 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using VPG.Core.Utils;
-using VPG.Core.Serialization;
+using VRBuilder.Core.Utils;
+using VRBuilder.Core.Serialization;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.VPGMenu
+namespace VRBuilder.Editor.VPGMenu
 {
     internal static class ImportTrainingMenuEntry
     {
         /// <summary>
         /// Allows to import trainings.
         /// </summary>
-        [MenuItem("Tools/VR Process Gizmo/Import Training Course", false, 14)]
+        [MenuItem("Tools/VR Builder/Import Training Course", false, 14)]
         private static void ImportTraining()
         {
             string path = EditorUtility.OpenFilePanel("Select your training", ".", String.Empty);

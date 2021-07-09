@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using VPG.Core;
-using VPG.Editor.UI.Windows;
+using VRBuilder.Core;
+using VRBuilder.Editor.UI.Windows;
 using NUnit.Framework;
 
-namespace VPG.Editor.Tests.CourseWindowTests
+namespace VRBuilder.Editor.Tests.CourseWindowTests
 {
     internal class CopyOneStepWithHotkeysTest : BaseCourseWindowTest
     {

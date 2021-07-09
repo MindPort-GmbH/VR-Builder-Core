@@ -1,4 +1,4 @@
-namespace VPG.Editor.UI.StepInspector.Menu
+namespace VRBuilder.Editor.UI.StepInspector.Menu
 {
     /// <summary>
     /// This class adds a separator in the "Add Behavior"/"Add Condition" dropdown menus.

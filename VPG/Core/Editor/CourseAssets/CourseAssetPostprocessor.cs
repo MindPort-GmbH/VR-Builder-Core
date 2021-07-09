@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEditor;
 
-namespace VPG.Editor
+namespace VRBuilder.Editor
 {
     /// <summary>
     /// Monitors training course files added or removed from the project.

@@ -2,17 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using VPG.Core;
-using VPG.Core.Attributes;
-using VPG.Core.Behaviors;
-using VPG.Core.Conditions;
-using VPG.Core.Utils;
-using VPG.Editor.Configuration;
-using VPG.Editor.CourseValidation;
+using VRBuilder.Core;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Utils;
+using VRBuilder.Editor.Configuration;
+using VRBuilder.Editor.CourseValidation;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
     /// Training drawer for object properties. Used when everything else does not fit.

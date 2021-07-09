@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Event that is fired when the current stage changes.

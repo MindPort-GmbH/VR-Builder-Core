@@ -1,11 +1,11 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI
+namespace VRBuilder.Editor.UI
 {
     internal class VPGPageProvider : BaseSettingsProvider
     {
-        const string Path = "Project/VR Process Gizmo";
+        const string Path = "Project/VR Builder";
 
         public VPGPageProvider() : base(Path, SettingsScope.Project)
         {

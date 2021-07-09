@@ -1,4 +1,4 @@
-﻿namespace VPG.Core
+﻿namespace VRBuilder.Core
 {
     /// <summary>
     /// Base interface for objects which can be completed.

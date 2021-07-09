@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VPG.TextToSpeech
+namespace VRBuilder.TextToSpeech
 {
     /// <summary>
     ///  Allows to convert audio into or out of AudioClips

@@ -1,10 +1,10 @@
 ﻿using UnityEditor;
 using UnityEngine;
 using System.Reflection;
-using VPG.Core.SceneObjects;
-using VPG.Core.Properties;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Properties;
 
-namespace VPG.Editor.UI
+namespace VRBuilder.Editor.UI
 {
     /// <summary>
     /// This class adds names to newly added entities.

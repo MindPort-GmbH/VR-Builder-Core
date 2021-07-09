@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VPG.Core.SceneObjects
+namespace VRBuilder.Core.SceneObjects
 {
     public class LockStateChangedEventArgs : EventArgs
     {

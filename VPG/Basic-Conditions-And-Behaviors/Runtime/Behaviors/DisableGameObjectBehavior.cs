@@ -1,9 +1,9 @@
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.SceneObjects;
-using VPG.Core.Utils;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Utils;
 
-namespace VPG.Core.Behaviors
+namespace VRBuilder.Core.Behaviors
 {
     /// <summary>
     /// Disables gameObject of target ISceneObject.

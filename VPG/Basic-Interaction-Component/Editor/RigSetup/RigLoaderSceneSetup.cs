@@ -1,8 +1,8 @@
-﻿using VPG.BasicInteraction.RigSetup;
-using VPG.Core.Properties;
+﻿using VRBuilder.BasicInteraction.RigSetup;
+using VRBuilder.Core.Properties;
 using UnityEngine;
 
-namespace VPG.Editor.BasicInteraction.RigSetup
+namespace VRBuilder.Editor.BasicInteraction.RigSetup
 {
     /// <summary>
     /// Setups the rig loader, cleans up the scene and creates a dummy trainee. 

@@ -1,6 +1,6 @@
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Configuration.Modes;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// A base class for entities' configurators which have access to their entities' data.

@@ -1,4 +1,4 @@
-﻿namespace VPG.BaseTemplate
+﻿namespace VRBuilder.BaseTemplate
 {
     public interface IParticleMachine
     {

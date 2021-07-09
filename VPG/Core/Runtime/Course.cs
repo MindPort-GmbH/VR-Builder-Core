@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.EntityOwners;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.EntityOwners;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// An implementation of <see cref="ICourse"/> class.

@@ -2,13 +2,13 @@
 using Newtonsoft.Json;
 using System.Collections;
 using System.Runtime.Serialization;
-using VPG.Core;
-using VPG.Core.Behaviors;
-using VPG.Core.Attributes;
-using VPG.Core.SceneObjects;
-using VPG.Core.Validation;
+using VRBuilder.Core;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Validation;
 
-namespace VPG.BaseTemplate.Behaviors
+namespace VRBuilder.BaseTemplate.Behaviors
 {
     // This behavior linearly changes scale of a Target object over Duration seconds, until it matches TargetScale.
     [DataContract(IsReference = true)]

@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Core.Attributes
+namespace VRBuilder.Core.Attributes
 {
     /// <summary>
     /// Declares the drawing order for this element.

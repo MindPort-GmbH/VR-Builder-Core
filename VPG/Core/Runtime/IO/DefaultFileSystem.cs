@@ -3,7 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VPG.Core.IO
+namespace VRBuilder.Core.IO
 {
     /// <summary>
     /// Default implementation of <see cref="IPlatformFileSystem"/> based in 'System.IO'.

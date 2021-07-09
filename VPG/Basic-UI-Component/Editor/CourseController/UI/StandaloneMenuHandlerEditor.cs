@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using VPG.UX;
+using VRBuilder.UX;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UX
+namespace VRBuilder.Editor.UX
 {
     /// <summary>
     /// Editor drawer for <see cref="StandaloneMenuHandler"/>.

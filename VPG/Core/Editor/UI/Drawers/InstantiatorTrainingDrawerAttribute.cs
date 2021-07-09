@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     [AttributeUsage(AttributeTargets.Class)]
     internal class InstantiatorTrainingDrawerAttribute : Attribute

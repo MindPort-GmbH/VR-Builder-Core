@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace VPG.Core.Attributes
+namespace VRBuilder.Core.Attributes
 {
     /// <summary>
     /// Base class for metadata attributes which define special rules for drawing the element.

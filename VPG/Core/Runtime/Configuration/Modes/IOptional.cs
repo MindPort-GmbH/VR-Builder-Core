@@ -1,4 +1,4 @@
-namespace VPG.Core.Configuration.Modes
+namespace VRBuilder.Core.Configuration.Modes
 {
     /// <summary>
     /// An interface that indicates that it would make sense to skip this <see cref="IEntity"/> via <see cref="IMode"/>.

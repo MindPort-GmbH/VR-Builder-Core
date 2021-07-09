@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core;
-using VPG.Editor.Configuration;
-using VPG.Editor.UI.Graphics;
-using VPG.Editor.UndoRedo;
-using VPG.Editor.Utils;
+using VRBuilder.Core;
+using VRBuilder.Editor.Configuration;
+using VRBuilder.Editor.UI.Graphics;
+using VRBuilder.Editor.UndoRedo;
+using VRBuilder.Editor.Utils;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Windows
+namespace VRBuilder.Editor.UI.Windows
 {
     internal class ChapterRepresentation
     {

@@ -1,10 +1,10 @@
 ﻿using System;
-using VPG.TextToSpeech;
-using VPG.Editor.UI;
+using VRBuilder.TextToSpeech;
+using VRBuilder.Editor.UI;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.TextToSpeech.UI.ProjectSettings
+namespace VRBuilder.Editor.TextToSpeech.UI.ProjectSettings
 {
     /// <summary>
     /// Provides text to speech settings.
@@ -28,7 +28,7 @@ namespace VPG.Editor.TextToSpeech.UI.ProjectSettings
             GUILayout.Space(8);
         
             TextToSpeechConfiguration config = TextToSpeechConfiguration.Instance;
-            UnityEditor.Editor.CreateEditor(config, typeof(VPG.Editor.TextToSpeech.UI.TextToSpeechConfigurationEditor)).OnInspectorGUI();
+            UnityEditor.Editor.CreateEditor(config, typeof(VRBuilder.Editor.TextToSpeech.UI.TextToSpeechConfigurationEditor)).OnInspectorGUI();
 
             GUILayout.Space(8);
         

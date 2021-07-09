@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VPG.BasicInteraction
+namespace VRBuilder.BasicInteraction
 {
     /// <summary>
     /// Adds highlighting functionality to a GameObject with Renderers.

@@ -3,10 +3,10 @@ using UnityEngine;
 using UnityEngine.XR;
 using System;
 using System.Collections.Generic;
-using VPG.Core;
-using VPG.Core.Configuration;
+using VRBuilder.Core;
+using VRBuilder.Core.Configuration;
 
-namespace VPG.UX
+namespace VRBuilder.UX
 {
     /// <summary>
     /// Shows and hides the StandaloneCourseController prefab.

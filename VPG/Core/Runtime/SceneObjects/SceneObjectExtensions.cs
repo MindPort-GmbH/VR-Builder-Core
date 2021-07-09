@@ -1,13 +1,13 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using VPG.Core.Configuration;
-using VPG.Core.SceneObjects;
-using VPG.Core.Utils;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Utils;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace VPG.Core.Properties
+namespace VRBuilder.Core.Properties
 {
     /// <summary>
     /// Helper class that adds functionality to any <see cref="ISceneObject"/>.

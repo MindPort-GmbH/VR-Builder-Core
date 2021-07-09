@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using VPG.Core.Behaviors;
-using VPG.Core.Configuration;
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.Configuration.Modes;
 
-namespace VPG.BaseTemplate.Configuration
+namespace VRBuilder.BaseTemplate.Configuration
 {
     public class NoHintsRuntimeConfiguration : DefaultRuntimeConfiguration
     {

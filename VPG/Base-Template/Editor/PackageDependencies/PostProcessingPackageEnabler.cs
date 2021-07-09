@@ -1,4 +1,4 @@
-﻿namespace VPG.Editor.PackageManager.BasicTemplate
+﻿namespace VRBuilder.Editor.PackageManager.BasicTemplate
 {
     /// <summary>
     /// Adds Unity's Post-Processing package as a dependency.

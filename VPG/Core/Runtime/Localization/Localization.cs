@@ -2,9 +2,9 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using VPG.Core.IO;
+using VRBuilder.Core.IO;
 
-namespace VPG.Core.Internationalization
+namespace VRBuilder.Core.Internationalization
 {
     /// <summary>
     /// This class handles retrieving and managing localization files.

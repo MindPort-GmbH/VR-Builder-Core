@@ -1,9 +1,9 @@
 using System;
-using VPG.Core.Internationalization;
+using VRBuilder.Core.Internationalization;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
     /// Custom drawer for localized strings in PlayAudioBehavior's audio data to flatten visible hierarchy.

@@ -1,7 +1,7 @@
 ﻿﻿using System;
 using System.Collections.ObjectModel;
 
-namespace VPG.Core.Behaviors
+namespace VRBuilder.Core.Behaviors
 {
     public class BehaviorCollectionChangedEventArgs : EventArgs { }
 

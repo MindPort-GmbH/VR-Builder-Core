@@ -2,7 +2,7 @@
 using System.Globalization;
 using UnityEditor;
 
-namespace VPG.Editor.Analytics
+namespace VRBuilder.Editor.Analytics
 {
     /// <summary>
     /// Abstract analytics handler, which handles the SessionId

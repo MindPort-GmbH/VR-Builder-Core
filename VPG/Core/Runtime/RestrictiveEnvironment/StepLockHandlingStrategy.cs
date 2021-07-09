@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Configuration.Modes;
 
-namespace VPG.Core.RestrictiveEnvironment
+namespace VRBuilder.Core.RestrictiveEnvironment
 {
     /// <summary>
     /// Allows to implement strategies which restrict interaction with scene objects for specific steps.

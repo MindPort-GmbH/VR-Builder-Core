@@ -1,17 +1,17 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using VPG.XRInteraction;
-using VPG.Core.SceneObjects;
-using VPG.XRInteraction.Properties;
-using VPG.BasicInteraction.Validation;
+using VRBuilder.XRInteraction;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.XRInteraction.Properties;
+using VRBuilder.BasicInteraction.Validation;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.XRInteraction
+namespace VRBuilder.Editor.XRInteraction
 {
     /// <summary>
-    /// Custom inspector for <see cref="SnappableProperty"/>, adding a button to create <see cref="VPG.XRInteraction.SnapZone"/>s automatically.
+    /// Custom inspector for <see cref="SnappableProperty"/>, adding a button to create <see cref="VRBuilder.XRInteraction.SnapZone"/>s automatically.
     /// </summary>
     [CustomEditor(typeof(SnappableProperty)), CanEditMultipleObjects]
     internal class SnappablePropertyEditor : UnityEditor.Editor

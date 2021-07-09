@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Linq;
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Configuration.Modes;
 
-namespace VPG.Core.EntityOwners.ParallelEntityCollection
+namespace VRBuilder.Core.EntityOwners.ParallelEntityCollection
 {
     /// <summary>
     /// A process over a collection of entities which activates them at the same time, in parallel.

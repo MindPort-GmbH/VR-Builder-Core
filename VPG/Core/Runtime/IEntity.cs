@@ -1,6 +1,6 @@
-﻿using VPG.Core.Configuration.Modes;
+﻿using VRBuilder.Core.Configuration.Modes;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// The basic interface for all components of a training course: behaviors, conditions, transitions, and so on.

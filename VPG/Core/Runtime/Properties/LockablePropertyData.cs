@@ -1,6 +1,6 @@
-﻿using VPG.Core.Properties;
+﻿using VRBuilder.Core.Properties;
 
-namespace VPG.Core.RestrictiveEnvironment
+namespace VRBuilder.Core.RestrictiveEnvironment
 {
     /// <summary>
     /// Contains a target <see cref="LockableProperty"/> and additional information which define how the property is handled.

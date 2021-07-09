@@ -1,11 +1,11 @@
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.SceneObjects;
-using VPG.Core.Properties;
-using VPG.Core.Utils;
-using VPG.Core.Validation;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.Utils;
+using VRBuilder.Core.Validation;
 
-namespace VPG.Core.Conditions
+namespace VRBuilder.Core.Conditions
 {
     /// <summary>
     /// Condition which is completed when `TargetObject` gets inside `TriggerProperty`'s collider.

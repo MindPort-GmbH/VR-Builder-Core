@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using VPG.Core;
+using VRBuilder.Core;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     [DefaultTrainingDrawer(typeof(IDataOwner))]
     internal class DataOwnerDrawer : AbstractDrawer

@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     [Obsolete("This event is not used anymore.")]
     public class ChildActivatedEventArgs<TEntity> : EventArgs where TEntity : IEntity

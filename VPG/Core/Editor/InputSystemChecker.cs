@@ -1,12 +1,12 @@
 using System;
-using VPG.Core.Input;
+using VRBuilder.Core.Input;
 using UnityEditor;
 
 [InitializeOnLoad]
 public static class InputSystemChecker
 {
     private const string message =
-        "VR Process Gizmo requires Unity's new Input System." +
+        "VR Builder requires Unity's new Input System." +
         "\n\nTo switch from the legacy input system to the new one, open the 'Player Settings' and set the " +
         "option 'Active Input Handling' to 'Both' or 'Input System Package (New)'.";
 

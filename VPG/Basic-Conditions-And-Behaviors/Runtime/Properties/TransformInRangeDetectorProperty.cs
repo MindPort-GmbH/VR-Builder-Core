@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace VPG.Core.Properties
+namespace VRBuilder.Core.Properties
 {
     public class TransformInRangeDetectorProperty : TrainingSceneObjectProperty
     {

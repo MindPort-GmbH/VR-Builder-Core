@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VPG.Core.Exceptions
+namespace VRBuilder.Core.Exceptions
 {
     public class TrainingException : Exception
     {

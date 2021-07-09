@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
     /// Marks a training drawer as a default drawer for a given type.

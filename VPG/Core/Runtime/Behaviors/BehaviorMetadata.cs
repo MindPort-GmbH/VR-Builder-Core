@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace VPG.Core.Behaviors
+namespace VRBuilder.Core.Behaviors
 {
     [DataContract(IsReference = true)]
     public class BehaviorMetadata : IMetadata

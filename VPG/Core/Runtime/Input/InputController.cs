@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using VPG.Unity;
+using VRBuilder.Unity;
 
-namespace VPG.Core.Input
+namespace VRBuilder.Core.Input
 {
     /// <summary>
     /// Central controller for input via the new Input System using C# events.

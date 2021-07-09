@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using VPG.Core.Internationalization;
+using VRBuilder.Core.Internationalization;
 using UnityEngine;
 
-namespace VPG.UX
+namespace VRBuilder.UX
 {
     /// <summary>
     /// Base course controller which instantiates a defined prefab.

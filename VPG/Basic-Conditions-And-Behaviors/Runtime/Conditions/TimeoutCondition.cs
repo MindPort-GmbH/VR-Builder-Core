@@ -1,8 +1,8 @@
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
+using VRBuilder.Core.Attributes;
 using UnityEngine;
 
-namespace VPG.Core.Conditions
+namespace VRBuilder.Core.Conditions
 {
     /// <summary>
     /// A condition that completes when a certain amount of time has passed.

@@ -1,7 +1,7 @@
 ﻿using System;
-using VPG.Core.Properties;
+using VRBuilder.Core.Properties;
 
-namespace VPG.BasicInteraction.Properties
+namespace VRBuilder.BasicInteraction.Properties
 {
     public interface ISnappableProperty : ISceneObjectProperty
     {

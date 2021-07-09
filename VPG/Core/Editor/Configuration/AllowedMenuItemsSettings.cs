@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
-using VPG.Core.Behaviors;
-using VPG.Core.Conditions;
-using VPG.Core.Utils;
-using VPG.Editor.Serialization;
-using VPG.Editor.UI.StepInspector.Menu;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Utils;
+using VRBuilder.Editor.Serialization;
+using VRBuilder.Editor.UI.StepInspector.Menu;
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.Configuration
+namespace VRBuilder.Editor.Configuration
 {
     /// <summary>
     /// Configuration class for menu items.

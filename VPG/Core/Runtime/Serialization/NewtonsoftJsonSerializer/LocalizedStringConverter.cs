@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
-using VPG.Core.Internationalization;
+using VRBuilder.Core.Internationalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace VPG.Core.Serialization
+namespace VRBuilder.Core.Serialization
 {
     /// <summary>
     /// Internal class, dont use this.

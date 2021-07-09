@@ -1,10 +1,10 @@
 ﻿using System.IO;
-using VPG.Core.Utils.Logging;
+using VRBuilder.Core.Utils.Logging;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace VPG.Editor.Configuration
+namespace VRBuilder.Editor.Configuration
 {
     /// <summary>
     /// Checks on editor initialization if there is a logging config. Will add one if it's missing.

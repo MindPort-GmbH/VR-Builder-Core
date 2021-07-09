@@ -1,9 +1,9 @@
 ﻿﻿using System;
 using System.Collections.Generic;
- using VPG.Core.Properties;
+ using VRBuilder.Core.Properties;
  using UnityEngine;
 
-namespace VPG.Core.SceneObjects
+namespace VRBuilder.Core.SceneObjects
 {
     public class SceneObjectNameChanged : EventArgs
     {

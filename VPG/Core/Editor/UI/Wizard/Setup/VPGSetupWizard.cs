@@ -3,10 +3,10 @@ using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Editor.PackageManager;
-using VPG.Editor.XRUtils;
+using VRBuilder.Editor.PackageManager;
+using VRBuilder.Editor.XRUtils;
 
-namespace VPG.Editor.UI.Wizard
+namespace VRBuilder.Editor.UI.Wizard
 {
     /// <summary>
     /// Wizard which guides the user through setting up a new training project,
@@ -19,7 +19,7 @@ namespace VPG.Editor.UI.Wizard
     public static class VPGSetupWizard
     {
         /// <summary>
-        /// Will be called when the VR Process Gizmo Setup wizard is closed.
+        /// Will be called when the VR Builder Setup wizard is closed.
         /// </summary>
         public static event EventHandler<EventArgs> SetupFinished;
 
@@ -48,7 +48,7 @@ namespace VPG.Editor.UI.Wizard
         }
 
 #if UNITY_2019_4_OR_NEWER && !UNITY_EDITOR_OSX
-        [MenuItem("Tools/VR Process Gizmo/Create New Course...", false, 0)]
+        [MenuItem("Tools/VR Builder/Create New Course...", false, 0)]
 #endif
         internal static void Show()
         {

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using VPG.Unity;
+using VRBuilder.Unity;
 
-namespace VPG.TextToSpeech
+namespace VRBuilder.TextToSpeech
 {
     /// <summary>
     /// This factory creates and provides <see cref="ITextToSpeechProvider"/>s.

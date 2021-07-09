@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core.Exceptions;
+using VRBuilder.Core.Exceptions;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor
+namespace VRBuilder.Editor
 {
     public static class TestableEditorElements
     {

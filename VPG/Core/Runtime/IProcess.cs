@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// A process for an <see cref="IEntity"/>'s <see cref="Stage"/>.

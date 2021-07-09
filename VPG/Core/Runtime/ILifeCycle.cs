@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// A life cycle of an entity. It handles transition between four stages: Inactive, Activating, Active, and Deactivating.

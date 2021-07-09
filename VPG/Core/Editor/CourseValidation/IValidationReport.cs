@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
-using VPG.Core;
-using VPG.Core.Behaviors;
-using VPG.Core.Conditions;
+using VRBuilder.Core;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Conditions;
 
-namespace VPG.Editor.CourseValidation
+namespace VRBuilder.Editor.CourseValidation
 {
     /// <summary>
     /// Report about the last validation done by the validation system.

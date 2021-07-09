@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace VPG.UX
+namespace VRBuilder.UX
 {
     /// <summary>
     /// Default course controller.

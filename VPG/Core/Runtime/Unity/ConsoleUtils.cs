@@ -1,4 +1,4 @@
-namespace VPG.Unity
+namespace VRBuilder.Unity
 {
     internal static class ConsoleUtils
     {

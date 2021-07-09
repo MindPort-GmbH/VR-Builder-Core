@@ -1,6 +1,6 @@
-﻿using VPG.Core.SceneObjects;
+﻿using VRBuilder.Core.SceneObjects;
 
-namespace VPG.Core.Properties
+namespace VRBuilder.Core.Properties
 {
     public interface ISceneObjectProperty
     {

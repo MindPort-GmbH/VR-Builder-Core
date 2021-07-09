@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using VPG.Core.Behaviors;
+using VRBuilder.Core.Behaviors;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Extends the step data with lockable data.

@@ -1,14 +1,14 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.IO;
-using VPG.Core.SceneObjects;
-using VPG.Core.Properties;
-using VPG.Core.Serialization;
-using VPG.Core.Serialization.NewtonsoftJson;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.IO;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.Serialization;
+using VRBuilder.Core.Serialization.NewtonsoftJson;
 
-namespace VPG.Core.Configuration
+namespace VRBuilder.Core.Configuration
 {
     /// <summary>
     /// Training runtime configuration which is used if no other was implemented.

@@ -3,22 +3,22 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
-using VPG.XRInteraction;
-using VPG.Core.Runtime.Utils;
+using VRBuilder.XRInteraction;
+using VRBuilder.Core.Runtime.Utils;
 
-namespace VPG.Editor.XRInteraction
+namespace VRBuilder.Editor.XRInteraction
 {
     /// <summary>
     /// Settings for <see cref="SnapZone"/>s for e.g. automatic creation of such snap zones.
     /// </summary>
-    [CreateAssetMenu(fileName = "SnapZoneSettings", menuName = "VPG/SnapZoneSettings", order = 1)]
+    [CreateAssetMenu(fileName = "SnapZoneSettings", menuName = "VR Builder/SnapZoneSettings", order = 1)]
     public class SnapZoneSettings : SettingsObject<SnapZoneSettings>
     {
         private const string MaterialsPath = "Assets/Resources/SnapZones";
         private static SnapZoneSettings settings;
 
         /// <summary>
-        /// Only Interactables with this LayerMask will interact with this <see cref="VPG.XRInteraction.SnapZone"/>.
+        /// Only Interactables with this LayerMask will interact with this <see cref="VRBuilder.XRInteraction.SnapZone"/>.
         /// </summary>
         [Tooltip("Only Interactables with this LayerMask will interact with this SnapZone.")]
         public LayerMask InteractionLayerMask = 1;

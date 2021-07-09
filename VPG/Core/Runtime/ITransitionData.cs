@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using VPG.Core.Conditions;
-using VPG.Core.EntityOwners;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.EntityOwners;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     // An interface for a transition's data.
     public interface ITransitionData : IEntityCollectionDataWithMode<ICondition>, ICompletableData

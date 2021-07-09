@@ -1,4 +1,4 @@
-﻿namespace VPG.Editor.UI.Graphics.Renderers
+﻿namespace VRBuilder.Editor.UI.Graphics.Renderers
 {
     /// <summary>
     /// Base class for all graphical element renderers.

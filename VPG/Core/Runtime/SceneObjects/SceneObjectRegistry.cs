@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core.Exceptions;
-using VPG.Unity;
+using VRBuilder.Core.Exceptions;
+using VRBuilder.Unity;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace VPG.Core.SceneObjects
+namespace VRBuilder.Core.SceneObjects
 {
     /// <inheritdoc />
     public class SceneObjectRegistry : ISceneObjectRegistry

@@ -1,7 +1,7 @@
-﻿using VPG.BasicInteraction.Properties;
+﻿using VRBuilder.BasicInteraction.Properties;
 using UnityEngine;
 
-namespace VPG.BasicInteraction
+namespace VRBuilder.BasicInteraction
 {
     /// <summary>
     /// Base interface for SnapZone, if you add an custom interaction framework add this interface to your SnapZone implementation. 

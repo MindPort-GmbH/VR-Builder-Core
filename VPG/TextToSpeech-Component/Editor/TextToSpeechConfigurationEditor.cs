@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using UnityEditor;
-using VPG.Core.Utils;
-using VPG.TextToSpeech;
+using VRBuilder.Core.Utils;
+using VRBuilder.TextToSpeech;
 
-namespace VPG.Editor.TextToSpeech.UI
+namespace VRBuilder.Editor.TextToSpeech.UI
 {
     /// <summary>
     /// This class draws list of <see cref="ITextToSpeechProvider"/> in <see cref="textToSpeechConfiguration"/>.

@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Core.Attributes
+namespace VRBuilder.Core.Attributes
 {
     /// <summary>
     /// Displayed name of training entity's property or field.

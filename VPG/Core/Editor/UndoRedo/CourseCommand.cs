@@ -1,7 +1,7 @@
 using System;
-using VPG.Editor.UI.Windows;
+using VRBuilder.Editor.UI.Windows;
 
-namespace VPG.Editor.UndoRedo
+namespace VRBuilder.Editor.UndoRedo
 {
     /// <summary>
     /// A <see cref="CallbackCommand"/> which notifies the <seealso cref="GlobalEditorHandler"/> class that the current course was modified.

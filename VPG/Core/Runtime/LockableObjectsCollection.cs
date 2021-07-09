@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core.Behaviors;
-using VPG.Core.Properties;
-using VPG.Core.RestrictiveEnvironment;
-using VPG.Core.SceneObjects;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.RestrictiveEnvironment;
+using VRBuilder.Core.SceneObjects;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Collection of <see cref="ISceneObject"/>s that can be locked and unlocked during a step.

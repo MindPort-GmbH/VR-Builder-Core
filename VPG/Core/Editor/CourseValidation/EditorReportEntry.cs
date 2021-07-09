@@ -1,6 +1,6 @@
-﻿using VPG.Core.Validation;
+﻿using VRBuilder.Core.Validation;
 
-namespace VPG.Editor.CourseValidation
+namespace VRBuilder.Editor.CourseValidation
 {
     /// <summary>
     /// Report generated from validations of <see cref="IValidator"/> objects.

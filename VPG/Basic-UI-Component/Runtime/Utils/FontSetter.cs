@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace VPG.BaseTemplate
+namespace VRBuilder.BaseTemplate
 {
     /// <summary>
     /// Utility component to style all child UI text elements.

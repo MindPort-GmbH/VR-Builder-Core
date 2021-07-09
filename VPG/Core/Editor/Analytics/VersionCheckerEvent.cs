@@ -1,12 +1,12 @@
-using VPG.Editor;
-using VPG.Editor.Analytics;
+using VRBuilder.Editor;
+using VRBuilder.Editor.Analytics;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Core.Editor
+namespace VRBuilder.Core.Editor
 {
     /// <summary>
-    /// Checks if the version of the VR Process Gizmo was updated and sends an event.
+    /// Checks if the version of the VR Builder was updated and sends an event.
     /// </summary>
     [InitializeOnLoad]
     internal static class VersionCheckerEvent

@@ -1,10 +1,10 @@
 using System;
-using VPG.Core;
-using VPG.Core.Behaviors;
+using VRBuilder.Core;
+using VRBuilder.Core.Behaviors;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
     /// Draws a dropdown button with all <see cref="InstantiationOption{IBehavior}"/> in the project, and creates a new instance of choosen behavior on click.

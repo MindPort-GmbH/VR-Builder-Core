@@ -1,4 +1,4 @@
-namespace VPG.Editor.TestTools
+namespace VRBuilder.Editor.TestTools
 {
     /// <summary>
     /// State of <see cref="EditorImguiTest{T}"/>

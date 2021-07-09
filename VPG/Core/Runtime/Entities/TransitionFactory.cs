@@ -1,6 +1,6 @@
-﻿using VPG.Unity;
+﻿using VRBuilder.Unity;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Factory implementation for <see cref="ITransition"/> objects.

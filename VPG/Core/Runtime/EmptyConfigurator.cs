@@ -1,6 +1,6 @@
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Configuration.Modes;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// A configurator that does nothing.

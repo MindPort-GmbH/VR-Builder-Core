@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace VPG.Core.IO
+namespace VRBuilder.Core.IO
 {
     /// <summary>
     /// Interface with basic platform operations for reading and saving files in Unity.

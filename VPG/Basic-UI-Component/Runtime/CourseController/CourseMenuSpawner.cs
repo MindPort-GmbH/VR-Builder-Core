@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VPG.UX
+namespace VRBuilder.UX
 {
     /// <summary>
     /// Spawns a course menu in the scene.

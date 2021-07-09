@@ -1,13 +1,13 @@
-﻿using VPG.XRInteraction;
-using VPG.Editor.UI;
-using VPG.Editor.XRInteraction;
+﻿using VRBuilder.XRInteraction;
+using VRBuilder.Editor.UI;
+using VRBuilder.Editor.XRInteraction;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 internal class SnapZoneSettingsProvider : SettingsProvider
 {
-    const string Path = "Project/VR Process Gizmo/Snap Zones";
+    const string Path = "Project/VR Builder/Snap Zones";
 
     private Editor editor;
     

@@ -1,12 +1,12 @@
 using System;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.IO;
-using VPG.Core.RestrictiveEnvironment;
-using VPG.Core.SceneObjects;
-using VPG.Core.Serialization;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.IO;
+using VRBuilder.Core.RestrictiveEnvironment;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Serialization;
 using UnityEngine;
 
-namespace VPG.Core.Configuration
+namespace VRBuilder.Core.Configuration
 {
     /// <summary>
     /// Base class for your runtime course configuration. Extend it to create your own.
@@ -36,7 +36,7 @@ namespace VPG.Core.Configuration
 
         /// <summary>
         /// Default input action asset which is used when no customization of key bindings are done.
-        /// Should be stored inside the VR Process Gizmo package.
+        /// Should be stored inside the VR Builder package.
         /// </summary>
         public virtual string DefaultInputActionAssetPath { get; } = "KeyBindings/VPGDefaultKeyBindings";
 

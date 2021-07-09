@@ -1,13 +1,13 @@
 using System;
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.SceneObjects;
-using VPG.Core.Properties;
-using VPG.Core.Utils;
-using VPG.Core.Validation;
-using VPG.Unity;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.Utils;
+using VRBuilder.Core.Validation;
+using VRBuilder.Unity;
 
-namespace VPG.Core.Conditions
+namespace VRBuilder.Core.Conditions
 {
     /// <summary>
     /// Condition that is completed when distance between `Target` and `TransformInRangeDetector` is closer than `range` units.

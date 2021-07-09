@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using VPG.Core.RestrictiveEnvironment;
+using VRBuilder.Core.RestrictiveEnvironment;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// This interface is used to allow entities, for example <see cref="Transition"/> or <see cref="Conditions"/>

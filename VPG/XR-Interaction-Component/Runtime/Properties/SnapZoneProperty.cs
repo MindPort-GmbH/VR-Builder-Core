@@ -1,12 +1,12 @@
 ﻿using System;
-using VPG.BasicInteraction;
+using VRBuilder.BasicInteraction;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
-using VPG.Core.Properties;
-using VPG.Core.Configuration.Modes;
-using VPG.BasicInteraction.Properties;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.BasicInteraction.Properties;
 
-namespace VPG.XRInteraction.Properties
+namespace VRBuilder.XRInteraction.Properties
 {
     /// <summary>
     /// XR implementation of <see cref="ISnapZoneProperty"/>.

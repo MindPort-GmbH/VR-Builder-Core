@@ -1,4 +1,4 @@
-namespace VPG.Core.Conditions
+namespace VRBuilder.Core.Conditions
 {
     /// <summary>
     /// The base interface for any condition's data class.

@@ -1,13 +1,13 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using VPG.Core;
-using VPG.Core.Attributes;
-using VPG.Core.Utils;
-using VPG.Editor.UndoRedo;
+using VRBuilder.Core;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Utils;
+using VRBuilder.Editor.UndoRedo;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Drawers
+namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
     /// Simple base drawer class.

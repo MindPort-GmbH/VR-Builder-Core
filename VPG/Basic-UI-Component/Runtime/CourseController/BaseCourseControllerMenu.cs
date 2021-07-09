@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using VPG.Core;
-using VPG.Core.Internationalization;
+using VRBuilder.Core;
+using VRBuilder.Core.Internationalization;
 using UnityEngine;
 
-namespace VPG.UX
+namespace VRBuilder.UX
 {
     /// <summary>
     /// Base class for the course controller menu.

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VPG.BasicInteraction
+namespace VRBuilder.BasicInteraction
 {
     /// <summary>
     /// Base interface to determine that the given class is an interactable object.

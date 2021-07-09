@@ -1,9 +1,9 @@
-using VPG.Core;
-using VPG.Editor.UndoRedo;
+using VRBuilder.Core;
+using VRBuilder.Editor.UndoRedo;
 using UnityEditor;
 using UnityEngine;
 
-namespace VPG.Editor.UI.Windows
+namespace VRBuilder.Editor.UI.Windows
 {
     internal class ChangeNamePopup : EditorWindow
     {

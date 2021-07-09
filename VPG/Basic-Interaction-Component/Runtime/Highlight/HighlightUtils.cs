@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace VPG.BasicInteraction
+namespace VRBuilder.BasicInteraction
 {
     internal static class HighlightUtils
     {

@@ -1,4 +1,4 @@
-﻿namespace VPG.Core.Input
+﻿namespace VRBuilder.Core.Input
 {
     /// <summary>
     /// Allows to prioritize input actions.

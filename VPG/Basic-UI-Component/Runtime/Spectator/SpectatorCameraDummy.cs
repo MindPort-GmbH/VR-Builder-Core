@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VPG.UX
+namespace VRBuilder.UX
 {
     /// <summary>
     /// Dummy object which can be used to set viewpoints into the scene.

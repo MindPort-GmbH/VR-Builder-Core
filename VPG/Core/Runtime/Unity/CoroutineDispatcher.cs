@@ -1,4 +1,4 @@
-namespace VPG.Unity
+namespace VRBuilder.Unity
 {
     /// <summary>
     /// Auxiliary class that allows starting UnityCoroutines from a context that is not

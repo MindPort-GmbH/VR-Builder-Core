@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using VPG.Core.Utils;
+using VRBuilder.Core.Utils;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// Base factory interface for <see cref="IEntity"/> objects.

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using VPG.Core.Utils;
+using VRBuilder.Core.Utils;
 
-namespace VPG.UX
+namespace VRBuilder.UX
 {
     /// <summary>
     /// Manages the setup of the course controller and lets the developer choose the <see cref="ICourseController"/>.

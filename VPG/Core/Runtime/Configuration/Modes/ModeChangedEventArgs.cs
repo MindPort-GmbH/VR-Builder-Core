@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VPG.Core.Configuration.Modes
+namespace VRBuilder.Core.Configuration.Modes
 {
     /// <summary>
     /// This is a <see cref="EventArgs"/> used for <see cref="IMode"/> changes.

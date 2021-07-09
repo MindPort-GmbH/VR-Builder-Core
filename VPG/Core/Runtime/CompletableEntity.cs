@@ -1,6 +1,6 @@
-using VPG.Core.Conditions;
+using VRBuilder.Core.Conditions;
 
-namespace VPG.Core
+namespace VRBuilder.Core
 {
     /// <summary>
     /// An <see cref="Entity{TData}"/> which can be completed. Entities can be completed only during their Active <seealso cref="Stage"/>.

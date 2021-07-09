@@ -1,4 +1,4 @@
-namespace VPG.Core.Serialization
+namespace VRBuilder.Core.Serialization
 {
     /// <summary>
     /// A serializer which can de/serialize courses and steps to a certain format.

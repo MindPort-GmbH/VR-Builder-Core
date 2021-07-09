@@ -1,6 +1,6 @@
 using System;
 
-namespace VPG.Core.Configuration.Modes
+namespace VRBuilder.Core.Configuration.Modes
 {
     /// <summary>
     /// All listed types will be invalid.

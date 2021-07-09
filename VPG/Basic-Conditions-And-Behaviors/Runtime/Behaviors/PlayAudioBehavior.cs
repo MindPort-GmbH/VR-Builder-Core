@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Runtime.Serialization;
-using VPG.Core.Attributes;
-using VPG.Core.Audio;
-using VPG.Core.Configuration;
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Attributes;
+using VRBuilder.Core.Audio;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.Configuration.Modes;
 
-namespace VPG.Core.Behaviors
+namespace VRBuilder.Core.Behaviors
 {
     /// <summary>
     /// A behavior that plays audio.

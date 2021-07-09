@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using VPG.Editor.Configuration;
+using VRBuilder.Editor.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace VPG.Editor.Serialization
+namespace VRBuilder.Editor.Serialization
 {
     public static class JsonEditorConfigurationSerializer
     {

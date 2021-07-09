@@ -1,8 +1,8 @@
 using System;
-using VPG.Core.SceneObjects;
+using VRBuilder.Core.SceneObjects;
 using UnityEngine;
 
-namespace VPG.Core.Properties
+namespace VRBuilder.Core.Properties
 {
     public class ColliderWithTriggerProperty : TrainingSceneObjectProperty
     {

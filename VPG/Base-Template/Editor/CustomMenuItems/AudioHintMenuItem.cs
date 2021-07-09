@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
-using VPG.Core.Behaviors;
-using VPG.TextToSpeech.Audio;
-using VPG.Core.Internationalization;
-using VPG.Editor.UI.StepInspector.Menu;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.TextToSpeech.Audio;
+using VRBuilder.Core.Internationalization;
+using VRBuilder.Editor.UI.StepInspector.Menu;
 
-namespace VPG.Editor.BaseTemplate.UI.Behaviors
+namespace VRBuilder.Editor.BaseTemplate.UI.Behaviors
 {
     public class AudioHintMenuItem : MenuItem<IBehavior>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "VPG/Audio Hint";
+        public override string DisplayedName { get; } = "VR Builder/Audio Hint";
 
         /// <inheritdoc />
         public override IBehavior GetNewItem()
