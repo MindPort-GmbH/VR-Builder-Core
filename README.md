@@ -1,2 +1,2 @@
-# VPG-Core
-Core VPG Package
+# VR Builder-Core
+Core VR Builder Package
