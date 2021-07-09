@@ -1,8 +1,8 @@
 ﻿using System.Runtime.Serialization;
-using VPG.Core;
-using VPG.Core.Conditions;
+using VRBuilder.Core;
+using VRBuilder.Core.Conditions;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     [DataContract(IsReference = true)]
     public class AutoCompletedCondition : Condition<AutoCompletedCondition.EntityData>

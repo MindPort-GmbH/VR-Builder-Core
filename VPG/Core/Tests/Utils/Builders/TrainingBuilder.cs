@@ -1,6 +1,6 @@
-using VPG.Core;
+using VRBuilder.Core;
 
-namespace VPG.Tests.Builder
+namespace VRBuilder.Tests.Builder
 {
     public abstract class TrainingBuilder<TCourse> : BuilderWithResourcePath<TCourse> where TCourse : ICourse
     {

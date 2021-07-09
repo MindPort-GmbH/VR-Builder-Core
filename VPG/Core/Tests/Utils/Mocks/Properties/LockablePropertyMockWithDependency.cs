@@ -1,7 +1,7 @@
-﻿using VPG.Core.Properties;
+﻿using VRBuilder.Core.Properties;
 using UnityEngine;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     /// <summary>
     /// Property requiring a <see cref="LockablePropertyMock"/>.

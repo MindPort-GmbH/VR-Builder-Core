@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using VPG.Core;
-using VPG.Core.Configuration;
-using VPG.Tests.Utils;
-using VPG.Tests.Utils.Mocks;
-using VPG.Tests.Builder;
+using VRBuilder.Core;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Tests.Utils;
+using VRBuilder.Tests.Utils.Mocks;
+using VRBuilder.Tests.Builder;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace VPG.Tests.Courses
+namespace VRBuilder.Tests.Courses
 {
     public class BaseTrainingCourseTests : RuntimeTests
     {

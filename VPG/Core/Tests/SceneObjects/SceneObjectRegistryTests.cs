@@ -1,13 +1,13 @@
 ﻿using NUnit.Framework;
 using System.Collections;
-using VPG.Core.Configuration;
-using VPG.Core.Exceptions;
-using VPG.Core.SceneObjects;
-using VPG.Tests.Utils;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.Exceptions;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Tests.Utils;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace VPG.Tests
+namespace VRBuilder.Tests
 {
     public class SceneObjectRegistryTests : RuntimeTests
     {

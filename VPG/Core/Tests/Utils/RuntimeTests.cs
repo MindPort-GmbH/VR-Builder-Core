@@ -1,13 +1,13 @@
 using System.Linq;
-using VPG.Core.Serialization;
-using VPG.Core.Utils;
-using VPG.Unity;
-using VPG.Core.Serialization.NewtonsoftJson;
-using VPG.Editor;
+using VRBuilder.Core.Serialization;
+using VRBuilder.Core.Utils;
+using VRBuilder.Unity;
+using VRBuilder.Core.Serialization.NewtonsoftJson;
+using VRBuilder.Editor;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace VPG.Tests.Utils
+namespace VRBuilder.Tests.Utils
 {
     public abstract class RuntimeTests
     {

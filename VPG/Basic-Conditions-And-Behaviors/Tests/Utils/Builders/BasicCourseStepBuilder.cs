@@ -1,14 +1,14 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using VPG.Core.Audio;
-using VPG.Core.Behaviors;
-using VPG.Core.Properties;
-using VPG.Core.Configuration;
-using VPG.Core.Internationalization;
-using VPG.Core.SceneObjects;
+using VRBuilder.Core.Audio;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.Internationalization;
+using VRBuilder.Core.SceneObjects;
 
-namespace VPG.Tests.Builder
+namespace VRBuilder.Tests.Builder
 {
     /// <summary>
     /// Basic step builder that creates step of type <typeparamref name="Step" />.

@@ -1,10 +1,10 @@
 using System.Linq;
-using VPG.Core.Conditions;
-using VPG.Core.Configuration;
-using VPG.Core.SceneObjects;
-using VPG.Core.Utils;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Utils;
 
-namespace VPG.Tests.Builder
+namespace VRBuilder.Tests.Builder
 {
     /// <summary>
     /// Static class to provide fast access to predefined builders.

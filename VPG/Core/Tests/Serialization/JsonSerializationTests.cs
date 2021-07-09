@@ -1,9 +1,9 @@
-using VPG.Core.Serialization.NewtonsoftJson;
+using VRBuilder.Core.Serialization.NewtonsoftJson;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace VPG.Tests.Serialization
+namespace VRBuilder.Tests.Serialization
 {
     public class JsonSerializationTests
     {

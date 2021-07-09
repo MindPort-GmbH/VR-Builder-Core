@@ -1,12 +1,12 @@
 ﻿using System.Linq;
-using VPG.BasicInteraction.Conditions;
-using VPG.BasicInteraction.Properties;
-using VPG.Core.Configuration;
-using VPG.Core.SceneObjects;
-using VPG.Core.Utils;
-using VPG.Tests.Builder;
+using VRBuilder.BasicInteraction.Conditions;
+using VRBuilder.BasicInteraction.Properties;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Utils;
+using VRBuilder.Tests.Builder;
 
-namespace VPG.BasicInteraction.Builders
+namespace VRBuilder.BasicInteraction.Builders
 {
     public static class InteractionDefaultSteps
     {

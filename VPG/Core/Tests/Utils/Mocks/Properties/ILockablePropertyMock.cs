@@ -1,7 +1,7 @@
-﻿using VPG.Core.SceneObjects;
-using VPG.Core.Properties;
+﻿using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Properties;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     /// <summary>
     /// Interface for a <see cref="LockablePropertyMock"/>.

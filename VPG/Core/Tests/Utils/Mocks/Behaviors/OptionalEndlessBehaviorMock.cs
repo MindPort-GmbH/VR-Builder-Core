@@ -1,6 +1,6 @@
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Configuration.Modes;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     public class OptionalEndlessBehaviorMock : EndlessBehaviorMock, IOptional
     {

@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
-using VPG.Core;
-using VPG.Core.Conditions;
-using VPG.Core.Properties;
-using VPG.Core.RestrictiveEnvironment;
-using VPG.Core.SceneObjects;
+using VRBuilder.Core;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.RestrictiveEnvironment;
+using VRBuilder.Core.SceneObjects;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     /// <summary>
     /// Helper condition for testing that allows explicitly marking a condition as completed.

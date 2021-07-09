@@ -1,8 +1,8 @@
-﻿using VPG.Core;
-using VPG.Core.Behaviors;
-using VPG.Core.Internationalization;
+﻿using VRBuilder.Core;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Internationalization;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     /// <summary>
     /// Helper behavior for testing that has a <seealso cref="LocalizedString"/>.

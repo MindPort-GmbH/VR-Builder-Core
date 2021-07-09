@@ -1,11 +1,11 @@
 using System.Linq;
-using VPG.Core;
-using VPG.Core.Behaviors;
-using VPG.Core.Conditions;
-using VPG.Core.Configuration;
-using VPG.Core.SceneObjects;
+using VRBuilder.Core;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.SceneObjects;
 
-namespace VPG.Tests.Builder
+namespace VRBuilder.Tests.Builder
 {
     /// <summary>
     /// Basic step builder that creates step of type <typeparamref name="Step" />.

@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using VPG.Core;
-using VPG.Core.Behaviors;
+using VRBuilder.Core;
+using VRBuilder.Core.Behaviors;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     /// <summary>
     /// Helper behavior for testing that allows explicitly triggering finishing Activation / Deactivation

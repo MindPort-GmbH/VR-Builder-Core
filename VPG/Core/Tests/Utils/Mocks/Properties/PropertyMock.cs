@@ -1,6 +1,6 @@
-﻿using VPG.Core.Properties;
+﻿using VRBuilder.Core.Properties;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     /// <summary>
     /// Mock of a simple <see cref="TrainingSceneObjectProperty"/>.

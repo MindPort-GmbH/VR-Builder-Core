@@ -2,17 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core;
-using VPG.Core.Properties;
-using VPG.Core.RestrictiveEnvironment;
-using VPG.Core.SceneObjects;
-using VPG.Tests.Builder;
-using VPG.Tests.Utils;
-using VPG.Tests.Utils.Mocks;
+using VRBuilder.Core;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.RestrictiveEnvironment;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Tests.Builder;
+using VRBuilder.Tests.Utils;
+using VRBuilder.Tests.Utils.Mocks;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
-namespace VPG.Tests.Locking
+namespace VRBuilder.Tests.Locking
 {
     public class LockingTests : RuntimeTests
     {

@@ -1,11 +1,11 @@
 using System.Collections;
-using VPG.Core;
-using VPG.Tests.Utils;
-using VPG.Tests.Utils.Mocks;
+using VRBuilder.Core;
+using VRBuilder.Tests.Utils;
+using VRBuilder.Tests.Utils.Mocks;
 using UnityEngine.Assertions;
 using UnityEngine.TestTools;
 
-namespace VPG.Tests.Courses
+namespace VRBuilder.Tests.Courses
 {
     public class LifeCycleTests : RuntimeTests
     {

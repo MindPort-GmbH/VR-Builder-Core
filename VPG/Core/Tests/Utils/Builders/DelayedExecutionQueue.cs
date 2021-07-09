@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace VPG.Core.Utils
+namespace VRBuilder.Core.Utils
 {
     /// <summary>
     /// Class for delayed execution of Action delegates.

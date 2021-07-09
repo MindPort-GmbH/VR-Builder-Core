@@ -1,11 +1,11 @@
 ﻿using System.Collections;
-using VPG.Core.Conditions;
-using VPG.Tests.Utils;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Tests.Utils;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace VPG.Core.Tests.Conditions
+namespace VRBuilder.Core.Tests.Conditions
 {
     public class TimeoutConditionTests : RuntimeTests
     {

@@ -1,7 +1,7 @@
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Configuration.Modes;
 using NUnit.Framework;
 
-namespace VPG.Tests.Utils
+namespace VRBuilder.Tests.Utils
 {
     public class ModeParameterTests
     {

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections;
-using VPG.Tests.Utils;
+using VRBuilder.Tests.Utils;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Object = UnityEngine.Object;
 
-namespace VPG.BaseTemplate.Tests.ParticleMachine
+namespace VRBuilder.BaseTemplate.Tests.ParticleMachine
 {
     public class ConfettiMachineTests : RuntimeTests
     {

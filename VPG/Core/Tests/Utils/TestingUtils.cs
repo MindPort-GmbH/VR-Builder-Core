@@ -1,10 +1,10 @@
 using System.Linq;
 using System.Reflection;
-using VPG.Core.SceneObjects;
-using VPG.Core.Properties;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Properties;
 using UnityEngine;
 
-namespace VPG.Tests.Utils
+namespace VRBuilder.Tests.Utils
 {
     public static class TestingUtils
     {

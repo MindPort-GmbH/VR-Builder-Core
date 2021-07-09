@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core;
+using VRBuilder.Core;
 
-namespace VPG.Tests.Builder
+namespace VRBuilder.Tests.Builder
 {
     /// <summary>
     /// Builder for a linear chapter.

@@ -1,8 +1,8 @@
-﻿using VPG.Core;
-using VPG.Core.Conditions;
+﻿using VRBuilder.Core;
+using VRBuilder.Core.Conditions;
 using System.Runtime.Serialization;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     /// <summary>
     /// Helper condition for testing that allows explicitly marking a condition as completed

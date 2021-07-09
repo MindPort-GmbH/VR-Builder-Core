@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using VPG.Core;
-using VPG.Tests.Utils.Mocks;
+using VRBuilder.Core;
+using VRBuilder.Tests.Utils.Mocks;
 
-namespace VPG.Tests.Utils
+namespace VRBuilder.Tests.Utils
 {
     public class TestLinearChapterBuilder
     {

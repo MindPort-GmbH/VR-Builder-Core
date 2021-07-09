@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using VPG.Core;
-using VPG.Core.Behaviors;
+using VRBuilder.Core;
+using VRBuilder.Core.Behaviors;
 using UnityEngine;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     /// <summary>
     /// Helper Behavior for testing that provides a behavior with fixed durations for activate and deactivate

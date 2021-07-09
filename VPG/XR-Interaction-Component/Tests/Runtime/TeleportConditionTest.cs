@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using VPG.BasicInteraction.Conditions;
-using VPG.Core;
-using VPG.Core.Properties;
-using VPG.Tests.Utils;
+using VRBuilder.BasicInteraction.Conditions;
+using VRBuilder.Core;
+using VRBuilder.Core.Properties;
+using VRBuilder.Tests.Utils;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace VPG.XRInteraction.Tests.Conditions
+namespace VRBuilder.XRInteraction.Tests.Conditions
 {
     public class TeleportConditionTest : RuntimeTests
     {

@@ -1,7 +1,7 @@
-﻿using VPG.Core;
-using VPG.Core.Behaviors;
+﻿using VRBuilder.Core;
+using VRBuilder.Core.Behaviors;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     /// <summary>
     /// Helper behavior for testing which just has a float value.

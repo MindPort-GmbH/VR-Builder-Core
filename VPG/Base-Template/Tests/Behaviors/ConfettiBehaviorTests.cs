@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections;
-using VPG.BaseTemplate.Behaviors;
-using VPG.Core;
-using VPG.Core.Behaviors;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.SceneObjects;
+using VRBuilder.BaseTemplate.Behaviors;
+using VRBuilder.Core;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.SceneObjects;
 
-using VPG.Tests.Utils;
+using VRBuilder.Tests.Utils;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Object = UnityEngine.Object;
 
-namespace VPG.BaseTemplate.Tests.Behaviors
+namespace VRBuilder.BaseTemplate.Tests.Behaviors
 {
     public class ConfettiBehaviorTests : RuntimeTests
     {

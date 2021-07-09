@@ -1,14 +1,14 @@
 ﻿using System.Collections;
-using VPG.Core.Conditions;
-using VPG.Core.Behaviors;
-using VPG.Core.Configuration;
-using VPG.Tests.Utils;
-using VPG.Tests.Utils.Mocks;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Tests.Utils;
+using VRBuilder.Tests.Utils.Mocks;
 using UnityEngine;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
-namespace VPG.Core.Tests.Courses
+namespace VRBuilder.Core.Tests.Courses
 {
     public class StepTests : RuntimeTests
     {

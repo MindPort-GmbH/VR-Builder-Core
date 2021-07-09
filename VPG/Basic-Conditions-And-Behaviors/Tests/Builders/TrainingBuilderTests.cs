@@ -2,18 +2,18 @@ using System;
 using NUnit.Framework;
 using System.Collections;
 using System.Linq;
-using VPG.Core.Behaviors;
-using VPG.Core.Conditions;
-using VPG.Core.Properties;
-using VPG.Tests.Builder;
-using VPG.Core.Internationalization;
-using VPG.Core.SceneObjects;
-using VPG.Tests.Utils;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Properties;
+using VRBuilder.Tests.Builder;
+using VRBuilder.Core.Internationalization;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Tests.Utils;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Object = UnityEngine.Object;
 
-namespace VPG.Core.Tests.Builder
+namespace VRBuilder.Core.Tests.Builder
 {
     public class TrainingBuilderTests : RuntimeTests
     {
@@ -158,7 +158,7 @@ namespace VPG.Core.Tests.Builder
             // Given a builder with a predefined Intro step
             LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
-                    .AddStep(VPG.Tests.Builder.DefaultSteps.Intro("TestIntroStep")));
+                    .AddStep(VRBuilder.Tests.Builder.DefaultSteps.Intro("TestIntroStep")));
 
             // When we build a training from it,
             IStep step = builder.Build().Data.FirstChapter.Data.FirstStep;

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
-using VPG.Core;
-using VPG.Core.Configuration;
-using VPG.Core.Exceptions;
-using VPG.Tests.Builder;
-using VPG.Tests.Utils;
-using VPG.Tests.Utils.Mocks;
+using VRBuilder.Core;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.Exceptions;
+using VRBuilder.Tests.Builder;
+using VRBuilder.Tests.Utils;
+using VRBuilder.Tests.Utils.Mocks;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
-namespace VPG.Tests.Courses
+namespace VRBuilder.Tests.Courses
 {
     public class ChapterTests : RuntimeTests
     {

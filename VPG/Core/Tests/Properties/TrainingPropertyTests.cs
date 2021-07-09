@@ -2,15 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core.SceneObjects;
-using VPG.Core.Properties;
-using VPG.Core.Utils;
-using VPG.Tests.Utils;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.Utils;
+using VRBuilder.Tests.Utils;
 using UnityEngine;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
-namespace VPG.Tests.Properties
+namespace VRBuilder.Tests.Properties
 {
     public class TrainingPropertyTests : RuntimeTests
     {

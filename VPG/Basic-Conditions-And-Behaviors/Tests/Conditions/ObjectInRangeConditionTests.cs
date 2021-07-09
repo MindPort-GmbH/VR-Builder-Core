@@ -1,12 +1,12 @@
 using NUnit.Framework;
 using System.Collections;
-using VPG.Core.Conditions;
-using VPG.Core.Properties;
-using VPG.Core.SceneObjects;
+using VRBuilder.Core.Conditions;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.SceneObjects;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace VPG.Core.Tests.Conditions
+namespace VRBuilder.Core.Tests.Conditions
 {
     [TestFixture]
     public class ObjectInRangeConditionTests : ObjectInTargetTestBase

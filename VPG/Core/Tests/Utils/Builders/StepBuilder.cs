@@ -1,4 +1,4 @@
-namespace VPG.Tests.Builder
+namespace VRBuilder.Tests.Builder
 {
     public abstract class StepBuilder<TStep> : BuilderWithResourcePath<TStep>
     {

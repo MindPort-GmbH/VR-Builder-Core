@@ -1,12 +1,12 @@
 ﻿using System.Collections;
-using VPG.Core;
-using VPG.Core.Configuration;
-using VPG.Tests.Utils;
-using VPG.Tests.Utils.Mocks;
+using VRBuilder.Core;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Tests.Utils;
+using VRBuilder.Tests.Utils.Mocks;
 using UnityEngine.Assertions;
 using UnityEngine.TestTools;
 
-namespace VPG.Tests.Behaviors
+namespace VRBuilder.Tests.Behaviors
 {
     public class BackgroundBehaviorTests : RuntimeTests
     {

@@ -1,13 +1,13 @@
 ﻿using System;
 using NUnit.Framework;
 using System.Collections;
-using VPG.Core.Utils;
+using VRBuilder.Core.Utils;
 using UnityEngine;
 using UnityEngine.TestTools;
-using VPG.Tests.Utils;
+using VRBuilder.Tests.Utils;
 using UnityEngine.Rendering;
 
-namespace VPG.BasicInteraction.Tests
+namespace VRBuilder.BasicInteraction.Tests
 {
     public class HighlighterTests : RuntimeTests
     {

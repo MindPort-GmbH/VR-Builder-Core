@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Collections;
 using System.Linq;
-using VPG.BasicInteraction;
-using VPG.Core.Properties;
-using VPG.BasicInteraction.Builders;
-using VPG.BasicInteraction.Conditions;
-using VPG.BasicInteraction.Properties;
-using VPG.Core;
-using VPG.Core.Configuration.Modes;
-using VPG.Core.SceneObjects;
-using VPG.Tests.Builder;
-using VPG.Tests.Utils;
+using VRBuilder.BasicInteraction;
+using VRBuilder.Core.Properties;
+using VRBuilder.BasicInteraction.Builders;
+using VRBuilder.BasicInteraction.Conditions;
+using VRBuilder.BasicInteraction.Properties;
+using VRBuilder.Core;
+using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Tests.Builder;
+using VRBuilder.Tests.Utils;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Object = UnityEngine.Object;
 
-namespace VPG.Tests.Interaction
+namespace VRBuilder.Tests.Interaction
 {
     public class InteractionTrainingBuilderTests : RuntimeTests
     {

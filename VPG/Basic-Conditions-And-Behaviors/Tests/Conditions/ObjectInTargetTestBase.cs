@@ -1,9 +1,9 @@
-using VPG.Core.SceneObjects;
-using VPG.Tests.Utils;
+using VRBuilder.Core.SceneObjects;
+using VRBuilder.Tests.Utils;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace VPG.Core.Tests.Conditions
+namespace VRBuilder.Core.Tests.Conditions
 {
     public class ObjectInTargetTestBase : RuntimeTests
     {

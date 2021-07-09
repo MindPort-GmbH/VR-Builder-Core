@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using VPG.Core;
-using VPG.Core.Behaviors;
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Configuration.Modes;
 using UnityEngine;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     /// <summary>
     /// Helper behavior for testing which has an activation state.

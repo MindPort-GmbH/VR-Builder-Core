@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-using VPG.Core.Configuration;
-using VPG.Core.Configuration.Modes;
+using VRBuilder.Core.Configuration;
+using VRBuilder.Core.Configuration.Modes;
 
-namespace VPG.Tests.Utils
+namespace VRBuilder.Tests.Utils
 {
     /// <summary>
     /// DynamicDefinition allows to dynamically adjust training modes.

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using VPG.Core;
-using VPG.Core.Serialization;
-using VPG.Tests.Builder;
+using VRBuilder.Core;
+using VRBuilder.Core.Serialization;
+using VRBuilder.Tests.Builder;
 using NUnit.Framework;
 
-namespace VPG.Editor.Tests
+namespace VRBuilder.Editor.Tests
 {
     public class SerializationLengthTests
     {

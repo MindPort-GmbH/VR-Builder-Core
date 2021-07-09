@@ -1,9 +1,9 @@
-﻿using VPG.Core;
-using VPG.Core.Behaviors;
-using VPG.Core.Properties;
-using VPG.Core.SceneObjects;
+﻿using VRBuilder.Core;
+using VRBuilder.Core.Behaviors;
+using VRBuilder.Core.Properties;
+using VRBuilder.Core.SceneObjects;
 
-namespace VPG.Tests.Utils.Mocks
+namespace VRBuilder.Tests.Utils.Mocks
 {
     /// <summary>
     /// Helper behavior for testing that has a reference object.

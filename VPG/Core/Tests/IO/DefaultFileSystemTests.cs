@@ -1,12 +1,12 @@
 ﻿using System.IO;
 using System.Text;
 using System.Collections;
-using VPG.Core.IO;
+using VRBuilder.Core.IO;
 using UnityEngine;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
-namespace VPG.Tests.IO
+namespace VRBuilder.Tests.IO
 {
     public class DefaultFileSystemTests : IOTests
     {

@@ -1,7 +1,7 @@
 using System;
-using VPG.Core.Utils;
+using VRBuilder.Core.Utils;
 
-namespace VPG.Tests.Builder
+namespace VRBuilder.Tests.Builder
 {
     /// <summary>
     /// Abstract Builder pattern class.
