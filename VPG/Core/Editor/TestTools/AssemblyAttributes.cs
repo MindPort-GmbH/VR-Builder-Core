@@ -1,3 +1,3 @@
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("VPG.Core.Tests.Editmode")]
+[assembly: InternalsVisibleTo("VRBuilder.Core.Tests.Editmode")]

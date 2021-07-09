@@ -1,3 +1,3 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("VPG.Editor.XRInteraction")]
+[assembly: InternalsVisibleTo("VRBuilder.Editor.XRInteraction")]

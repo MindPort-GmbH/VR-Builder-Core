@@ -5,7 +5,7 @@ using System.Linq;
 using System.IO.Compression;
 using System.Collections.Generic;
 
-namespace VPG.Core.IO
+namespace VR Builder.Core.IO
 {
     /// <summary>
     /// Android implementation of <see cref="IPlatformFileSystem"/>.

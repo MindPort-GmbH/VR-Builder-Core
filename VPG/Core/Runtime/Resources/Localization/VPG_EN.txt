@@ -1,3 +1,3 @@
 {
-    "vpg.hello_world" : "hello world",
+    "VR Builder.hello_world" : "hello world",
 }

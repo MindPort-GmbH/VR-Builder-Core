@@ -1,10 +1,10 @@
 //using System;
-//using VPG.Editor.Analytics;
+//using VR Builder.Editor.Analytics;
 //using UnityEditor;
 //using UnityEngine;
 
 // VPG - Disabled analytics page.
-//namespace VPG.Editor.UI
+//namespace VR Builder.Editor.UI
 //{
 //    internal class AnalyticsSettingsProvider : BaseSettingsProvider
 //    {

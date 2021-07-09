@@ -1,10 +1,9 @@
 {
-    "name": "VPG.Editor.BasicUI",
+    "name": "VRBuilder.Editor.BasicInteraction",
     "references": [
+        "GUID:474da18fc7b8c9c4c9db09e343483375",
         "GUID:e476a81b6ef7b824686666349a591a9a",
-        "GUID:38b98ac4e80baea42b9cc8c2ff3b26ec",
-        "GUID:c8561f9de838ac04d8feeda695bc572d",
-        "GUID:75469ad4d38634e559750d17036d5f7c"
+        "GUID:c8561f9de838ac04d8feeda695bc572d"
     ],
     "includePlatforms": [
         "Editor"

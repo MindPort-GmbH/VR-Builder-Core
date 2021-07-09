@@ -106,7 +106,7 @@ namespace VRBuilder.Editor.UI.Wizard
                     GUILayout.EndHorizontal();
                 }
 
-                if(EditorReflectionUtils.AssemblyExists("VPG.Editor.DemoScene"))
+                if(EditorReflectionUtils.AssemblyExists("VR Builder.Editor.DemoScene"))
                 {
                     loadDemoScene = GUILayout.Toggle(loadDemoScene, "Load Scene from Demo Package", VPGEditorStyles.RadioButton);
                     if(loadDemoScene)
@@ -164,8 +164,8 @@ namespace VRBuilder.Editor.UI.Wizard
             if (loadDemoScene)
             {
 
-                Assembly sampleSceneAssembly = AppDomain.CurrentDomain.GetAssemblies().First(assembly => assembly.GetName().Name == "VPG.Editor.DemoScene");
-                Type sceneLoaderClass = sampleSceneAssembly.GetType("VPG.Editor.DemoScene.DemoSceneLoader");
+                Assembly sampleSceneAssembly = AppDomain.CurrentDomain.GetAssemblies().First(assembly => assembly.GetName().Name == "VR Builder.Editor.DemoScene");
+                Type sceneLoaderClass = sampleSceneAssembly.GetType("VR Builder.Editor.DemoScene.DemoSceneLoader");
                 MethodInfo loadScene = sceneLoaderClass.GetMethod("LoadDemoScene");
                 loadScene.Invoke(null, new object[0]);
                 return;

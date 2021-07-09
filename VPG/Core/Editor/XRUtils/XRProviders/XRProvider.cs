@@ -1,10 +1,10 @@
 #if UNITY_XR_MANAGEMENT && (OCULUS_XR || WINDOWS_XR)
 using System;
 using UnityEditor;
-using VPG.Editor.PackageManager;
+using VR Builder.Editor.PackageManager;
 using UnityEngine;
 
-namespace VPG.Editor.XRUtils
+namespace VR Builder.Editor.XRUtils
 {
     internal abstract class XRProvider : Dependency, IDisposable
     {

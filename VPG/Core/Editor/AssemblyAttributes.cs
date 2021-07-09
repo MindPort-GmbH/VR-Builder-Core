@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("VPG.Core.Tests")]
-[assembly: InternalsVisibleTo("VPG.Core.Tests.Editmode")]
-[assembly: InternalsVisibleTo("VPG.Editor.TestTools")]
-[assembly: InternalsVisibleTo("VPG.CreatorPro")]
+[assembly: InternalsVisibleTo("VRBuilder.Core.Tests")]
+[assembly: InternalsVisibleTo("VRBuilder.Core.Tests.Editmode")]
+[assembly: InternalsVisibleTo("VRBuilder.Editor.TestTools")]
+[assembly: InternalsVisibleTo("VRBuilder.CreatorPro")]
