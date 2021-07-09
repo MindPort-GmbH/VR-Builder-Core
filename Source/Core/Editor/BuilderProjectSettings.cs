@@ -26,7 +26,7 @@ public partial class BuilderProjectSettings : ScriptableObject
     /// <returns>VPG Settings</returns>
     public static BuilderProjectSettings Load()
     {
-        BuilderProjectSettings settings = Resources.Load<BuilderProjectSettings>("VPGProjectSettings");
+        BuilderProjectSettings settings = Resources.Load<BuilderProjectSettings>("BuilderProjectSettings");
         if (settings == null)
         {
             if (!Directory.Exists("Assets/Resources"))
@@ -35,7 +35,7 @@ public partial class BuilderProjectSettings : ScriptableObject
             }
             // Create an instance
             settings = CreateInstance<BuilderProjectSettings>();
-            AssetDatabase.CreateAsset(settings, "Assets/Resources/VPGProjectSettings.asset");
+            AssetDatabase.CreateAsset(settings, "Assets/Resources/BuilderProjectSettings.asset");
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
