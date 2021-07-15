@@ -20,31 +20,13 @@ namespace VRBuilder.UX
         public override LocalizationConfig LocalizationConfig { get; } = Resources.Load<LocalizationConfig>(LocalizationConfig.StandaloneDefaultLocalizationConfig);
         
         /// <inheritdoc />
-        protected override string PrefabName { get; } = "StandaloneCourseController";
-        
-        /// <inheritdoc />
-        public string CourseMenuPrefabName { get; } = "StandaloneCourseControllerMenu";
-        
-        /// <summary>
-        /// Gets a course controller menu game object.
-        /// </summary>
-        public virtual GameObject GetCourseMenuPrefab()
-        {
-            return Resources.Load<GameObject>($"Prefabs/{CourseMenuPrefabName}");
-        }
+        protected override string PrefabName { get; } = "StandaloneCourseController";       
 
         /// <inheritdoc />
         public override List<Type> GetRequiredSetupComponents()
         {
             List<Type> requiredComponents = base.GetRequiredSetupComponents();
-            requiredComponents.Add(typeof(CourseMenuSpawner));
             return requiredComponents;
-        }
-
-        /// <inheritdoc />
-        public override void HandlePostSetup(GameObject courseControllerObject)
-        {
-            courseControllerObject.GetComponent<CourseMenuSpawner>().SetDefaultPrefab(GetCourseMenuPrefab());
         }
     }
 }
