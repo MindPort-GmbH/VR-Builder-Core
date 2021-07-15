@@ -5,7 +5,7 @@ namespace VRBuilder.Editor.BuilderMenu
 {
     internal static class SupportMenuEntry
     {
-        // VPG - Disabled Innoactive support.
+        // MindPort - Disabled Innoactive support.
         ///// <summary>
         ///// Allows to open the URL to Innoactive's Jira Servicedesk.
         ///// </summary>

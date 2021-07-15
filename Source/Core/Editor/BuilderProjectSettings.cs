@@ -15,15 +15,15 @@ public partial class BuilderProjectSettings : ScriptableObject
     public bool IsFirstTimeStarted = true;
 
     /// <summary>
-    /// VPG version used last time this was checked.
+    /// Builder version used last time this was checked.
     /// </summary>
     [HideInInspector]
-    public string ProjectVPGVersion = null;
+    public string ProjectBuilderVersion = null;
 
     /// <summary>
     /// Loads the VR Builder settings for this Unity project from Resources.
     /// </summary>
-    /// <returns>VPG Settings</returns>
+    /// <returns>Settings</returns>
     public static BuilderProjectSettings Load()
     {
         BuilderProjectSettings settings = Resources.Load<BuilderProjectSettings>("BuilderProjectSettings");
@@ -46,9 +46,9 @@ public partial class BuilderProjectSettings : ScriptableObject
 
     private void OnEnable()
     {
-        if (string.IsNullOrEmpty(ProjectVPGVersion))
+        if (string.IsNullOrEmpty(ProjectBuilderVersion))
         {
-            ProjectVPGVersion = EditorUtils.GetCoreVersion();
+            ProjectBuilderVersion = EditorUtils.GetCoreVersion();
         }
     }
 

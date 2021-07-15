@@ -1,7 +1,7 @@
 namespace VRBuilder.Core.Validation
 {
     /// <summary>
-    /// Base report entry with all information available on editor VPG core.
+    /// Base report entry with all information available on editor Builder core.
     /// </summary>
     public class ReportEntry
     {

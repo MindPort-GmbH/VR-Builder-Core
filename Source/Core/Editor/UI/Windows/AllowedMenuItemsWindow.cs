@@ -107,7 +107,7 @@ namespace VRBuilder.Editor.UI.Windows
                 InitializeLists();
             }
 
-            EditorIcon logo = new EditorIcon("logo_vpg");
+            EditorIcon logo = new EditorIcon("logo");
             Rect rect = GUILayoutUtility.GetRect(position.width, 150, GUI.skin.box);
             GUI.DrawTexture(rect, logo.Texture, ScaleMode.ScaleToFit);
 
@@ -141,7 +141,7 @@ namespace VRBuilder.Editor.UI.Windows
                     "If you want to configure what menu items should be displayed in the <i>Training Step Inspector</i>, " +
                     "override the <i>DefaultEditorConfiguration</i> (if you have not already done so) " +
                     "and let this property return a valid asset path.\n\n" +
-                    "Example of a valid asset path:\n<i>Assets/Editor/VPG/allowed_menu_items_config.json</i>\n\n" +
+                    "Example of a valid asset path:\n<i>Assets/Editor/Builder/allowed_menu_items_config.json</i>\n\n" +
                     "Note: The file will then be created at this location and is used to save the configurations made in this window.", labelStyle);
 
                 return;

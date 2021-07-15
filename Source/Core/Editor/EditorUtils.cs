@@ -16,7 +16,7 @@ namespace VRBuilder.Editor
     [InitializeOnLoad]
     internal static class EditorUtils
     {
-        private const string ignoreEditorImguiTestsDefineSymbol = "VPG_IGNORE_EDITOR_IMGUI_TESTS";
+        private const string ignoreEditorImguiTestsDefineSymbol = "BUILDER_IGNORE_EDITOR_IMGUI_TESTS";
 
         private static string coreFolder;
 
@@ -103,7 +103,7 @@ namespace VRBuilder.Editor
         }
 
         /// <summary>
-        /// Returns the VPG Core version as string.
+        /// Returns the Core version as string.
         /// </summary>
         internal static string GetCoreVersion()
         {
@@ -149,7 +149,7 @@ namespace VRBuilder.Editor
 
             if (roots.Length == 0)
             {
-                throw new FileNotFoundException("VPG Core folder not found!");
+                throw new FileNotFoundException("VR Builder Core folder not found!");
             }
 
             coreFolder = Path.GetDirectoryName(roots.First());

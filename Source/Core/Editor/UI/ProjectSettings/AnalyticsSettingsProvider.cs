@@ -3,7 +3,7 @@
 //using UnityEditor;
 //using UnityEngine;
 
-// VPG - Disabled analytics page.
+// MindPort - Disabled analytics page.
 //namespace VR Builder.Editor.UI
 //{
 //    internal class AnalyticsSettingsProvider : BaseSettingsProvider

@@ -17,7 +17,7 @@ namespace VRBuilder.Editor.UI
         }
 
         [SettingsProvider]
-        public static SettingsProvider GetVPGSettingsProvider()
+        public static SettingsProvider GetBuilderSettingsProvider()
         {
             SettingsProvider provider = new BuilderPageProvider();
             return provider;

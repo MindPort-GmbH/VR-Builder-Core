@@ -38,13 +38,13 @@ namespace VRBuilder.Core.Configuration
         /// Default input action asset which is used when no customization of key bindings are done.
         /// Should be stored inside the VR Builder package.
         /// </summary>
-        public virtual string DefaultInputActionAssetPath { get; } = "KeyBindings/VPGDefaultKeyBindings";
+        public virtual string DefaultInputActionAssetPath { get; } = "KeyBindings/BuilderDefaultKeyBindings";
 
         /// <summary>
         /// Custom InputActionAsset path which is used when key bindings are modified.
         /// Should be stored in project path.
         /// </summary>
-        public virtual string CustomInputActionAssetPath { get; } = "KeyBindings/VPGCustomKeyBindings";
+        public virtual string CustomInputActionAssetPath { get; } = "KeyBindings/BuilderCustomKeyBindings";
 
 #if ENABLE_INPUT_SYSTEM
         private UnityEngine.InputSystem.InputActionAsset inputActionAsset;

@@ -13,7 +13,7 @@ namespace VRBuilder.Editor.UI.Windows
     {
         private static CourseCreationWizard window;
 
-        // CourseCreationWizard is obsolete and was replaced by VPGSetupWizard
+        // CourseCreationWizard is obsolete and was replaced by BuilderSetupWizard
 #if !UNITY_2019_4_OR_NEWER || UNITY_EDITOR_OSX
         [MenuItem("Tools/VR Builder/Create New Course...")]
 #endif
@@ -54,13 +54,13 @@ namespace VRBuilder.Editor.UI.Windows
             labelStyle.richText = true;
             labelStyle.wordWrap = true;
 
-            EditorIcon logo = new EditorIcon("logo_vpg");
+            EditorIcon logo = new EditorIcon("logo");
             Rect rect = GUILayoutUtility.GetRect(position.width, 150, GUI.skin.box);
             GUI.DrawTexture(rect, logo.Texture, ScaleMode.ScaleToFit);
 
             if (RuntimeConfigurator.Exists == false)
             {
-                EditorGUILayout.HelpBox("The current scene is not a training scene. No course can be created. To automatically setup the scene, select \"VPG > Setup Training Scene\".", MessageType.Error);
+                EditorGUILayout.HelpBox("The current scene is not a training scene. No course can be created. To automatically setup the scene, select \"Tools > VR Builder > Setup Training Scene\".", MessageType.Error);
             }
 
             EditorGUI.BeginDisabledGroup(RuntimeConfigurator.Exists == false);

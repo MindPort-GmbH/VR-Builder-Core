@@ -8,7 +8,7 @@ using VRBuilder.Editor.Configuration;
 namespace VRBuilder.Editor
 {
     /// <summary>
-    /// This strategy is used by default and it handles interaction between course assets and various VPG windows.
+    /// This strategy is used by default and it handles interaction between course assets and various Builder windows.
     /// </summary>
     internal class DefaultEditingStrategy : IEditingStrategy
     {

@@ -9,7 +9,7 @@ using VRBuilder.Core.Configuration;
 namespace VRBuilder.Editor
 {
     /// <summary>
-    /// A class that handles interactions between VPG windows and course assets by using selected <seealso cref="IEditingStrategy"/> strategy.
+    /// A class that handles interactions between Builder windows and course assets by using selected <seealso cref="IEditingStrategy"/> strategy.
     /// </summary>
     [InitializeOnLoad]
     internal static class GlobalEditorHandler

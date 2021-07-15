@@ -98,7 +98,7 @@ namespace VRBuilder.Editor.TestTools
         /// When you implement a non-abstract, non-generic class which inherits from <see cref="EditorImguiTest{T}"/>,
         /// this method will be automatically detected by the test runner. You don't need to do anything.
         /// </summary>
-#if VPG_IGNORE_EDITOR_IMGUI_TESTS
+#if BUILDER_IGNORE_EDITOR_IMGUI_TESTS
         [Ignore("Editor IMGUI tests are disabled, skipping it.")]
 #endif
         [UnityTest]

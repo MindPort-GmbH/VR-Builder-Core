@@ -81,7 +81,7 @@ namespace VRBuilder.Editor.UI.Wizard
 
             wizard.WizardClosing += OnWizardClosing;
 
-            wizard.Setup("VPG - VR Training Setup Wizard", pages);
+            wizard.Setup("VR Builder - VR Training Setup Wizard", pages);
             wizard.ShowModalUtility();
         }
 

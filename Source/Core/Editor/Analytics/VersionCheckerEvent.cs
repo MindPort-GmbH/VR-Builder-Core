@@ -21,21 +21,21 @@ namespace VRBuilder.Core.Editor
             }
 
             BuilderProjectSettings settings = BuilderProjectSettings.Load();
-            if (settings == null || string.IsNullOrEmpty(settings.ProjectVPGVersion))
+            if (settings == null || string.IsNullOrEmpty(settings.ProjectBuilderVersion))
             {
                 return;
             }
 
-            if (settings.ProjectVPGVersion == unknownVersionString || EditorUtils.GetCoreVersion() == unknownVersionString)
+            if (settings.ProjectBuilderVersion == unknownVersionString || EditorUtils.GetCoreVersion() == unknownVersionString)
             {
                 return;
             }
 
-            if (settings.ProjectVPGVersion != EditorUtils.GetCoreVersion())
+            if (settings.ProjectBuilderVersion != EditorUtils.GetCoreVersion())
             {
                 IAnalyticsTracker tracker = AnalyticsUtils.CreateTracker();
                 tracker.Send(new AnalyticsEvent() {Category = "creator", Action = "updated", Label = EditorUtils.GetCoreVersion()});
-                settings.ProjectVPGVersion = EditorUtils.GetCoreVersion();
+                settings.ProjectBuilderVersion = EditorUtils.GetCoreVersion();
                 settings.Save();
             }
         }
