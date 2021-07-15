@@ -6,4 +6,4 @@ Component Name: Innoactive Creator
 
 License Type: "Apache 2.0"
 
-[Link to license](Core/LICENSE)
+[Link to license](Source/Core/LICENSE)

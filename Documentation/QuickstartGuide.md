@@ -1,25 +1,25 @@
 # Acknowledgements
 
-The VR Process Gizmo is based on the open source edition of the [Innoactive Creator](https://www.innoactive.io/creator). While Innoactive helps enterprises to scale VR training, we adopted this tool to provide value for smaller content creators looking to streamline their processes. 
+The VR Builder is based on the open source edition of the [Innoactive Creator](https://www.innoactive.io/creator). While Innoactive helps enterprises to scale VR training, we adopted this tool to provide value for smaller content creators looking to streamline their processes. 
 
 We too believe in the value of open source and will continue to support this approach together with Innoactive and the open source community around it.
 
-This guide was originally part of the Innoactive Creator documentation. As some functionalities of the VR Process Gizmo are similar to the original Creator, it may also be useful to check the [documentation for the Innoactive Creator](https://developers.innoactive.de/documentation/creator/v2.11.1/).
+This guide was originally part of the Innoactive Creator documentation. As some functionalities of the VR Builder are similar to the original Creator, it may also be useful to check the [documentation for the Innoactive Creator](https://developers.innoactive.de/documentation/creator/v2.11.1/).
 
-# Getting Started with the VR Process Gizmo
+# Getting Started with the VR Builder
 
-This guide outlines the first steps after successfully importing the VR Project Gizmo. It will help you to create your first basic training application in 5 steps. During the process, you will get familiar with the basic user interface of the Unity Editor and the VR Process Gizmo. You will also learn the basic concepts required to successfully create a training application using the VR Process Gizmo.
+This guide outlines the first steps after successfully importing the VR Builder. It will help you to create your first basic training application in 5 steps. During the process, you will get familiar with the basic user interface of the Unity Editor and the VR Builder. You will also learn the basic concepts required to successfully create a training application using the VR Builder.
 
 ## Step 1: Create Course
 
 In case you are new to Unity, you see an empty Unity project, which usually includes a **Scene** window, a **Hierarchy** of 3D objects of your scene. This is currently empty and only contains a `Main Camera` and `Directional Light`, the Inspector (might also be empty currently), and on the lower end of the Unity window, a **Project Hierarchy and Console** window (see figure 1).
 
 ![Unity Layout](images/unityWindows.png "Getting Familiar with Unity - The Unity Layout")
-*Figure 1: Get familiar with Unity windows: hierachy, scene, inspector and project hierachy and console.*
+*Figure 1: Get familiar with Unity windows: hierarchy, scene, inspector and project hierarchy and console.*
 
-By importing VR Process Gizmo, you will have a new element in the `Tools` menu, called `VR Process Gizmo` (see Fig. 2). A `Create New Course` Wizard is open.
+By importing VR Builder, you will have a new element in the `Tools` menu, called `VR Builder` (see Fig. 2). A `Create New Course` Wizard is open.
 
-  > After Importing, the `Create New Course` Wizard should open. In case it is not open, select `Create New Course` from the top menu `VR Process Gizmo`.
+  > After Importing, the `Create New Course` Wizard should open. In case it is not open, select `Create New Course` from the top menu `VR Builder`.
 
 ## Step 2: Select Demo Scene
 
@@ -33,8 +33,8 @@ The Wizard helps you to setup your project. You can start from an empty scene, b
 
 (note: if you do not see the Hardware setup as a step in the wizard, please follow through the wizard by clicking `next` until the wizard closes. Open `Edit` > `Project Settings`. In the opening window, select `XR Plugin Management` from the side menu. Please select your hardware under Plug-in Providers.
 
-![VPG Windows](images/gizmoWindows.png "Getting Familiar with Unity - The VPG Layout")
-*Figure 2: The basic VR Process Gizmo Windows for Training Creation.*
+![VR Builder Windows](images/builderWindows.png "Getting Familiar with Unity - The VR Builder Layout")
+*Figure 2: The basic VR Builder Windows for Training Creation.*
 
 You see a new Scene was loaded: In the Scene window you see a `sphere`. New is the ***Workflow Editor*** window and the ***Step Inspector*** window (see figure 2). 
 
@@ -75,15 +75,15 @@ Shift your attention to the opening/already opened ***Step inspector***. You see
 > select the Behavior tab and click the ‘Add Behavior’ button.
 > select ‘Highlight Objects’ from the list of Behaviors.
 
-‘Highlight Objects’ has two properties you can configure: the highlight colour and the Object to highlight.
+‘Highlight Objects’ has two properties you can configure: the highlight color and the Object to highlight.
 
 > drag the sphere object from the hierarchy into the ‘object to highlight’ field.
 
-You get the warning that the 'Sphere is not configured as IHighlightProperty' with a `Fix it` button. The VR Process Gizmo simplifies the Training Creation for users not necessarily familiar with Unity.
+You get the warning that the 'Sphere is not configured as IHighlightProperty' with a `Fix it` button. The VR Builder simplifies the Training Creation for users not necessarily familiar with Unity.
 
 > click the `Fix it` button.
 
-The VR Process Gizmo will take care of configuring the underlying Unity Objects to make highlighting work.
+The VR Builder will take care of configuring the underlying Unity Objects to make highlighting work.
 
 <img src="images/behavior.png" width="400">
 
@@ -103,11 +103,11 @@ The Snap Condition requires two objects `Object to snap` and `Zone to snap into`
 
 > drag the Sphere object from the hierarchy into the `Object to snap` and click the `Fix it` button.
 
-Let’s inspect the `sphere` object: Select the `sphere` object in the ***Hierachy*** window and open the ***Inspector*** window (see Fig. 1). You see a list of properties and scripts attached to this object, e.g. 'Box Collider' etc.
+Let’s inspect the `sphere` object: Select the `sphere` object in the ***Hierarchy*** window and open the ***Inspector*** window (see Fig. 1). You see a list of properties and scripts attached to this object, e.g. 'Box Collider' etc.
 
-![VPG Windows](images/createSnapZone.png "Getting Familiar with Unity - The VPG Layout")
+![VR Builder Windows](images/createSnapZone.png "Getting Familiar with Unity - The VR Builder Layout")
 
- *Figure 4: Create a snap zone. Select the sphere in the hierachy, click Create Snap Zone button in the Unity inspector.*
+ *Figure 4: Create a snap zone. Select the sphere in the hierarchy, click Create Snap Zone button in the Unity inspector.*
 
 > scroll down to `Snappable Property`. Click the `Create Snap Zone` button.
 
@@ -122,4 +122,4 @@ Go back to the ***Step inspector*** window.
 
 Connect your Head-Mounted Device and start the training application by hitting the play button in the top-center of the Unity window. Grab your controllers, move the controllers in VR into the solid Sphere object and press the 'select' button. This is usually different for every controller. The manual of you hardware should give you more information about how to find the correct controller button. When you have successfully grabbed the sphere, move it over to the 'snap zone' and release the button.
 
-Congratulations! You successfully built a minimal training application using the VR Process Gizmo.
+Congratulations! You successfully built a minimal training application using the VR Builder.
