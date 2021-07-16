@@ -1,6 +1,5 @@
 using System.Runtime.Serialization;
 using VRBuilder.Core.Attributes;
-using VRBuilder.Core.Internationalization;
 using UnityEngine;
 
 namespace VRBuilder.Core.Audio
@@ -12,11 +11,10 @@ namespace VRBuilder.Core.Audio
     [DisplayName("Play Audio File")]
     public class ResourceAudio : IAudioData
     {
-        private LocalizedString path;
+        private string path;
 
         [DataMember]
-        [UsesSpecificTrainingDrawer("ResourceAudioDataLocalizedStringDrawer")]
-        public LocalizedString Path
+        public string ResourcesPath
         {
             get
             {
@@ -29,14 +27,14 @@ namespace VRBuilder.Core.Audio
             }
         }
 
-        public ResourceAudio(LocalizedString path)
+        public ResourceAudio(string path)
         {
-            Path = path;
+            ResourcesPath = path;
         }
 
         protected ResourceAudio()
         {
-            path = new LocalizedString();
+            path = "";
         }
 
         public bool HasAudioClip
@@ -56,13 +54,13 @@ namespace VRBuilder.Core.Audio
                 return;
             }
 
-            if (path == null || string.IsNullOrEmpty(path.Value))
+            if (string.IsNullOrEmpty(path))
             {
                 Debug.LogWarningFormat("Path to audio file is not defined.");
                 return;
             }
 
-            AudioClip = Resources.Load<AudioClip>(path.Value);
+            AudioClip = Resources.Load<AudioClip>(path);
 
             if (HasAudioClip == false)
             {
@@ -73,7 +71,7 @@ namespace VRBuilder.Core.Audio
         /// <inheritdoc/>
         public bool IsEmpty()
         {
-            return path == null || (string.IsNullOrEmpty(path.Key) && string.IsNullOrEmpty(path.DefaultText));
+            return string.IsNullOrEmpty(ResourcesPath);
         }
     }
 }

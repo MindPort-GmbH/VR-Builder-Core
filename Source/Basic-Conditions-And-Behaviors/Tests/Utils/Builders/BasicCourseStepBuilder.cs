@@ -180,7 +180,7 @@ namespace VRBuilder.Tests.Builder
 
             IsAudioDescriptionAdded = true;
 
-            Result.Data.Behaviors.Data.Behaviors.Add(new PlayAudioBehavior(new ResourceAudio(path.Clone()), BehaviorExecutionStages.Activation));
+            Result.Data.Behaviors.Data.Behaviors.Add(new PlayAudioBehavior(new ResourceAudio(path.DefaultText), BehaviorExecutionStages.Activation));
         }
 
         protected virtual void AudioSuccessAction(LocalizedString path)
@@ -192,7 +192,7 @@ namespace VRBuilder.Tests.Builder
 
             IsAudioSuccessAdded = true;
 
-            Result.Data.Behaviors.Data.Behaviors.Add(new PlayAudioBehavior(new ResourceAudio(path.Clone()), BehaviorExecutionStages.Deactivation));
+            Result.Data.Behaviors.Data.Behaviors.Add(new PlayAudioBehavior(new ResourceAudio(path.DefaultText), BehaviorExecutionStages.Deactivation));
         }
 
         protected virtual void AudioHintAction(LocalizedString path, float delayInSeconds = defaultAudioDelay)
@@ -210,7 +210,7 @@ namespace VRBuilder.Tests.Builder
                     new List<IBehavior>
                     {
                         new DelayBehavior(delayInSeconds),
-                        new PlayAudioBehavior(new ResourceAudio(path.Clone()), BehaviorExecutionStages.Activation)
+                        new PlayAudioBehavior(new ResourceAudio(path.DefaultText), BehaviorExecutionStages.Activation)
                     },
                     false));
         }

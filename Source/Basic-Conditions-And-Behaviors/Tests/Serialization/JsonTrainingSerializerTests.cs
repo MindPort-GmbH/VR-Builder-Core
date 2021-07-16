@@ -108,30 +108,30 @@ namespace VRBuilder.Core.Tests.Serialization
             return null;
         }
 
-        [UnityTest]
-        public IEnumerator LocalizedString()
-        {
-            // Given a LocalizedString
-            LocalizedString original = new LocalizedString("Test1{0}{1}", "Test2", "Test3", "Test4");
+        //[UnityTest]
+        //public IEnumerator LocalizedString()
+        //{
+        //    // Given a LocalizedString
+        //    LocalizedString original = new LocalizedString("Test1{0}{1}", "Test2", "Test3", "Test4");
 
-            Step step = new Step("");
-            step.Data.Behaviors.Data.Behaviors.Add(new PlayAudioBehavior(new ResourceAudio(original), BehaviorExecutionStages.Activation));
-            ICourse course = new Course("", new Chapter("", step));
+        //    Step step = new Step("");
+        //    step.Data.Behaviors.Data.Behaviors.Add(new PlayAudioBehavior(new ResourceAudio(original), BehaviorExecutionStages.Activation));
+        //    ICourse course = new Course("", new Chapter("", step));
 
-            // When we serialize and deserialize a training with it
-            ICourse deserializedCourse = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(course));
-            PlayAudioBehavior deserializedBehavior = deserializedCourse.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as PlayAudioBehavior;
-            // ReSharper disable once PossibleNullReferenceException
-            LocalizedString deserialized = ((ResourceAudio)deserializedBehavior.Data.AudioData).Path;
+        //    // When we serialize and deserialize a training with it
+        //    ICourse deserializedCourse = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(course));
+        //    PlayAudioBehavior deserializedBehavior = deserializedCourse.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as PlayAudioBehavior;
+        //    // ReSharper disable once PossibleNullReferenceException
+        //    LocalizedString deserialized = ((ResourceAudio)deserializedBehavior.Data.AudioData).Path;
 
-            // Then deserialized training should has different instance of LocalizedString but with the same values.
-            Assert.IsFalse(ReferenceEquals(original, deserialized));
-            Assert.AreEqual(original.Key, deserialized.Key);
-            Assert.AreEqual(original.DefaultText, deserialized.DefaultText);
-            Assert.IsTrue(original.FormatParams.SequenceEqual(deserialized.FormatParams));
+        //    // Then deserialized training should has different instance of LocalizedString but with the same values.
+        //    Assert.IsFalse(ReferenceEquals(original, deserialized));
+        //    Assert.AreEqual(original.Key, deserialized.Key);
+        //    Assert.AreEqual(original.DefaultText, deserialized.DefaultText);
+        //    Assert.IsTrue(original.FormatParams.SequenceEqual(deserialized.FormatParams));
 
-            yield return null;
-        }
+        //    yield return null;
+        //}
 
         [UnityTest]
         public IEnumerator BehaviorSequence()
@@ -285,7 +285,7 @@ namespace VRBuilder.Core.Tests.Serialization
             ICourse training1 = new LinearTrainingBuilder("Training")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
-                        .AddBehavior(new PlayAudioBehavior(new ResourceAudio(new LocalizedString("TestPath")), BehaviorExecutionStages.Activation))))
+                        .AddBehavior(new PlayAudioBehavior(new ResourceAudio("TestPath"), BehaviorExecutionStages.Activation))))
                 .Build();
 
             // When we serialize and deserialize it,
@@ -297,7 +297,7 @@ namespace VRBuilder.Core.Tests.Serialization
 
             Assert.IsNotNull(behavior1);
             Assert.IsNotNull(behavior2);
-            Assert.AreEqual(TestingUtils.GetField<LocalizedString>(behavior1.Data.AudioData, "path").Key, TestingUtils.GetField<LocalizedString>(behavior2.Data.AudioData, "path").Key);
+            Assert.AreEqual(TestingUtils.GetField<string>(behavior1.Data.AudioData, "path"), TestingUtils.GetField<string>(behavior2.Data.AudioData, "path"));
 
             return null;
         }
@@ -309,7 +309,7 @@ namespace VRBuilder.Core.Tests.Serialization
             ICourse training1 = new LinearTrainingBuilder("Training")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
-                        .AddBehavior(new PlayAudioBehavior(new ResourceAudio(new LocalizedString("TestPath")), BehaviorExecutionStages.Activation))))
+                        .AddBehavior(new PlayAudioBehavior(new ResourceAudio("TestPath"), BehaviorExecutionStages.Activation))))
                 .Build();
 
             // When we serialize and deserialize it,
@@ -321,7 +321,7 @@ namespace VRBuilder.Core.Tests.Serialization
             // Then path to audio file should not change.
             Assert.IsNotNull(behavior1);
             Assert.IsNotNull(behavior2);
-            Assert.AreEqual(TestingUtils.GetField<LocalizedString>(behavior1.Data.AudioData, "path").Key, TestingUtils.GetField<LocalizedString>(behavior2.Data.AudioData, "path").Key);
+            Assert.AreEqual(TestingUtils.GetField<string>(behavior1.Data.AudioData, "path"), TestingUtils.GetField<string>(behavior2.Data.AudioData, "path"));
 
             return null;
         }
@@ -360,7 +360,7 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator ResourceAudio()
         {
             // Given we have a ResourceAudio instance,
-            ResourceAudio audio = new ResourceAudio(new LocalizedString("TestPath"));
+            ResourceAudio audio = new ResourceAudio("TestPath");
 
             ICourse course = new LinearTrainingBuilder("Training")
                 .AddChapter(new LinearChapterBuilder("Chapter")
@@ -372,8 +372,8 @@ namespace VRBuilder.Core.Tests.Serialization
             ICourse testCourse = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(course));
 
             // Then the path to audio resource should be the same.
-            string audioPath1 = TestingUtils.GetField<LocalizedString>(((PlayAudioBehavior)course.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First()).Data.AudioData, "path").Key;
-            string audioPath2 = TestingUtils.GetField<LocalizedString>(((PlayAudioBehavior)testCourse.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First()).Data.AudioData, "path").Key;
+            string audioPath1 = TestingUtils.GetField<string>(((PlayAudioBehavior)course.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First()).Data.AudioData, "path");
+            string audioPath2 = TestingUtils.GetField<string>(((PlayAudioBehavior)testCourse.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First()).Data.AudioData, "path");
 
             Assert.AreEqual(audioPath1, audioPath2);
 

@@ -14,7 +14,7 @@ namespace VRBuilder.Editor.UI.Behaviors
         /// <inheritdoc />
         public override IBehavior GetNewItem()
         {
-            return new PlayAudioBehavior(new ResourceAudio(new LocalizedString()), BehaviorExecutionStages.Activation, true);
+            return new PlayAudioBehavior(new ResourceAudio(""), BehaviorExecutionStages.Activation, true);
         }
     }
 }
