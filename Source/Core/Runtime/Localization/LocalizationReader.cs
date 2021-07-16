@@ -50,7 +50,7 @@ namespace VRBuilder.Core.Internationalization
 
         internal static Dictionary<string, string> Load(LocalizationConfig config, Dictionary<string, string> parameters)
         {
-            AddMissingParameter(KeyFallbackLanguage, LanguageSettings.Instance.DefaultLanguage, parameters);
+            AddMissingParameter(KeyFallbackLanguage, LanguageSettings.Instance.ApplicationLanguage, parameters);
 
             Dictionary<string, string> result = new Dictionary<string, string>();
             foreach (LocalizationConfig.LocalizationSource source in config.Sources)

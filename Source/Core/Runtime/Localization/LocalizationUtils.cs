@@ -54,7 +54,7 @@ namespace VRBuilder.Core.Internationalization
                 }
             }
 
-            string fallbackLanguage = LanguageSettings.Instance.DefaultLanguage.ToLower();
+            string fallbackLanguage = LanguageSettings.Instance.ApplicationLanguage.ToLower();
             if (result == null)
             {
                 return new List<string> {fallbackLanguage};
