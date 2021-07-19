@@ -14,7 +14,7 @@ namespace VRBuilder.Editor
     [InitializeOnLoad]
     internal static class GlobalEditorHandler
     {
-        internal const string LastEditedCourseNameKey = "VR Builder.Editors.LastEditedCourseName";
+        internal const string LastEditedCourseNameKey = "VRBuilder.Editors.LastEditedCourseName";
 
         private static IEditingStrategy strategy;
 

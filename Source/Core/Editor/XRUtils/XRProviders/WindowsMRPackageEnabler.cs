@@ -1,5 +1,5 @@
 #if UNITY_XR_MANAGEMENT && WINDOWS_XR
-namespace VR Builder.Editor.XRUtils
+namespace VRBuilder.Editor.XRUtils
 {
     /// <summary>
     /// Enables the Windows MR Plugin.

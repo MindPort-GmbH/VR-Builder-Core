@@ -1,10 +1,10 @@
 //using System;
-//using VR Builder.Editor.Analytics;
+//using VRBuilder.Editor.Analytics;
 //using UnityEditor;
 //using UnityEngine;
 
 // MindPort - Disabled analytics page.
-//namespace VR Builder.Editor.UI
+//namespace VRBuilder.Editor.UI
 //{
 //    internal class AnalyticsSettingsProvider : BaseSettingsProvider
 //    {

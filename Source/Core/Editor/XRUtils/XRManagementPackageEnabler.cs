@@ -1,9 +1,9 @@
 #if UNITY_XR_MANAGEMENT
 using UnityEditor;
 using System;
-using VR Builder.Editor.PackageManager;
+using VRBuilder.Editor.PackageManager;
 
-namespace VR Builder.Editor.XRUtils
+namespace VRBuilder.Editor.XRUtils
 {
     /// <summary>
     /// Enables the XR Plug-in Management.

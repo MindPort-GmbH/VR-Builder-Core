@@ -120,7 +120,7 @@ namespace VRBuilder.Core.Serialization.NewtonsoftJson
         {
             public override Type BindToType(string assemblyName, string typeName)
             {
-                if (typeName == "VR Builder.Editor.UI.Drawers.Metadata.ReorderableElementMetadata")
+                if (typeName == "VRBuilder.Editor.UI.Drawers.Metadata.ReorderableElementMetadata")
                 {
                     return typeof(ReorderableElementMetadata);
                 }

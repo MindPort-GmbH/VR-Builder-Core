@@ -1,13 +1,13 @@
 //using System.Linq;
-//using VR Builder.Core;
-//using VR Builder.Core.Configuration;
-//using VR Builder.Tests.Builder;
-//using VR Builder.Tests.Utils.Mocks;
-//using VR Builder.Editor.Utils;
+//using VRBuilder.Core;
+//using VRBuilder.Core.Configuration;
+//using VRBuilder.Tests.Builder;
+//using VRBuilder.Tests.Utils.Mocks;
+//using VRBuilder.Editor.Utils;
 //using NUnit.Framework;
 //using UnityEditor;
 
-//namespace VR Builder.Editor.Tests
+//namespace VRBuilder.Editor.Tests
 //{
 //    public class SystemClipboardTests
 //    {

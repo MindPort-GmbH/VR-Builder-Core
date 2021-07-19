@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-namespace VR Builder.Editor
+namespace VRBuilder.Editor
 {
     /// <summary>
     /// Validates that full .Net dependencies are referenced by Unity.

@@ -1,5 +1,5 @@
 #if UNITY_XR_MANAGEMENT && OCULUS_XR
-namespace VR Builder.Editor.XRUtils
+namespace VRBuilder.Editor.XRUtils
 {
     /// <summary>
     /// Enables the Oculus XR Plugin.
