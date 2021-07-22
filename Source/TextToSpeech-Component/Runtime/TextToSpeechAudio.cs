@@ -4,7 +4,6 @@ using System.Runtime.Serialization;
 using VRBuilder.Core.Audio;
 using VRBuilder.Core.Attributes;
 using VRBuilder.Core.Configuration;
-using VRBuilder.Core.Internationalization;
 
 namespace VRBuilder.TextToSpeech.Audio
 {
@@ -16,11 +15,10 @@ namespace VRBuilder.TextToSpeech.Audio
     public class TextToSpeechAudio : IAudioData
     {
         private bool isLoading;
-        private LocalizedString text;
+        private string text;
 
         [DataMember]
-        [UsesSpecificTrainingDrawer("TextToSpeechAudioDataLocalizedStringDrawer")]
-        public LocalizedString Text
+        public string Text
         {
             get
             {
@@ -35,10 +33,10 @@ namespace VRBuilder.TextToSpeech.Audio
 
         protected TextToSpeechAudio()
         {
-            text = new LocalizedString();
+            text = "";
         }
 
-        public TextToSpeechAudio(LocalizedString text)
+        public TextToSpeechAudio(string text)
         {
             Text = text;
         }
@@ -77,9 +75,9 @@ namespace VRBuilder.TextToSpeech.Audio
                 return;
             }
 
-            if (string.IsNullOrEmpty(Text.Value))
+            if (string.IsNullOrEmpty(Text))
             {
-                Debug.LogWarning($"No text provided for key '{Text.Key}'");
+                Debug.LogWarning($"No text provided.");
                 return;
             }
 
@@ -90,7 +88,7 @@ namespace VRBuilder.TextToSpeech.Audio
                 TextToSpeechConfiguration ttsConfiguration = RuntimeConfigurator.Configuration.GetTextToSpeechConfiguration();
                 ITextToSpeechProvider provider = TextToSpeechProviderFactory.Instance.CreateProvider(ttsConfiguration);
 
-                AudioClip = await provider.ConvertTextToSpeech(Text.Value);
+                AudioClip = await provider.ConvertTextToSpeech(Text);
             }
             catch (Exception exception)
             {
@@ -103,7 +101,7 @@ namespace VRBuilder.TextToSpeech.Audio
         /// <inheritdoc/>
         public bool IsEmpty()
         {
-            return Text == null || (string.IsNullOrEmpty(Text.Key) && string.IsNullOrEmpty(Text.DefaultText));
+            return Text == null || (string.IsNullOrEmpty(Text));
         }
     }
 }

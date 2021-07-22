@@ -14,7 +14,7 @@ namespace VRBuilder.Editor.TextToSpeech.UI.Behaviors
         /// <inheritdoc />
         public override IBehavior GetNewItem()
         {
-            return new PlayAudioBehavior(new TextToSpeechAudio(new LocalizedString()), BehaviorExecutionStages.Activation, true);
+            return new PlayAudioBehavior(new TextToSpeechAudio(""), BehaviorExecutionStages.Activation, true);
         }
     }
 }
