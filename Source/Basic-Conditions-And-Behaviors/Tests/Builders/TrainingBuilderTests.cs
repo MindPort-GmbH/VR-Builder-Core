@@ -242,8 +242,8 @@ namespace VRBuilder.Core.Tests.Builder
                 LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
                     .AddChapter(new LinearChapterBuilder("TestChapter")
                         .AddStep(new BasicCourseStepBuilder("TestStep")
-                            .AddAudioDescription(new LocalizedString("Path1"))
-                            .AddAudioDescription(new LocalizedString("Path2"))));
+                            .AddAudioDescription("Path1")
+                            .AddAudioDescription("Path2")));
 
                 // When we build a training from it
                 builder.Build();
@@ -264,8 +264,8 @@ namespace VRBuilder.Core.Tests.Builder
                 LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
                     .AddChapter(new LinearChapterBuilder("TestChapter")
                         .AddStep(new BasicCourseStepBuilder("TestStep")
-                            .AddAudioSuccess(new LocalizedString("Path1"))
-                            .AddAudioSuccess(new LocalizedString("Path2"))));
+                            .AddAudioSuccess("Path1")
+                            .AddAudioSuccess("Path2")));
 
                 // When we build a training from it
                 builder.Build();
@@ -286,8 +286,8 @@ namespace VRBuilder.Core.Tests.Builder
                 LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
                     .AddChapter(new LinearChapterBuilder("TestChapter")
                         .AddStep(new BasicCourseStepBuilder("TestStep")
-                            .AddAudioHint(new LocalizedString("Path1"))
-                            .AddAudioHint(new LocalizedString("Path2"))));
+                            .AddAudioHint("Path1")
+                            .AddAudioHint("Path2")));
 
                 // When we build a training from it
                 builder.Build();
@@ -308,9 +308,9 @@ namespace VRBuilder.Core.Tests.Builder
             LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(new BasicCourseStepBuilder("TestStep")
-                        .AddAudioSuccess(new LocalizedString("Path1"))
-                        .AddAudioDescription(new LocalizedString("Path1"))
-                        .AddAudioHint(new LocalizedString("Path2"))));
+                        .AddAudioSuccess("Path1")
+                        .AddAudioDescription("Path1")
+                        .AddAudioHint("Path2")));
 
             // When we are building two trainings from it
             builder.Build();
