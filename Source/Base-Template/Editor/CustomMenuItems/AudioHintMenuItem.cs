@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using VRBuilder.Core.Behaviors;
 using VRBuilder.TextToSpeech.Audio;
-using VRBuilder.Core.Internationalization;
 using VRBuilder.Editor.UI.StepInspector.Menu;
 
 namespace VRBuilder.Editor.BaseTemplate.UI.Behaviors
@@ -17,7 +16,7 @@ namespace VRBuilder.Editor.BaseTemplate.UI.Behaviors
             DelayBehavior delayBehavior = new DelayBehavior(5f);
             delayBehavior.Data.Name = "Wait for";
 
-            PlayAudioBehavior audioBehavior = new PlayAudioBehavior(new TextToSpeechAudio(new LocalizedString()), BehaviorExecutionStages.Activation);
+            PlayAudioBehavior audioBehavior = new PlayAudioBehavior(new TextToSpeechAudio(""), BehaviorExecutionStages.Activation);
             audioBehavior.Data.Name = "Play Audio";
 
             BehaviorSequence behaviorSequence = new BehaviorSequence(true, new List<IBehavior>

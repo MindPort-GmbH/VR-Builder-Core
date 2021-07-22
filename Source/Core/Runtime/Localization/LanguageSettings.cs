@@ -10,7 +10,7 @@ namespace VRBuilder.Core.Internationalization
         /// <summary>
         /// Language which should be used.
         /// </summary>
-        public string DefaultLanguage = "En";
+        public string ApplicationLanguage = "En";
 
         /// <summary>
         /// Returns the currently active language, will be stored for one session.
@@ -26,7 +26,7 @@ namespace VRBuilder.Core.Internationalization
             {
                 if (string.IsNullOrEmpty(ActiveLanguage))
                 {
-                    return DefaultLanguage;
+                    return ApplicationLanguage;
                 }
 
                 return ActiveLanguage;

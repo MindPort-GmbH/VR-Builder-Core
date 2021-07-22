@@ -30,7 +30,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator AudioIsPlayed()
         {
             // Given a PlayAudioBehavior,
-            ResourceAudio audioData = new ResourceAudio(new LocalizedString("Sounds/test-sound", "Sounds/test-sound"));
+            ResourceAudio audioData = new ResourceAudio("Sounds/test-sound");
             IBehavior behavior = new PlayAudioBehavior(audioData, BehaviorExecutionStages.Activation, audioSource);
 
             // When we activate it,
@@ -46,7 +46,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator ActivatingWhileAudioPlays()
         {
             // Given a PlayAudioBehavior,
-            ResourceAudio audioData = new ResourceAudio(new LocalizedString("Sounds/test-sound", "Sounds/test-sound"));
+            ResourceAudio audioData = new ResourceAudio("Sounds/test-sound");
             IBehavior behavior = new PlayAudioBehavior(audioData, BehaviorExecutionStages.Activation, audioSource);
             behavior.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
@@ -65,7 +65,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator ActiveAfterAudioPlayed()
         {
             // Given a PlayAudioBehavior,
-            ResourceAudio audioData = new ResourceAudio(new LocalizedString("Sounds/test-sound", "Sounds/test-sound"));
+            ResourceAudio audioData = new ResourceAudio("Sounds/test-sound");
             IBehavior behavior = new PlayAudioBehavior(audioData, BehaviorExecutionStages.Activation, audioSource);
             behavior.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
@@ -92,7 +92,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator AudioIsPlayedOnDeactivation()
         {
             // Given a PlayAudioBehavior with activation mode "Deactivation",
-            ResourceAudio audioData = new ResourceAudio(new LocalizedString("Sounds/test-sound", "Sounds/test-sound"));
+            ResourceAudio audioData = new ResourceAudio("Sounds/test-sound");
             IBehavior behavior = new PlayAudioBehavior(audioData, BehaviorExecutionStages.Deactivation, audioSource);
             behavior.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
@@ -118,7 +118,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator StillDeactivatingWhenPlayingAudio()
         {
             // Given a PlayAudioBehavior with activation mode "Deactivation",
-            ResourceAudio audioData = new ResourceAudio(new LocalizedString("Sounds/test-sound", "Sounds/test-sound"));
+            ResourceAudio audioData = new ResourceAudio("Sounds/test-sound");
             IBehavior behavior = new PlayAudioBehavior(audioData, BehaviorExecutionStages.Deactivation, audioSource);
             behavior.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
@@ -147,7 +147,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator IsDeactivatedAfterPlayingAudio()
         {
             // Given a PlayAudioBehavior with activation mode "Deactivation",
-            ResourceAudio audioData = new ResourceAudio(new LocalizedString("Sounds/test-sound", "Sounds/test-sound"));
+            ResourceAudio audioData = new ResourceAudio("Sounds/test-sound");
             IBehavior behavior = new PlayAudioBehavior(audioData, BehaviorExecutionStages.Deactivation, audioSource);
             behavior.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
@@ -223,7 +223,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator FastForwardInactiveBehavior()
         {
             // Given a PlayAudioBehavior with activation mode "Activation",
-            ResourceAudio audioData = new ResourceAudio(new LocalizedString("Sounds/test-sound", "Sounds/test-sound"));
+            ResourceAudio audioData = new ResourceAudio("Sounds/test-sound");
             IBehavior behavior = new PlayAudioBehavior(audioData, BehaviorExecutionStages.Activation, audioSource);
 
             // When we mark it to fast-forward,
@@ -239,7 +239,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator FastForwardInactiveBehaviorAndActivateIt()
         {
             // Given a PlayAudioBehavior with activation mode "Activation",
-            ResourceAudio audioData = new ResourceAudio(new LocalizedString("Sounds/test-sound", "Sounds/test-sound"));
+            ResourceAudio audioData = new ResourceAudio("Sounds/test-sound");
             IBehavior behavior = new PlayAudioBehavior(audioData, BehaviorExecutionStages.Activation, audioSource);
 
             // When we mark it to fast-forward and activate it,
@@ -257,7 +257,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator FastForwardInactiveBehaviorAndDeactivateIt()
         {
             // Given a PlayAudioBehavior with activation mode "Deactivation",
-            ResourceAudio audioData = new ResourceAudio(new LocalizedString("Sounds/test-sound", "Sounds/test-sound"));
+            ResourceAudio audioData = new ResourceAudio("Sounds/test-sound");
             IBehavior behavior = new PlayAudioBehavior(audioData, BehaviorExecutionStages.Deactivation, audioSource);
 
             // When we mark it to fast-forward, activate and immediately deactivate it,
@@ -276,7 +276,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator FastForwardActivatingBehavior()
         {
             // Given an active PlayAudioBehavior with activation mode "Activation",
-            ResourceAudio audioData = new ResourceAudio(new LocalizedString("Sounds/test-sound", "Sounds/test-sound"));
+            ResourceAudio audioData = new ResourceAudio("Sounds/test-sound");
             IBehavior behavior = new PlayAudioBehavior(audioData, BehaviorExecutionStages.Activation, audioSource);
 
             behavior.LifeCycle.Activate();
@@ -295,7 +295,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator FastForwardDeactivatingBehavior()
         {
             // Given a deactivating PlayAudioBehavior with activation mode "Activation",
-            ResourceAudio audioData = new ResourceAudio(new LocalizedString("Sounds/test-sound", "Sounds/test-sound"));
+            ResourceAudio audioData = new ResourceAudio("Sounds/test-sound");
             IBehavior behavior = new PlayAudioBehavior(audioData, BehaviorExecutionStages.Deactivation, audioSource);
 
             behavior.LifeCycle.Activate();

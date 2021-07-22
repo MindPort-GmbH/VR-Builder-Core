@@ -3,7 +3,6 @@ using System.Linq;
 using VRBuilder.Core;
 using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Conditions;
-using VRBuilder.Core.Internationalization;
 using VRBuilder.Tests.Builder;
 using VRBuilder.Tests.Utils;
 using VRBuilder.Tests.Utils.Mocks;
@@ -131,33 +130,6 @@ namespace VRBuilder.Tests.Serialization
                 training2.Data.FirstChapter.Data.FirstStep.Data.Name);
 
             return null;
-        }
-
-        [UnityTest]
-        public IEnumerator LocalizedString()
-        {
-            // Given a LocalizedString
-            LocalizedString original = new LocalizedString("Test1{0}{1}", "Test2", "Test3", "Test4");
-
-            Step step = new Step("");
-            step.Data.Behaviors.Data.Behaviors.Add(new LocalizedStringBehaviorMock(original));
-            ICourse course = new Course("", new Chapter("", step));
-
-            // When we serialize and deserialize a training with it
-            ICourse deserializedCourse = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(course));
-            LocalizedStringBehaviorMock deserializedBehavior =
-                deserializedCourse.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as
-                    LocalizedStringBehaviorMock;
-            // ReSharper disable once PossibleNullReferenceException
-            LocalizedString deserialized = deserializedBehavior.Data.LocalizedString;
-
-            // Then deserialized training should have different instance of LocalizedString but with the same values.
-            Assert.IsFalse(ReferenceEquals(original, deserialized));
-            Assert.AreEqual(original.Key, deserialized.Key);
-            Assert.AreEqual(original.DefaultText, deserialized.DefaultText);
-            Assert.IsTrue(original.FormatParams.SequenceEqual(deserialized.FormatParams));
-
-            yield return null;
         }
     }
 }

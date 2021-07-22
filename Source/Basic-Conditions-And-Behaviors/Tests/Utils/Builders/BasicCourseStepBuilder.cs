@@ -5,7 +5,6 @@ using VRBuilder.Core.Audio;
 using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Properties;
 using VRBuilder.Core.Configuration;
-using VRBuilder.Core.Internationalization;
 using VRBuilder.Core.SceneObjects;
 
 namespace VRBuilder.Tests.Builder
@@ -54,9 +53,9 @@ namespace VRBuilder.Tests.Builder
         /// </summary>
         /// <param name="path">Path to audio clip.</param>
         /// <returns>This.</returns>
-        public BasicCourseStepBuilder AddAudioDescription(LocalizedString path)
+        public BasicCourseStepBuilder AddAudioDescription(string path)
         {
-            AddSecondPassAction(() => AudioDescriptionAction(path.Clone()));
+            AddSecondPassAction(() => AudioDescriptionAction(path));
             return this;
         }
 
@@ -65,9 +64,9 @@ namespace VRBuilder.Tests.Builder
         /// </summary>
         /// <param name="path">Path to audio clip.</param>
         /// <returns>This.</returns>
-        public BasicCourseStepBuilder AddAudioSuccess(LocalizedString path)
+        public BasicCourseStepBuilder AddAudioSuccess(string path)
         {
-            AddSecondPassAction(() => AudioSuccessAction(path.Clone()));
+            AddSecondPassAction(() => AudioSuccessAction(path));
             return this;
         }
 
@@ -77,9 +76,9 @@ namespace VRBuilder.Tests.Builder
         /// <param name="path">Path to audioclip.</param>
         /// <param name="delayInSeconds">The delay between entering the step and playing the audio clip.</param>
         /// <returns>This.</returns>
-        public BasicCourseStepBuilder AddAudioHint(LocalizedString path, float delayInSeconds = defaultAudioDelay)
+        public BasicCourseStepBuilder AddAudioHint(string path, float delayInSeconds = defaultAudioDelay)
         {
-            AddSecondPassAction(() => AudioHintAction(path.Clone(), delayInSeconds));
+            AddSecondPassAction(() => AudioHintAction(path, delayInSeconds));
             return this;
         }
 
@@ -171,7 +170,7 @@ namespace VRBuilder.Tests.Builder
         #endregion
 
         #region protected methods
-        protected virtual void AudioDescriptionAction(LocalizedString path)
+        protected virtual void AudioDescriptionAction(string path)
         {
             if (IsAudioDescriptionAdded)
             {
@@ -180,10 +179,10 @@ namespace VRBuilder.Tests.Builder
 
             IsAudioDescriptionAdded = true;
 
-            Result.Data.Behaviors.Data.Behaviors.Add(new PlayAudioBehavior(new ResourceAudio(path.Clone()), BehaviorExecutionStages.Activation));
+            Result.Data.Behaviors.Data.Behaviors.Add(new PlayAudioBehavior(new ResourceAudio(path), BehaviorExecutionStages.Activation));
         }
 
-        protected virtual void AudioSuccessAction(LocalizedString path)
+        protected virtual void AudioSuccessAction(string path)
         {
             if (IsAudioSuccessAdded)
             {
@@ -192,10 +191,10 @@ namespace VRBuilder.Tests.Builder
 
             IsAudioSuccessAdded = true;
 
-            Result.Data.Behaviors.Data.Behaviors.Add(new PlayAudioBehavior(new ResourceAudio(path.Clone()), BehaviorExecutionStages.Deactivation));
+            Result.Data.Behaviors.Data.Behaviors.Add(new PlayAudioBehavior(new ResourceAudio(path), BehaviorExecutionStages.Deactivation));
         }
 
-        protected virtual void AudioHintAction(LocalizedString path, float delayInSeconds = defaultAudioDelay)
+        protected virtual void AudioHintAction(string path, float delayInSeconds = defaultAudioDelay)
         {
             if (IsAudioHintAdded)
             {
@@ -210,7 +209,7 @@ namespace VRBuilder.Tests.Builder
                     new List<IBehavior>
                     {
                         new DelayBehavior(delayInSeconds),
-                        new PlayAudioBehavior(new ResourceAudio(path.Clone()), BehaviorExecutionStages.Activation)
+                        new PlayAudioBehavior(new ResourceAudio(path), BehaviorExecutionStages.Activation)
                     },
                     false));
         }

@@ -1,10 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using VRBuilder.Core;
 using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Conditions;
 using VRBuilder.Core.Configuration.Modes;
-using VRBuilder.Core.Internationalization;
 using VRBuilder.Tests.Utils.Mocks;
 using NUnit.Framework;
 using UnityEngine;

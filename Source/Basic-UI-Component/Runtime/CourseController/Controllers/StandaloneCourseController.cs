@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using VRBuilder.Core.Internationalization;
-using UnityEngine;
 
 namespace VRBuilder.UX
 {
@@ -15,9 +13,6 @@ namespace VRBuilder.UX
         
         /// <inheritdoc />
         public override int Priority { get; } = 25;
-        
-        /// <inheritdoc />
-        public override LocalizationConfig LocalizationConfig { get; } = Resources.Load<LocalizationConfig>(LocalizationConfig.StandaloneDefaultLocalizationConfig);
         
         /// <inheritdoc />
         protected override string PrefabName { get; } = "StandaloneCourseController";       

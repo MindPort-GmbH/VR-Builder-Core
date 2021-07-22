@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using VRBuilder.Core.Internationalization;
 using UnityEngine;
 
 namespace VRBuilder.UX
@@ -8,16 +7,13 @@ namespace VRBuilder.UX
     /// <summary>
     /// Base course controller which instantiates a defined prefab.
     /// </summary>
-    public abstract class BaseCourseController : ICourseController, ILocalizationProvider
+    public abstract class BaseCourseController : ICourseController
     {
         /// <inheritdoc />
         public abstract string Name { get; }
 
         /// <inheritdoc />
         public abstract int Priority { get; }
-
-        /// <inheritdoc />
-        public virtual LocalizationConfig LocalizationConfig { get; } = Resources.Load<LocalizationConfig>(LocalizationConfig.DefaultLocalizationConfig);
 
         /// <summary>
         /// Name of the course controller prefab.

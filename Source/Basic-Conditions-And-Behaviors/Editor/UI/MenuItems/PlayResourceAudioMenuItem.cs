@@ -1,6 +1,5 @@
 ﻿using VRBuilder.Core.Audio;
 using VRBuilder.Core.Behaviors;
-using VRBuilder.Core.Internationalization;
 using VRBuilder.Editor.UI.StepInspector.Menu;
 
 namespace VRBuilder.Editor.UI.Behaviors
@@ -14,7 +13,7 @@ namespace VRBuilder.Editor.UI.Behaviors
         /// <inheritdoc />
         public override IBehavior GetNewItem()
         {
-            return new PlayAudioBehavior(new ResourceAudio(new LocalizedString()), BehaviorExecutionStages.Activation, true);
+            return new PlayAudioBehavior(new ResourceAudio(""), BehaviorExecutionStages.Activation, true);
         }
     }
 }
