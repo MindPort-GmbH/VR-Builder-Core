@@ -1,6 +1,5 @@
 ﻿using VRBuilder.Core.Audio;
 using VRBuilder.Core.Behaviors;
-using VRBuilder.Core.Internationalization;
 using VRBuilder.Editor.UI.StepInspector.Menu;
 
 namespace VRBuilder.Editor.UI.Behaviors

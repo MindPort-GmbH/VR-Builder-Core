@@ -5,7 +5,6 @@ using VRBuilder.Core.Audio;
 using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Properties;
 using VRBuilder.Core.Configuration;
-using VRBuilder.Core.Internationalization;
 using VRBuilder.Core.SceneObjects;
 
 namespace VRBuilder.Tests.Builder

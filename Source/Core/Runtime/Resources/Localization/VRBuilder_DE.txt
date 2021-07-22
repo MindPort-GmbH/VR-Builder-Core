@@ -1,3 +1,0 @@
-{
-    "VRBuilder.hello_world" : "hallo welt",
-}

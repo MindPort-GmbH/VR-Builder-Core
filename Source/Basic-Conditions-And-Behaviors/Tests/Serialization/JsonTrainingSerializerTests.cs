@@ -6,7 +6,6 @@ using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Conditions;
 using VRBuilder.Core.Properties;
 using VRBuilder.Tests.Builder;
-using VRBuilder.Core.Internationalization;
 using VRBuilder.Core.SceneObjects;
 using VRBuilder.Tests.Utils;
 using VRBuilder.Tests.Utils.Mocks;

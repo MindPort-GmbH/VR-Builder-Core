@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using VRBuilder.Core.Behaviors;
 using VRBuilder.TextToSpeech.Audio;
-using VRBuilder.Core.Internationalization;
 using VRBuilder.Editor.UI.StepInspector.Menu;
 
 namespace VRBuilder.Editor.BaseTemplate.UI.Behaviors
