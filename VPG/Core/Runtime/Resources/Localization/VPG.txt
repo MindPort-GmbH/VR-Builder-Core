@@ -1,3 +1,0 @@
-{
-    "vpg.hello_world" : "hi",
-}
