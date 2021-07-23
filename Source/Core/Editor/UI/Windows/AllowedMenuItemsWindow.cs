@@ -24,6 +24,8 @@ namespace VRBuilder.Editor.UI.Windows
         private static IList<EntityEntry> behaviorList;
         private static IList<EntityEntry> conditionList;
 
+        private static Texture2D logo = LogoEditorHelper.GetProductLogoTexture(LogoStyle.TopBottom);
+
         private Vector2 scrollPosition = Vector2.zero;
 
         private struct EntityEntry
@@ -107,9 +109,10 @@ namespace VRBuilder.Editor.UI.Windows
                 InitializeLists();
             }
 
-            EditorIcon logo = new EditorIcon("logo");
+            GUILayout.Space(20f);
+
             Rect rect = GUILayoutUtility.GetRect(position.width, 150, GUI.skin.box);
-            GUI.DrawTexture(rect, logo.Texture, ScaleMode.ScaleToFit);
+            GUI.DrawTexture(rect, logo, ScaleMode.ScaleToFit);
 
             GUILayout.Space(20f);
 

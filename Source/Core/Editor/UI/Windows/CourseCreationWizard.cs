@@ -54,9 +54,8 @@ namespace VRBuilder.Editor.UI.Windows
             labelStyle.richText = true;
             labelStyle.wordWrap = true;
 
-            EditorIcon logo = new EditorIcon("logo");
             Rect rect = GUILayoutUtility.GetRect(position.width, 150, GUI.skin.box);
-            GUI.DrawTexture(rect, logo.Texture, ScaleMode.ScaleToFit);
+            GUI.DrawTexture(rect, LogoEditorHelper.GetCompanyLogoTexture(LogoStyle.Icon), ScaleMode.ScaleToFit);
 
             if (RuntimeConfigurator.Exists == false)
             {
