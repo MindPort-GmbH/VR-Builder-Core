@@ -45,7 +45,7 @@ namespace VRBuilder.Editor.UI
         /// </summary>
         public static Texture2D GetCompanyLogoTexture(LogoStyle style)
         {
-            return GetLogoTexture(GetProductLogoFilename(style));
+            return GetLogoTexture(GetCompanyLogoFilename(style));
         }
 
         /// <summary>
