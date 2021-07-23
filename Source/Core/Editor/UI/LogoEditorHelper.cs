@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -30,7 +31,7 @@ namespace VRBuilder.Editor.UI
         /// </summary>
         private static readonly string[] productLogoLightFileNames = new[] { "VRBuilder1_transparent_whitemode", "VRBuilder2_transparent_whitemode", "VRBuilder3_transparent_whitemode" };
 
-        private static Texture2D textureCache = null;
+        private static readonly Dictionary<string, Texture2D> textureCache = new Dictionary<string, Texture2D>();
 
         /// <summary>
         /// Returns a common texture containing the correct logo
@@ -117,13 +118,12 @@ namespace VRBuilder.Editor.UI
         }
 
         private static Texture2D GetLogoTexture(string filename)
-        {
-            return AssetDatabase.LoadAssetAtPath<Texture2D>(GetLogoAssetPath(filename));
-            //if (textureCache == null)
-            //{
-            //    textureCache = AssetDatabase.LoadAssetAtPath<Texture2D>(GetLogoAssetPath());
-            //}
-            //return textureCache;
+        {            
+            if (textureCache.ContainsKey(filename) == false)
+            {
+                textureCache.Add(filename, AssetDatabase.LoadAssetAtPath<Texture2D>(GetLogoAssetPath(filename)));                
+            }
+            return textureCache[filename];
         }
     }
 }
