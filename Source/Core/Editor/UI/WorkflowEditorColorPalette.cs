@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using UnityEditor;
@@ -103,8 +103,8 @@ namespace VRBuilder.Editor.UI
         {
             return new WorkflowEditorColorPalette()
             {
-                Primary = new Color32(49, 172, 206, 255),
-                Secondary = new Color32(146, 209, 224, 255),
+                Primary = new Color32(98, 204, 179, 255),
+                Secondary = new Color32(120, 241, 200, 255),
                 ElementBackground = Color.gray,
                 Transition =  Color.white,
                 Text = Color.white
