@@ -73,7 +73,7 @@ namespace VRBuilder.TextToSpeech
             RuntimeConfigurator.Configuration.SetTextToSpeechConfiguration(textToSpeechConfiguration);
             
 #if UNITY_EDITOR
-            string resourcesPath = "Assets/Resources/";
+            string resourcesPath = "Assets/MindPort/VRBuilder/Resources/";
             string configFilePath = $"{resourcesPath}{nameof(TextToSpeechConfiguration)}.asset";
             
             if (Directory.Exists(resourcesPath) == false)

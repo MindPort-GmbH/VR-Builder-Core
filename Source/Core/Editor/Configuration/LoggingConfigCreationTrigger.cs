@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using VRBuilder.Core.Utils.Logging;
 using UnityEditor;
 using UnityEngine;
@@ -18,12 +18,12 @@ namespace VRBuilder.Editor.Configuration
             if (instance == null)
             {
                 instance = ScriptableObject.CreateInstance<LifeCycleLoggingConfig>();
-                if (Directory.Exists("Assets/Resources") == false)
+                if (Directory.Exists("Assets/MindPort/VRBuilder/Resources") == false)
                 {
-                    Directory.CreateDirectory("Assets/Resources");
+                    Directory.CreateDirectory("Assets/MindPort/VRBuilder/Resources");
                 }
                 
-                AssetDatabase.CreateAsset(instance, "Assets/Resources/LifeCycleLoggingConfig.asset");
+                AssetDatabase.CreateAsset(instance, "Assets/MindPort/VRBuilder/Resources/LifeCycleLoggingConfig.asset");
                 AssetDatabase.SaveAssets();
             }
         }
