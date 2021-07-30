@@ -16,7 +16,7 @@ namespace VRBuilder.Editor.XRInteraction
     [CustomEditor(typeof(SnappableProperty)), CanEditMultipleObjects]
     internal class SnappablePropertyEditor : UnityEditor.Editor
     {
-        private const string PrefabPath = "Assets/Resources/SnapZones/Prefabs";
+        private const string PrefabPath = "Assets/MindPort/VRBuilder/Resources/SnapZones/Prefabs";
 
         public override void OnInspectorGUI()
         {
