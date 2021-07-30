@@ -103,8 +103,8 @@ namespace VRBuilder.Editor.UI
         {
             return new WorkflowEditorColorPalette()
             {
-                Primary = new Color32(98, 204, 179, 255),
-                Secondary = new Color32(120, 241, 200, 255),
+                Primary = new Color32(124, 0, 255, 255),
+                Secondary = new Color32(223, 0, 255, 255),
                 ElementBackground = Color.gray,
                 Transition =  Color.white,
                 Text = Color.white
