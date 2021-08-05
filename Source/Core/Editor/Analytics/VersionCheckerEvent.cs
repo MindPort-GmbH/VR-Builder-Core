@@ -15,6 +15,13 @@ namespace VRBuilder.Core.Editor
 
         static VersionCheckerEvent()
         {
+            CheckVersion();
+        }
+
+        private async static void CheckVersion()
+        {
+            string coreVersion = await EditorUtils.GetCoreVersionAsync();
+
             if (Application.isBatchMode)
             {
                 return;
@@ -26,16 +33,16 @@ namespace VRBuilder.Core.Editor
                 return;
             }
 
-            if (settings.ProjectBuilderVersion == unknownVersionString || EditorUtils.GetCoreVersion() == unknownVersionString)
+            if (settings.ProjectBuilderVersion == unknownVersionString || coreVersion == unknownVersionString)
             {
                 return;
             }
 
-            if (settings.ProjectBuilderVersion != EditorUtils.GetCoreVersion())
+            if (settings.ProjectBuilderVersion != coreVersion)
             {
                 IAnalyticsTracker tracker = AnalyticsUtils.CreateTracker();
-                tracker.Send(new AnalyticsEvent() {Category = "creator", Action = "updated", Label = EditorUtils.GetCoreVersion()});
-                settings.ProjectBuilderVersion = EditorUtils.GetCoreVersion();
+                tracker.Send(new AnalyticsEvent() { Category = "creator", Action = "updated", Label = coreVersion });
+                settings.ProjectBuilderVersion = coreVersion;
                 settings.Save();
             }
         }

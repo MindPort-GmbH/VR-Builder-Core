@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,6 +36,10 @@ namespace VRBuilder.Editor.PackageManager
             }
         }
 
+        public class InitializedEventArgs: EventArgs
+        {
+        }
+
         /// <summary>
         /// Emitted when a package was successfully installed.
         /// </summary>
@@ -47,9 +51,19 @@ namespace VRBuilder.Editor.PackageManager
         public static event EventHandler<PackageDisabledEventArgs> OnPackageDisabled;
 
         /// <summary>
+        /// Emitted when the package list has been fetched.
+        /// </summary>
+        public static event EventHandler<InitializedEventArgs> OnInitialized;
+
+        /// <summary>
         /// List of currently loaded packages in the Package Manager.
         /// </summary>
         public static PackageCollection Packages { get; private set; }
+
+        /// <summary>
+        /// Set to true when the package list has been fetched.
+        /// </summary>
+        public static bool IsInitialized { get; private set;  }
 
         static PackageOperationsManager()
         {
@@ -72,6 +86,8 @@ namespace VRBuilder.Editor.PackageManager
             else
             {
                 Packages = listRequest2.Result;
+                IsInitialized = true;
+                OnInitialized?.Invoke(null, new InitializedEventArgs());
             }
         }
 
