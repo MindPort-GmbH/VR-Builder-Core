@@ -93,7 +93,7 @@ namespace VRBuilder.Core.Behaviors
             }
         }
 
-        public HighlightObjectBehavior() : this("", Color.magenta)
+        public HighlightObjectBehavior() : this("", new Color32(231, 64, 255, 126))
         {
         }
 
@@ -104,7 +104,7 @@ namespace VRBuilder.Core.Behaviors
             Data.Name = name;
         }
 
-        public HighlightObjectBehavior(IHighlightProperty target) : this(target, Color.magenta)
+        public HighlightObjectBehavior(IHighlightProperty target) : this(target, new Color32(231, 64, 255, 126))
         {
         }
 
