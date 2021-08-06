@@ -43,7 +43,7 @@ namespace VRBuilder.Editor.XRInteraction
         /// This color is used when an invalid <see cref="InteractableObject"/> is hovering a <see cref="SnapZone"/>.
         /// </summary>
         [Tooltip("This color is used when an invalid object is hovering the snap zone.")]
-        public Color InvalidColor = new Color32(255, 174, 89, 126);
+        public Color InvalidColor = new Color32(243, 77, 20, 126);
 
         [SerializeField]
         [Tooltip("The material shown when a valid object is hovering the snap zone. Should be transparent.\n\n[This field overrides 'ValidHighlightColor']")]

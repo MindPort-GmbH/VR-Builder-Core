@@ -105,7 +105,7 @@ namespace VRBuilder.Editor.UI
             {
                 Primary = new Color32(124, 0, 255, 255),
                 Secondary = new Color32(223, 0, 255, 255),
-                ElementBackground = Color.gray,
+                ElementBackground = new Color32(102, 102, 102, 255),
                 Transition =  Color.white,
                 Text = Color.white
             };
