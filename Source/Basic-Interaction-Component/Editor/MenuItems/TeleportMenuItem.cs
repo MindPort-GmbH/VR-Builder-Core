@@ -8,7 +8,7 @@ namespace VRBuilder.Editor.BasicInteraction.UI.Conditions
     public class TeleportMenuItem : MenuItem<ICondition>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "Teleport";
+        public override string DisplayedName { get; } = "VR User/Teleport";
 
         /// <inheritdoc />
         public override ICondition GetNewItem()

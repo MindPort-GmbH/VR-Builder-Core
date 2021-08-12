@@ -6,7 +6,7 @@ namespace VRBuilder.Editor.BasicInteraction.UI.Conditions
 {
     public class TouchedMenuItem : MenuItem<ICondition>
     {
-        public override string DisplayedName { get; } = "Touch Object";
+        public override string DisplayedName { get; } = "Interaction/Touch Object";
 
         public override ICondition GetNewItem()
         {

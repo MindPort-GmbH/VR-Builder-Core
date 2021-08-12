@@ -7,7 +7,7 @@ namespace VRBuilder.Editor.UI.Conditions
     public class TimeoutMenuItem : MenuItem<ICondition>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "Timeout";
+        public override string DisplayedName { get; } = "Utility/Timeout";
 
         /// <inheritdoc />
         public override ICondition GetNewItem()

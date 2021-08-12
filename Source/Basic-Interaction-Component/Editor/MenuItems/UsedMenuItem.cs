@@ -6,7 +6,7 @@ namespace VRBuilder.Editor.BasicInteraction.UI.Conditions
 {
     public class UsedMenuItem : MenuItem<ICondition>
     {
-        public override string DisplayedName { get; } = "Use Object";
+        public override string DisplayedName { get; } = "Interaction/Use Object";
 
         public override ICondition GetNewItem()
         {
