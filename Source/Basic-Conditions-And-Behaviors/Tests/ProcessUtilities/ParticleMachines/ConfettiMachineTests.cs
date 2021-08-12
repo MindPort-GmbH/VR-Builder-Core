@@ -5,6 +5,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using Object = UnityEngine.Object;
+using VRBuilder.Core.ProcessUtils;
 
 namespace VRBuilder.BaseTemplate.Tests.ParticleMachine
 {

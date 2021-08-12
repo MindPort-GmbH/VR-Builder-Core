@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections;
-using VRBuilder.BaseTemplate.Behaviors;
-using VRBuilder.Core;
 using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Configuration.Modes;
 using VRBuilder.Core.SceneObjects;
@@ -12,7 +10,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using Object = UnityEngine.Object;
 
-namespace VRBuilder.BaseTemplate.Tests.Behaviors
+namespace VRBuilder.Core.Tests.Behaviors
 {
     public class ConfettiBehaviorTests : RuntimeTests
     {

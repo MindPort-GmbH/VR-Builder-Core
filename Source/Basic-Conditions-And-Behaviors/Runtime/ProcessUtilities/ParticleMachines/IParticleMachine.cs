@@ -1,4 +1,4 @@
-﻿namespace VRBuilder.BaseTemplate
+﻿namespace VRBuilder.Core.ProcessUtils
 {
     public interface IParticleMachine
     {
