@@ -8,7 +8,7 @@ namespace VRBuilder.Editor.TextToSpeech.UI.Behaviors
     public class TextToSpeechMenuItem : MenuItem<IBehavior>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "Audio/Play TextToSpeech Audio";
+        public override string DisplayedName { get; } = "Guidance/Play TextToSpeech Audio";
 
         /// <inheritdoc />
         public override IBehavior GetNewItem()

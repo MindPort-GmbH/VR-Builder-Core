@@ -7,7 +7,7 @@ namespace VRBuilder.Editor.UI.Behaviors
     public class HighlightObjectMenuItem : MenuItem<IBehavior>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "Highlight Object";
+        public override string DisplayedName { get; } = "Guidance/Highlight Object";
 
         /// <inheritdoc />
         public override IBehavior GetNewItem()

@@ -7,7 +7,7 @@ namespace VRBuilder.Editor.UI.Behaviors
     public class BehaviorSequenceMenuItem : MenuItem<IBehavior>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "Behaviors Sequence";
+        public override string DisplayedName { get; } = "Utility/Behaviors Sequence";
 
         /// <inheritdoc />
         public override IBehavior GetNewItem()

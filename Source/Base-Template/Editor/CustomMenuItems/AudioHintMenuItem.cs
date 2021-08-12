@@ -8,7 +8,7 @@ namespace VRBuilder.Editor.BaseTemplate.UI.Behaviors
     public class AudioHintMenuItem : MenuItem<IBehavior>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "VR Builder/Audio Hint";
+        public override string DisplayedName { get; } = "Guidance/Audio Hint";
 
         /// <inheritdoc />
         public override IBehavior GetNewItem()

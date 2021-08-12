@@ -7,7 +7,7 @@ namespace VRBuilder.Editor.UI.Behaviors
     public class DelayMenuItem : MenuItem<IBehavior>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "Delay";
+        public override string DisplayedName { get; } = "Utility/Delay";
 
         /// <inheritdoc />
         public override IBehavior GetNewItem()

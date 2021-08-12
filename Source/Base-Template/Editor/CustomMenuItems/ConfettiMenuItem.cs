@@ -7,7 +7,7 @@ namespace VRBuilder.Editor.BaseTemplate.UI.Behaviors
     public class ConfettiMenuItem : MenuItem<IBehavior>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "VR Builder/Spawn Confetti";
+        public override string DisplayedName { get; } = "Guidance/Spawn Confetti";
 
         /// <inheritdoc />
         public override IBehavior GetNewItem()

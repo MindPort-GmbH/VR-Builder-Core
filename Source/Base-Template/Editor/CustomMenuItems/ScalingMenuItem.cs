@@ -7,7 +7,7 @@ namespace VRBuilder.Editor.BaseTemplate.UI.Behaviors
     public class ScalingMenuItem : MenuItem<IBehavior>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "VR Builder/Scale Object";
+        public override string DisplayedName { get; } = "Animation/Scale Object";
 
         /// <inheritdoc />
         public override IBehavior GetNewItem()
