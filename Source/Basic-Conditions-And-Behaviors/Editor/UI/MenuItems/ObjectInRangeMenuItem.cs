@@ -7,7 +7,7 @@ namespace VRBuilder.Editor.UI.Conditions
     public class ObjectInRangeMenuItem : MenuItem<ICondition>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "Object Nearby";
+        public override string DisplayedName { get; } = "Environment/Object Nearby";
 
         /// <inheritdoc />
         public override ICondition GetNewItem()

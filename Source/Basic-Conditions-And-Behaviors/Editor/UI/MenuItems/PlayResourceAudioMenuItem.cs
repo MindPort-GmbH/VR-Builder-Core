@@ -8,7 +8,7 @@ namespace VRBuilder.Editor.UI.Behaviors
     public class PlayResourceAudioMenuItem : MenuItem<IBehavior>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "Audio/Play Audio File";
+        public override string DisplayedName { get; } = "Guidance/Play Audio File";
 
         /// <inheritdoc />
         public override IBehavior GetNewItem()

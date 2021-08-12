@@ -2,16 +2,14 @@
 using Newtonsoft.Json;
 using System.Collections;
 using System.Runtime.Serialization;
-using VRBuilder.Core;
 using VRBuilder.Core.Utils;
-using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Attributes;
 using VRBuilder.Core.SceneObjects;
 using VRBuilder.Core.Configuration;
-using VRBuilder.Core.Validation;
 using Object = UnityEngine.Object;
+using VRBuilder.Core.ProcessUtils;
 
-namespace VRBuilder.BaseTemplate.Behaviors
+namespace VRBuilder.Core.Behaviors
 {
     /// <summary>
     /// This behavior causes confetti to rain.

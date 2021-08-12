@@ -2,13 +2,10 @@
 using Newtonsoft.Json;
 using System.Collections;
 using System.Runtime.Serialization;
-using VRBuilder.Core;
-using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Attributes;
 using VRBuilder.Core.SceneObjects;
-using VRBuilder.Core.Validation;
 
-namespace VRBuilder.BaseTemplate.Behaviors
+namespace VRBuilder.Core.Behaviors
 {
     // This behavior linearly changes scale of a Target object over Duration seconds, until it matches TargetScale.
     [DataContract(IsReference = true)]

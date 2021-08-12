@@ -1,6 +1,4 @@
 using System.Collections;
-using VRBuilder.BaseTemplate.Behaviors;
-using VRBuilder.Core;
 using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Configuration.Modes;
 using VRBuilder.Core.SceneObjects;
@@ -9,7 +7,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace VRBuilder.BaseTemplate.Tests.Behaviors
+namespace VRBuilder.Core.Tests.Behaviors
 {
     public class ScalingBehaviorTests : RuntimeTests
     {
