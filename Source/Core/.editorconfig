@@ -14,6 +14,3 @@ trim_trailing_whitespace = false
 # keep these and the VS stuff below in sync with .hgeol's CRLF extensions
 [*.{vcproj,bat,cmd,xaml,tt,t4,ttinclude}]
 end_of_line = crlf
-
-[*.cs]
-file_header_template = Copyright (c) 2013-2019 Innoactive GmbH\nLicensed under the Apache License, Version 2.0\nModifications copyright (c) 2021 MindPort GmbH
