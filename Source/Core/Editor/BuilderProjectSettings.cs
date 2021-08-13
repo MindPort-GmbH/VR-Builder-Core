@@ -1,3 +1,7 @@
+// Copyright (c) 2013-2019 Innoactive GmbH
+// Licensed under the Apache License, Version 2.0
+// Modifications copyright (c) 2021 MindPort GmbH
+
 using System.IO;
 using VRBuilder.Editor;
 using UnityEditor;
@@ -29,13 +33,13 @@ public partial class BuilderProjectSettings : ScriptableObject
         BuilderProjectSettings settings = Resources.Load<BuilderProjectSettings>("BuilderProjectSettings");
         if (settings == null)
         {
-            if (!Directory.Exists("Assets/Resources"))
+            if (!Directory.Exists("Assets/MindPort/VRBuilder/Resources"))
             {
-                Directory.CreateDirectory("Assets/Resources");
+                Directory.CreateDirectory("Assets/MindPort/VRBuilder/Resources");
             }
             // Create an instance
             settings = CreateInstance<BuilderProjectSettings>();
-            AssetDatabase.CreateAsset(settings, "Assets/Resources/BuilderProjectSettings.asset");
+            AssetDatabase.CreateAsset(settings, "Assets/MindPort/VRBuilder/Resources/BuilderProjectSettings.asset");
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 

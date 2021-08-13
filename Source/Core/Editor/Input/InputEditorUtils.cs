@@ -1,4 +1,8 @@
-﻿using VRBuilder.Core.Configuration;
+// Copyright (c) 2013-2019 Innoactive GmbH
+// Licensed under the Apache License, Version 2.0
+// Modifications copyright (c) 2021 MindPort GmbH
+
+using VRBuilder.Core.Configuration;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,18 +21,28 @@ namespace VRBuilder.Editor.Input
         {
             UnityEngine.InputSystem.InputActionAsset defaultBindings = Resources.Load<UnityEngine.InputSystem.InputActionAsset>(RuntimeConfigurator.Configuration.DefaultInputActionAssetPath);
 
-            if (AssetDatabase.IsValidFolder("Assets/Resources") == false)
+            if(AssetDatabase.IsValidFolder("Assets/MindPort")== false)
             {
-                AssetDatabase.CreateFolder("Assets", "Resources");
+                AssetDatabase.CreateFolder("Assets", "MindPort");
             }
 
-            if (AssetDatabase.IsValidFolder("Assets/Resources/KeyBindings") == false)
+            if (AssetDatabase.IsValidFolder("Assets/MindPort/VRBuilder") == false)
             {
-                AssetDatabase.CreateFolder("Assets/Resources", "KeyBindings");
+                AssetDatabase.CreateFolder("Assets/MindPort", "VRBuilder");
+            }
+
+            if (AssetDatabase.IsValidFolder("Assets/MindPort/VRBuilder/Resources") == false)
+            {
+                AssetDatabase.CreateFolder("Assets/MindPort/VRBuilder", "Resources");
+            }
+
+            if (AssetDatabase.IsValidFolder("Assets/MindPort/VRBuilder/Resources/KeyBindings") == false)
+            {
+                AssetDatabase.CreateFolder("Assets/MindPort/VRBuilder/Resources", "KeyBindings");
             }
 
             AssetDatabase.CopyAsset(AssetDatabase.GetAssetPath(defaultBindings),
-                $"Assets/Resources/{RuntimeConfigurator.Configuration.CustomInputActionAssetPath}.inputactions");
+                $"Assets/MindPort/VRBuilder/Resources/{RuntimeConfigurator.Configuration.CustomInputActionAssetPath}.inputactions");
 
             AssetDatabase.Refresh();
 
@@ -42,7 +56,7 @@ namespace VRBuilder.Editor.Input
         public static bool UsesCustomKeyBindingAsset()
         {
             return AssetDatabase.GetAssetPath(RuntimeConfigurator.Configuration.CurrentInputActionAsset)
-                .Equals("Assets/Resources" + RuntimeConfigurator.Configuration.CustomInputActionAssetPath);
+                .Equals("Assets/MindPort/VRBuilder/Resources" + RuntimeConfigurator.Configuration.CustomInputActionAssetPath);
         }
 
         /// <summary>

@@ -1,12 +1,18 @@
+// Copyright (c) 2013-2019 Innoactive GmbH
+// Licensed under the Apache License, Version 2.0
+// Modifications copyright (c) 2021 MindPort GmbH
+
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using JetBrains.Annotations;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
+using VRBuilder.Editor.PackageManager;
 
 namespace VRBuilder.Editor
 {
@@ -17,6 +23,7 @@ namespace VRBuilder.Editor
     internal static class EditorUtils
     {
         private const string ignoreEditorImguiTestsDefineSymbol = "BUILDER_IGNORE_EDITOR_IMGUI_TESTS";
+        private const string corePackageName = "com.mindport.builder.core";
 
         private static string coreFolder;
 
@@ -107,13 +114,21 @@ namespace VRBuilder.Editor
         /// </summary>
         internal static string GetCoreVersion()
         {
-            string versionFilePath = Path.Combine(GetCoreFolder(), "version.txt");
-            if (File.Exists(versionFilePath))
+            string version = PackageOperationsManager.GetInstalledPackageVersion(corePackageName);
+            return string.IsNullOrEmpty(version) ? "unknown" : version;
+        }
+
+        /// <summary>
+        /// Returns the core version once the loaded packages are initialized, to avoid an unknown result.
+        /// </summary>        
+        internal async static Task<string> GetCoreVersionAsync()
+        {
+            while (PackageOperationsManager.IsInitialized == false)
             {
-                return File.ReadAllText(versionFilePath);
+                await Task.Delay(100);
             }
 
-            return "unknown";
+            return GetCoreVersion();
         }
 
         /// <summary>

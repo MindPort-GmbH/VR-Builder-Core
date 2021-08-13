@@ -6,7 +6,7 @@ namespace VRBuilder.Editor.BasicInteraction.UI.Conditions
 {
     public class ReleasedMenuItem : MenuItem<ICondition>
     {
-        public override string DisplayedName { get; } = "Release Object";
+        public override string DisplayedName { get; } = "Interaction/Release Object";
 
         public override ICondition GetNewItem()
         {

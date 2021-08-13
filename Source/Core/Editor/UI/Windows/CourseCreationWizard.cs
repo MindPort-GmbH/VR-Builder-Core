@@ -1,3 +1,7 @@
+// Copyright (c) 2013-2019 Innoactive GmbH
+// Licensed under the Apache License, Version 2.0
+// Modifications copyright (c) 2021 MindPort GmbH
+
 using VRBuilder.Core;
 using VRBuilder.Core.Configuration;
 using UnityEditor;
@@ -54,9 +58,8 @@ namespace VRBuilder.Editor.UI.Windows
             labelStyle.richText = true;
             labelStyle.wordWrap = true;
 
-            EditorIcon logo = new EditorIcon("logo");
             Rect rect = GUILayoutUtility.GetRect(position.width, 150, GUI.skin.box);
-            GUI.DrawTexture(rect, logo.Texture, ScaleMode.ScaleToFit);
+            GUI.DrawTexture(rect, LogoEditorHelper.GetCompanyLogoTexture(LogoStyle.Icon), ScaleMode.ScaleToFit);
 
             if (RuntimeConfigurator.Exists == false)
             {

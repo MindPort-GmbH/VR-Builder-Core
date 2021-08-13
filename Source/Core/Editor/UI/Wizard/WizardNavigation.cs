@@ -1,3 +1,7 @@
+// Copyright (c) 2013-2019 Innoactive GmbH
+// Licensed under the Apache License, Version 2.0
+// Modifications copyright (c) 2021 MindPort GmbH
+
 using System.Collections.Generic;
 using VRBuilder.Editor.UI;
 using UnityEditor;
@@ -9,7 +13,7 @@ namespace VRBuilder.Editor.UI.Wizard
     {
         private const float PaddingTop = 4f;
 
-        protected EditorIcon logo = new EditorIcon("logo_icon");
+        protected Texture2D logo = LogoEditorHelper.GetCompanyLogoTexture(LogoStyle.SideBySide);
 
         protected List<IWizardNavigationEntry> Entries { get; }
 
@@ -41,7 +45,7 @@ namespace VRBuilder.Editor.UI.Wizard
             EditorGUI.DrawRect(new Rect(0, Entries.Count * EntryHeight + 1 + PaddingTop, window.width, window.height - 1 - Entries.Count * EntryHeight), WizardWindow.LineColor);
 
             Rect logoRect = new Rect(window.x + 16f, window.y + window.height - (window.width / 2) - 5, window.width - 32f, (window.width - 32) * 0.34f);
-            GUI.DrawTexture(logoRect, logo.Texture, ScaleMode.ScaleToFit);
+            GUI.DrawTexture(logoRect, logo, ScaleMode.ScaleToFit);
         }
 
         protected Rect GetEntryRect(int position, float width)

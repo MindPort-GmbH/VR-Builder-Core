@@ -7,7 +7,7 @@ namespace VRBuilder.Editor.UI.Behaviors
     public class DisableGameObjectMenuItem : MenuItem<IBehavior>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "Disable Object";
+        public override string DisplayedName { get; } = "Environment/Disable Object";
 
         /// <inheritdoc />
         public override IBehavior GetNewItem()

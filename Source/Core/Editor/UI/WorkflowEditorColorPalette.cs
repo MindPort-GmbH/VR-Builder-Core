@@ -1,4 +1,8 @@
-﻿using System.Linq;
+// Copyright (c) 2013-2019 Innoactive GmbH
+// Licensed under the Apache License, Version 2.0
+// Modifications copyright (c) 2021 MindPort GmbH
+
+using System.Linq;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using UnityEditor;
@@ -103,9 +107,9 @@ namespace VRBuilder.Editor.UI
         {
             return new WorkflowEditorColorPalette()
             {
-                Primary = new Color32(49, 172, 206, 255),
-                Secondary = new Color32(146, 209, 224, 255),
-                ElementBackground = Color.gray,
+                Primary = new Color32(124, 0, 255, 255),
+                Secondary = new Color32(223, 0, 255, 255),
+                ElementBackground = new Color32(102, 102, 102, 255),
                 Transition =  Color.white,
                 Text = Color.white
             };

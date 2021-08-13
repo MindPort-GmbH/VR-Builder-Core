@@ -1,3 +1,7 @@
+// Copyright (c) 2013-2019 Innoactive GmbH
+// Licensed under the Apache License, Version 2.0
+// Modifications copyright (c) 2021 MindPort GmbH
+
 using System.IO;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -43,11 +47,11 @@ namespace VRBuilder.Core.Runtime.Utils
                 // Create an instance
                 settings = CreateInstance<T>();
 #if UNITY_EDITOR
-                if (!Directory.Exists("Assets/Resources"))
+                if (!Directory.Exists("Assets/MindPort/VRBuilder/Resources"))
                 {
-                    Directory.CreateDirectory("Assets/Resources");
+                    Directory.CreateDirectory("Assets/MindPort/VRBuilder/Resources");
                 }
-                AssetDatabase.CreateAsset(settings, $"Assets/Resources/{typeof(T).Name}.asset");
+                AssetDatabase.CreateAsset(settings, $"Assets/MindPort/VRBuilder/Resources/{typeof(T).Name}.asset");
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
 #endif

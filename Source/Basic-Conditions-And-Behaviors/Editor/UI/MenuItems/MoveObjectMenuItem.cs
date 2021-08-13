@@ -7,7 +7,7 @@ namespace VRBuilder.Editor.UI.Behaviors
     public class MoveObjectMenuItem : MenuItem<IBehavior>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "Move Object";
+        public override string DisplayedName { get; } = "Animation/Move Object";
 
         /// <inheritdoc />
         public override IBehavior GetNewItem()

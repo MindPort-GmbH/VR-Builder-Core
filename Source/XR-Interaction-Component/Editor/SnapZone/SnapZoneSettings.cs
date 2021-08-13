@@ -14,7 +14,7 @@ namespace VRBuilder.Editor.XRInteraction
     [CreateAssetMenu(fileName = "SnapZoneSettings", menuName = "VR Builder/SnapZoneSettings", order = 1)]
     public class SnapZoneSettings : SettingsObject<SnapZoneSettings>
     {
-        private const string MaterialsPath = "Assets/Resources/SnapZones";
+        private const string MaterialsPath = "Assets/MindPort/VRBuilder/Resources/SnapZones";
         private static SnapZoneSettings settings;
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace VRBuilder.Editor.XRInteraction
         /// This color is used as the snap zone highlight color when no object is hovering a <see cref="SnapZone"/>.
         /// </summary>
         [Tooltip("This color is used as the snap zone highlight color when no object is hovering but `Snap Zone Active` is true.")]
-        public Color HighlightColor = new Color32(64, 200, 255, 50);
+        public Color HighlightColor = new Color32(102, 150, 255, 50);
 
         [SerializeField]
         [Tooltip("The material used for the highlight object. Should be transparent.\n\n[This field overrides 'HighlightColor']")]
@@ -37,13 +37,13 @@ namespace VRBuilder.Editor.XRInteraction
         /// This color is used when a valid <see cref="InteractableObject"/> is hovering a <see cref="SnapZone"/>.
         /// </summary>
         [Tooltip("This color is used when a valid object is hovering the snap zone.")]
-        public Color ValidationColor = new Color32(70, 255, 0, 126);
+        public Color ValidationColor = new Color32(120, 241, 200, 126);
 
         /// <summary>
         /// This color is used when an invalid <see cref="InteractableObject"/> is hovering a <see cref="SnapZone"/>.
         /// </summary>
         [Tooltip("This color is used when an invalid object is hovering the snap zone.")]
-        public Color InvalidColor = new Color32(255, 25, 0, 126);
+        public Color InvalidColor = new Color32(243, 77, 20, 126);
 
         [SerializeField]
         [Tooltip("The material shown when a valid object is hovering the snap zone. Should be transparent.\n\n[This field overrides 'ValidHighlightColor']")]
@@ -107,7 +107,7 @@ namespace VRBuilder.Editor.XRInteraction
         {
             SnapZoneSettings snapZoneSettings = CreateInstance<SnapZoneSettings>();
 
-            string filePath = "Assets/Resources";
+            string filePath = "Assets/MindPort/VRBuilder/Resources";
 
             if (Directory.Exists(filePath) == false)
             {

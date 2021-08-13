@@ -1,3 +1,7 @@
+// Copyright (c) 2013-2019 Innoactive GmbH
+// Licensed under the Apache License, Version 2.0
+// Modifications copyright (c) 2021 MindPort GmbH
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +27,8 @@ namespace VRBuilder.Editor.UI.Windows
         private bool isEditUnlocked;
         private static IList<EntityEntry> behaviorList;
         private static IList<EntityEntry> conditionList;
+
+        private static Texture2D logo = LogoEditorHelper.GetProductLogoTexture(LogoStyle.TopBottom);
 
         private Vector2 scrollPosition = Vector2.zero;
 
@@ -107,9 +113,10 @@ namespace VRBuilder.Editor.UI.Windows
                 InitializeLists();
             }
 
-            EditorIcon logo = new EditorIcon("logo");
+            GUILayout.Space(20f);
+
             Rect rect = GUILayoutUtility.GetRect(position.width, 150, GUI.skin.box);
-            GUI.DrawTexture(rect, logo.Texture, ScaleMode.ScaleToFit);
+            GUI.DrawTexture(rect, logo, ScaleMode.ScaleToFit);
 
             GUILayout.Space(20f);
 

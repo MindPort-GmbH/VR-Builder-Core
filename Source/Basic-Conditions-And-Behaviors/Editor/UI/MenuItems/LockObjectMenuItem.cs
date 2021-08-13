@@ -9,7 +9,7 @@ namespace VRBuilder.Editor.UI.Behaviors
     public class LockObjectMenuItem : MenuItem<IBehavior>
     {
         /// <inheritdoc />
-        public override string DisplayedName { get; } = "Lock Object";
+        public override string DisplayedName { get; } = "Environment/Lock Object";
 
         /// <inheritdoc />
         public override IBehavior GetNewItem()

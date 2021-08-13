@@ -1,4 +1,8 @@
-﻿using NUnit.Framework;
+﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Licensed under the Apache License, Version 2.0
+// Modifications copyright (c) 2021 MindPort GmbH
+
+using NUnit.Framework;
 using System.Collections;
 using VRBuilder.Core.Configuration;
 using VRBuilder.Core.Exceptions;
