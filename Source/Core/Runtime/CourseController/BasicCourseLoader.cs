@@ -1,14 +1,14 @@
-﻿using UnityEngine;
+using UnityEngine;
 using VRBuilder.Core;
 using VRBuilder.Core.Configuration;
 using System;
 
-namespace VRBuilder.BaseTemplate
+namespace VRBuilder.CourseController
 {
     /// <summary>
     /// Loads and starts the training course currently selected in the '[TRAINING_CONFIGURATION]' gameObject.
     /// </summary>
-    public class TrainingCourseLoader : MonoBehaviour
+    public class BasicCourseLoader : MonoBehaviour
     {
        private void Start()
         {
