@@ -1,4 +1,8 @@
-﻿using System.Linq;
+﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Licensed under the Apache License, Version 2.0
+// Modifications copyright (c) 2021 MindPort GmbH
+
+using System.Linq;
 using System.Runtime.Serialization;
 using VRBuilder.Core.Configuration.Modes;
 using VRBuilder.Core.EntityOwners;
