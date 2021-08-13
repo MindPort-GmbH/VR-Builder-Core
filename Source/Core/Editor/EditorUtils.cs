@@ -23,7 +23,7 @@ namespace VRBuilder.Editor
     internal static class EditorUtils
     {
         private const string ignoreEditorImguiTestsDefineSymbol = "BUILDER_IGNORE_EDITOR_IMGUI_TESTS";
-        private const string corePackageName = "com.mindport.builder.core";
+        private const string corePackageName = "co.mindport.builder.core";
 
         private static string coreFolder;
 
@@ -159,7 +159,7 @@ namespace VRBuilder.Editor
         private static void ResolveCoreFolder()
         {
             string projectFolder = Application.dataPath.Replace("/Assets", "");
-            string packagePath = "/Packages/com.mindport.builder.core";
+            string packagePath = "/Packages/co.mindport.builder.core";
             string[] roots = Directory.GetFiles(projectFolder + packagePath, $"{nameof(EditorUtils)}.cs", SearchOption.AllDirectories);
 
             if (roots.Length == 0)
