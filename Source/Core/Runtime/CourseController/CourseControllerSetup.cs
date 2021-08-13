@@ -1,7 +1,7 @@
-﻿using System.IO;
+using System.IO;
 using UnityEngine;
 
-namespace VRBuilder.BaseTemplate
+namespace VRBuilder.CourseController
 {
     /// <summary>
     /// Allows to select a desired CourseController.

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using VRBuilder.Core.Configuration;
 
-namespace VRBuilder.BaseTemplate
+namespace VRBuilder.CourseController
 {
     /// <summary>
     /// Puts the parent GameObject to the same position and rotation of the trainee camera.
