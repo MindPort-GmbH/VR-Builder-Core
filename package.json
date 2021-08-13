@@ -9,5 +9,9 @@
     "vr",
     "core",
     "mindport"
-  ]
+  ],
+  "author": {
+    "name": "MindPort GmbH",
+    "email": "mindport.vr@gmail.com"
+  }
 }
