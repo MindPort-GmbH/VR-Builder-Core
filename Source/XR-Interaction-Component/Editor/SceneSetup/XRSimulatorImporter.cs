@@ -1,4 +1,8 @@
-﻿using System.IO;
+﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Licensed under the Apache License, Version 2.0
+// Modifications copyright (c) 2021 MindPort GmbH
+
+using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
@@ -16,6 +20,7 @@ namespace VRBuilder.Editor.PackageManager.XRInteraction
         private const string SamplePrefabName = "XR Device Simulator";
         private const string ActionRigName = "[XR_Setup_Action_Based]";
         private const string SimulatorPrefabName = "[XR_Setup_Simulator]";
+        private const string SimulatorSavePath = "Assets/MindPort/VRBuilder/Resources";
 
         public XRSimulatorImporter()
         {
@@ -37,7 +42,7 @@ namespace VRBuilder.Editor.PackageManager.XRInteraction
                 return;
             }
 
-            simulatorRigPath = $"{Path.GetDirectoryName(actionRigPath)}/{SimulatorPrefabName}.prefab";
+            simulatorRigPath = $"{SimulatorSavePath}/{SimulatorPrefabName}.prefab";
 
             simulator.transform.SetParent(actionRig.transform);
             PrefabUtility.SaveAsPrefabAsset(actionRig, simulatorRigPath);
