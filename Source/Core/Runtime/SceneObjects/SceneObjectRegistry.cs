@@ -44,7 +44,8 @@ namespace VRBuilder.Core.SceneObjects
                 catch (NameNotUniqueException)
                 {
 #if UNITY_EDITOR
-                    if (EditorUtility.DisplayDialog("Scene Object Name Conflict", $"The game object {trainingObject.gameObject.name} cannot be registered because it has an already existing unique name: {trainingObject.UniqueName}. Do you want to delete it?", "Yes", "No"))
+                    string isPlayingText = Application.isPlaying ? "\n\nThe object will be restored after ending Play Mode." : "\n\nThe object will be deleted from the scene.";
+                    if (EditorUtility.DisplayDialog("Scene Object Name Conflict", $"The game object {trainingObject.gameObject.name} cannot be registered because it has an already existing unique name: {trainingObject.UniqueName}. Do you want to delete it?{isPlayingText}", "Yes", "No"))
                     {
                         Object.DestroyImmediate(trainingObject.gameObject);
                     }
