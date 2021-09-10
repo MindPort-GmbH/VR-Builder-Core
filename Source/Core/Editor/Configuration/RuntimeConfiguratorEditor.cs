@@ -41,6 +41,8 @@ namespace VRBuilder.Editor.Configuration
             configurationTypeNames = configurationTypes.Select(t => t.Name).ToArray();
 
             CourseAssetPostprocessor.CourseFileStructureChanged += OnCourseFileStructureChanged;
+
+            PopulateCourseList();
         }
 
         /// <summary>
@@ -100,6 +102,22 @@ namespace VRBuilder.Editor.Configuration
             serializedObject.ApplyModifiedProperties();
         }
 
+        private static void PopulateCourseList()
+        {
+            List<string> courses = CourseAssetUtils.GetAllCourses().ToList();
+
+            // Create dummy entry if no files are present.
+            if (courses.Any() == false)
+            {
+                trainingCourseDisplayNames.Clear();
+                trainingCourseDisplayNames.Add("<none>");
+                return;
+            }
+
+            trainingCourseDisplayNames = courses;
+            trainingCourseDisplayNames.Sort();
+        }
+
         private void DrawRuntimeConfigurationDropDown()
         {
             int index = configurationTypes.FindIndex(t =>
@@ -152,18 +170,7 @@ namespace VRBuilder.Editor.Configuration
                 return;
             }
 
-            List<string> courses = CourseAssetUtils.GetAllCourses().ToList();
-
-            // Create dummy entry if no files are present.
-            if (courses.Any() == false)
-            {
-                trainingCourseDisplayNames.Clear();
-                trainingCourseDisplayNames.Add("<none>");
-                return;
-            }
-
-            trainingCourseDisplayNames = courses;
-            trainingCourseDisplayNames.Sort();
+            PopulateCourseList();
 
             if (string.IsNullOrEmpty(configurator.GetSelectedCourse()))
             {
