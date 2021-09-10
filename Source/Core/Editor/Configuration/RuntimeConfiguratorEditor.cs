@@ -130,7 +130,6 @@ namespace VRBuilder.Editor.Configuration
 
             if (IsCourseListEmpty() == false && configurator.GetSelectedCourse() != newCourseStreamingAssetsPath)
             {
-
                 SetConfiguratorSelectedCourse(newCourseStreamingAssetsPath);
                 GlobalEditorHandler.SetCurrentCourse(trainingCourseDisplayNames[index]);
             }
