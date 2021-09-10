@@ -131,7 +131,6 @@ namespace VRBuilder.Core.Configuration
 
                 Instance.runtimeConfigurationName = value.GetType().AssemblyQualifiedName;
                 Instance.runtimeConfiguration = value;
-                Configuration.SceneObjectRegistry.RegisterAll();
 
                 EmitRuntimeConfigurationChanged();
             }
