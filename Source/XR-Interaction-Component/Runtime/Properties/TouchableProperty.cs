@@ -59,7 +59,9 @@ namespace VRBuilder.XRInteraction.Properties
         protected void Reset()
         {
             Interactable.IsTouchable = true;
-            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            Interactable.IsGrabbable = GetComponent<GrabbableProperty>() != null;
+            Interactable.IsUsable = GetComponent<UsableProperty>() != null;
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
         }
 
         private void HandleXRTouched(HoverEnterEventArgs arguments)

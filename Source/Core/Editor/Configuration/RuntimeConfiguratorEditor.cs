@@ -48,6 +48,11 @@ namespace VRBuilder.Editor.Configuration
         /// </summary>
         public static bool IsCourseListEmpty()
         {
+            if(isDirty)
+            {
+                PopulateCourseList();
+            }
+
             return trainingCourseDisplayNames.Count == 1 && trainingCourseDisplayNames[0] == "<none>";
         }
 
@@ -100,6 +105,22 @@ namespace VRBuilder.Editor.Configuration
             serializedObject.ApplyModifiedProperties();
         }
 
+        private static void PopulateCourseList()
+        {
+            List<string> courses = CourseAssetUtils.GetAllCourses().ToList();
+
+            // Create dummy entry if no files are present.
+            if (courses.Any() == false)
+            {
+                trainingCourseDisplayNames.Clear();
+                trainingCourseDisplayNames.Add("<none>");
+                return;
+            }
+
+            trainingCourseDisplayNames = courses;
+            trainingCourseDisplayNames.Sort();
+        }
+
         private void DrawRuntimeConfigurationDropDown()
         {
             int index = configurationTypes.FindIndex(t =>
@@ -130,7 +151,6 @@ namespace VRBuilder.Editor.Configuration
 
             if (IsCourseListEmpty() == false && configurator.GetSelectedCourse() != newCourseStreamingAssetsPath)
             {
-
                 SetConfiguratorSelectedCourse(newCourseStreamingAssetsPath);
                 GlobalEditorHandler.SetCurrentCourse(trainingCourseDisplayNames[index]);
             }
@@ -153,18 +173,7 @@ namespace VRBuilder.Editor.Configuration
                 return;
             }
 
-            List<string> courses = CourseAssetUtils.GetAllCourses().ToList();
-
-            // Create dummy entry if no files are present.
-            if (courses.Any() == false)
-            {
-                trainingCourseDisplayNames.Clear();
-                trainingCourseDisplayNames.Add("<none>");
-                return;
-            }
-
-            trainingCourseDisplayNames = courses;
-            trainingCourseDisplayNames.Sort();
+            PopulateCourseList();
 
             if (string.IsNullOrEmpty(configurator.GetSelectedCourse()))
             {

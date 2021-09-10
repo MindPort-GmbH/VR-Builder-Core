@@ -9,6 +9,7 @@ using VRBuilder.Core.Exceptions;
 using VRBuilder.Unity;
 using UnityEngine;
 using Object = UnityEngine.Object;
+using UnityEditor;
 
 namespace VRBuilder.Core.SceneObjects
 {
@@ -42,8 +43,15 @@ namespace VRBuilder.Core.SceneObjects
                 }
                 catch (NameNotUniqueException)
                 {
-                    Debug.LogErrorFormat("Registration of training scene object entity with name '{0}' failed. Name is not unique! Entity will destroy itself. Referenced game object: '{1}'.", trainingObject.UniqueName, trainingObject.GameObject.name);
-                    Object.DestroyImmediate(trainingObject.gameObject);
+#if UNITY_EDITOR
+                    string isPlayingText = Application.isPlaying ? "\n\nThe object will be restored after ending Play Mode." : "\n\nThe object will be deleted from the scene.";
+                    if (EditorUtility.DisplayDialog("Scene Object Name Conflict", $"The game object {trainingObject.gameObject.name} cannot be registered because it has an already existing unique name: {trainingObject.UniqueName}. Do you want to delete it?{isPlayingText}", "Yes", "No"))
+                    {
+                        Object.DestroyImmediate(trainingObject.gameObject);
+                    }
+#else
+                    Debug.LogErrorFormat("Registration of training scene object entity with name '{0}' failed. Name is not unique! Errors will ensue. Referenced game object: '{1}'.", trainingObject.UniqueName, trainingObject.GameObject.name);
+#endif
                 }
                 catch (AlreadyRegisteredException)
                 {
