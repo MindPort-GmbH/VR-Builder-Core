@@ -50,7 +50,7 @@ namespace VRBuilder.Core.SceneObjects
                         Object.DestroyImmediate(trainingObject.gameObject);
                     }
 #else
-                    Debug.LogErrorFormat("Registration of training scene object entity with name '{0}' failed. Name is not unique! Entity will destroy itself. Referenced game object: '{1}'.", trainingObject.UniqueName, trainingObject.GameObject.name);
+                    Debug.LogErrorFormat("Registration of training scene object entity with name '{0}' failed. Name is not unique! Errors will ensue. Referenced game object: '{1}'.", trainingObject.UniqueName, trainingObject.GameObject.name);
 #endif
                 }
                 catch (AlreadyRegisteredException)
