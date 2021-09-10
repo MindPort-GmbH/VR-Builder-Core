@@ -41,8 +41,6 @@ namespace VRBuilder.Editor.Configuration
             configurationTypeNames = configurationTypes.Select(t => t.Name).ToArray();
 
             CourseAssetPostprocessor.CourseFileStructureChanged += OnCourseFileStructureChanged;
-
-            PopulateCourseList();
         }
 
         /// <summary>
@@ -50,6 +48,11 @@ namespace VRBuilder.Editor.Configuration
         /// </summary>
         public static bool IsCourseListEmpty()
         {
+            if(isDirty)
+            {
+                PopulateCourseList();
+            }
+
             return trainingCourseDisplayNames.Count == 1 && trainingCourseDisplayNames[0] == "<none>";
         }
 
