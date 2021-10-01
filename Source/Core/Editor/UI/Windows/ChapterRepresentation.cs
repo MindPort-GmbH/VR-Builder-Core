@@ -308,6 +308,7 @@ namespace VRBuilder.Editor.UI.Windows
 
                 if (TryGetStepForTransitionDrag(args.PointerPosition, out IStep target) == false)
                 {
+                    HandleCanvasContextClick(sender, args);
                     return;
                 }
 
@@ -365,6 +366,7 @@ namespace VRBuilder.Editor.UI.Windows
 
                         if (TryGetStepForTransitionDrag(args.PointerPosition, out IStep targetStep) == false)
                         {
+                            HandleCanvasContextClick(sender, args);
                             return;
                         }
 
@@ -440,7 +442,7 @@ namespace VRBuilder.Editor.UI.Windows
             }
             else
             {
-                return elementUnderCursor == null;
+                return elementUnderCursor != null;
             }
         }
 
