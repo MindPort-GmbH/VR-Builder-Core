@@ -308,7 +308,7 @@ namespace VRBuilder.Editor.UI.Windows
 
                 if (TryGetStepForTransitionDrag(args.PointerPosition, out IStep target) == false)
                 {
-                    DisplayContextMenu(args.PointerPosition);
+                    DisplayContextMenu(args.PointerPosition, joint);
                     return;
                 }
 
@@ -366,7 +366,7 @@ namespace VRBuilder.Editor.UI.Windows
 
                         if (TryGetStepForTransitionDrag(args.PointerPosition, out IStep targetStep) == false)
                         {
-                            DisplayContextMenu(args.PointerPosition);
+                            DisplayContextMenu(args.PointerPosition, joint);
                             return;
                         }
 
@@ -495,7 +495,7 @@ namespace VRBuilder.Editor.UI.Windows
             DisplayContextMenu(e.PointerPosition);
         }
 
-        private void DisplayContextMenu(Vector2 pointerPosition)
+        private void DisplayContextMenu(Vector2 pointerPosition, ExitJoint joint = null)
         {
             IList<TestableEditorElements.MenuOption> options = new List<TestableEditorElements.MenuOption>();
 
@@ -503,7 +503,48 @@ namespace VRBuilder.Editor.UI.Windows
             {
                 IStep step = EntityFactory.CreateStep("New Step");
                 step.StepMetadata.Position = pointerPosition;
-                AddStepWithUndo(step);                
+                AddStepWithUndo(step);
+
+                if (joint != null)
+                {
+                    if (joint.Parent is EntryNode)
+                    {
+                        IStep oldStep = CurrentChapter.Data.FirstStep;
+
+                        RevertableChangesHandler.Do(new CourseCommand(() =>
+                        {
+                            CurrentChapter.Data.FirstStep = step;
+                            MarkToRefresh();
+                        },
+                        () =>
+                        {
+                            CurrentChapter.Data.FirstStep = oldStep;
+                            MarkToRefresh();
+                        }
+                        ));
+                    }
+                    else if (joint.Parent is StepNode)
+                    {                        
+                        StepNode stepNode = joint.Parent as StepNode;
+                        int index = stepNode.ExitJoints.IndexOf(joint);
+                        ITransition transition = stepNode.Step.Data.Transitions.Data.Transitions[index];
+                        IStep oldStep = transition.Data.TargetStep;
+
+                        RevertableChangesHandler.Do(new CourseCommand(() =>
+                        {
+                            transition.Data.TargetStep = step;
+                            SelectStepNode(stepNode);
+                            MarkToRefresh();
+                        },
+                        () =>
+                        {
+                            transition.Data.TargetStep = oldStep;
+                            SelectStepNode(stepNode);
+                            MarkToRefresh();
+                        }
+                    ));
+                    }
+                }
             }));
 
             if (SystemClipboard.IsStepInClipboard())
@@ -519,7 +560,7 @@ namespace VRBuilder.Editor.UI.Windows
             }
 
             TestableEditorElements.DisplayContextMenu(options);
-        }
+        }       
 
         public void SetChapter(IChapter chapter)
         {
