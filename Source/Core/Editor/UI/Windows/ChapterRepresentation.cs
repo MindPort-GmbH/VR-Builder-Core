@@ -308,7 +308,7 @@ namespace VRBuilder.Editor.UI.Windows
 
                 if (TryGetStepForTransitionDrag(args.PointerPosition, out IStep target) == false)
                 {
-                    HandleCanvasContextClick(sender, args);
+                    DisplayContextMenu(args.PointerPosition);
                     return;
                 }
 
@@ -366,7 +366,7 @@ namespace VRBuilder.Editor.UI.Windows
 
                         if (TryGetStepForTransitionDrag(args.PointerPosition, out IStep targetStep) == false)
                         {
-                            HandleCanvasContextClick(sender, args);
+                            DisplayContextMenu(args.PointerPosition);
                             return;
                         }
 
@@ -492,20 +492,25 @@ namespace VRBuilder.Editor.UI.Windows
 
         private void HandleCanvasContextClick(object sender, PointerGraphicalElementEventArgs e)
         {
+            DisplayContextMenu(e.PointerPosition);
+        }
+
+        private void DisplayContextMenu(Vector2 pointerPosition)
+        {
             IList<TestableEditorElements.MenuOption> options = new List<TestableEditorElements.MenuOption>();
 
             options.Add(new TestableEditorElements.MenuItem(new GUIContent("Add step"), false, () =>
             {
                 IStep step = EntityFactory.CreateStep("New Step");
-                step.StepMetadata.Position = e.PointerPosition;
-                AddStepWithUndo(step);
+                step.StepMetadata.Position = pointerPosition;
+                AddStepWithUndo(step);                
             }));
 
             if (SystemClipboard.IsStepInClipboard())
             {
                 options.Add(new TestableEditorElements.MenuItem(new GUIContent("Paste step"), false, () =>
                 {
-                    Paste(e.PointerPosition);
+                    Paste(pointerPosition);
                 }));
             }
             else
