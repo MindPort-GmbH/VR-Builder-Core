@@ -504,47 +504,7 @@ namespace VRBuilder.Editor.UI.Windows
                 IStep step = EntityFactory.CreateStep("New Step");
                 step.StepMetadata.Position = pointerPosition;
                 AddStepWithUndo(step);
-
-                if (joint != null)
-                {
-                    if (joint.Parent is EntryNode)
-                    {
-                        IStep oldStep = CurrentChapter.Data.FirstStep;
-
-                        RevertableChangesHandler.Do(new CourseCommand(() =>
-                        {
-                            CurrentChapter.Data.FirstStep = step;
-                            MarkToRefresh();
-                        },
-                        () =>
-                        {
-                            CurrentChapter.Data.FirstStep = oldStep;
-                            MarkToRefresh();
-                        }
-                        ));
-                    }
-                    else if (joint.Parent is StepNode)
-                    {                        
-                        StepNode stepNode = joint.Parent as StepNode;
-                        int index = stepNode.ExitJoints.IndexOf(joint);
-                        ITransition transition = stepNode.Step.Data.Transitions.Data.Transitions[index];
-                        IStep oldStep = transition.Data.TargetStep;
-
-                        RevertableChangesHandler.Do(new CourseCommand(() =>
-                        {
-                            transition.Data.TargetStep = step;
-                            SelectStepNode(stepNode);
-                            MarkToRefresh();
-                        },
-                        () =>
-                        {
-                            transition.Data.TargetStep = oldStep;
-                            SelectStepNode(stepNode);
-                            MarkToRefresh();
-                        }
-                    ));
-                    }
-                }
+                HandleTransition(joint, step);
             }));
 
             if (SystemClipboard.IsStepInClipboard())
@@ -560,7 +520,51 @@ namespace VRBuilder.Editor.UI.Windows
             }
 
             TestableEditorElements.DisplayContextMenu(options);
-        }       
+        }
+
+        private void HandleTransition(ExitJoint exitJoint, IStep targetStep)
+        {
+            if (exitJoint != null)
+            {
+                if (exitJoint.Parent is EntryNode)
+                {
+                    IStep oldStep = CurrentChapter.Data.FirstStep;
+
+                    RevertableChangesHandler.Do(new CourseCommand(() =>
+                    {
+                        CurrentChapter.Data.FirstStep = targetStep;
+                        MarkToRefresh();
+                    },
+                    () =>
+                    {
+                        CurrentChapter.Data.FirstStep = oldStep;
+                        MarkToRefresh();
+                    }
+                    ));
+                }
+                else if (exitJoint.Parent is StepNode)
+                {
+                    StepNode stepNode = exitJoint.Parent as StepNode;
+                    int index = stepNode.ExitJoints.IndexOf(exitJoint);
+                    ITransition transition = stepNode.Step.Data.Transitions.Data.Transitions[index];
+                    IStep oldStep = transition.Data.TargetStep;
+
+                    RevertableChangesHandler.Do(new CourseCommand(() =>
+                    {
+                        transition.Data.TargetStep = targetStep;
+                        SelectStepNode(stepNode);
+                        MarkToRefresh();
+                    },
+                    () =>
+                    {
+                        transition.Data.TargetStep = oldStep;
+                        SelectStepNode(stepNode);
+                        MarkToRefresh();
+                    }
+                ));
+                }
+            }
+        }
 
         public void SetChapter(IChapter chapter)
         {
