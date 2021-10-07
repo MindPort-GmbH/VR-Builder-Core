@@ -2,7 +2,7 @@
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
-#if UNITY_XR_MANAGEMENT && (OCULUS_XR || WINDOWS_XR)
+#if UNITY_XR_MANAGEMENT && (OCULUS_XR || WINDOWS_XR || OPEN_XR)
 using System;
 using UnityEditor;
 using VRBuilder.Editor.PackageManager;
