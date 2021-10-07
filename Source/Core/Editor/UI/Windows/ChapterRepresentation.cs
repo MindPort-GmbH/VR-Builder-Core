@@ -511,7 +511,7 @@ namespace VRBuilder.Editor.UI.Windows
             {
                 options.Add(new TestableEditorElements.MenuItem(new GUIContent("Paste step"), false, () =>
                 {
-                    Paste(pointerPosition);
+                    Paste(pointerPosition, joint);
                 }));
             }
             else
@@ -659,7 +659,7 @@ namespace VRBuilder.Editor.UI.Windows
         /// Pastes the step from the system's copy buffer into the chapter at given <paramref name="position"/>.
         /// </summary>
         /// <returns>True if successful.</returns>
-        public bool Paste(Vector2 position)
+        public bool Paste(Vector2 position, ExitJoint connection = null)
         {
             IStep step;
             try
@@ -681,6 +681,10 @@ namespace VRBuilder.Editor.UI.Windows
             }
 
             AddStepWithUndo(step);
+            if(connection != null)
+            {
+                HandleTransition(connection, step);
+            }
 
             return true;
         }
