@@ -308,6 +308,7 @@ namespace VRBuilder.Editor.UI.Windows
 
                 if (TryGetStepForTransitionDrag(args.PointerPosition, out IStep target) == false)
                 {
+                    DisplayContextMenu(args.PointerPosition, joint);
                     return;
                 }
 
@@ -365,6 +366,7 @@ namespace VRBuilder.Editor.UI.Windows
 
                         if (TryGetStepForTransitionDrag(args.PointerPosition, out IStep targetStep) == false)
                         {
+                            DisplayContextMenu(args.PointerPosition, joint);
                             return;
                         }
 
@@ -440,7 +442,7 @@ namespace VRBuilder.Editor.UI.Windows
             }
             else
             {
-                return elementUnderCursor == null;
+                return elementUnderCursor != null;
             }
         }
 
@@ -490,20 +492,26 @@ namespace VRBuilder.Editor.UI.Windows
 
         private void HandleCanvasContextClick(object sender, PointerGraphicalElementEventArgs e)
         {
+            DisplayContextMenu(e.PointerPosition);
+        }
+
+        private void DisplayContextMenu(Vector2 pointerPosition, ExitJoint joint = null)
+        {
             IList<TestableEditorElements.MenuOption> options = new List<TestableEditorElements.MenuOption>();
 
             options.Add(new TestableEditorElements.MenuItem(new GUIContent("Add step"), false, () =>
             {
                 IStep step = EntityFactory.CreateStep("New Step");
-                step.StepMetadata.Position = e.PointerPosition;
+                step.StepMetadata.Position = pointerPosition;
                 AddStepWithUndo(step);
+                HandleTransition(joint, step);
             }));
 
             if (SystemClipboard.IsStepInClipboard())
             {
                 options.Add(new TestableEditorElements.MenuItem(new GUIContent("Paste step"), false, () =>
                 {
-                    Paste(e.PointerPosition);
+                    Paste(pointerPosition, joint);
                 }));
             }
             else
@@ -512,6 +520,50 @@ namespace VRBuilder.Editor.UI.Windows
             }
 
             TestableEditorElements.DisplayContextMenu(options);
+        }
+
+        private void HandleTransition(ExitJoint exitJoint, IStep targetStep)
+        {
+            if (exitJoint != null)
+            {
+                if (exitJoint.Parent is EntryNode)
+                {
+                    IStep oldStep = CurrentChapter.Data.FirstStep;
+
+                    RevertableChangesHandler.Do(new CourseCommand(() =>
+                    {
+                        CurrentChapter.Data.FirstStep = targetStep;
+                        MarkToRefresh();
+                    },
+                    () =>
+                    {
+                        CurrentChapter.Data.FirstStep = oldStep;
+                        MarkToRefresh();
+                    }
+                    ));
+                }
+                else if (exitJoint.Parent is StepNode)
+                {
+                    StepNode stepNode = exitJoint.Parent as StepNode;
+                    int index = stepNode.ExitJoints.IndexOf(exitJoint);
+                    ITransition transition = stepNode.Step.Data.Transitions.Data.Transitions[index];
+                    IStep oldStep = transition.Data.TargetStep;
+
+                    RevertableChangesHandler.Do(new CourseCommand(() =>
+                    {
+                        transition.Data.TargetStep = targetStep;
+                        SelectStepNode(stepNode);
+                        MarkToRefresh();
+                    },
+                    () =>
+                    {
+                        transition.Data.TargetStep = oldStep;
+                        SelectStepNode(stepNode);
+                        MarkToRefresh();
+                    }
+                ));
+                }
+            }
         }
 
         public void SetChapter(IChapter chapter)
@@ -607,7 +659,7 @@ namespace VRBuilder.Editor.UI.Windows
         /// Pastes the step from the system's copy buffer into the chapter at given <paramref name="position"/>.
         /// </summary>
         /// <returns>True if successful.</returns>
-        public bool Paste(Vector2 position)
+        public bool Paste(Vector2 position, ExitJoint connection = null)
         {
             IStep step;
             try
@@ -629,6 +681,10 @@ namespace VRBuilder.Editor.UI.Windows
             }
 
             AddStepWithUndo(step);
+            if(connection != null)
+            {
+                HandleTransition(connection, step);
+            }
 
             return true;
         }
