@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -23,7 +23,7 @@ namespace VRBuilder.Core.SceneObjects
 
         [SerializeField]
         [Tooltip("Unique name which identifies an object in scene, can be null or empty, but has to be unique in the scene.")]
-        private string uniqueName = null;
+        protected string uniqueName = null;
 
         /// <inheritdoc />
         public string UniqueName
