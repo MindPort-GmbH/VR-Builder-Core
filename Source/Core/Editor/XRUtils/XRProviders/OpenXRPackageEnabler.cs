@@ -6,7 +6,7 @@
 namespace VRBuilder.Editor.XRUtils
 {
     /// <summary>
-    /// Enables the Windows MR Plugin.
+    /// Enables the Open XR Plugin.
     /// </summary>
     internal sealed class OpenXRPackageEnabler : XRProvider
     {

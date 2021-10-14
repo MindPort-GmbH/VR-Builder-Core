@@ -20,7 +20,7 @@ namespace VRBuilder.Editor.UI.Wizard
         private enum XRLoader
         {
             None,
-            //OpenVR,
+            OpenXR,
             Oculus,
             WindowsMR,
             Other
@@ -31,7 +31,7 @@ namespace VRBuilder.Editor.UI.Wizard
         private readonly List<string> nameplates = new List<string>()
         {
             "None",
-            //"OpenVR/OpenXR",
+            "OpenXR",
             "Oculus Quest/Rift",
             "Windows MR",
             "Other"
@@ -105,9 +105,9 @@ namespace VRBuilder.Editor.UI.Wizard
                     case XRLoader.Oculus:
                         XRLoaderHelper.LoadOculus();
                         break;
-                    //case XRLoader.OpenVR:
-                    //    XRLoaderHelper.LoadOpenVR();
-                    //    break;
+                    case XRLoader.OpenXR:
+                        XRLoaderHelper.LoadOpenXR();
+                        break;
                     case XRLoader.WindowsMR:
                         XRLoaderHelper.LoadWindowsMR();
                         break;

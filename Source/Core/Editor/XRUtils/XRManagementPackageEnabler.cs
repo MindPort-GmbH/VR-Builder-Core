@@ -50,6 +50,9 @@ namespace VRBuilder.Editor.XRUtils
                 case XRLoaderHelper.XRSDK.WindowsMR:
                     XRLoaderHelper.LoadWindowsMR();
                     break;
+                case XRLoaderHelper.XRSDK.OpenXR:
+                    XRLoaderHelper.LoadOpenXR();
+                    break;
             }
 
             EditorPrefs.DeleteKey(nameof(XRLoaderHelper.XRSDK));
