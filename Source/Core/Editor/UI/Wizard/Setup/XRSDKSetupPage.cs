@@ -37,6 +37,8 @@ namespace VRBuilder.Editor.UI.Wizard
             "Other"
         };
 
+        private readonly List<XRLoader> disabledOptions = new List<XRLoader>();
+
         [SerializeField]
         private XRLoader selectedLoader = XRLoader.None;
 
@@ -48,7 +50,9 @@ namespace VRBuilder.Editor.UI.Wizard
 
         public XRSDKSetupPage() : base("XR Hardware")
         {
-
+#if !UNITY_2020_1_OR_NEWER
+            disabledOptions.Add(XRLoader.OpenXR);
+#endif            
         }
 
         /// <inheritdoc/>
@@ -60,7 +64,7 @@ namespace VRBuilder.Editor.UI.Wizard
             {
                 GUILayout.Label("VR Hardware Setup", BuilderEditorStyles.Title);
                 GUILayout.Label("Select the VR hardware you are working with:", BuilderEditorStyles.Header);
-                selectedLoader = BuilderGUILayout.DrawToggleGroup(selectedLoader, options, nameplates);
+                selectedLoader = BuilderGUILayout.DrawToggleGroup(selectedLoader, options, nameplates, disabledOptions);
 
                 if (selectedLoader == XRLoader.Other)
                 {
