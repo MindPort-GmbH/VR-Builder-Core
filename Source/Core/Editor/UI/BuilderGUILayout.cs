@@ -86,15 +86,20 @@ namespace VRBuilder.Editor.UI
             return content;
         }
 
-        public static T DrawToggleGroup<T>(T selection, List<T> entries, List<string> content)
+        public static T DrawToggleGroup<T>(T selection, List<T> entries, List<string> content, List<T> disabledEntries)
         {
-            return DrawToggleGroup(selection, entries, content.Select(str => new GUIContent(str)).ToList());
+            return DrawToggleGroup(selection, entries, content.Select(str => new GUIContent(str)).ToList(), disabledEntries);
         }
 
-        public static T DrawToggleGroup<T>(T selection, List<T> entries, List<GUIContent> content)
+        public static T DrawToggleGroup<T>(T selection, List<T> entries, List<GUIContent> content, List<T> disabledEntries)
         {
+            bool isDisabled;
+
             for (int i = 0; i < entries.Count; i++)
             {
+                isDisabled = disabledEntries.Contains(entries[i]);
+
+                EditorGUI.BeginDisabledGroup(isDisabled);
                 if (GUILayout.Toggle(entries[i].Equals(selection), content[i], BuilderEditorStyles.Toggle))
                 {
                     if (!selection.Equals(entries[i]))
@@ -102,6 +107,7 @@ namespace VRBuilder.Editor.UI
                         selection = entries[i];
                     }
                 }
+                EditorGUI.EndDisabledGroup();
             }
 
             return selection;

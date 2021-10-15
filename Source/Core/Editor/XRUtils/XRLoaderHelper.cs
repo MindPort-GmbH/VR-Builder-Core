@@ -50,6 +50,35 @@ namespace VRBuilder.Editor.XRUtils
         }
 
         /// <summary>
+        /// Retrieves and loads the OpenXR package.
+        /// </summary>
+        public static void LoadOpenXR()
+        {
+            if (GetCurrentXRConfiguration().Any(loader => loader == XRConfiguration.OpenVRXR))
+            {
+                Debug.LogWarning("OpenXR is already loaded.");
+                return;
+            }
+
+            EditorPrefs.DeleteKey(IsXRLoaderInitialized);
+
+#if UNITY_2020_1_OR_NEWER
+#if UNITY_XR_MANAGEMENT && OPEN_XR
+#pragma warning disable CS4014
+            TryToEnableLoader("OpenXRLoader");
+#pragma warning restore CS4014
+#elif !UNITY_XR_MANAGEMENT
+            DisplayDialog("XR Plug-in Management");
+            EditorPrefs.SetInt(nameof(XRSDK), (int)XRSDK.OpenXR);
+            PackageOperationsManager.LoadPackage(XRManagementPackage);
+#else
+            DisplayDialog("OpenXR");
+            PackageOperationsManager.LoadPackage(OpenXRPackage);
+#endif
+#endif
+        }
+
+        /// <summary>
         /// Retrieves and loads the OpenVR XR package.
         /// </summary>
         public static void LoadOpenVR()
