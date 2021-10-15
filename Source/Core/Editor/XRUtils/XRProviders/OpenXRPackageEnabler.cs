@@ -3,6 +3,9 @@
 // Modifications copyright (c) 2021 MindPort GmbH
 
 #if UNITY_XR_MANAGEMENT && OPEN_XR
+using System;
+using UnityEditor;
+
 namespace VRBuilder.Editor.XRUtils
 {
     /// <summary>
@@ -17,6 +20,13 @@ namespace VRBuilder.Editor.XRUtils
         public override int Priority { get; } = 2;
 
         protected override string XRLoaderName { get; } = "OpenXRLoader";
+
+        protected override void InitializeXRLoader(object sender, EventArgs e)
+        {
+            base.InitializeXRLoader(sender, e);
+
+            EditorUtility.DisplayDialog("OpenXR Installed", "Please validate your OpenXR configuration in the Project Settings.", "Ok");
+        }
     }
 }
 #endif
