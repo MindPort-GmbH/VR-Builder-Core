@@ -95,15 +95,6 @@ namespace VRBuilder.Editor.UI.Wizard
         {
             if (isCompleted && wasApplied)
             {
-                //AnalyticsEvent hardwareSelectedEvent = new AnalyticsEvent
-                //{
-                //    Category = "creator",
-                //    Action = "hardware_selected",
-                //    Label = selectedLoader == XRLoader.Other ? otherHardwareText : selectedLoader.ToString()
-                //};
-
-                //AnalyticsUtils.CreateTracker().Send(hardwareSelectedEvent);
-
                 switch (selectedLoader)
                 {
                     case XRLoader.Oculus:
