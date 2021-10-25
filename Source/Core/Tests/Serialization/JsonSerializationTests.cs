@@ -115,5 +115,65 @@ namespace VRBuilder.Tests.Serialization
             // Then the input and output are equal
             Assert.AreEqual(input, output);
         }
+
+        [Test]
+        public void CanSerializeKeyframe()
+        {
+            // Given the JsonTrainingSerializer.SerializerSettings are used to serialize.
+            // When a unity keyframe is serialized
+            Keyframe input = new Keyframe(0.1f, 0.5f, 1, 0.7f, 0.6f, 0.4f);
+            input.weightedMode = WeightedMode.In;
+            string data = JsonConvert.SerializeObject(new Keyframe(0.1f, 0.5f, 1, 0.7f, 0.6f, 0.4f), settings);
+            // Then the output is not null
+            Assert.IsFalse(string.IsNullOrEmpty(data));
+        }
+
+        [Test]
+        public void SerializedKeyframeCanBeReadAgain()
+        {
+            // Given a Color input
+            Keyframe input = new Keyframe(0.1f, 0.5f, 1, 0.7f, 0.6f, 0.4f);
+            input.weightedMode = WeightedMode.In;
+
+            // When parsed into json and back
+            string data = JsonConvert.SerializeObject(input, settings);
+            Keyframe output = JsonConvert.DeserializeObject<Keyframe>(data, settings);
+
+            // Then the input and output are equal
+            Assert.AreEqual(input, output);
+        }
+
+        [Test]
+        public void CanSerializeAnimationCurve()
+        {
+            // Given the JsonTrainingSerializer.SerializerSettings are used to serialize.
+            // When a unity animation curve is serialized
+            Keyframe first = new Keyframe(0.1f, 0.5f, 1, 0.7f, 0.6f, 0.4f);
+            Keyframe second = new Keyframe(0.3f, 0.4f, 0.3f, 0.2f, 0.9f, 0.1f);
+            AnimationCurve curve = new AnimationCurve(first, second);
+            curve.preWrapMode = WrapMode.ClampForever;
+            curve.postWrapMode = WrapMode.Loop;
+            string data = JsonConvert.SerializeObject(curve, settings);
+            // Then the output is not null
+            Assert.IsFalse(string.IsNullOrEmpty(data));
+        }
+
+        [Test]
+        public void SerializedAnimationCurveCanBeReadAgain()
+        {
+            // Given an AnimationCurve input
+            Keyframe first = new Keyframe(0.1f, 0.5f, 1, 0.7f, 0.6f, 0.4f);
+            Keyframe second = new Keyframe(0.3f, 0.4f, 0.3f, 0.2f, 0.9f, 0.1f);
+            AnimationCurve input = new AnimationCurve(new[] { first, second });
+            input.preWrapMode = WrapMode.ClampForever;
+            input.postWrapMode = WrapMode.Loop;
+
+            // When parsed into json and back
+            string data = JsonConvert.SerializeObject(input, settings);
+            AnimationCurve output = JsonConvert.DeserializeObject<AnimationCurve>(data, settings);
+
+            // Then the input and output are equal
+            Assert.AreEqual(input, output);
+        }
     }
 }
