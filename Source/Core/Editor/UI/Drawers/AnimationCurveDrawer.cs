@@ -15,7 +15,7 @@ namespace VRBuilder.Editor.UI.Drawers
         {
             rect.height = EditorDrawingHelper.SingleLineHeight;
 
-            AnimationCurve curve = (AnimationCurve)currentValue == null ? AnimationCurve.EaseInOut(0, 0, 1, 1) : (AnimationCurve)currentValue;
+            AnimationCurve curve = (AnimationCurve)currentValue;
             AnimationCurve newCurve = EditorGUI.CurveField(rect, label, curve);
             if (newCurve != curve)
             {            
