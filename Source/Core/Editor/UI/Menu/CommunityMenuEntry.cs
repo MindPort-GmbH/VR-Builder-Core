@@ -10,12 +10,12 @@ namespace VRBuilder.Editor.BuilderMenu
     internal static class CommunityMenuEntry
     {
         /// <summary>
-        /// Allows to open the URL to Innoactive community.
+        /// Allows to open the URL to the MindPort community.
         /// </summary>
-        [MenuItem("Tools/VR Builder/Innoactive Help/Community", false, 80)]
+        [MenuItem("Tools/VR Builder/MindPort Community", false, 128)]
         private static void OpenCommunityPage()
         {
-            Application.OpenURL("https://innoactive.io/creator/community");
+            Application.OpenURL("http://community.mindport.co");
         }
     }
 }

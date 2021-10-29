@@ -1,7 +1,7 @@
 {
   "displayName": "VR Builder Core",
   "name": "co.mindport.builder.core",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "unity": "2019.1",
   "description": "VR Builder core functionality.",
   "keywords": [
@@ -12,7 +12,7 @@
   ],
   "author": {
     "name": "MindPort GmbH",
-    "email": "mindport.vr@gmail.com",
+    "email": "contact@mindport.co",
     "url" : "https://mindport.co/"
   }
 }

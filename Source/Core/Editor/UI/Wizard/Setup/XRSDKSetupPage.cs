@@ -20,7 +20,7 @@ namespace VRBuilder.Editor.UI.Wizard
         private enum XRLoader
         {
             None,
-            //OpenVR,
+            OpenXR,
             Oculus,
             WindowsMR,
             Other
@@ -31,11 +31,13 @@ namespace VRBuilder.Editor.UI.Wizard
         private readonly List<string> nameplates = new List<string>()
         {
             "None",
-            //"OpenVR/OpenXR",
+            "OpenXR",
             "Oculus Quest/Rift",
             "Windows MR",
             "Other"
         };
+
+        private readonly List<XRLoader> disabledOptions = new List<XRLoader>();
 
         [SerializeField]
         private XRLoader selectedLoader = XRLoader.None;
@@ -48,7 +50,9 @@ namespace VRBuilder.Editor.UI.Wizard
 
         public XRSDKSetupPage() : base("XR Hardware")
         {
-
+#if !UNITY_2020_1_OR_NEWER
+            disabledOptions.Add(XRLoader.OpenXR);
+#endif            
         }
 
         /// <inheritdoc/>
@@ -60,7 +64,7 @@ namespace VRBuilder.Editor.UI.Wizard
             {
                 GUILayout.Label("VR Hardware Setup", BuilderEditorStyles.Title);
                 GUILayout.Label("Select the VR hardware you are working with:", BuilderEditorStyles.Header);
-                selectedLoader = BuilderGUILayout.DrawToggleGroup(selectedLoader, options, nameplates);
+                selectedLoader = BuilderGUILayout.DrawToggleGroup(selectedLoader, options, nameplates, disabledOptions);
 
                 if (selectedLoader == XRLoader.Other)
                 {
@@ -91,23 +95,14 @@ namespace VRBuilder.Editor.UI.Wizard
         {
             if (isCompleted && wasApplied)
             {
-                //AnalyticsEvent hardwareSelectedEvent = new AnalyticsEvent
-                //{
-                //    Category = "creator",
-                //    Action = "hardware_selected",
-                //    Label = selectedLoader == XRLoader.Other ? otherHardwareText : selectedLoader.ToString()
-                //};
-
-                //AnalyticsUtils.CreateTracker().Send(hardwareSelectedEvent);
-
                 switch (selectedLoader)
                 {
                     case XRLoader.Oculus:
                         XRLoaderHelper.LoadOculus();
                         break;
-                    //case XRLoader.OpenVR:
-                    //    XRLoaderHelper.LoadOpenVR();
-                    //    break;
+                    case XRLoader.OpenXR:
+                        XRLoaderHelper.LoadOpenXR();
+                        break;
                     case XRLoader.WindowsMR:
                         XRLoaderHelper.LoadWindowsMR();
                         break;

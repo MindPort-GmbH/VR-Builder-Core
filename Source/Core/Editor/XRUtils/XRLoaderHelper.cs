@@ -24,7 +24,7 @@ namespace VRBuilder.Editor.XRUtils
     {
         internal const string IsXRLoaderInitialized = "IsXRLoaderInitialized";
         private const string OculusXRPackage = "com.unity.xr.oculus";
-        private const string WindowsXRPackage = "com.unity.xr.windowsmr";
+        private const string WindowsXRPackage = "com.unity.xr.windowsmr@4.5.0";
         private const string XRManagementPackage = "com.unity.xr.management@4.0.1";
         private const string OpenXRPackage = "com.unity.xr.openxr";
 
@@ -47,6 +47,35 @@ namespace VRBuilder.Editor.XRUtils
             OculusXR,
             WindowsMR,
             XRLegacy
+        }
+
+        /// <summary>
+        /// Retrieves and loads the OpenXR package.
+        /// </summary>
+        public static void LoadOpenXR()
+        {
+            if (GetCurrentXRConfiguration().Any(loader => loader == XRConfiguration.OpenVRXR))
+            {
+                Debug.LogWarning("OpenXR is already loaded.");
+                return;
+            }
+
+            EditorPrefs.DeleteKey(IsXRLoaderInitialized);
+
+#if UNITY_2020_1_OR_NEWER
+#if UNITY_XR_MANAGEMENT && OPEN_XR
+#pragma warning disable CS4014
+            TryToEnableLoader("OpenXRLoader");
+#pragma warning restore CS4014
+#elif !UNITY_XR_MANAGEMENT
+            DisplayDialog("XR Plug-in Management");
+            EditorPrefs.SetInt(nameof(XRSDK), (int)XRSDK.OpenXR);
+            PackageOperationsManager.LoadPackage(XRManagementPackage);
+#else
+            DisplayDialog("OpenXR");
+            PackageOperationsManager.LoadPackage(OpenXRPackage);
+#endif
+#endif
         }
 
         /// <summary>
