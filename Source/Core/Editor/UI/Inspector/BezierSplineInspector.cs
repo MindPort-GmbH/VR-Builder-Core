@@ -4,6 +4,9 @@ using VRBuilder.Core.Utils;
 
 namespace VRBuilder.Editor.Core.UI
 {
+    /// <summary>
+    /// Editor for <see cref="BezierSpline"/>.
+    /// </summary>
 	[CustomEditor(typeof(BezierSpline))]
 	public class BezierSplineInspector : UnityEditor.Editor
 	{

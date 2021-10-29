@@ -9,11 +9,13 @@ namespace VRBuilder.Core.Serialization
     [NewtonsoftConverter]
     public class AnimationCurveConverter : JsonConverter
     {
+        /// <inheritdoc/>
         public override bool CanConvert(Type objectType)
         {
             return typeof(AnimationCurve) == objectType;
         }
 
+        /// <inheritdoc/>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.StartObject)
@@ -40,6 +42,7 @@ namespace VRBuilder.Core.Serialization
             return new AnimationCurve();
         }
 
+        /// <inheritdoc/>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             AnimationCurve curve = (AnimationCurve)value;

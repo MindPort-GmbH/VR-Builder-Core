@@ -8,11 +8,13 @@ namespace VRBuilder.Core.Serialization
     [NewtonsoftConverter]
     public class KeyframeConverter : JsonConverter
     {
+        /// <inheritdoc/>
         public override bool CanConvert(Type objectType)
         {
             return typeof(Keyframe) == objectType;
         }
 
+        /// <inheritdoc/>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.StartObject)
@@ -26,6 +28,7 @@ namespace VRBuilder.Core.Serialization
             return new Keyframe();
         }
 
+        /// <inheritdoc/>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             Keyframe keyframe = (Keyframe)value;            

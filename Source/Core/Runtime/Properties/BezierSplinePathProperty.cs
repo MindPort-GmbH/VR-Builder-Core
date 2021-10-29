@@ -17,12 +17,14 @@ namespace VRBuilder.Core.Properties
                 spline = GetComponent<BezierSpline>();
             }
         }
-
+       
+        /// <inheritdoc/>
         public Vector3 GetPoint(float t)
         {
             return spline.GetPoint(t);
         }
 
+        /// <inheritdoc/>
         public Vector3 GetDirection(float t)
         {
             return spline.GetDirection(t);

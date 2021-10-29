@@ -3,6 +3,9 @@ using System;
 
 namespace VRBuilder.Core.Utils
 {
+    /// <summary>
+    /// Class that generates a Bezier spline.
+    /// </summary>
 	public class BezierSpline : MonoBehaviour
 	{
 		[SerializeField]
