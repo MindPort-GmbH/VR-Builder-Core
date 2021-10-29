@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace VRBuilder.Core.Properties
 {
-    /// <inheritdoc/>
     /// <summary>
     /// This property represents a linear path.
     /// </summary>

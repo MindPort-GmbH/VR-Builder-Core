@@ -2,7 +2,10 @@ using UnityEngine;
 using VRBuilder.Core.Utils;
 
 namespace VRBuilder.Core.Properties
-{
+{    
+    /// <summary>
+    /// Path property that generates a path from a <see cref="BezierSpline"/>.
+    /// </summary>
     [RequireComponent(typeof(BezierSpline))]
     public class BezierSplinePathProperty : TrainingSceneObjectProperty, IPathProperty
     {

@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace VRBuilder.Core.Serialization
 {
+    /// <summary>
+    /// Converter that serializes and deserializes <see cref="AnimationCurve"/>.
+    /// </summary>
     [NewtonsoftConverter]
     public class AnimationCurveConverter : JsonConverter
     {

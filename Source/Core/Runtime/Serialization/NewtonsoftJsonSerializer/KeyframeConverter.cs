@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace VRBuilder.Core.Serialization
 {
+    /// <summary>
+    /// Converter that serializes and deserializes <see cref="Keyframe"/>.
+    /// </summary>
     [NewtonsoftConverter]
     public class KeyframeConverter : JsonConverter
     {
