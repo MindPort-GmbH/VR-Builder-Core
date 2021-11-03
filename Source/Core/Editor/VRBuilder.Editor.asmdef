@@ -39,6 +39,11 @@
             "name": "com.unity.xr.openxr",
             "expression": "",
             "define": "OPEN_XR"
+        },
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "1.0.1",
+            "define": "INPUT_SYSTEM_PACKAGE"
         }
     ],
     "noEngineReferences": false
