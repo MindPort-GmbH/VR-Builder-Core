@@ -50,7 +50,7 @@ namespace VRBuilder.Core.Configuration
         /// </summary>
         public virtual string CustomInputActionAssetPath { get; } = "KeyBindings/BuilderCustomKeyBindings";
 
-#if ENABLE_INPUT_SYSTEM
+#if ENABLE_INPUT_SYSTEM && INPUT_SYSTEM_PACKAGE
         private UnityEngine.InputSystem.InputActionAsset inputActionAsset;
 
         /// <summary>
