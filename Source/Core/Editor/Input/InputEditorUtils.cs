@@ -13,7 +13,7 @@ namespace VRBuilder.Editor.Input
     /// </summary>
     public static class InputEditorUtils
     {
-#if ENABLE_INPUT_SYSTEM
+#if ENABLE_INPUT_SYSTEM && INPUT_SYSTEM_PACKAGE
         /// <summary>
         /// Copies the custom key bindings into the project by using the default one.
         /// </summary>
