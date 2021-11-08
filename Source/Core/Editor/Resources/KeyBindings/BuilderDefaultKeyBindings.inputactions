@@ -1,5 +1,5 @@
 {
-    "name": "CreatorDefaultKeyBindings",
+    "name": "BuilderDefaultKeyBindings",
     "maps": [
         {
             "name": "Default",
@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "SetToTrainee",
+                    "name": "SetToUser",
                     "type": "Button",
                     "id": "f9fc1c8a-c707-48dd-98a6-50aa98372a02",
                     "expectedControlType": "Button",
@@ -76,7 +76,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SetToTrainee",
+                    "action": "SetToUser",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
