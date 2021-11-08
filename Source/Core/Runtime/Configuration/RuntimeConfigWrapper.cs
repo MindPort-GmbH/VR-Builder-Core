@@ -26,7 +26,7 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <inheritdoc />
-        public override TrainingSceneObject Trainee => Configuration.Trainee;
+        public override TrainingSceneObject User => Configuration.User;
 
         /// <inheritdoc />
         public override AudioSource InstructionPlayer => Configuration.InstructionPlayer;

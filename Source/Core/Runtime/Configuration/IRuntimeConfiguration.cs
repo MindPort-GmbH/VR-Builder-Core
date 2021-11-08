@@ -32,9 +32,9 @@ namespace VRBuilder.Core.Configuration
         IModeHandler Modes { get; }
 
         /// <summary>
-        /// Trainee scene object.
+        /// User scene object.
         /// </summary>
-        TrainingSceneObject Trainee { get; }
+        TrainingSceneObject User { get; }
 
         /// <summary>
         /// Default audio source to play audio from.

@@ -7,14 +7,14 @@ using VRBuilder.Core.SceneObjects;
 namespace VRBuilder.Core.Properties
 {
     /// <summary>
-    /// Used to identify a trainee within the scene.
+    /// Used to identify the user within the scene.
     /// </summary>
-    public class TraineeSceneObject : TrainingSceneObject
+    public class UserSceneObject : TrainingSceneObject
     {
         protected new void Awake()
         {
             base.Awake();
-            uniqueName = "Trainee";
+            uniqueName = "User";
         }
     }
 }

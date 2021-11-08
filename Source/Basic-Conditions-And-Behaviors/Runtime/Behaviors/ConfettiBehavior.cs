@@ -22,15 +22,15 @@ namespace VRBuilder.Core.Behaviors
         public class EntityData : IBehaviorData
         {
             /// <summary>
-            /// Bool to check whether the confetti machine should spawn above the trainee or at the position of the position provider.
+            /// Bool to check whether the confetti machine should spawn above the user or at the position of the position provider.
             /// </summary>
             [DataMember]
-            [DisplayName("Spawn Above Trainee")]
-            public bool IsAboveTrainee { get; set; }
+            [DisplayName("Spawn Above User")]
+            public bool IsAboveUser { get; set; }
 
             /// <summary>
             /// Name of the training object where to spawn the confetti machine.
-            /// Only needed if "Spawn Above Trainee" is not checked.
+            /// Only needed if "Spawn Above User" is not checked.
             /// </summary>
 #if CREATOR_PRO     
             [OptionalValue]
@@ -75,21 +75,21 @@ namespace VRBuilder.Core.Behaviors
         private const float defaultDuration = 15f;
         private const string defaultPathConfettiPrefab = "Confetti/Prefabs/RandomConfettiMachine";
         private const float defaultRadius = 1f;
-        private const float distanceAboveTrainee = 3f;
+        private const float distanceAboveUser = 3f;
 
         [JsonConstructor]
         public ConfettiBehavior() : this(true, "", defaultPathConfettiPrefab, defaultRadius, defaultDuration, BehaviorExecutionStages.Activation)
         {
         }
 
-        public ConfettiBehavior(bool isAboveTrainee, ISceneObject positionProvider, string confettiMachinePrefabPath, float radius, float duration, BehaviorExecutionStages executionStages)
-            : this(isAboveTrainee, TrainingReferenceUtils.GetNameFrom(positionProvider), confettiMachinePrefabPath, radius, duration, executionStages)
+        public ConfettiBehavior(bool isAboveUser, ISceneObject positionProvider, string confettiMachinePrefabPath, float radius, float duration, BehaviorExecutionStages executionStages)
+            : this(isAboveUser, TrainingReferenceUtils.GetNameFrom(positionProvider), confettiMachinePrefabPath, radius, duration, executionStages)
         {
         }
 
-        public ConfettiBehavior(bool isAboveTrainee, string positionProviderSceneObjectName, string confettiMachinePrefabPath, float radius, float duration, BehaviorExecutionStages executionStages)
+        public ConfettiBehavior(bool isAboveUser, string positionProviderSceneObjectName, string confettiMachinePrefabPath, float radius, float duration, BehaviorExecutionStages executionStages)
         {
-            Data.IsAboveTrainee = isAboveTrainee;
+            Data.IsAboveUser = isAboveUser;
             Data.PositionProvider = new SceneObjectReference(positionProviderSceneObjectName);
             Data.ConfettiMachinePrefabPath = confettiMachinePrefabPath;
             Data.AreaRadius = radius;
@@ -129,10 +129,10 @@ namespace VRBuilder.Core.Behaviors
                 // Otherwise, use the position of the position provider.
                 Vector3 spawnPosition;
 
-                if (Data.IsAboveTrainee)
+                if (Data.IsAboveUser)
                 {
-                    spawnPosition = RuntimeConfigurator.Configuration.Trainee.GameObject.transform.position;
-                    spawnPosition.y += distanceAboveTrainee;
+                    spawnPosition = RuntimeConfigurator.Configuration.User.GameObject.transform.position;
+                    spawnPosition.y += distanceAboveUser;
                 }
                 else
                 {

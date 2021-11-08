@@ -32,18 +32,18 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <inheritdoc />
-        public override TrainingSceneObject Trainee
+        public override TrainingSceneObject User
         {
             get
             {
-                TrainingSceneObject trainee = GameObject.FindObjectOfType<TraineeSceneObject>();
+                TrainingSceneObject user = GameObject.FindObjectOfType<UserSceneObject>();
 
-                if (trainee == null)
+                if (user == null)
                 {
-                    throw new Exception("Could not find a TraineeSceneObject in the scene.");
+                    throw new Exception("Could not find a UserSceneObject in the scene.");
                 }
 
-                return trainee;
+                return user;
             }
         }
 
@@ -54,7 +54,7 @@ namespace VRBuilder.Core.Configuration
             {
                 if (instructionPlayer == null || instructionPlayer.Equals(null))
                 {
-                    instructionPlayer = Trainee.gameObject.AddComponent<AudioSource>();
+                    instructionPlayer = User.gameObject.AddComponent<AudioSource>();
                 }
 
                 return instructionPlayer;

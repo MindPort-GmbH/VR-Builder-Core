@@ -5,7 +5,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.BasicInteraction.RigSetup
 {
     /// <summary>
-    /// Setups the rig loader, cleans up the scene and creates a dummy trainee. 
+    /// Setups the rig loader, cleans up the scene and creates a dummy user. 
     /// </summary>
     public class RigLoaderSceneSetup : SceneSetup
     {
@@ -28,11 +28,11 @@ namespace VRBuilder.Editor.BasicInteraction.RigSetup
                 setup.UpdateRigList();
             }
             
-            TraineeSceneObject trainee = Object.FindObjectOfType<TraineeSceneObject>();
-            if (trainee == null)
+            UserSceneObject user = Object.FindObjectOfType<UserSceneObject>();
+            if (user == null)
             {
-                SetupPrefab("[TRAINEE]");
-                setup.DummyTrainee = GameObject.Find("[TRAINEE]");
+                SetupPrefab("[USER]");
+                setup.DummyUser = GameObject.Find("[USER]");
             }
         }
 
@@ -41,7 +41,7 @@ namespace VRBuilder.Editor.BasicInteraction.RigSetup
         /// </summary>
         private void RemoveMainCamera()
         {
-            if (Camera.main != null && Camera.main.transform.parent == null && Camera.main.gameObject.name != "[TRAINEE]")
+            if (Camera.main != null && Camera.main.transform.parent == null && Camera.main.gameObject.name != "[USER]")
             {
                 Object.DestroyImmediate(Camera.main.gameObject);
             }

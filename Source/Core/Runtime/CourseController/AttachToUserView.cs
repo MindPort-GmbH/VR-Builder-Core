@@ -6,9 +6,9 @@ using VRBuilder.Core.Configuration;
 namespace VRBuilder.CourseController
 {
     /// <summary>
-    /// Puts the parent GameObject to the same position and rotation of the trainee camera.
+    /// Puts the parent GameObject to the same position and rotation of the user camera.
     /// </summary>
-    public class AttachToTraineeView : MonoBehaviour
+    public class AttachToUserView : MonoBehaviour
     {
         [Tooltip("The font used in the spectator view.")]
         [SerializeField]
@@ -18,7 +18,7 @@ namespace VRBuilder.CourseController
         [SerializeField]
         protected int fontSize = 30;
         
-        private GameObject trainee;
+        private GameObject user;
 
         protected void Start()
         {
@@ -32,11 +32,11 @@ namespace VRBuilder.CourseController
 
         private void UpdateCameraPositionAndRotation()
         {
-            if (trainee == null)
+            if (user == null)
             {
                 try
                 {
-                    trainee = RuntimeConfigurator.Configuration.Trainee.GameObject;
+                    user = RuntimeConfigurator.Configuration.User.GameObject;
                 }
                 catch (NullReferenceException)
                 {
@@ -44,7 +44,7 @@ namespace VRBuilder.CourseController
                 }
             }
 
-            transform.SetPositionAndRotation(trainee.transform.position, trainee.transform.rotation);
+            transform.SetPositionAndRotation(user.transform.position, user.transform.rotation);
         }
         
         private void SetFont()

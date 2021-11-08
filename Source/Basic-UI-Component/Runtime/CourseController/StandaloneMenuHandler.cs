@@ -13,7 +13,7 @@ namespace VRBuilder.UX
     /// </summary>
     public class StandaloneMenuHandler : MonoBehaviour
     {
-        [Tooltip("Initial distance between this controller and the trainee.")] [SerializeField]
+        [Tooltip("Initial distance between this controller and the user.")] [SerializeField]
         protected float appearanceDistance = 2f;
 
         [SerializeField, HideInInspector] 
@@ -24,7 +24,7 @@ namespace VRBuilder.UX
 
         private Canvas canvas;
         private Type buttonType;
-        private Transform trainee;
+        private Transform user;
         private bool lastMenuState;
         private float defaultPressThreshold = 0.1f;
         private readonly List<InputDevice> controllers = new List<InputDevice>();
@@ -50,7 +50,7 @@ namespace VRBuilder.UX
         {
             try
             {
-                trainee = RuntimeConfigurator.Configuration.Trainee.GameObject.transform;
+                user = RuntimeConfigurator.Configuration.User.GameObject.transform;
                 canvas = GetComponentInChildren<Canvas>();
                 canvas.worldCamera = Camera.main;
 
@@ -61,8 +61,8 @@ namespace VRBuilder.UX
                 Debug.LogError($"{exception.GetType().Name} while initializing {GetType().Name}.\n{exception.StackTrace}", gameObject);
             }
 
-            Vector3 position = trainee.position + (trainee.forward * appearanceDistance);
-            Quaternion rotation = new Quaternion(0.0f, trainee.rotation.y, 0.0f, trainee.rotation.w);
+            Vector3 position = user.position + (user.forward * appearanceDistance);
+            Quaternion rotation = new Quaternion(0.0f, user.rotation.y, 0.0f, user.rotation.w);
             position.y = 1f;
 
             transform.SetPositionAndRotation(position, rotation);
@@ -120,9 +120,9 @@ namespace VRBuilder.UX
 
             if (canvas.enabled)
             {
-                Vector3 position = trainee.position + (trainee.forward * appearanceDistance);
-                Quaternion rotation = new Quaternion(0.0f, trainee.rotation.y, 0.0f, trainee.rotation.w);
-                position.y = trainee.position.y;
+                Vector3 position = user.position + (user.forward * appearanceDistance);
+                Quaternion rotation = new Quaternion(0.0f, user.rotation.y, 0.0f, user.rotation.w);
+                position.y = user.position.y;
 
                 transform.SetPositionAndRotation(position, rotation);
             }
