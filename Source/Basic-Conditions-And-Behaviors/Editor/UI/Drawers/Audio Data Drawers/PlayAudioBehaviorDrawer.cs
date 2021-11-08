@@ -9,7 +9,7 @@ namespace VRBuilder.Editor.Core.UI.Drawers
     /// <summary>
     /// Default drawer for <see cref="PlayAudioBehavior"/>. It sets displayed name to "Play Audio File".
     /// </summary>
-    [DefaultTrainingDrawer(typeof(PlayAudioBehavior.EntityData))]
+    [DefaultProcessDrawer(typeof(PlayAudioBehavior.EntityData))]
     public class PlayAudioBehaviorDrawer : NameableDrawer
     {
         /// <inheritdoc />

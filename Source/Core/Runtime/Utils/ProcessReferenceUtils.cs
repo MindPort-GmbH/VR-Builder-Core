@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -7,7 +7,7 @@ using VRBuilder.Core.Properties;
 
 namespace VRBuilder.Core.Utils
 {
-    public static class TrainingReferenceUtils
+    public static class ProcessReferenceUtils
     {
         public static string GetNameFrom(ISceneObjectProperty property)
         {

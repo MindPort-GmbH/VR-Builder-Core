@@ -29,7 +29,7 @@ namespace VRBuilder.BasicInteraction.Builders
         /// <returns>Configured builder.</returns>
         public static BasicStepBuilder Grab(string name, params IGrabbableProperty[] objectsToGrab)
         {
-            return Grab(name, objectsToGrab.Select(TrainingReferenceUtils.GetNameFrom).ToArray());
+            return Grab(name, objectsToGrab.Select(ProcessReferenceUtils.GetNameFrom).ToArray());
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace VRBuilder.BasicInteraction.Builders
         /// <returns>Configured builder.</returns>
         public static BasicStepBuilder Touch(string name, params ISceneObject[] objectsToTouch)
         {
-            return Touch(name, objectsToTouch.Select(TrainingReferenceUtils.GetNameFrom).ToArray());
+            return Touch(name, objectsToTouch.Select(ProcessReferenceUtils.GetNameFrom).ToArray());
         }
 
         /// <summary>

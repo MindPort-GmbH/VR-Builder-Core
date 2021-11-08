@@ -15,7 +15,7 @@ using UnityEngine.TestTools;
 
 namespace VRBuilder.Tests.Courses
 {
-    public class BaseTrainingCourseTests : RuntimeTests
+    public class BaseProcessTests : RuntimeTests
     {
         [Test]
         public void CanBeSetup()
@@ -120,7 +120,7 @@ namespace VRBuilder.Tests.Courses
         public IEnumerator FastForwardInactiveCourse()
         {
             // Given a training course
-            Course course = new LinearTrainingBuilder("Training Course")
+            Course course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new EndlessConditionMock())))
@@ -140,7 +140,7 @@ namespace VRBuilder.Tests.Courses
         public IEnumerator FastForwardInactiveCourseAndActivateIt()
         {
             // Given a training
-            Course course = new LinearTrainingBuilder("Training Course")
+            Course course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new EndlessConditionMock())))
@@ -163,7 +163,7 @@ namespace VRBuilder.Tests.Courses
         public IEnumerator FastForwardActivatingCourse()
         {
             // Given an activated training
-            Course course = new LinearTrainingBuilder("Training Course")
+            Course course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new EndlessConditionMock())))

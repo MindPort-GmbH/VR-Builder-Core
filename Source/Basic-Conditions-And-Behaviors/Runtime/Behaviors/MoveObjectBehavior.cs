@@ -116,7 +116,7 @@ namespace VRBuilder.Core.Behaviors
         {
         }
 
-        public MoveObjectBehavior(ISceneObject target, ISceneObject positionProvider, float duration) : this(TrainingReferenceUtils.GetNameFrom(target), TrainingReferenceUtils.GetNameFrom(positionProvider), duration)
+        public MoveObjectBehavior(ISceneObject target, ISceneObject positionProvider, float duration) : this(ProcessReferenceUtils.GetNameFrom(target), ProcessReferenceUtils.GetNameFrom(positionProvider), duration)
         {
         }
 

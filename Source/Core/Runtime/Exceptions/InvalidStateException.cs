@@ -4,7 +4,7 @@
 
 namespace VRBuilder.Core.Exceptions
 {
-    public class InvalidStateException : TrainingException
+    public class InvalidStateException : ProcessException
     {
         public InvalidStateException(string message) : base(message)
         {

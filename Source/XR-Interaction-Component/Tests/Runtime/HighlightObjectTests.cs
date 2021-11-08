@@ -73,7 +73,7 @@ namespace VRBuilder.XRInteraction.Tests.Behaviors
             Assert.That(interactable.GetComponent<InteractableObject>() == null);
             Assert.That(interactable.GetComponent<InteractableHighlighter>() == null);
             Assert.That(interactable.GetComponent<HighlightProperty>() == null);
-            Assert.That(interactable.GetComponent<TrainingSceneObject>() == null);
+            Assert.That(interactable.GetComponent<ProcessSceneObject>() == null);
             Assert.That(interactable.GetComponent<Rigidbody>() == null);
             
             // When we add a DummyHighlightProperty to it.
@@ -84,13 +84,13 @@ namespace VRBuilder.XRInteraction.Tests.Behaviors
             Assert.That(interactable.GetComponent<InteractableObject>() != null);
             Assert.That(interactable.GetComponent<InteractableHighlighter>() != null);
             Assert.That(interactable.GetComponent<HighlightProperty>() != null);
-            Assert.That(interactable.GetComponent<TrainingSceneObject>() != null);
+            Assert.That(interactable.GetComponent<ProcessSceneObject>() != null);
             Assert.That(interactable.GetComponent<Rigidbody>() != null);
             
             Assert.AreEqual(1, interactable.GetComponents<InteractableObject>().Length);
             Assert.AreEqual(1, interactable.GetComponents<InteractableHighlighter>().Length);
             Assert.AreEqual(1, interactable.GetComponents<HighlightProperty>().Length);
-            Assert.AreEqual(1, interactable.GetComponents<TrainingSceneObject>().Length);
+            Assert.AreEqual(1, interactable.GetComponents<ProcessSceneObject>().Length);
             Assert.AreEqual(1, interactable.GetComponents<Rigidbody>().Length);
 
             yield break;

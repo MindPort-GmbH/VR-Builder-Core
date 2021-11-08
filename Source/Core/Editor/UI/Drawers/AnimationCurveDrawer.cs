@@ -7,7 +7,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Drawer for <see cref="AnimationCurve"/>
     /// </summary>
-    [DefaultTrainingDrawer(typeof(AnimationCurve))]
+    [DefaultProcessDrawer(typeof(AnimationCurve))]
     internal class AnimationCurveDrawer : AbstractDrawer
     {
         /// <inheritdoc />

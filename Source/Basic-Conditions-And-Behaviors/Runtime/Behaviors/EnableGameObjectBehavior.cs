@@ -71,7 +71,7 @@ namespace VRBuilder.Core.Behaviors
         }
 
         /// <param name="targetObject">Object to enable.</param>
-        public EnableGameObjectBehavior(ISceneObject targetObject) : this(TrainingReferenceUtils.GetNameFrom(targetObject))
+        public EnableGameObjectBehavior(ISceneObject targetObject) : this(ProcessReferenceUtils.GetNameFrom(targetObject))
         {
         }
 

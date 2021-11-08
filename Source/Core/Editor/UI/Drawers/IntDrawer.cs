@@ -11,7 +11,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Training drawer for int values.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(int))]
+    [DefaultProcessDrawer(typeof(int))]
     internal class IntDrawer : AbstractDrawer
     {
         /// <inheritdoc />

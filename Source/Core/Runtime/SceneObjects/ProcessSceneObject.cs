@@ -13,7 +13,7 @@ namespace VRBuilder.Core.SceneObjects
 {
     /// <inheritdoc cref="ISceneObject"/>
     [ExecuteInEditMode]
-    public class TrainingSceneObject : MonoBehaviour, ISceneObject
+    public class ProcessSceneObject : MonoBehaviour, ISceneObject
     {
         public event EventHandler<LockStateChangedEventArgs> Locked;
         public event EventHandler<LockStateChangedEventArgs> Unlocked;

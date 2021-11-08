@@ -40,7 +40,7 @@ namespace VRBuilder.Core
             }
 
             ///<inheritdoc />
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             [DataMember]
             public IStep TargetStep { get; set; }
 

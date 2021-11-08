@@ -11,14 +11,14 @@ namespace VRBuilder.Core.Attributes
     /// The drawer type is passed as string because you can't reference editor definitions in runtime classes.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-    public class UsesSpecificTrainingDrawerAttribute : Attribute
+    public class UsesSpecificProcessDrawerAttribute : Attribute
     {
         /// <summary>
         /// The drawer's type.
         /// </summary>
         public string DrawerType { get; private set; }
 
-        public UsesSpecificTrainingDrawerAttribute(string drawerType)
+        public UsesSpecificProcessDrawerAttribute(string drawerType)
         {
             DrawerType = drawerType;
         }

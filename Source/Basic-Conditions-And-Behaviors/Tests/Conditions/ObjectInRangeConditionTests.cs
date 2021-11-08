@@ -15,7 +15,7 @@ namespace VRBuilder.Core.Tests.Conditions
         public void SetUpRangeSceneObject()
         {
             // Setup collider training scene object
-            TargetTrainingSceneObject = TargetPositionObject.AddComponent<TrainingSceneObject>();
+            TargetTrainingSceneObject = TargetPositionObject.AddComponent<ProcessSceneObject>();
             TargetPositionObject.AddComponent<TransformInRangeDetectorProperty>();
         }
 
@@ -23,7 +23,7 @@ namespace VRBuilder.Core.Tests.Conditions
         public void SetUpTrackedSceneObject()
         {
             // Setup tracked training scene object
-            TrackedTrainingSceneObject = TrackedObject.AddComponent<TrainingSceneObject>();
+            TrackedTrainingSceneObject = TrackedObject.AddComponent<ProcessSceneObject>();
         }
 
         [UnityTest]
@@ -250,7 +250,7 @@ namespace VRBuilder.Core.Tests.Conditions
             // In addition to setup phase, also setup an additional object
             GameObject wrongObj = new GameObject("Wrong Object");
             wrongObj.transform.position = PositionFarFromTarget;
-            TrainingSceneObject wrongTrainingSceneObject = wrongObj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject wrongTrainingSceneObject = wrongObj.AddComponent<ProcessSceneObject>();
 
             // Activate range condition
             ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedTrainingSceneObject, TargetTrainingSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);

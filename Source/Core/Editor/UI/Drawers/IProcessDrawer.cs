@@ -11,7 +11,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Interface of a drawer for training members.
     /// </summary>
-    public interface ITrainingDrawer
+    public interface IProcessDrawer
     {
         /// <summary>
         /// Draw editor view in given Rect.

@@ -17,7 +17,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// Drawer for values implementing INameable interface.
     /// Instead of drawing a plain text as a label, it draws a TextField with the name.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(INamedData))]
+    [DefaultProcessDrawer(typeof(INamedData))]
     public class NameableDrawer : ObjectDrawer
     {
         /// <inheritdoc />

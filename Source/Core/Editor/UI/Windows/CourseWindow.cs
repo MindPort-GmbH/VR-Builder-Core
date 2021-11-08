@@ -26,7 +26,7 @@ namespace VRBuilder.Editor.UI.Windows
         private EditorIcon titleIcon;
 
         [SerializeField]
-        private TrainingMenuView chapterMenu;
+        private ProcessMenuView chapterMenu;
 
         private ChapterRepresentation chapterRepresentation;
 
@@ -93,7 +93,7 @@ namespace VRBuilder.Editor.UI.Windows
             wantsMouseMove = true;
             if (chapterMenu == null)
             {
-                chapterMenu = CreateInstance<TrainingMenuView>();
+                chapterMenu = CreateInstance<ProcessMenuView>();
             }
 
             if (chapterRepresentation == null)
@@ -108,7 +108,7 @@ namespace VRBuilder.Editor.UI.Windows
 
             if (titleIcon == null)
             {
-                titleIcon = new EditorIcon("icon_training_editor");
+                titleIcon = new EditorIcon("icon_process_editor");
             }
 
             EditorSceneManager.newSceneCreated += OnNewScene;
@@ -137,7 +137,7 @@ namespace VRBuilder.Editor.UI.Windows
 
             SetTabName();
 
-            float width = chapterMenu.IsExtended ? TrainingMenuView.ExtendedMenuWidth : TrainingMenuView.MinimizedMenuWidth;
+            float width = chapterMenu.IsExtended ? ProcessMenuView.ExtendedMenuWidth : ProcessMenuView.MinimizedMenuWidth;
             Rect scrollRect = new Rect(width, 0f, position.size.x - width, position.size.y);
 
             Vector2 centerViewpointOnCanvas = currentScrollPosition + scrollRect.size / 2f;

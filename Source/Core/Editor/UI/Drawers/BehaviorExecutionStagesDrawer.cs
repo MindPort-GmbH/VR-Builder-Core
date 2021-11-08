@@ -12,7 +12,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Training drawer for <see cref="BehaviorExecutionStages"/> members.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(BehaviorExecutionStages))]
+    [DefaultProcessDrawer(typeof(BehaviorExecutionStages))]
     internal class BehaviorExecutionStagesDrawer : AbstractDrawer
     {
         private enum ExecutionStages

@@ -42,7 +42,7 @@ namespace VRBuilder.Tests.Builder
         /// <returns>Configured builder.</returns>
         public static BasicStepBuilder TraineeInArea(string name, ISceneObject targetAreaCollider, float triggerDelay = 0f)
         {
-            return PutIntoCollider(name, targetAreaCollider, triggerDelay, RuntimeConfigurator.Configuration.Trainee);
+            return PutIntoCollider(name, targetAreaCollider, triggerDelay, RuntimeConfigurator.Configuration.User);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace VRBuilder.Tests.Builder
         /// <returns>Configured builder.</returns>
         public static BasicStepBuilder PutIntoCollider(string name, ISceneObject targetCollider, float triggerDelay = 0f, params ISceneObject[] objectsToPut)
         {
-            return PutIntoCollider(name, TrainingReferenceUtils.GetNameFrom(targetCollider), triggerDelay, objectsToPut.Select(TrainingReferenceUtils.GetNameFrom).ToArray());
+            return PutIntoCollider(name, ProcessReferenceUtils.GetNameFrom(targetCollider), triggerDelay, objectsToPut.Select(ProcessReferenceUtils.GetNameFrom).ToArray());
         }
 
         /// <summary>

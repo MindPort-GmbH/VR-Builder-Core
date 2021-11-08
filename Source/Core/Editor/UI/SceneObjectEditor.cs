@@ -13,7 +13,7 @@ namespace VRBuilder.Editor.UI
     /// <summary>
     /// This class adds names to newly added entities.
     /// </summary>
-    [CustomEditor(typeof(TrainingSceneObject))]
+    [CustomEditor(typeof(ProcessSceneObject))]
     internal class SceneObjectEditor : UnityEditor.Editor
     {
         private void OnEnable()
@@ -31,7 +31,7 @@ namespace VRBuilder.Editor.UI
         [MenuItem ("CONTEXT/TrainingSceneObject/Remove Training Properties", false)]
         private static void RemoveTrainingProperties()
         {
-            Component[] trainingProperties = Selection.activeGameObject.GetComponents(typeof(TrainingSceneObjectProperty));
+            Component[] trainingProperties = Selection.activeGameObject.GetComponents(typeof(ProcessSceneObjectProperty));
             ISceneObject sceneObject = Selection.activeGameObject.GetComponent(typeof(ISceneObject)) as ISceneObject;
 
             foreach (Component trainingProperty in trainingProperties)
@@ -43,7 +43,7 @@ namespace VRBuilder.Editor.UI
         [MenuItem("CONTEXT/TrainingSceneObject/Remove Training Properties", true)]
         private static bool ValidateRemoveTrainingProperties()
         {
-            return Selection.activeGameObject.GetComponents(typeof(TrainingSceneObjectProperty)) != null;
+            return Selection.activeGameObject.GetComponents(typeof(ProcessSceneObjectProperty)) != null;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -16,11 +16,11 @@ using UnityEngine.TestTools;
 
 namespace VRBuilder.Tests.Properties
 {
-    public class TrainingPropertyTests : RuntimeTests
+    public class ProcessPropertyTests : RuntimeTests
     {
         public static IEnumerable<Type> TrainingProperties
         {
-            get { return ReflectionUtils.GetConcreteImplementationsOf(typeof(TrainingSceneObjectProperty)).Where(type => type.IsPublic); }
+            get { return ReflectionUtils.GetConcreteImplementationsOf(typeof(ProcessSceneObjectProperty)).Where(type => type.IsPublic); }
         }
 
         public static readonly IEnumerable<Type> NotTrainingProperties = new Type[]
@@ -40,7 +40,7 @@ namespace VRBuilder.Tests.Properties
         {
             base.SetUp();
             GameObject gameObject = new GameObject("Scene Object");
-            SceneObject = gameObject.AddComponent<TrainingSceneObject>();
+            SceneObject = gameObject.AddComponent<ProcessSceneObject>();
         }
 
         [UnityTest]
@@ -80,7 +80,7 @@ namespace VRBuilder.Tests.Properties
             // When adding a list of ISceneObjectProperty to the ISceneObject.
             yield return AddTrainingProperties();
 
-            foreach (Component propertyComponent in SceneObject.GameObject.GetComponents(typeof(TrainingSceneObjectProperty)))
+            foreach (Component propertyComponent in SceneObject.GameObject.GetComponents(typeof(ProcessSceneObjectProperty)))
             {
                 // When removing a ISceneObjectProperty from the ISceneObject.
                 SceneObject.RemoveTrainingProperty(propertyComponent);

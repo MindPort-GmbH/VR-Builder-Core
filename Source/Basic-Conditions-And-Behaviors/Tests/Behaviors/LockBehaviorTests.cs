@@ -19,7 +19,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given an game object with a changed unique name,
             GameObject gameObject = new GameObject("Test");
-            TrainingSceneObject targetObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
             targetObject.ChangeUniqueName(targetName);
 
             // When we reference it by reference or unique name in the LockObjectBehavior,
@@ -38,7 +38,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given a LockObjectBehavior, an unlocked game object, and a full training step,
             GameObject gameObject = new GameObject("Test");
-            TrainingSceneObject targetObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
             Step step = new Step("TestStep");
             Transition transition = new Transition();
@@ -86,7 +86,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given a LockObjectBehavior, an locked game object, and a full training step,
             GameObject gameObject = new GameObject("Test");
-            TrainingSceneObject targetObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
             Step step = new Step("TestStep");
             Transition transition = new Transition();
@@ -135,7 +135,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given a LockObjectBehavior and an unlocked game object,
             GameObject gameObject = new GameObject("Test");
-            TrainingSceneObject targetObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
             LockObjectBehavior behavior = new LockObjectBehavior(targetObject);
 
@@ -156,7 +156,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given a LockObjectBehavior, an unlocked game object, and a full training step,
             GameObject gameObject = new GameObject("Test");
-            TrainingSceneObject targetObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
             Step step = new Step("TestStep");
             Transition transition = new Transition();
@@ -201,7 +201,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given a LockObjectBehavior, an unlocked game object, and an activated full training step,
             GameObject gameObject = new GameObject("Test");
-            TrainingSceneObject targetObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
             Step step = new Step("TestStep");
             Transition transition = new Transition();

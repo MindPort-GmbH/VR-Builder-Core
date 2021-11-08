@@ -17,7 +17,7 @@ namespace VRBuilder.Editor.UI.Windows
     /// TrainingMenuView is shown on the left side of the <see cref="CourseWindow"/> and takes care about overall
     /// settings for the Training itself, especially chapters.
     /// </summary>
-    internal class TrainingMenuView : ScriptableObject
+    internal class ProcessMenuView : ScriptableObject
     {
         #region Layout Constants
         public const float ExtendedMenuWidth = 330f;

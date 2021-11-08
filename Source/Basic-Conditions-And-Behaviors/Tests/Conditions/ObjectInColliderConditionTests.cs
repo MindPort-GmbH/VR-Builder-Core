@@ -18,7 +18,7 @@ namespace VRBuilder.Core.Tests.Conditions
             BoxCollider boxCollider = TargetPositionObject.AddComponent<BoxCollider>();
             boxCollider.isTrigger = true;
             TargetPositionObject.AddComponent<ColliderWithTriggerProperty>();
-            TargetTrainingSceneObject = TargetPositionObject.AddComponent<TrainingSceneObject>();
+            TargetTrainingSceneObject = TargetPositionObject.AddComponent<ProcessSceneObject>();
         }
 
         [SetUp]
@@ -28,7 +28,7 @@ namespace VRBuilder.Core.Tests.Conditions
             TrackedObject.AddComponent<BoxCollider>();
             Rigidbody rigidbody = TrackedObject.AddComponent<Rigidbody>();
             rigidbody.isKinematic = true;
-            TrackedTrainingSceneObject = TrackedObject.AddComponent<TrainingSceneObject>();
+            TrackedTrainingSceneObject = TrackedObject.AddComponent<ProcessSceneObject>();
         }
 
         [UnityTest]
@@ -219,7 +219,7 @@ namespace VRBuilder.Core.Tests.Conditions
             wrongObj.transform.position = PositionFarFromTarget;
             wrongObj.AddComponent<BoxCollider>();
             wrongObj.AddComponent<Rigidbody>();
-            TrainingSceneObject wrongTrainingSceneObject = wrongObj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject wrongTrainingSceneObject = wrongObj.AddComponent<ProcessSceneObject>();
 
             // Activate collider condition
             ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedTrainingSceneObject);

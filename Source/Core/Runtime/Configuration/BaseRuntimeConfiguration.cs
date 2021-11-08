@@ -80,7 +80,7 @@ namespace VRBuilder.Core.Configuration
         public IModeHandler Modes { get; protected set; }
 
         /// <inheritdoc />
-        public abstract TrainingSceneObject User { get; }
+        public abstract ProcessSceneObject User { get; }
 
         /// <inheritdoc />
         public abstract AudioSource InstructionPlayer { get; }

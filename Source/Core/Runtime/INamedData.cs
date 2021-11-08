@@ -16,7 +16,7 @@ namespace VRBuilder.Core
         /// <see cref="IStep"/>'s name.
         /// </summary>
         [DataMember]
-        [HideInTrainingInspector]
+        [HideInProcessInspector]
         string Name { get; set; }
     }
 }

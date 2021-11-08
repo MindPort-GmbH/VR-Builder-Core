@@ -17,12 +17,12 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator GameObjectIsEnabledAfterActivation()
         {
             // Given an active training scene object and a training with enable game object behavior,
-            TrainingSceneObject toEnable = TestingUtils.CreateSceneObject("toEnable");
+            ProcessSceneObject toEnable = TestingUtils.CreateSceneObject("toEnable");
             toEnable.GameObject.SetActive(false);
 
             EndlessConditionMock trigger = new EndlessConditionMock();
 
-            ICourse course = new LinearTrainingBuilder("Training")
+            ICourse course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicCourseStepBuilder("Step")
                         .Enable(toEnable)
@@ -53,12 +53,12 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator GameObjectStaysEnabled()
         {
             // Given an active training scene object and a training with enalbe game object condition,
-            TrainingSceneObject toEnable = TestingUtils.CreateSceneObject("toEnable");
+            ProcessSceneObject toEnable = TestingUtils.CreateSceneObject("toEnable");
             toEnable.GameObject.SetActive(false);
 
             EndlessConditionMock trigger = new EndlessConditionMock();
 
-            ICourse course = new LinearTrainingBuilder("Training")
+            ICourse course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicCourseStepBuilder("Step")
                         .Enable(toEnable))
@@ -89,7 +89,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator FastForwardInactiveBehavior()
         {
             // Given an inactive training scene object and an EnableGameObjectBehavior,
-            TrainingSceneObject toEnable = TestingUtils.CreateSceneObject("ToEnable");
+            ProcessSceneObject toEnable = TestingUtils.CreateSceneObject("ToEnable");
             toEnable.GameObject.SetActive(false);
 
             EnableGameObjectBehavior behavior = new EnableGameObjectBehavior(toEnable);
@@ -110,7 +110,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator FastForwardInactiveBehaviorAndActivateIt()
         {
             // Given an inactive training scene object and a EnableGameObjectBehavior,
-            TrainingSceneObject toEnable = TestingUtils.CreateSceneObject("ToEnable");
+            ProcessSceneObject toEnable = TestingUtils.CreateSceneObject("ToEnable");
             toEnable.GameObject.SetActive(false);
 
             EnableGameObjectBehavior behavior = new EnableGameObjectBehavior(toEnable);
@@ -133,7 +133,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         public IEnumerator FastForwardActivatingBehavior()
         {
             // Given an inactive training scene object and an active EnableGameObjectBehavior,
-            TrainingSceneObject toEnable = TestingUtils.CreateSceneObject("ToEnable");
+            ProcessSceneObject toEnable = TestingUtils.CreateSceneObject("ToEnable");
             toEnable.GameObject.SetActive(false);
 
             EnableGameObjectBehavior behavior = new EnableGameObjectBehavior(toEnable);

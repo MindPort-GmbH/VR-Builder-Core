@@ -83,7 +83,7 @@ namespace VRBuilder.Core.Behaviors
         }
 
         public ConfettiBehavior(bool isAboveUser, ISceneObject positionProvider, string confettiMachinePrefabPath, float radius, float duration, BehaviorExecutionStages executionStages)
-            : this(isAboveUser, TrainingReferenceUtils.GetNameFrom(positionProvider), confettiMachinePrefabPath, radius, duration, executionStages)
+            : this(isAboveUser, ProcessReferenceUtils.GetNameFrom(positionProvider), confettiMachinePrefabPath, radius, duration, executionStages)
         {
         }
 

@@ -6,17 +6,17 @@ using System;
 
 namespace VRBuilder.Core.Exceptions
 {
-    public class MissingModeException : ProcessException
+    public class ProcessException : Exception
     {
-        public MissingModeException()
+        public ProcessException()
         {
         }
 
-        public MissingModeException(string message) : base(message)
+        public ProcessException(string message) : base(message)
         {
         }
 
-        public MissingModeException(string message, Exception inner) : base(message, inner)
+        public ProcessException(string message, Exception inner) : base(message, inner)
         {
         }
     }

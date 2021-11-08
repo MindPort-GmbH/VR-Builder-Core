@@ -7,16 +7,16 @@ namespace VRBuilder.BasicInteraction.Validation
     /// <summary>
     /// Checks if the training scene object attached to the given GameObject is listed as accepted trainin scene object.
     /// </summary>
-    public class IsTrainingSceneObjectValidation : Validator
+    public class IsProcessSceneObjectValidation : Validator
     {
         [SerializeField]
         [Tooltip("All listed Training Scene Objects are valid to be snapped other will be rejected.")]
-        private TrainingSceneObject[] acceptedTrainingSceneObjects = {};
+        private ProcessSceneObject[] acceptedTrainingSceneObjects = {};
 
         /// <summary>
         /// Adds a new TrainingSceneObject to the list.
         /// </summary>
-        public void AddTrainingSceneObject(TrainingSceneObject target)
+        public void AddTrainingSceneObject(ProcessSceneObject target)
         {
             if (acceptedTrainingSceneObjects.Contains(target) == false)
             {
@@ -27,7 +27,7 @@ namespace VRBuilder.BasicInteraction.Validation
         /// <summary>
         /// Removes an existing training scene object from the list.
         /// </summary>
-        public void RemoveTrainingSceneObject(TrainingSceneObject target)
+        public void RemoveTrainingSceneObject(ProcessSceneObject target)
         {
             if (acceptedTrainingSceneObjects.Contains(target))
             {
@@ -38,7 +38,7 @@ namespace VRBuilder.BasicInteraction.Validation
         /// <inheritdoc />
         public override bool Validate(GameObject obj)
         {
-            TrainingSceneObject trainingSceneObject = obj.GetComponent<TrainingSceneObject>();
+            ProcessSceneObject trainingSceneObject = obj.GetComponent<ProcessSceneObject>();
 
             if (trainingSceneObject == null)
             {

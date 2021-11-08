@@ -19,7 +19,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Training drawer for <see cref="UniqueNameReference"/> members.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(UniqueNameReference))]
+    [DefaultProcessDrawer(typeof(UniqueNameReference))]
     internal class UniqueNameReferenceDrawer : AbstractDrawer
     {
         private bool isUndoOperation;
@@ -150,7 +150,7 @@ namespace VRBuilder.Editor.UI.Drawers
 
         private string GetUniqueNameFromSceneObject(GameObject selectedSceneObject)
         {
-            ISceneObject sceneObject = selectedSceneObject.GetComponent<TrainingSceneObject>();
+            ISceneObject sceneObject = selectedSceneObject.GetComponent<ProcessSceneObject>();
 
             if (sceneObject != null)
             {
@@ -185,7 +185,7 @@ namespace VRBuilder.Editor.UI.Drawers
                 if (GUI.Button(guiLineRect, button))
                 {
                     // Only relevant for Undoing a Training Property.
-                    bool isAlreadySceneObject = selectedSceneObject.GetComponent<TrainingSceneObject>() != null && typeof(ISceneObjectProperty).IsAssignableFrom(valueType);
+                    bool isAlreadySceneObject = selectedSceneObject.GetComponent<ProcessSceneObject>() != null && typeof(ISceneObjectProperty).IsAssignableFrom(valueType);
                     Component[] alreadyAttachedProperties = selectedSceneObject.GetComponents(typeof(Component));
 
                     RevertableChangesHandler.Do(
@@ -201,7 +201,7 @@ namespace VRBuilder.Editor.UI.Drawers
 
         private void SceneObjectAutomaticSetup(GameObject selectedSceneObject, Type valueType)
         {
-            ISceneObject sceneObject = selectedSceneObject.GetComponent<TrainingSceneObject>() ?? selectedSceneObject.AddComponent<TrainingSceneObject>();
+            ISceneObject sceneObject = selectedSceneObject.GetComponent<ProcessSceneObject>() ?? selectedSceneObject.AddComponent<ProcessSceneObject>();
 
             if (RuntimeConfigurator.Configuration.SceneObjectRegistry.ContainsGuid(sceneObject.Guid) == false)
             {
@@ -219,7 +219,7 @@ namespace VRBuilder.Editor.UI.Drawers
 
         private void UndoSceneObjectAutomaticSetup(GameObject selectedSceneObject, Type valueType, bool hadTrainingComponent, Component[] alreadyAttachedProperties)
         {
-            ISceneObject sceneObject = selectedSceneObject.GetComponent<TrainingSceneObject>();
+            ISceneObject sceneObject = selectedSceneObject.GetComponent<ProcessSceneObject>();
 
             if (typeof(ISceneObjectProperty).IsAssignableFrom(valueType))
             {
@@ -228,7 +228,7 @@ namespace VRBuilder.Editor.UI.Drawers
 
             if (hadTrainingComponent == false)
             {
-                Object.DestroyImmediate((TrainingSceneObject) sceneObject);
+                Object.DestroyImmediate((ProcessSceneObject) sceneObject);
             }
 
             isUndoOperation = true;

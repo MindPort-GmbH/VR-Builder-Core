@@ -24,7 +24,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// It takes metadata entries one by one and recursively calls its Draw method, until no unprocessed metadata left.
     /// After that, an actual object is drawn.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(MetadataWrapper))]
+    [DefaultProcessDrawer(typeof(MetadataWrapper))]
     internal class MetadataWrapperDrawer : AbstractDrawer
     {
         private readonly string reorderableName = "ReorderableElement";
@@ -113,7 +113,7 @@ namespace VRBuilder.Editor.UI.Drawers
         {
             // Assert that value is never null, as we always call MetadataWrapper on freshly created instance.
             MetadataWrapper wrapper = value as MetadataWrapper;
-            ITrainingDrawer valueDrawer = DrawerLocator.GetDrawerForValue(wrapper.Value, wrapper.ValueDeclaredType);
+            IProcessDrawer valueDrawer = DrawerLocator.GetDrawerForValue(wrapper.Value, wrapper.ValueDeclaredType);
 
             return valueDrawer.GetLabel(wrapper.Value, wrapper.ValueDeclaredType);
         }
@@ -334,7 +334,7 @@ namespace VRBuilder.Editor.UI.Drawers
                 return rect;
             }
 
-            ITrainingDrawer boolDrawer = DrawerLocator.GetDrawerForValue(backgroundBehaviorData.IsBlocking, typeof(bool));
+            IProcessDrawer boolDrawer = DrawerLocator.GetDrawerForValue(backgroundBehaviorData.IsBlocking, typeof(bool));
             rect.height += boolDrawer.Draw(new Rect(rect.x, rect.y + rect.height, rect.width, 0), backgroundBehaviorData.IsBlocking, (newValue) =>
             {
                 backgroundBehaviorData.IsBlocking = (bool)newValue;
@@ -362,7 +362,7 @@ namespace VRBuilder.Editor.UI.Drawers
 
             currentY += DrawRecursively(rect, wrapper, extendableListName, changeValueCallback, label).height;
 
-            ITrainingDrawer addThingsDrawer = DrawerLocator.GetInstantiatorDrawer(elementType);
+            IProcessDrawer addThingsDrawer = DrawerLocator.GetInstantiatorDrawer(elementType);
 
             if (addThingsDrawer != null)
             {
@@ -538,7 +538,7 @@ namespace VRBuilder.Editor.UI.Drawers
         {
             IList<MetadataWrapper> listOfWrappers = ConvertListOfMetadataToList(wrapper);
 
-            ITrainingDrawer valueDrawer = DrawerLocator.GetDrawerForValue(wrapper.Value, wrapper.ValueDeclaredType);
+            IProcessDrawer valueDrawer = DrawerLocator.GetDrawerForValue(wrapper.Value, wrapper.ValueDeclaredType);
             IList list = (IList)wrapper.Value;
 
             return valueDrawer.Draw(rect, listOfWrappers, (newValue) =>
@@ -557,7 +557,7 @@ namespace VRBuilder.Editor.UI.Drawers
         {
             IList<MetadataWrapper> listOfWrappers = ConvertReorderableListOfMetadataToList(wrapper);
 
-            ITrainingDrawer valueDrawer = DrawerLocator.GetDrawerForValue(wrapper.Value, wrapper.ValueDeclaredType);
+            IProcessDrawer valueDrawer = DrawerLocator.GetDrawerForValue(wrapper.Value, wrapper.ValueDeclaredType);
             IList list = (IList)wrapper.Value;
 
             for (int i = 0; i < listOfWrappers.Count; i++)
@@ -624,7 +624,7 @@ namespace VRBuilder.Editor.UI.Drawers
             else
             {
                 // Draw an actual object.
-                ITrainingDrawer valueDrawer = DrawerLocator.GetDrawerForValue(wrapper.Value, wrapper.ValueDeclaredType);
+                IProcessDrawer valueDrawer = DrawerLocator.GetDrawerForValue(wrapper.Value, wrapper.ValueDeclaredType);
 
                 Action<object> valueChanged = (newValue) =>
                 {

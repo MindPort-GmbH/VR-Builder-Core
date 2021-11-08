@@ -12,7 +12,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Training drawer for `System.Enum` members.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(Enum))]
+    [DefaultProcessDrawer(typeof(Enum))]
     internal class EnumDrawer : AbstractDrawer
     {
         /// <inheritdoc />

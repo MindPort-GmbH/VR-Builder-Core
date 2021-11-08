@@ -9,10 +9,10 @@
 namespace VRBuilder.Core.Properties
 {
     /// <summary>
-    /// <see cref="TrainingSceneObjectProperty"/> which is lockable, to allow the restrictive environment to handle
+    /// <see cref="ProcessSceneObjectProperty"/> which is lockable, to allow the restrictive environment to handle
     /// locking/unlocking your properties, extend this class.
     /// </summary>
-    public abstract class LockableProperty : TrainingSceneObjectProperty, ILockable
+    public abstract class LockableProperty : ProcessSceneObjectProperty, ILockable
     {
         ///  <inheritdoc/>
         public event EventHandler<LockStateChangedEventArgs> Locked;

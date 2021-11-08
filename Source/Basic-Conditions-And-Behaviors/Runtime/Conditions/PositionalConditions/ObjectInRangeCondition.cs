@@ -58,7 +58,7 @@ namespace VRBuilder.Core.Conditions
             /// <summary>
             /// The object to measure distance from.
             /// </summary>
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             [Obsolete("Use 'ReferenceProperty' instead.")]
             public SceneObjectReference DistanceDetector;
 
@@ -70,7 +70,7 @@ namespace VRBuilder.Core.Conditions
 
             /// <inheritdoc />
             [DataMember]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public string Name { get; set; }
 
             /// <inheritdoc />
@@ -93,7 +93,7 @@ namespace VRBuilder.Core.Conditions
         }
 
         public ObjectInRangeCondition(ISceneObject target, TransformInRangeDetectorProperty detector, float range, float requiredTimeInTarget = 0, string name = null)
-            : this(TrainingReferenceUtils.GetNameFrom(target), TrainingReferenceUtils.GetNameFrom(detector), range, requiredTimeInTarget, name)
+            : this(ProcessReferenceUtils.GetNameFrom(target), ProcessReferenceUtils.GetNameFrom(detector), range, requiredTimeInTarget, name)
         {
         }
 

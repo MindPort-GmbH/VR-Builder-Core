@@ -57,8 +57,8 @@ namespace VRBuilder.Editor.XRInteraction
             // Adds a Snap Zone component to our new object.
             SnapZone snapZone = snapObject.AddComponent<SnapZoneProperty>().SnapZone;
             snapZone.ShownHighlightObject = snapZonePrefab;
-            IsTrainingSceneObjectValidation validation = snapZone.gameObject.AddComponent<IsTrainingSceneObjectValidation>();
-            validation.AddTrainingSceneObject(snappable.GetComponent<TrainingSceneObject>());
+            IsProcessSceneObjectValidation validation = snapZone.gameObject.AddComponent<IsProcessSceneObjectValidation>();
+            validation.AddTrainingSceneObject(snappable.GetComponent<ProcessSceneObject>());
 
             settings.ApplySettingsToSnapZone(snapZone);
 

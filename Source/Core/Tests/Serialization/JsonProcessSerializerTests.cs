@@ -15,13 +15,13 @@ using UnityEngine.TestTools;
 
 namespace VRBuilder.Tests.Serialization
 {
-    public class JsonTrainingSerializerTests : RuntimeTests
+    public class JsonProcessSerializerTests : RuntimeTests
     {
         [UnityTest]
         public IEnumerator BaseTraining()
         {
             // Given base training
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")))
                 .Build();
@@ -48,7 +48,7 @@ namespace VRBuilder.Tests.Serialization
         public IEnumerator Chapter()
         {
             // Given we have a training with a chapter
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")))
                 .Build();
@@ -72,7 +72,7 @@ namespace VRBuilder.Tests.Serialization
         public IEnumerator Condition()
         {
             // Given a training which has a step with a condition
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new AutoCompletedCondition())))
@@ -96,7 +96,7 @@ namespace VRBuilder.Tests.Serialization
         public IEnumerator Transition()
         {
             // Given a training with more than one step
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("FirstStep"))
                     .AddStep(new BasicStepBuilder("SecondStep")))
@@ -120,7 +120,7 @@ namespace VRBuilder.Tests.Serialization
         public IEnumerator Step()
         {
             // Given we have a training with a step
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new AutoCompletedCondition())))

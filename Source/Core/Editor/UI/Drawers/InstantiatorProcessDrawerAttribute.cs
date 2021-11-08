@@ -7,11 +7,11 @@ using System;
 namespace VRBuilder.Editor.UI.Drawers
 {
     [AttributeUsage(AttributeTargets.Class)]
-    internal class InstantiatorTrainingDrawerAttribute : Attribute
+    internal class InstantiatorProcessDrawerAttribute : Attribute
     {
         public Type Type { get; private set; }
 
-        public InstantiatorTrainingDrawerAttribute(Type type)
+        public InstantiatorProcessDrawerAttribute(Type type)
         {
             Type = type;
         }

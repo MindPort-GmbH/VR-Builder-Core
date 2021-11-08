@@ -7,9 +7,9 @@ using UnityEngine;
 namespace VRBuilder.Editor.Core.UI.Drawers
 {
     /// <summary>
-    /// Training drawer for <see cref="IAudioData"/> members.
+    /// Process drawer for <see cref="IAudioData"/> members.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(IAudioData))]
+    [DefaultProcessDrawer(typeof(IAudioData))]
     public class AudioDataDrawer : ObjectDrawer
     {
         protected string tooltip;

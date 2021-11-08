@@ -29,7 +29,7 @@ namespace VRBuilder.Core.Conditions
 
             /// <inheritdoc />
             [DataMember]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public string Name { get; set; }
 
             /// <inheritdoc />

@@ -12,10 +12,10 @@ namespace VRBuilder.Core.Tests.Conditions
         protected Vector3 PositionOffsetNearTarget = new Vector3(0.1f, 0.1f, 0.1f);
 
         protected GameObject TargetPositionObject;
-        protected TrainingSceneObject TargetTrainingSceneObject;
+        protected ProcessSceneObject TargetTrainingSceneObject;
 
         protected GameObject TrackedObject;
-        protected TrainingSceneObject TrackedTrainingSceneObject;
+        protected ProcessSceneObject TrackedTrainingSceneObject;
 
         [SetUp]
         public void SetUpCreatePositionObject()

@@ -13,7 +13,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Drawer for a transition which displays name of the target step as part of its label.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(Transition))]
+    [DefaultProcessDrawer(typeof(Transition))]
     internal class TransitionDrawer : DataOwnerDrawer
     {
         public override GUIContent GetLabel(object value, Type declaredType)

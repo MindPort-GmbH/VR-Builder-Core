@@ -10,5 +10,5 @@ namespace VRBuilder.Core.Attributes
     /// Use this attribute to hide serializeable members in the training inspector.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
-    public class HideInTrainingInspectorAttribute : Attribute { }
+    public class HideInProcessInspectorAttribute : Attribute { }
 }

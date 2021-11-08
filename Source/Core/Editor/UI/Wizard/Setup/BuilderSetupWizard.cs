@@ -60,7 +60,7 @@ namespace VRBuilder.Editor.UI.Wizard
             List<WizardPage> pages = new List<WizardPage>()
             {
                 new WelcomePage(),
-                new TrainingSceneSetupPage(),
+                new ProcessSceneSetupPage(),
                 //new AnalyticsPage(),
                 new AllAboutPage()
             };

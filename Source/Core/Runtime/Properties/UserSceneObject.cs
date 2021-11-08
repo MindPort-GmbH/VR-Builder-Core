@@ -9,7 +9,7 @@ namespace VRBuilder.Core.Properties
     /// <summary>
     /// Used to identify the user within the scene.
     /// </summary>
-    public class UserSceneObject : TrainingSceneObject
+    public class UserSceneObject : ProcessSceneObject
     {
         protected new void Awake()
         {

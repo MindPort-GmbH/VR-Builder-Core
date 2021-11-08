@@ -83,11 +83,11 @@ namespace VRBuilder.Core.Behaviors
         {
         }
 
-        public LockObjectBehavior(ISceneObject target) : this(TrainingReferenceUtils.GetNameFrom(target))
+        public LockObjectBehavior(ISceneObject target) : this(ProcessReferenceUtils.GetNameFrom(target))
         {
         }
 
-        public LockObjectBehavior(ISceneObject target, bool isOnlyLockedInStep) : this(TrainingReferenceUtils.GetNameFrom(target), isOnlyLockedInStep: isOnlyLockedInStep)
+        public LockObjectBehavior(ISceneObject target, bool isOnlyLockedInStep) : this(ProcessReferenceUtils.GetNameFrom(target), isOnlyLockedInStep: isOnlyLockedInStep)
         {
         }
 

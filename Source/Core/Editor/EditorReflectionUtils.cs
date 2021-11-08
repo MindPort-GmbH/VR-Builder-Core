@@ -194,7 +194,7 @@ namespace VRBuilder.Editor
 
             type = value.GetType();
 
-            fieldAndPropertiesToDrawCache[type] = result.Where(memberInfo => memberInfo.GetAttributes<HideInTrainingInspectorAttribute>(true).Any() == false)
+            fieldAndPropertiesToDrawCache[type] = result.Where(memberInfo => memberInfo.GetAttributes<HideInProcessInspectorAttribute>(true).Any() == false)
                 .Where(memberInfo => memberInfo.GetAttributes<DataMemberAttribute>(true).Any() && DrawerLocator.GetDrawerForMember(memberInfo, value) != null)
                 .OrderBy(memberInfo =>
                 {

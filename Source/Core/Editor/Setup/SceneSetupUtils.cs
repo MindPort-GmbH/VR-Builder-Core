@@ -51,7 +51,7 @@ namespace VRBuilder.Editor.Setup
         /// <param name="courseName">Name of the training course.</param>
         public static void SetupSceneAndTraining(string courseName)
         {
-            TrainingSceneSetup.Run();
+            ProcessSceneSetup.Run();
 
             string errorMessage = null;
             if (CourseAssetUtils.DoesCourseAssetExist(courseName) || CourseAssetUtils.CanCreate(courseName, out errorMessage))

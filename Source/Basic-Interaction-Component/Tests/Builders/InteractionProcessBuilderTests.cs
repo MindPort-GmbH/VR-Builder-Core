@@ -44,7 +44,7 @@ namespace VRBuilder.Tests.Interaction
             }
         }
         
-        private class DummySnappableProperty : TrainingSceneObjectProperty, ISnappableProperty
+        private class DummySnappableProperty : ProcessSceneObjectProperty, ISnappableProperty
         {
 #pragma warning disable CS0067 // Disable "event is never used" warning.
             public event EventHandler<EventArgs> Snapped;
@@ -108,16 +108,16 @@ namespace VRBuilder.Tests.Interaction
         {
             // Given a snap zone and snappable property and a builder for a training with a PutIntoSnapZone default step
             GameObject snapZoneGo = new GameObject("SnapZone");
-            TrainingSceneObject snapZone = snapZoneGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject snapZone = snapZoneGo.AddComponent<ProcessSceneObject>();
             snapZoneGo.AddComponent<DummySnapZoneProperty>();
             snapZone.ChangeUniqueName("SnapZone");
 
             GameObject putGo = new GameObject("Puttable");
-            TrainingSceneObject objectToPut = putGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject objectToPut = putGo.AddComponent<ProcessSceneObject>();
             putGo.AddComponent<DummySnappableProperty>();
             objectToPut.ChangeUniqueName("ToPut");
 
-            LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
+            LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(InteractionDefaultSteps.PutIntoSnapZone("TestSnapZonePutStep", "SnapZone", "ToPut")));
 
@@ -143,11 +143,11 @@ namespace VRBuilder.Tests.Interaction
         {
             // Given a usable property and a builder for a training with Use default step
             GameObject usableGo = new GameObject("Usable");
-            TrainingSceneObject usable = usableGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject usable = usableGo.AddComponent<ProcessSceneObject>();
             usableGo.AddComponent<DummyUsableProperty>();
             usable.ChangeUniqueName("Usable");
 
-            LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
+            LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(InteractionDefaultSteps.Use("TestUseStep", "Usable")));
 
@@ -172,11 +172,11 @@ namespace VRBuilder.Tests.Interaction
         {
             // Given you have a touchable property and a builder for a training with Touch default step
             GameObject touchableGo = new GameObject("Touchable");
-            TrainingSceneObject touchable = touchableGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject touchable = touchableGo.AddComponent<ProcessSceneObject>();
             touchableGo.AddComponent<DummyTouchableProperty>();
             touchable.ChangeUniqueName("Touchable");
 
-            LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
+            LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(InteractionDefaultSteps.Touch("TestTouchStep", "Touchable")));
 

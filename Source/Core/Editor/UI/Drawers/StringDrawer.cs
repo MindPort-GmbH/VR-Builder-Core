@@ -11,7 +11,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Training drawer for string members.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(string))]
+    [DefaultProcessDrawer(typeof(string))]
     internal class StringDrawer : AbstractDrawer
     {
         /// <inheritdoc />

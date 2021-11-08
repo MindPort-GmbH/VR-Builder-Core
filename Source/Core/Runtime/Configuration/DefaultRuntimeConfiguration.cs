@@ -32,11 +32,11 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <inheritdoc />
-        public override TrainingSceneObject User
+        public override ProcessSceneObject User
         {
             get
             {
-                TrainingSceneObject user = GameObject.FindObjectOfType<UserSceneObject>();
+                ProcessSceneObject user = GameObject.FindObjectOfType<UserSceneObject>();
 
                 if (user == null)
                 {

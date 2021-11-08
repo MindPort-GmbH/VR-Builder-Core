@@ -44,7 +44,7 @@ namespace VRBuilder.Core
 
             /// <inheritdoc />
             [DataMember]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public string Name { get; set; }
 
             /// <inheritdoc />

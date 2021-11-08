@@ -14,7 +14,7 @@ namespace VRBuilder.Editor.UI.Wizard
     /// <summary>
     /// Wizard page which handles the training scene setup.
     /// </summary>
-    internal class TrainingSceneSetupPage : WizardPage
+    internal class ProcessSceneSetupPage : WizardPage
     {
         private const int MaxCourseNameLength = 40;
         private const int MinHeightOfInfoText = 30;
@@ -40,7 +40,7 @@ namespace VRBuilder.Editor.UI.Wizard
         private readonly GUIContent infoContent;
         private readonly GUIContent warningContent;
 
-        public TrainingSceneSetupPage() : base("Setup Training")
+        public ProcessSceneSetupPage() : base("Setup Training")
         {
             infoContent = EditorGUIUtility.IconContent("console.infoicon.inactive.sml");
             warningContent = EditorGUIUtility.IconContent("console.warnicon.sml");

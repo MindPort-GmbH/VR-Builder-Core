@@ -30,7 +30,7 @@ namespace VRBuilder.Core
             ///<inheritdoc />
             [DataMember]
             [DrawingPriority(0)]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public string Name { get; set; }
 
             ///<inheritdoc />
@@ -40,12 +40,12 @@ namespace VRBuilder.Core
 
             ///<inheritdoc />
             [DataMember]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public IBehaviorCollection Behaviors { get; set; }
 
             ///<inheritdoc />
             [DataMember]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public ITransitionCollection Transitions { get; set; }
 
             ///<inheritdoc />
@@ -65,7 +65,7 @@ namespace VRBuilder.Core
             public IMode Mode { get; set; }
 
             ///<inheritdoc />
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public IEnumerable<LockablePropertyReference> ToUnlock { get; set; } = new List<LockablePropertyReference>();
 
             public EntityData()

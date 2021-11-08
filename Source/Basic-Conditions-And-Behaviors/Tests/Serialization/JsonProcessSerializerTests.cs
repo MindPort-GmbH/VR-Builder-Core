@@ -14,17 +14,17 @@ using UnityEngine.TestTools;
 
 namespace VRBuilder.Core.Tests.Serialization
 {
-    public class JsonTrainingSerializerTests : RuntimeTests
+    public class JsonProcessSerializerTests : RuntimeTests
     {
         [UnityTest]
         public IEnumerator ObjectInRangeCondition()
         {
             // Given a training with ObjectInRangeCondition,
-            TrainingSceneObject testObjectToo = TestingUtils.CreateSceneObject("TestObjectToo");
+            ProcessSceneObject testObjectToo = TestingUtils.CreateSceneObject("TestObjectToo");
             TransformInRangeDetectorProperty detector = testObjectToo.gameObject.AddComponent<TransformInRangeDetectorProperty>();
-            TrainingSceneObject testObject = TestingUtils.CreateSceneObject("TestObject");
+            ProcessSceneObject testObject = TestingUtils.CreateSceneObject("TestObject");
 
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new ObjectInRangeCondition(testObject, detector, 1.5f))))
@@ -54,7 +54,7 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator TimeoutCondition()
         {
             // Given a training with a timeout condition
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new TimeoutCondition(2.5f))))
@@ -78,9 +78,9 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator MoveObjectBehavior()
         {
             // Given training with MoveObjectBehavior
-            TrainingSceneObject moved = TestingUtils.CreateSceneObject("moved");
-            TrainingSceneObject positionProvider = TestingUtils.CreateSceneObject("positionprovider");
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ProcessSceneObject moved = TestingUtils.CreateSceneObject("moved");
+            ProcessSceneObject positionProvider = TestingUtils.CreateSceneObject("positionprovider");
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new MoveObjectBehavior(moved, positionProvider, 24.7f))))
@@ -141,7 +141,7 @@ namespace VRBuilder.Core.Tests.Serialization
                 new DelayBehavior(0f),
                 new EmptyBehaviorMock()
             });
-            ICourse course = new LinearTrainingBuilder("Training")
+            ICourse course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(sequence)))
@@ -168,7 +168,7 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator DelayBehavior()
         {
             // Given we have a training with a delayed activation behavior,
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new DelayBehavior(7f))))
@@ -191,9 +191,9 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator DisableGameObjectBehavior()
         {
             // Given DisableGameObjectBehavior,
-            TrainingSceneObject trainingSceneObject = TestingUtils.CreateSceneObject("TestObject");
+            ProcessSceneObject trainingSceneObject = TestingUtils.CreateSceneObject("TestObject");
 
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicCourseStepBuilder("Step")
                         .Disable("TestObject")))
@@ -221,9 +221,9 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator EnableGameObjectBehavior()
         {
             // Given EnableGameObjectBehavior,
-            TrainingSceneObject trainingSceneObject = TestingUtils.CreateSceneObject("TestObject");
+            ProcessSceneObject trainingSceneObject = TestingUtils.CreateSceneObject("TestObject");
 
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicCourseStepBuilder("Step")
                         .Enable("TestObject")))
@@ -250,9 +250,9 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator LockObjectBehavior()
         {
             // Given a training with LockObjectBehavior
-            TrainingSceneObject trainingSceneObject = TestingUtils.CreateSceneObject("TestObject");
+            ProcessSceneObject trainingSceneObject = TestingUtils.CreateSceneObject("TestObject");
 
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new LockObjectBehavior(trainingSceneObject))))
@@ -281,7 +281,7 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator PlayAudioOnActivationBehavior()
         {
             // Given a training with PlayAudioOnActivationBehavior with some ResourceAudio
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new PlayAudioBehavior(new ResourceAudio("TestPath"), BehaviorExecutionStages.Activation))))
@@ -305,7 +305,7 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator PlayAudioOnDectivationBehavior()
         {
             // Given a training with PlayAudioOnDeactivationBehavior and some ResourceData,
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new PlayAudioBehavior(new ResourceAudio("TestPath"), BehaviorExecutionStages.Activation))))
@@ -330,9 +330,9 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator UnlockObjectBehavior()
         {
             // Given a training with UnlockObjectBehavior
-            TrainingSceneObject trainingSceneObject = TestingUtils.CreateSceneObject("TestObject");
+            ProcessSceneObject trainingSceneObject = TestingUtils.CreateSceneObject("TestObject");
 
-            ICourse training1 = new LinearTrainingBuilder("Training")
+            ICourse training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new UnlockObjectBehavior(trainingSceneObject))))
@@ -361,7 +361,7 @@ namespace VRBuilder.Core.Tests.Serialization
             // Given we have a ResourceAudio instance,
             ResourceAudio audio = new ResourceAudio("TestPath");
 
-            ICourse course = new LinearTrainingBuilder("Training")
+            ICourse course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new PlayAudioBehavior(audio, BehaviorExecutionStages.Activation))))

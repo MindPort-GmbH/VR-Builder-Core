@@ -108,7 +108,7 @@ namespace VRBuilder.Core.Behaviors
         {
         }
 
-        public HighlightObjectBehavior(IHighlightProperty target, Color highlightColor, string name = "Highlight Object") : this(TrainingReferenceUtils.GetNameFrom(target), highlightColor, name)
+        public HighlightObjectBehavior(IHighlightProperty target, Color highlightColor, string name = "Highlight Object") : this(ProcessReferenceUtils.GetNameFrom(target), highlightColor, name)
         {
         }
 

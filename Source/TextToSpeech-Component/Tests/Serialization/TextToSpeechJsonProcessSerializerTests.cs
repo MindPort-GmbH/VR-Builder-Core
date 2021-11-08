@@ -11,7 +11,7 @@ using UnityEngine.Assertions;
 
 namespace Innoactive.Hub.Unity.Tests.Training
 {
-    public class TextToSpeechJsonTrainingSerializerTests : RuntimeTests
+    public class TextToSpeechJsonProcessSerializerTests : RuntimeTests
     {
         [UnityTest]
         public IEnumerator TextToSpeechAudio()

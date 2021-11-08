@@ -14,13 +14,13 @@ using Object = UnityEngine.Object;
 
 namespace VRBuilder.Core.Tests.Builder
 {
-    public class TrainingBuilderTests : RuntimeTests
+    public class ProcessBuilderTests : RuntimeTests
     {
         [Test]
         public void SimplestTrainingBuilderTest()
         {
             // Given a builder of a training with one chapter with one step
-            LinearTrainingBuilder builder = new LinearTrainingBuilder("Training1")
+            LinearProcessBuilder builder = new LinearProcessBuilder("Process1")
                 .AddChapter(new LinearChapterBuilder("Chapter1.1")
                     .AddStep(new BasicStepBuilder("Step1.1.1"))
                 );
@@ -41,7 +41,7 @@ namespace VRBuilder.Core.Tests.Builder
         public void OneChapterMultipleStepsTest()
         {
             // Given a builder of a training with one chapter with three steps
-            LinearTrainingBuilder builder = new LinearTrainingBuilder("Training1")
+            LinearProcessBuilder builder = new LinearProcessBuilder("Process1")
                 .AddChapter(new LinearChapterBuilder("Chapter1.1")
                     .AddStep(new BasicStepBuilder("Step1.1.1"))
                     .AddStep(new BasicStepBuilder("Step1.1.2"))
@@ -64,7 +64,7 @@ namespace VRBuilder.Core.Tests.Builder
         public void MultipleChaptersTest()
         {
             // Given a builder of a training with three chapters with one, three, and one steps
-            LinearTrainingBuilder builder = new LinearTrainingBuilder("1")
+            LinearProcessBuilder builder = new LinearProcessBuilder("1")
                 .AddChapter(new LinearChapterBuilder("1.1")
                     .AddStep(new BasicStepBuilder("1.1.1")))
                 .AddChapter(new LinearChapterBuilder("1.2")
@@ -108,7 +108,7 @@ namespace VRBuilder.Core.Tests.Builder
         public void ReuseBuilderTest()
         {
             // Given a builder
-            LinearTrainingBuilder builder = new LinearTrainingBuilder("1")
+            LinearProcessBuilder builder = new LinearProcessBuilder("1")
                 .AddChapter(new LinearChapterBuilder("1.1")
                     .AddStep(new BasicStepBuilder("1.1.1")))
                 .AddChapter(new LinearChapterBuilder("1.2")
@@ -155,7 +155,7 @@ namespace VRBuilder.Core.Tests.Builder
         public void BuildingIntroTest()
         {
             // Given a builder with a predefined Intro step
-            LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
+            LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(VRBuilder.Tests.Builder.DefaultSteps.Intro("TestIntroStep")));
 
@@ -173,18 +173,18 @@ namespace VRBuilder.Core.Tests.Builder
         {
             // Given two training scene objects with `ColliderWithTriggerProperty` and a builder for at raining with a PutIntoCollider default step
             GameObject colliderGo = new GameObject("Collider");
-            TrainingSceneObject testCollider = colliderGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject testCollider = colliderGo.AddComponent<ProcessSceneObject>();
             colliderGo.AddComponent<SphereCollider>().isTrigger = true;
             colliderGo.AddComponent<ColliderWithTriggerProperty>();
             testCollider.ChangeUniqueName("Collider");
 
             GameObject putGo = new GameObject("Puttable");
-            TrainingSceneObject testObjectToPut = putGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject testObjectToPut = putGo.AddComponent<ProcessSceneObject>();
             putGo.AddComponent<SphereCollider>().isTrigger = true;
             putGo.AddComponent<ColliderWithTriggerProperty>();
             testObjectToPut.ChangeUniqueName("ToPut");
 
-            LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
+            LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(BasicCourseSteps.PutIntoCollider("TestColliderPutStep", "Collider", 1f, "ToPut")));
 
@@ -212,7 +212,7 @@ namespace VRBuilder.Core.Tests.Builder
             EnableHighlightProperty highlightable = go.AddComponent<EnableHighlightProperty>();
             highlightable.SceneObject.ChangeUniqueName("Highlightable");
 
-            LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
+            LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(new BasicCourseStepBuilder("TestHighlightStep")
                         .Highlight("Highlightable")));
@@ -238,7 +238,7 @@ namespace VRBuilder.Core.Tests.Builder
             TestDelegate test = () =>
             {
                 // Given a builder with two .AddAudioDescription calls
-                LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
+                LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                     .AddChapter(new LinearChapterBuilder("TestChapter")
                         .AddStep(new BasicCourseStepBuilder("TestStep")
                             .AddAudioDescription("Path1")
@@ -260,7 +260,7 @@ namespace VRBuilder.Core.Tests.Builder
             TestDelegate test = () =>
             {
                 // Given a builder with two .AddAudioSuccess calls
-                LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
+                LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                     .AddChapter(new LinearChapterBuilder("TestChapter")
                         .AddStep(new BasicCourseStepBuilder("TestStep")
                             .AddAudioSuccess("Path1")
@@ -282,7 +282,7 @@ namespace VRBuilder.Core.Tests.Builder
             TestDelegate test = () =>
             {
                 // Given a builder with two .AddAudioHint calls
-                LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
+                LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                     .AddChapter(new LinearChapterBuilder("TestChapter")
                         .AddStep(new BasicCourseStepBuilder("TestStep")
                             .AddAudioHint("Path1")
@@ -304,7 +304,7 @@ namespace VRBuilder.Core.Tests.Builder
         public IEnumerator AudioFlagsCleanupTest()
         {
             // Given a builder for a training
-            LinearTrainingBuilder builder = new LinearTrainingBuilder("TestTraining")
+            LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(new BasicCourseStepBuilder("TestStep")
                         .AddAudioSuccess("Path1")

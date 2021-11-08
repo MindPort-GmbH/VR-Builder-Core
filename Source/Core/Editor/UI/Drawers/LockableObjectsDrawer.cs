@@ -12,7 +12,7 @@ using UnityEngine;
 
 namespace VRBuilder.Editor.UI.Drawers
 {
-    [DefaultTrainingDrawer(typeof(LockableObjectsCollection))]
+    [DefaultProcessDrawer(typeof(LockableObjectsCollection))]
     internal class LockableObjectsDrawer : DataOwnerDrawer
     {
         private LockableObjectsCollection lockableCollection;
@@ -37,7 +37,7 @@ namespace VRBuilder.Editor.UI.Drawers
             EditorGUI.LabelField(currentPosition, "To add new TrainingSceneObject, drag it in here:");
             currentPosition.y += EditorDrawingHelper.SingleLineHeight + EditorDrawingHelper.VerticalSpacing;
 
-            TrainingSceneObject newSceneObject = (TrainingSceneObject) EditorGUI.ObjectField(currentPosition, null, typeof(TrainingSceneObject), true);
+            ProcessSceneObject newSceneObject = (ProcessSceneObject) EditorGUI.ObjectField(currentPosition, null, typeof(ProcessSceneObject), true);
             if (newSceneObject != null)
             {
                 lockableCollection.AddSceneObject(newSceneObject);
@@ -53,7 +53,7 @@ namespace VRBuilder.Editor.UI.Drawers
             Rect objectFieldPosition = currentPosition;
             objectFieldPosition.width -= 24;
             GUI.enabled = false;
-            EditorGUI.ObjectField(objectFieldPosition, (TrainingSceneObject) sceneObject, typeof(TrainingSceneObject), true);
+            EditorGUI.ObjectField(objectFieldPosition, (ProcessSceneObject) sceneObject, typeof(ProcessSceneObject), true);
             // If scene object is used by a property, dont allow removing it.
             GUI.enabled = lockableCollection.IsUsedInAutoUnlock(sceneObject) == false;
             objectFieldPosition.x = currentPosition.width - 24 + 6f;

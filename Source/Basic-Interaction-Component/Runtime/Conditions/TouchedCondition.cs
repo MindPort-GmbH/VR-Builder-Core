@@ -29,7 +29,7 @@ namespace VRBuilder.BasicInteraction.Conditions
             public bool IsCompleted { get; set; }
 
             [DataMember]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public string Name { get; set; }
 
             public Metadata Metadata { get; set; }
@@ -64,7 +64,7 @@ namespace VRBuilder.BasicInteraction.Conditions
         }
 
         // ReSharper disable once SuggestBaseTypeForParameter
-        public TouchedCondition(ITouchableProperty target, string name = null) : this(TrainingReferenceUtils.GetNameFrom(target), name)
+        public TouchedCondition(ITouchableProperty target, string name = null) : this(ProcessReferenceUtils.GetNameFrom(target), name)
         {
         }
 

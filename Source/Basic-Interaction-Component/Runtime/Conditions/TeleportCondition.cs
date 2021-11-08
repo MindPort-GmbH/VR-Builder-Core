@@ -32,7 +32,7 @@ namespace VRBuilder.BasicInteraction.Conditions
 
             /// <inheritdoc />
             [DataMember]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public string Name { get; set; }
 
             /// <inheritdoc />
@@ -43,7 +43,7 @@ namespace VRBuilder.BasicInteraction.Conditions
         {
         }
 
-        public TeleportCondition(ITeleportationProperty teleportationPoint, string name = null) : this(TrainingReferenceUtils.GetNameFrom(teleportationPoint), name)
+        public TeleportCondition(ITeleportationProperty teleportationPoint, string name = null) : this(ProcessReferenceUtils.GetNameFrom(teleportationPoint), name)
         {
         }
 

@@ -11,7 +11,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Training drawer for `UnityEngine.Color`
     /// </summary>
-    [DefaultTrainingDrawer(typeof(Color))]
+    [DefaultProcessDrawer(typeof(Color))]
     internal class UnityColorDrawer : AbstractDrawer
     {
         /// <inheritdoc />

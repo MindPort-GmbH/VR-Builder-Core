@@ -35,7 +35,7 @@ namespace VRBuilder.Core.SceneObjects
         /// <inheritdoc />
         public void RegisterAll()
         {
-            foreach (TrainingSceneObject trainingObject in SceneUtils.GetActiveAndInactiveComponents<TrainingSceneObject>())
+            foreach (ProcessSceneObject trainingObject in SceneUtils.GetActiveAndInactiveComponents<ProcessSceneObject>())
             {
                 try
                 {

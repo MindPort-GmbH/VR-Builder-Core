@@ -57,7 +57,7 @@ namespace VRBuilder.Core.Behaviors
         }
 
         /// <param name="targetObject">scene object to disable.</param>
-        public DisableGameObjectBehavior(ISceneObject targetObject) : this(TrainingReferenceUtils.GetNameFrom(targetObject))
+        public DisableGameObjectBehavior(ISceneObject targetObject) : this(ProcessReferenceUtils.GetNameFrom(targetObject))
         {
         }
 

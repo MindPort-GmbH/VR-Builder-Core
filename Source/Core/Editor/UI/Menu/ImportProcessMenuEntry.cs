@@ -13,15 +13,15 @@ using UnityEngine;
 
 namespace VRBuilder.Editor.BuilderMenu
 {
-    internal static class ImportTrainingMenuEntry
+    internal static class ImportProcessMenuEntry
     {
         /// <summary>
         /// Allows to import trainings.
         /// </summary>
-        [MenuItem("Tools/VR Builder/Import Training Course", false, 14)]
+        [MenuItem("Tools/VR Builder/Import Process...", false, 14)]
         private static void ImportTraining()
         {
-            string path = EditorUtility.OpenFilePanel("Select your training", ".", String.Empty);
+            string path = EditorUtility.OpenFilePanel("Select your process", ".", String.Empty);
 
             if (string.IsNullOrEmpty(path) || Directory.Exists(path))
             {

@@ -13,7 +13,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// A default training drawer for types implementing `IList`.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(IList))]
+    [DefaultProcessDrawer(typeof(IList))]
     internal class ListDrawer : AbstractDrawer
     {
         /// <inheritdoc />
@@ -50,7 +50,7 @@ namespace VRBuilder.Editor.UI.Drawers
                 int closuredIndex = index;
                 object entry = entries[index];
 
-                ITrainingDrawer entryDrawer = DrawerLocator.GetDrawerForValue(entry, entryDeclaredType);
+                IProcessDrawer entryDrawer = DrawerLocator.GetDrawerForValue(entry, entryDeclaredType);
 
                 Action<object> entryValueChangedCallback = newValue =>
                 {

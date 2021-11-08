@@ -14,7 +14,7 @@ namespace VRBuilder.Editor.BuilderMenu
         [MenuItem("Tools/VR Builder/Setup Training Scene", false, 2)]
         public static void SetupScene()
         {
-            TrainingSceneSetup.Run();
+            ProcessSceneSetup.Run();
         }
     }
 }

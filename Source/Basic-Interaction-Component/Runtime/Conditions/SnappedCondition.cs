@@ -39,7 +39,7 @@ namespace VRBuilder.BasicInteraction.Conditions
             public bool IsCompleted { get; set; }
 
             [DataMember]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public string Name { get; set; }
 
             public Metadata Metadata { get; set; }
@@ -85,7 +85,7 @@ namespace VRBuilder.BasicInteraction.Conditions
         {
         }
 
-        public SnappedCondition(ISnappableProperty target, ISnapZoneProperty snapZone = null, string name = null) : this(TrainingReferenceUtils.GetNameFrom(target), TrainingReferenceUtils.GetNameFrom(snapZone), name)
+        public SnappedCondition(ISnappableProperty target, ISnapZoneProperty snapZone = null, string name = null) : this(ProcessReferenceUtils.GetNameFrom(target), ProcessReferenceUtils.GetNameFrom(snapZone), name)
         {
         }
 

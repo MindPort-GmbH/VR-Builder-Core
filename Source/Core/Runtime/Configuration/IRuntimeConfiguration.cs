@@ -34,7 +34,7 @@ namespace VRBuilder.Core.Configuration
         /// <summary>
         /// User scene object.
         /// </summary>
-        TrainingSceneObject User { get; }
+        ProcessSceneObject User { get; }
 
         /// <summary>
         /// Default audio source to play audio from.
