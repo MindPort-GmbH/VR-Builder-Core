@@ -10,7 +10,7 @@ namespace VRBuilder.Core
     public interface IChapter : IEntity, IDataOwner<IChapterData>
     {
         /// <summary>
-        /// Utility data which is used by Training SDK custom editors.
+        /// Utility data which is used by VR Builder custom editors.
         /// </summary>
         ChapterMetadata ChapterMetadata { get; }
     }

@@ -18,12 +18,12 @@ namespace VRBuilder.Tests.Properties
 {
     public class ProcessPropertyTests : RuntimeTests
     {
-        public static IEnumerable<Type> TrainingProperties
+        public static IEnumerable<Type> ProcessProperties
         {
             get { return ReflectionUtils.GetConcreteImplementationsOf(typeof(ProcessSceneObjectProperty)).Where(type => type.IsPublic); }
         }
 
-        public static readonly IEnumerable<Type> NotTrainingProperties = new Type[]
+        public static readonly IEnumerable<Type> NotProcessProperties = new Type[]
         {
             typeof(Rigidbody),
             typeof(BoxCollider),
@@ -44,17 +44,17 @@ namespace VRBuilder.Tests.Properties
         }
 
         [UnityTest]
-        public IEnumerator AddTrainingProperties()
+        public IEnumerator AddProcessProperties()
         {
             // Given a ISceneObject.
 
             // Required for ColliderWithTriggerProperty
             SceneObject.GameObject.AddComponent<BoxCollider>().isTrigger = true;
 
-            foreach (Type propertyType in TrainingProperties)
+            foreach (Type propertyType in ProcessProperties)
             {
                 // When adding the ISceneObjectProperty to the ISceneObject.
-                SceneObject.AddTrainingProperty(propertyType);
+                SceneObject.AddProcessProperty(propertyType);
 
                 yield return null;
 
@@ -62,7 +62,7 @@ namespace VRBuilder.Tests.Properties
                 Assert.That(SceneObject.GameObject.GetComponent(propertyType));
             }
 
-            int totalOfPublicProperties = TrainingProperties.Count();
+            int totalOfPublicProperties = ProcessProperties.Count();
             int totalOfAddedProperties = SceneObject.Properties.Count;
 
             // Then assert that the ISceneObject.Properties considers all the ISceneObjectProperty added to ISceneObject.
@@ -70,7 +70,7 @@ namespace VRBuilder.Tests.Properties
         }
 
         [UnityTest]
-        public IEnumerator AddAndRemoveTrainingProperties()
+        public IEnumerator AddAndRemoveProcessProperties()
         {
             // Given a ISceneObject.
 
@@ -78,12 +78,12 @@ namespace VRBuilder.Tests.Properties
             SceneObject.GameObject.AddComponent<BoxCollider>().isTrigger = true;
 
             // When adding a list of ISceneObjectProperty to the ISceneObject.
-            yield return AddTrainingProperties();
+            yield return AddProcessProperties();
 
             foreach (Component propertyComponent in SceneObject.GameObject.GetComponents(typeof(ProcessSceneObjectProperty)))
             {
                 // When removing a ISceneObjectProperty from the ISceneObject.
-                SceneObject.RemoveTrainingProperty(propertyComponent);
+                SceneObject.RemoveProcessProperty(propertyComponent);
 
                 yield return null;
 
@@ -102,17 +102,17 @@ namespace VRBuilder.Tests.Properties
         {
             // Given an ISceneObjectProperty and a list with its dependencies.
             List<Type> dependencies = new List<Type>();
-            Type trainingProperty = TrainingProperties.First(propertyType => GetAllDependenciesFrom(propertyType, ref dependencies));
+            Type processProperty = ProcessProperties.First(propertyType => GetAllDependenciesFrom(propertyType, ref dependencies));
 
-            if (trainingProperty == null)
+            if (processProperty == null)
             {
-                Debug.LogWarningFormat("AddPropertyWithItsDependencies from {0} was ignored because no TrainingProperties with dependencies could be found.", GetType().Name);
+                Debug.LogWarningFormat("AddPropertyWithItsDependencies from {0} was ignored because no ProcessProperties with dependencies could be found.", GetType().Name);
                 Assert.Ignore();
             }
 
             // When adding the ISceneObjectProperty.
             // Then assert that all its dependencies were added.
-            yield return AddPropertyAndVerifyDependencies(trainingProperty, dependencies);
+            yield return AddPropertyAndVerifyDependencies(processProperty, dependencies);
         }
 
         [UnityTest]
@@ -120,24 +120,24 @@ namespace VRBuilder.Tests.Properties
         {
             // Given an ISceneObjectProperty and a list with its dependencies.
             List<Type> dependencies = new List<Type>();
-            Type trainingProperty = TrainingProperties.First(propertyType => GetAllDependenciesFrom(propertyType, ref dependencies));
+            Type processProperty = ProcessProperties.First(propertyType => GetAllDependenciesFrom(propertyType, ref dependencies));
 
-            if (trainingProperty == null)
+            if (processProperty == null)
             {
-                Debug.LogWarningFormat("RemovePropertyAndDependencies from {0} was ignored because no TrainingProperties with dependencies could be found.", GetType().Name);
+                Debug.LogWarningFormat("RemovePropertyAndDependencies from {0} was ignored because no ProcessProperties with dependencies could be found.", GetType().Name);
                 Assert.Ignore();
             }
 
             // When adding the ISceneObjectProperty, we also make sure that all its dependencies were added.
-            yield return AddPropertyAndVerifyDependencies(trainingProperty, dependencies);
+            yield return AddPropertyAndVerifyDependencies(processProperty, dependencies);
 
             // When removing the ISceneObjectProperty forcing to remove its dependencies.
-            SceneObject.RemoveTrainingProperty(trainingProperty, true);
+            SceneObject.RemoveProcessProperty(processProperty, true);
 
             yield return null;
 
             // Then assert that the ISceneObjectProperty is not longer part of ISceneObject.
-            Assert.That(SceneObject.GameObject.GetComponent(trainingProperty) == null);
+            Assert.That(SceneObject.GameObject.GetComponent(processProperty) == null);
 
             foreach (Type dependency in dependencies)
             {
@@ -151,28 +151,28 @@ namespace VRBuilder.Tests.Properties
         {
             // Given an ISceneObjectProperty, a list with its dependencies and a type dependant of ISceneObjectProperty.
             List<Type> dependencies = new List<Type>();
-            Type trainingProperty = TrainingProperties.First(propertyType => GetAllDependenciesFrom(propertyType, ref dependencies, true)), dependantType = dependencies.First();
+            Type processProperty = ProcessProperties.First(propertyType => GetAllDependenciesFrom(propertyType, ref dependencies, true)), dependantType = dependencies.First();
 
-            if (trainingProperty == null || dependantType == null)
+            if (processProperty == null || dependantType == null)
             {
-                Debug.LogWarningFormat("AddPropertyAndRemoveDependency from {0} was ignored because no TrainingProperties with dependencies as ISceneObjectProperty could be found.", GetType().Name);
+                Debug.LogWarningFormat("AddPropertyAndRemoveDependency from {0} was ignored because no ProcessProperties with dependencies as ISceneObjectProperty could be found.", GetType().Name);
                 Assert.Ignore();
             }
 
             // When adding adding the ISceneObjectProperty, we also make sure that all its dependencies were added.
-            yield return AddPropertyAndVerifyDependencies(trainingProperty, dependencies);
+            yield return AddPropertyAndVerifyDependencies(processProperty, dependencies);
 
             // Then assert that the ISceneObjectProperty and the property that depends of it are part of ISceneObject.
-            Assert.That(SceneObject.GameObject.GetComponent(trainingProperty));
+            Assert.That(SceneObject.GameObject.GetComponent(processProperty));
             Assert.That(SceneObject.GameObject.GetComponent(dependantType));
 
             // When removing the property that depends of ISceneObjectProperty.
-            SceneObject.RemoveTrainingProperty(dependantType);
+            SceneObject.RemoveProcessProperty(dependantType);
 
             yield return null;
 
             // Then assert that the ISceneObjectProperty and the property that depends of it are no longer part of ISceneObject.
-            Assert.That(SceneObject.GameObject.GetComponent(trainingProperty) == null);
+            Assert.That(SceneObject.GameObject.GetComponent(processProperty) == null);
             Assert.That(SceneObject.GameObject.GetComponent(dependantType) == null);
         }
 
@@ -181,25 +181,25 @@ namespace VRBuilder.Tests.Properties
         {
             // Given an ISceneObjectProperty and a list with its dependencies.
             List<Type> dependencies = new List<Type>();
-            Type trainingProperty = TrainingProperties.First(propertyType => GetAllDependenciesFrom(propertyType, ref dependencies));
+            Type processProperty = ProcessProperties.First(propertyType => GetAllDependenciesFrom(propertyType, ref dependencies));
 
-            if (trainingProperty == null)
+            if (processProperty == null)
             {
-                Debug.LogWarningFormat("RemovePropertyAndDependencies from {0} was ignored because no TrainingProperties with dependencies could be found.", GetType().Name);
+                Debug.LogWarningFormat("RemovePropertyAndDependencies from {0} was ignored because no ProcessProperties with dependencies could be found.", GetType().Name);
                 Assert.Ignore();
             }
 
             // When adding adding the ISceneObjectProperty, we also make sure that all its dependencies were added.
-            yield return AddPropertyAndVerifyDependencies(trainingProperty, dependencies);
+            yield return AddPropertyAndVerifyDependencies(processProperty, dependencies);
 
             // When removing the ISceneObjectProperty without forcing to remove its dependencies.
             // Parameter removeDependencies is automatically initialized as false.
-            SceneObject.RemoveTrainingProperty(trainingProperty);
+            SceneObject.RemoveProcessProperty(processProperty);
 
             yield return null;
 
             // Then assert that the ISceneObjectProperty is not longer part of ISceneObject.
-            Assert.That(SceneObject.GameObject.GetComponent(trainingProperty) == null);
+            Assert.That(SceneObject.GameObject.GetComponent(processProperty) == null);
 
             foreach (Type dependency in dependencies)
             {
@@ -209,13 +209,13 @@ namespace VRBuilder.Tests.Properties
         }
 
         [UnityTest]
-        public IEnumerator TryToAddNotTrainingProperties()
+        public IEnumerator TryToAddNotProcessProperties()
         {
             // Given an ISceneObject and a list of non-ISceneObjectProperty types.
-            foreach (Type notAPropertyType in NotTrainingProperties)
+            foreach (Type notAPropertyType in NotProcessProperties)
             {
-                // When trying to add a non-ISceneObjectProperty using ISceneObject.AddTrainingProperty.
-                SceneObject.AddTrainingProperty(notAPropertyType);
+                // When trying to add a non-ISceneObjectProperty using ISceneObject.AddProcessProperty.
+                SceneObject.AddProcessProperty(notAPropertyType);
 
                 yield return null;
 
@@ -224,13 +224,13 @@ namespace VRBuilder.Tests.Properties
             }
         }
 
-        private IEnumerator AddPropertyAndVerifyDependencies(Type trainingProperty, List<Type> dependencies)
+        private IEnumerator AddPropertyAndVerifyDependencies(Type processProperty, List<Type> dependencies)
         {
             // Given an ISceneObject.
-            SceneObject.AddTrainingProperty(trainingProperty);
+            SceneObject.AddProcessProperty(processProperty);
 
             // When adding an ISceneObjectProperty.
-            Assert.That(SceneObject.GameObject.GetComponent(trainingProperty));
+            Assert.That(SceneObject.GameObject.GetComponent(processProperty));
 
             yield return null;
 
@@ -241,9 +241,9 @@ namespace VRBuilder.Tests.Properties
             }
         }
 
-        private bool GetAllDependenciesFrom(Type trainingProperty, ref List<Type> dependencies, bool onlyTrainingProperties = false)
+        private bool GetAllDependenciesFrom(Type processProperty, ref List<Type> dependencies, bool onlyProcessProperties = false)
         {
-            RequireComponent[] requireComponents = trainingProperty.GetCustomAttributes(typeof(RequireComponent), false) as RequireComponent[];
+            RequireComponent[] requireComponents = processProperty.GetCustomAttributes(typeof(RequireComponent), false) as RequireComponent[];
 
             if (requireComponents == null || requireComponents.Length == 0)
             {
@@ -252,19 +252,19 @@ namespace VRBuilder.Tests.Properties
 
             foreach (RequireComponent requireComponent in requireComponents)
             {
-                AddTypeToListIfNew(requireComponent.m_Type0, ref dependencies, onlyTrainingProperties);
-                AddTypeToListIfNew(requireComponent.m_Type1, ref dependencies, onlyTrainingProperties);
-                AddTypeToListIfNew(requireComponent.m_Type2, ref dependencies, onlyTrainingProperties);
+                AddTypeToListIfNew(requireComponent.m_Type0, ref dependencies, onlyProcessProperties);
+                AddTypeToListIfNew(requireComponent.m_Type1, ref dependencies, onlyProcessProperties);
+                AddTypeToListIfNew(requireComponent.m_Type2, ref dependencies, onlyProcessProperties);
             }
 
             return dependencies.Count > 0;
         }
 
-        private void AddTypeToListIfNew(Type type, ref List<Type> dependencies, bool onlyTrainingProperties = false)
+        private void AddTypeToListIfNew(Type type, ref List<Type> dependencies, bool onlyProcessProperties = false)
         {
             if (type != null && dependencies.Contains(type) == false)
             {
-                if (onlyTrainingProperties && typeof(ISceneObjectProperty).IsAssignableFrom(type) == false)
+                if (onlyProcessProperties && typeof(ISceneObjectProperty).IsAssignableFrom(type) == false)
                 {
                     return;
                 }

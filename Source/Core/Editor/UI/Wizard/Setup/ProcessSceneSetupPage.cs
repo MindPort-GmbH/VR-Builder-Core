@@ -12,7 +12,7 @@ using VRBuilder.Editor.Setup;
 namespace VRBuilder.Editor.UI.Wizard
 {
     /// <summary>
-    /// Wizard page which handles the training scene setup.
+    /// Wizard page which handles the process scene setup.
     /// </summary>
     internal class ProcessSceneSetupPage : WizardPage
     {
@@ -32,7 +32,7 @@ namespace VRBuilder.Editor.UI.Wizard
         private bool loadDemoScene = false;
 
         [SerializeField]
-        private string courseName = "My VR Training course";
+        private string courseName = "My VR Process";
 
         [SerializeField]
         private string lastCreatedCourse = null;
@@ -40,7 +40,7 @@ namespace VRBuilder.Editor.UI.Wizard
         private readonly GUIContent infoContent;
         private readonly GUIContent warningContent;
 
-        public ProcessSceneSetupPage() : base("Setup Training")
+        public ProcessSceneSetupPage() : base("Setup Process")
         {
             infoContent = EditorGUIUtility.IconContent("console.infoicon.inactive.sml");
             warningContent = EditorGUIUtility.IconContent("console.warnicon.sml");
@@ -51,10 +51,10 @@ namespace VRBuilder.Editor.UI.Wizard
         {
             GUILayout.BeginArea(window);
 
-            GUILayout.Label("Setup Training", BuilderEditorStyles.Title);
+            GUILayout.Label("Setup Process", BuilderEditorStyles.Title);
 
             GUI.enabled = loadSampleScene == false;
-            GUILayout.Label("Name of your VR Training", BuilderEditorStyles.Header);
+            GUILayout.Label("Name of your VR Process", BuilderEditorStyles.Header);
             courseName = BuilderGUILayout.DrawTextField(courseName, MaxCourseNameLength, GUILayout.Width(window.width * 0.7f));
             GUI.enabled = true;
 
@@ -105,7 +105,7 @@ namespace VRBuilder.Editor.UI.Wizard
                     GUILayout.BeginHorizontal();
                     {
                         GUILayout.Space(BuilderEditorStyles.Indent);
-                        BuilderGUILayout.DrawLink("Hello Creator – a 5-step guide to a basic training application", "https://developers.innoactive.de/documentation/creator/latest/articles/step-by-step-guides/hello-creator.html");
+                        BuilderGUILayout.DrawLink("Hello Creator – a 5-step guide to a basic application", "https://developers.innoactive.de/documentation/creator/latest/articles/step-by-step-guides/hello-creator.html");
                     }
                     GUILayout.EndHorizontal();
                 }
@@ -127,7 +127,7 @@ namespace VRBuilder.Editor.UI.Wizard
             if (createNewScene)
             {
                 GUIContent helpContent;
-                string sceneInfoText = "Scene will have the same name as the training course.";
+                string sceneInfoText = "Scene will have the same name as the process.";
                 if (SceneSetupUtils.SceneExists(courseName))
                 {
                     sceneInfoText += " Scene already exists";
@@ -180,7 +180,7 @@ namespace VRBuilder.Editor.UI.Wizard
                 SceneSetupUtils.CreateNewScene(courseName);
             }
 
-            SceneSetupUtils.SetupSceneAndTraining(courseName);
+            SceneSetupUtils.SetupSceneAndProcess(courseName);
             lastCreatedCourse = courseName;
             EditorWindow.FocusWindowIfItsOpen<WizardWindow>();
         }

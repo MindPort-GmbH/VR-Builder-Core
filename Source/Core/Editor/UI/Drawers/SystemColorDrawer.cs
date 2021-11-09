@@ -9,7 +9,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// Training drawer for `System.Color` members.
+    /// Process drawer for `System.Color` members.
     /// </summary>
     [DefaultProcessDrawer(typeof(Color))]
     internal class SystemColorDrawer : AbstractDrawer

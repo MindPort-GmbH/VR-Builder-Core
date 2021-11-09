@@ -16,7 +16,7 @@ namespace VRBuilder.Editor.Configuration
     public interface IEditorConfiguration
     {
         /// <summary>
-        /// Absolute path where training courses are stored.
+        /// Absolute path where processes are stored.
         /// </summary>
         string CourseStreamingAssetsSubdirectory { get; }
 
@@ -27,7 +27,7 @@ namespace VRBuilder.Editor.Configuration
         string AllowedMenuItemsSettingsAssetPath { get; }
 
         /// <summary>
-        /// Serializer used to serialize training courses and steps.
+        /// Serializer used to serialize processes and steps.
         /// </summary>
         IProcessSerializer Serializer { get; }
 

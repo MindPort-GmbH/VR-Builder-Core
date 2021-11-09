@@ -22,7 +22,7 @@ namespace VRBuilder.Tests.Serialization
         [Test]
         public void CanSerializeVector2()
         {
-            // Given the JsonTrainingSerializer.SerializerSettings are used to serialize.
+            // Given the JsonProcessSerializer.SerializerSettings are used to serialize.
             // When a Vector2 is serialized
             string data = JsonConvert.SerializeObject(Vector2.up, settings);
             // Then the output is not null
@@ -46,7 +46,7 @@ namespace VRBuilder.Tests.Serialization
         [Test]
         public void CanSerializeVector3()
         {
-            // Given the JsonTrainingSerializer.SerializerSettings are used to serialize.
+            // Given the JsonProcessSerializer.SerializerSettings are used to serialize.
             // When a Vector3 is serialized
             string data = JsonConvert.SerializeObject(Vector3.up, settings);
             // Then the output is not null
@@ -70,7 +70,7 @@ namespace VRBuilder.Tests.Serialization
         [Test]
         public void CanSerializeVector4()
         {
-            // Given the JsonTrainingSerializer.SerializerSettings are used to serialize.
+            // Given the JsonProcessSerializer.SerializerSettings are used to serialize.
             // When a Vector4 is serialized
             string data = JsonConvert.SerializeObject(Vector4.one, settings);
             // Then the output is not null
@@ -95,7 +95,7 @@ namespace VRBuilder.Tests.Serialization
         [Test]
         public void CanSerializeColor()
         {
-            // Given the JsonTrainingSerializer.SerializerSettings are used to serialize.
+            // Given the JsonProcessSerializer.SerializerSettings are used to serialize.
             // When a unity color is serialized
             string data = JsonConvert.SerializeObject(Color.blue, settings);
             // Then the output is not null
@@ -119,7 +119,7 @@ namespace VRBuilder.Tests.Serialization
         [Test]
         public void CanSerializeKeyframe()
         {
-            // Given the JsonTrainingSerializer.SerializerSettings are used to serialize.
+            // Given the JsonProcessSerializer.SerializerSettings are used to serialize.
             // When a unity keyframe is serialized
             Keyframe input = new Keyframe(0.1f, 0.5f, 1, 0.7f, 0.6f, 0.4f);
             input.weightedMode = WeightedMode.In;
@@ -146,7 +146,7 @@ namespace VRBuilder.Tests.Serialization
         [Test]
         public void CanSerializeAnimationCurve()
         {
-            // Given the JsonTrainingSerializer.SerializerSettings are used to serialize.
+            // Given the JsonProcessSerializer.SerializerSettings are used to serialize.
             // When a unity animation curve is serialized
             Keyframe first = new Keyframe(0.1f, 0.5f, 1, 0.7f, 0.6f, 0.4f);
             Keyframe second = new Keyframe(0.3f, 0.4f, 0.3f, 0.2f, 0.9f, 0.1f);

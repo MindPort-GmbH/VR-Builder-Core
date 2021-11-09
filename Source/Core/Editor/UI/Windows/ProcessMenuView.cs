@@ -14,8 +14,8 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Windows
 {
     /// <summary>
-    /// TrainingMenuView is shown on the left side of the <see cref="ProcessWindow"/> and takes care about overall
-    /// settings for the Training itself, especially chapters.
+    /// ProcessMenuView is shown on the left side of the <see cref="ProcessWindow"/> and takes care about overall
+    /// settings for the process itself, especially chapters.
     /// </summary>
     internal class ProcessMenuView : ScriptableObject
     {
@@ -66,7 +66,7 @@ namespace VRBuilder.Editor.UI.Windows
         private bool isExtended = true;
 
         /// <summary>
-        /// Determines if the training menu window is shown or not.
+        /// Determines if the process menu window is shown or not.
         /// </summary>
         public bool IsExtended { get; private set; }
 
@@ -96,7 +96,7 @@ namespace VRBuilder.Editor.UI.Windows
         private RenameProcessPopup renameCoursePopup;
 
         /// <summary>
-        /// Initialises the windows with the correct training and TrainingWindow (parent).
+        /// Initialises the windows with the correct process and ProcessWindow (parent).
         /// This has to be done after every time the editor reloaded the assembly (recompile).
         /// </summary>
         public void Initialise(IProcess course, ProcessWindow parent)
@@ -124,7 +124,7 @@ namespace VRBuilder.Editor.UI.Windows
         }
 
         /// <summary>
-        /// Draws the training menu.
+        /// Draws the process menu.
         /// </summary>
         public void Draw()
         {
@@ -162,7 +162,7 @@ namespace VRBuilder.Editor.UI.Windows
             GUILayout.EndArea();
         }
 
-        #region Training Menu Draw
+        #region Process Menu Draw
         private void DrawHeader()
         {
             GUILayout.Space(VerticalSpace);

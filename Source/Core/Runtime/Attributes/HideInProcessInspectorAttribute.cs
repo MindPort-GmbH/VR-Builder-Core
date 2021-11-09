@@ -7,7 +7,7 @@ using System;
 namespace VRBuilder.Core.Attributes
 {
     /// <summary>
-    /// Use this attribute to hide serializeable members in the training inspector.
+    /// Use this attribute to hide serializeable members in the process inspector.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     public class HideInProcessInspectorAttribute : Attribute { }

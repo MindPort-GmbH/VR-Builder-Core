@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -191,20 +191,20 @@ namespace VRBuilder.Core
         }
 
         /// <summary>
-        /// Get training scene properties which the given type dependence on.
+        /// Get process scene properties which the given type dependence on.
         /// </summary>
-        private static IEnumerable<Type> GetDependenciesFrom(Type trainingProperty)
+        private static IEnumerable<Type> GetDependenciesFrom(Type processProperty)
         {
-            return GetDependenciesFrom<ISceneObjectProperty>(trainingProperty);
+            return GetDependenciesFrom<ISceneObjectProperty>(processProperty);
         }
 
         /// <summary>
-        /// Get training scene properties which the given type dependence on, which has to be a subclass of <T>
+        /// Get process scene properties which the given type dependence on, which has to be a subclass of <T>
         /// </summary>
-        private static IEnumerable<Type> GetDependenciesFrom<T>(Type trainingProperty) where T : ISceneObjectProperty
+        private static IEnumerable<Type> GetDependenciesFrom<T>(Type processProperty) where T : ISceneObjectProperty
         {
             List<Type> dependencies = new List<Type>();
-            IEnumerable<Type> requiredComponents = trainingProperty.GetCustomAttributes(typeof(RequireComponent), false)
+            IEnumerable<Type> requiredComponents = processProperty.GetCustomAttributes(typeof(RequireComponent), false)
                 .Cast<RequireComponent>()
                 .SelectMany(rq => new []{rq.m_Type0, rq.m_Type1, rq.m_Type2});
 
@@ -216,7 +216,7 @@ namespace VRBuilder.Core
                 }
             }
 
-            dependencies.Add(trainingProperty);
+            dependencies.Add(processProperty);
             return new HashSet<Type>(dependencies);
         }
     }

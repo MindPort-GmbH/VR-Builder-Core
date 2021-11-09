@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -14,7 +14,7 @@ namespace VRBuilder.Editor.Serialization
         private const int version = 0;
 
         /// <summary>
-        /// Returns the json serializer settings used by the training editor configuration deserialization.
+        /// Returns the json serializer settings used by the process editor configuration deserialization.
         /// </summary>
         public static JsonSerializerSettings SerializerSettings
         {

@@ -16,7 +16,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator GameObjectIsDisabledAfterActivation()
         {
-            // Given an active training scene object and a training course with disable game object behavior,
+            // Given an active process object and a process with disable game object behavior,
             ProcessSceneObject toDisable = TestingUtils.CreateSceneObject("ToDisable");
             EndlessConditionMock trigger = new EndlessConditionMock();
             
@@ -41,7 +41,7 @@ namespace VRBuilder.Core.Tests.Behaviors
 
             yield return new WaitUntil(()=> course.Data.FirstChapter.Data.Steps[0].LifeCycle.Stage == Stage.Inactive);
 
-            // Then the training scene object is disabled.
+            // Then the process object is disabled.
             Assert.False(toDisable.GameObject.activeSelf);
 
             // Cleanup.
@@ -53,7 +53,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator GameObjectStaysDisabled()
         {
-            // Given an active training scene object and a training course with disable game object behavior,
+            // Given an active process object and a process with disable game object behavior,
             ProcessSceneObject toDisable = TestingUtils.CreateSceneObject("ToDisable");
             EndlessConditionMock trigger = new EndlessConditionMock();
 
@@ -77,7 +77,7 @@ namespace VRBuilder.Core.Tests.Behaviors
 
             yield return new WaitUntil(()=> course.Data.FirstChapter.Data.Steps[1].LifeCycle.Stage == Stage.Inactive);
 
-            // Then the training scene object stays disabled.
+            // Then the process object stays disabled.
             Assert.False(toDisable.GameObject.activeSelf);
 
             // Cleanup.
@@ -89,7 +89,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardInactiveBehavior()
         {
-            // Given an active training scene object and a DisableGameObjectBehavior,
+            // Given an active process object and a DisableGameObjectBehavior,
             ProcessSceneObject toDisable = TestingUtils.CreateSceneObject("ToDisable");
 
             DisableGameObjectBehavior behavior = new DisableGameObjectBehavior(toDisable);
@@ -109,7 +109,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardInactiveBehaviorAndActivateIt()
         {
-            // Given an active training scene object and a DisableGameObjectBehavior,
+            // Given an active process object and a DisableGameObjectBehavior,
             ProcessSceneObject toDisable = TestingUtils.CreateSceneObject("ToDisable");
 
             DisableGameObjectBehavior behavior = new DisableGameObjectBehavior(toDisable);
@@ -131,7 +131,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardActivatingBehavior()
         {
-            // Given an active training scene object and an active DisableGameObjectBehavior,
+            // Given an active process object and an active DisableGameObjectBehavior,
             ProcessSceneObject toDisable = TestingUtils.CreateSceneObject("ToDisable");
 
             DisableGameObjectBehavior behavior = new DisableGameObjectBehavior(toDisable);

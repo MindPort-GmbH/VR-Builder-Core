@@ -13,11 +13,11 @@ namespace VRBuilder.Editor.Tests.CourseWizardTests
     {
         private const string courseName = "very_unique_test_course_name_which_you_should_never_use_1534";
 
-        public override string GivenDescription => "Opened training wizard window.";
+        public override string GivenDescription => "Opened process wizard window.";
 
-        public override string WhenDescription => $"Type in \"{courseName}\". Click 'Create training' button.";
+        public override string WhenDescription => $"Type in \"{courseName}\". Click 'Create process' button.";
 
-        public override string ThenDescription => "Training window is opened.";
+        public override string ThenDescription => "Process window is opened.";
 
         protected override string AssetFolderForRecordedActions => EditorUtils.GetCoreFolder() + "/Tests/Editor/ProcessCreationWizard/Records";
 

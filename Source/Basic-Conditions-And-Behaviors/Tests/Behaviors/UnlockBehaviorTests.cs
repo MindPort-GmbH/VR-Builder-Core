@@ -40,7 +40,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator UnlockBehaviorOnUnlockedObject()
         {
-            // Given an UnlockObjectBehavior, an unlocked game object, and a full training step,
+            // Given an UnlockObjectBehavior, an unlocked game object, and a full process step,
             GameObject gameObject = new GameObject("Test");
             ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
@@ -89,7 +89,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator UnlockBehaviorOnLockedObject()
         {
-            // Given an UnlockObjectBehavior, a locked game object, and a full training step,
+            // Given an UnlockObjectBehavior, a locked game object, and a full process step,
             GameObject gameObject = new GameObject("Test");
             ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -10,7 +10,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// Training drawer for <see cref="BehaviorExecutionStages"/> members.
+    /// Process drawer for <see cref="BehaviorExecutionStages"/> members.
     /// </summary>
     [DefaultProcessDrawer(typeof(BehaviorExecutionStages))]
     internal class BehaviorExecutionStagesDrawer : AbstractDrawer

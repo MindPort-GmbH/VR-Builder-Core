@@ -15,7 +15,7 @@ namespace VRBuilder.Core.Behaviors
         [DataContract(IsReference = true)]
         public class EntityData : IBehaviorData
         {
-            // Training object to scale.
+            // Process object to scale.
             [DataMember]
             public SceneObjectReference Target { get; set; }
 

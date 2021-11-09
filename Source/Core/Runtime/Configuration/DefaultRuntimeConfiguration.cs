@@ -15,7 +15,7 @@ using VRBuilder.Core.Serialization.NewtonsoftJson;
 namespace VRBuilder.Core.Configuration
 {
     /// <summary>
-    /// Training runtime configuration which is used if no other was implemented.
+    /// Process runtime configuration which is used if no other was implemented.
     /// </summary>
     public class DefaultRuntimeConfiguration : BaseRuntimeConfiguration
     {

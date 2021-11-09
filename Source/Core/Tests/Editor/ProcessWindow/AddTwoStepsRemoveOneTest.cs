@@ -28,14 +28,14 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
         {
             get
             {
-                return "There is a training with exactly one step created.";
+                return "There is a process with exactly one step created.";
             }
         }
 
         /// <inheritdoc />
         protected override void Then(ProcessWindow window)
         {
-            IProcess result = ExtractTraining(window);
+            IProcess result = ExtractProcess(window);
 
             IChapter firstChapter = result.Data.Chapters.First();
             Assert.NotNull(firstChapter);

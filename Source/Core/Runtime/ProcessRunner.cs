@@ -176,12 +176,12 @@ namespace VRBuilder.Core
         }
 
         /// <summary>
-        /// Initializes the training runner by creating all required component in scene.
+        /// Initializes the process runner by creating all required component in scene.
         /// </summary>
         /// <param name="course">The course which should be run.</param>
         public static void Initialize(IProcess course)
         {
-            instance = instance == null ? new GameObject("[TRAINING_RUNNER]").AddComponent<CourseRunnerInstance>() : instance;
+            instance = instance == null ? new GameObject("[PROCESS_RUNNER]").AddComponent<CourseRunnerInstance>() : instance;
             instance.course = course;
         }
 

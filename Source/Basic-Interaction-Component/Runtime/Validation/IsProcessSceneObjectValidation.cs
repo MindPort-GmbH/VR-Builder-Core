@@ -5,52 +5,52 @@ using UnityEngine;
 namespace VRBuilder.BasicInteraction.Validation
 {
     /// <summary>
-    /// Checks if the training scene object attached to the given GameObject is listed as accepted trainin scene object.
+    /// Checks if the process object attached to the given GameObject is listed as accepted trainin scene object.
     /// </summary>
     public class IsProcessSceneObjectValidation : Validator
     {
         [SerializeField]
-        [Tooltip("All listed Training Scene Objects are valid to be snapped other will be rejected.")]
-        private ProcessSceneObject[] acceptedTrainingSceneObjects = {};
+        [Tooltip("All listed process objects are valid to be snapped other will be rejected.")]
+        private ProcessSceneObject[] acceptedProcessSceneObjects = {};
 
         /// <summary>
-        /// Adds a new TrainingSceneObject to the list.
+        /// Adds a new ProcessSceneObject to the list.
         /// </summary>
-        public void AddTrainingSceneObject(ProcessSceneObject target)
+        public void AddProcessSceneObject(ProcessSceneObject target)
         {
-            if (acceptedTrainingSceneObjects.Contains(target) == false)
+            if (acceptedProcessSceneObjects.Contains(target) == false)
             {
-                acceptedTrainingSceneObjects = acceptedTrainingSceneObjects.Append(target).ToArray();
+                acceptedProcessSceneObjects = acceptedProcessSceneObjects.Append(target).ToArray();
             }
         }
 
         /// <summary>
-        /// Removes an existing training scene object from the list.
+        /// Removes an existing process object from the list.
         /// </summary>
-        public void RemoveTrainingSceneObject(ProcessSceneObject target)
+        public void RemoveProcessSceneObject(ProcessSceneObject target)
         {
-            if (acceptedTrainingSceneObjects.Contains(target))
+            if (acceptedProcessSceneObjects.Contains(target))
             {
-                acceptedTrainingSceneObjects = acceptedTrainingSceneObjects.Where((obj => obj != target)).ToArray();
+                acceptedProcessSceneObjects = acceptedProcessSceneObjects.Where((obj => obj != target)).ToArray();
             }
         }
         
         /// <inheritdoc />
         public override bool Validate(GameObject obj)
         {
-            ProcessSceneObject trainingSceneObject = obj.GetComponent<ProcessSceneObject>();
+            ProcessSceneObject processSceneObject = obj.GetComponent<ProcessSceneObject>();
 
-            if (trainingSceneObject == null)
+            if (processSceneObject == null)
             {
                 return false;
             }
             
-            if (acceptedTrainingSceneObjects.Length == 0)
+            if (acceptedProcessSceneObjects.Length == 0)
             {
                 return true;
             }
             
-            return acceptedTrainingSceneObjects.Contains(trainingSceneObject);
+            return acceptedProcessSceneObjects.Contains(processSceneObject);
         }
     }
 }

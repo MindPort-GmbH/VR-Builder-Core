@@ -23,7 +23,7 @@ namespace VRBuilder.Editor.Configuration
         /// <inheritdoc />
         public virtual string CourseStreamingAssetsSubdirectory
         {
-            get { return "Training"; }
+            get { return "Processes"; }
         }
 
         /// <inheritdoc />

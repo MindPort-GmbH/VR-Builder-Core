@@ -119,7 +119,7 @@ namespace VRBuilder.Tests.Courses
         [UnityTest]
         public IEnumerator FastForwardInactiveCourse()
         {
-            // Given a training course
+            // Given a process
             Process course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
@@ -139,7 +139,7 @@ namespace VRBuilder.Tests.Courses
         [UnityTest]
         public IEnumerator FastForwardInactiveCourseAndActivateIt()
         {
-            // Given a training
+            // Given a process
             Process course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
@@ -162,7 +162,7 @@ namespace VRBuilder.Tests.Courses
         [UnityTest]
         public IEnumerator FastForwardActivatingCourse()
         {
-            // Given an activated training
+            // Given an activated process
             Process course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")

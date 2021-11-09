@@ -11,7 +11,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Windows
 {
     /// <summary>
-    /// Wizard for training course creation and management.
+    /// Wizard for process creation and management.
     /// </summary>
     internal class ProcessCreationWizard : EditorWindow
     {
@@ -25,26 +25,26 @@ namespace VRBuilder.Editor.UI.Windows
         {
             if (window == null)
             {
-                ProcessCreationWizard[] openedTrainingWizards = Resources.FindObjectsOfTypeAll<ProcessCreationWizard>();
+                ProcessCreationWizard[] openedProcessWizards = Resources.FindObjectsOfTypeAll<ProcessCreationWizard>();
 
-                if (openedTrainingWizards.Length > 1)
+                if (openedProcessWizards.Length > 1)
                 {
-                    for (int i = 1; i < openedTrainingWizards.Length; i++)
+                    for (int i = 1; i < openedProcessWizards.Length; i++)
                     {
-                        openedTrainingWizards[i].Close();
+                        openedProcessWizards[i].Close();
                     }
 
                     Debug.LogWarning("There were more than one create course windows open. This should not happen. The redundant windows were closed.");
                 }
 
-                window = openedTrainingWizards.Length > 0 ? openedTrainingWizards[0] : GetWindow<ProcessCreationWizard>();
+                window = openedProcessWizards.Length > 0 ? openedProcessWizards[0] : GetWindow<ProcessCreationWizard>();
             }
 
             window.Show();
             window.Focus();
         }
 
-        private string courseName;
+        private string processName;
         private Vector2 scrollPosition;
         private string errorMessage;
 
@@ -52,7 +52,7 @@ namespace VRBuilder.Editor.UI.Windows
         {
             // Magic number.
             minSize = new Vector2(420f, 320f);
-            titleContent = new GUIContent("Training Course Wizard");
+            titleContent = new GUIContent("Process Wizard");
 
             GUIStyle labelStyle = new GUIStyle(EditorStyles.label);
             labelStyle.richText = true;
@@ -63,27 +63,27 @@ namespace VRBuilder.Editor.UI.Windows
 
             if (RuntimeConfigurator.Exists == false)
             {
-                EditorGUILayout.HelpBox("The current scene is not a training scene. No course can be created. To automatically setup the scene, select \"Tools > VR Builder > Setup Training Scene\".", MessageType.Error);
+                EditorGUILayout.HelpBox("The current scene is not a process scene. No course can be created. To automatically setup the scene, select \"Tools > VR Builder > Setup Process Scene\".", MessageType.Error);
             }
 
             EditorGUI.BeginDisabledGroup(RuntimeConfigurator.Exists == false);
-            EditorGUILayout.LabelField("<b>Create a new training course.</b>", labelStyle);
+            EditorGUILayout.LabelField("<b>Create a new process.</b>", labelStyle);
 
-            courseName = EditorGUILayout.TextField(new GUIContent("Training Course Name", "Set a file name for the new training course."), courseName);
+            processName = EditorGUILayout.TextField(new GUIContent("Process Name", "Set a file name for the new process."), processName);
 
-            EditorGUILayout.LabelField("The new course will be set for the current scene.");
+            EditorGUILayout.LabelField("The new process will be set for the current scene.");
 
             GUILayout.BeginHorizontal();
             GUILayout.FlexibleSpace();
             // ReSharper disable once InvertIf
             if (GUILayout.Button("Create", GUILayout.Width(128), GUILayout.Height(32)))
             {
-                if (ProcessAssetUtils.CanCreate(courseName, out errorMessage))
+                if (ProcessAssetUtils.CanCreate(processName, out errorMessage))
                 {
-                    ProcessAssetManager.Import(EntityFactory.CreateCourse(courseName));
-                    RuntimeConfigurator.Instance.SetSelectedCourse(ProcessAssetUtils.GetCourseStreamingAssetPath(courseName));
+                    ProcessAssetManager.Import(EntityFactory.CreateCourse(processName));
+                    RuntimeConfigurator.Instance.SetSelectedCourse(ProcessAssetUtils.GetCourseStreamingAssetPath(processName));
                     EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
-                    GlobalEditorHandler.SetCurrentCourse(courseName);
+                    GlobalEditorHandler.SetCurrentCourse(processName);
                     GlobalEditorHandler.StartEditingCourse();
 
                     Close();

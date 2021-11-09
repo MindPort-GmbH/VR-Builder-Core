@@ -13,12 +13,12 @@ using UnityEngine;
 namespace VRBuilder.Editor
 {
     /// <summary>
-    /// A static class that handles the course assets. It lets you to save, load, delete, and import training courses and provides multiple related utility methods.
+    /// A static class that handles the course assets. It lets you to save, load, delete, and import processes and provides multiple related utility methods.
     /// </summary>
     internal static class ProcessAssetManager
     {
         /// <summary>
-        /// Deletes the course with <paramref name="courseName"/>.
+        /// Deletes the process with <paramref name="courseName"/>.
         /// </summary>
         internal static void Delete(string courseName)
         {

@@ -9,7 +9,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// Training drawer for float members.
+    /// Process drawer for float members.
     /// </summary>
     [DefaultProcessDrawer(typeof(float))]
     internal class FloatDrawer : AbstractDrawer

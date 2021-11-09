@@ -5,7 +5,7 @@
 namespace VRBuilder.Core
 {
     /// <summary>
-    /// Interface of a training course.
+    /// Interface of a process.
     /// </summary>
     public interface IProcess : IEntity, IDataOwner<IProcessData>
     {

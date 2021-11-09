@@ -18,7 +18,7 @@ using Object = UnityEngine.Object;
 
 namespace VRBuilder.Tests.Interaction
 {
-    public class InteractionTrainingBuilderTests : RuntimeTests
+    public class InteractionProcessBuilderTests : RuntimeTests
     {
         private class DummySnapZoneProperty : LockableProperty, ISnapZoneProperty
         {
@@ -106,7 +106,7 @@ namespace VRBuilder.Tests.Interaction
         [UnityTest]
         public IEnumerator BuildingSnapZonePutTest()
         {
-            // Given a snap zone and snappable property and a builder for a training with a PutIntoSnapZone default step
+            // Given a snap zone and snappable property and a builder for a process with a PutIntoSnapZone default step
             GameObject snapZoneGo = new GameObject("SnapZone");
             ProcessSceneObject snapZone = snapZoneGo.AddComponent<ProcessSceneObject>();
             snapZoneGo.AddComponent<DummySnapZoneProperty>();
@@ -121,7 +121,7 @@ namespace VRBuilder.Tests.Interaction
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(InteractionDefaultSteps.PutIntoSnapZone("TestSnapZonePutStep", "SnapZone", "ToPut")));
 
-            // When you build a training with it
+            // When you build a process with it
             IStep step = builder.Build().Data.FirstChapter.Data.FirstStep;
 
             // Then it has a step with a SnappedCondition
@@ -141,7 +141,7 @@ namespace VRBuilder.Tests.Interaction
         [UnityTest]
         public IEnumerator BuildingUseTest()
         {
-            // Given a usable property and a builder for a training with Use default step
+            // Given a usable property and a builder for a process with Use default step
             GameObject usableGo = new GameObject("Usable");
             ProcessSceneObject usable = usableGo.AddComponent<ProcessSceneObject>();
             usableGo.AddComponent<DummyUsableProperty>();
@@ -151,7 +151,7 @@ namespace VRBuilder.Tests.Interaction
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(InteractionDefaultSteps.Use("TestUseStep", "Usable")));
 
-            // When you build a training with it
+            // When you build a process with it
             IStep step = builder.Build().Data.FirstChapter.Data.FirstStep;
 
             // Then it has a step with an UsedCondition
@@ -170,7 +170,7 @@ namespace VRBuilder.Tests.Interaction
         [UnityTest]
         public IEnumerator BuildingTouchTest()
         {
-            // Given you have a touchable property and a builder for a training with Touch default step
+            // Given you have a touchable property and a builder for a process with Touch default step
             GameObject touchableGo = new GameObject("Touchable");
             ProcessSceneObject touchable = touchableGo.AddComponent<ProcessSceneObject>();
             touchableGo.AddComponent<DummyTouchableProperty>();
@@ -180,7 +180,7 @@ namespace VRBuilder.Tests.Interaction
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(InteractionDefaultSteps.Touch("TestTouchStep", "Touchable")));
 
-            // When you build a training with it
+            // When you build a process with it
             IStep step = builder.Build().Data.FirstChapter.Data.FirstStep;
 
             // Then it has a step with a TouchCOndition

@@ -64,9 +64,9 @@ namespace VRBuilder.Tests.Utils
                 gameObject = new GameObject(name);
             }
 
-            ProcessSceneObject trainingSceneObject = gameObject.AddComponent<ProcessSceneObject>();
+            ProcessSceneObject processSceneObject = gameObject.AddComponent<ProcessSceneObject>();
 
-            return trainingSceneObject;
+            return processSceneObject;
         }
 
         /// <summary>

@@ -10,7 +10,7 @@ namespace VRBuilder.Editor.BuilderMenu
     internal static class ShowBuilderSettingsMenuEntry
     {
         /// <summary>
-        /// Setup the current unity scene to be a functioning training scene.
+        /// Opens VR Builder-related project settings.
         /// </summary>
         [MenuItem("Tools/VR Builder/Settings", false, 16)]
         public static void Show()

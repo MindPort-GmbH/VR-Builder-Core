@@ -17,19 +17,19 @@ namespace VRBuilder.Core.Tests.Builder
     public class ProcessBuilderTests : RuntimeTests
     {
         [Test]
-        public void SimplestTrainingBuilderTest()
+        public void SimplestProcessBuilderTest()
         {
-            // Given a builder of a training with one chapter with one step
+            // Given a builder of a process with one chapter with one step
             LinearProcessBuilder builder = new LinearProcessBuilder("Process1")
                 .AddChapter(new LinearChapterBuilder("Chapter1.1")
                     .AddStep(new BasicStepBuilder("Step1.1.1"))
                 );
 
-            // When we build a training from it
+            // When we build a process from it
             IProcess course = builder.Build();
 
             // Then it consists of exactly one chapter and one step, and their names are the same as expected
-            Assert.True(course.Data.Name == "Training1");
+            Assert.True(course.Data.Name == "Process1");
             Assert.True(course.Data.FirstChapter.Data.Name == "Chapter1.1");
             Assert.True(course.Data.FirstChapter.Data.FirstStep.Data.Name == "Step1.1.1");
             Assert.True(course.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions.Count == 1);
@@ -40,14 +40,14 @@ namespace VRBuilder.Core.Tests.Builder
         [Test]
         public void OneChapterMultipleStepsTest()
         {
-            // Given a builder of a training with one chapter with three steps
+            // Given a builder of a process with one chapter with three steps
             LinearProcessBuilder builder = new LinearProcessBuilder("Process1")
                 .AddChapter(new LinearChapterBuilder("Chapter1.1")
                     .AddStep(new BasicStepBuilder("Step1.1.1"))
                     .AddStep(new BasicStepBuilder("Step1.1.2"))
                     .AddStep(new BasicStepBuilder("Step1.1.3")));
 
-            // When we build a training from it
+            // When we build a process from it
             IProcess course = builder.Build();
 
             // Then it has exactly three steps in the same order.
@@ -63,7 +63,7 @@ namespace VRBuilder.Core.Tests.Builder
         [Test]
         public void MultipleChaptersTest()
         {
-            // Given a builder of a training with three chapters with one, three, and one steps
+            // Given a builder of a process with three chapters with one, three, and one steps
             LinearProcessBuilder builder = new LinearProcessBuilder("1")
                 .AddChapter(new LinearChapterBuilder("1.1")
                     .AddStep(new BasicStepBuilder("1.1.1")))
@@ -74,7 +74,7 @@ namespace VRBuilder.Core.Tests.Builder
                 .AddChapter(new LinearChapterBuilder("1.3")
                     .AddStep(new BasicStepBuilder("1.3.1")));
 
-            // When we build a training from it
+            // When we build a process from it
             IProcess course = builder.Build();
 
             // Then it has exactly three chapters in it with one, three, and one steps,
@@ -118,19 +118,19 @@ namespace VRBuilder.Core.Tests.Builder
                 .AddChapter(new LinearChapterBuilder("1.3")
                     .AddStep(new BasicStepBuilder("1.3.1")));
 
-            // When we build two trainings from it
-            IProcess training1 = builder.Build();
-            IProcess training2 = builder.Build();
+            // When we build two processes from it
+            IProcess process1 = builder.Build();
+            IProcess process2 = builder.Build();
 
-            Assert.True(training1.Data.Chapters.Count == training2.Data.Chapters.Count, "Both trainings should have the same length");
+            Assert.True(process1.Data.Chapters.Count == process2.Data.Chapters.Count, "Both processes should have the same length");
 
-            // Then two different instances of the training are created,
+            // Then two different instances of the process are created,
             // which have the same composition of chapters and steps,
-            // but there is not a single step or chapter instance that is shared between two trainings.
+            // but there is not a single step or chapter instance that is shared between two processes.
             for (int i = 0; i < 3; i++)
             {
-                IChapter chapter1 = training1.Data.Chapters[i];
-                IChapter chapter2 = training2.Data.Chapters[i];
+                IChapter chapter1 = process1.Data.Chapters[i];
+                IChapter chapter2 = process2.Data.Chapters[i];
 
                 Assert.False(ReferenceEquals(chapter1, chapter2));
                 Assert.True(chapter1.Data.Name == chapter2.Data.Name);
@@ -159,10 +159,10 @@ namespace VRBuilder.Core.Tests.Builder
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(VRBuilder.Tests.Builder.DefaultSteps.Intro("TestIntroStep")));
 
-            // When we build a training from it,
+            // When we build a process from it,
             IStep step = builder.Build().Data.FirstChapter.Data.FirstStep;
 
-            // Then a training with an Intro step is created.
+            // Then a process with an Intro step is created.
             Assert.True(step != null);
             Assert.True(step.Data.Name == "TestIntroStep");
             Assert.True(step.Data.Transitions.Data.Transitions.First().Data.Conditions.Any() == false);
@@ -171,7 +171,7 @@ namespace VRBuilder.Core.Tests.Builder
         [UnityTest]
         public IEnumerator BuildingColliderPutTest()
         {
-            // Given two training scene objects with `ColliderWithTriggerProperty` and a builder for at raining with a PutIntoCollider default step
+            // Given two process objects with `ColliderWithTriggerProperty` and a builder for at raining with a PutIntoCollider default step
             GameObject colliderGo = new GameObject("Collider");
             ProcessSceneObject testCollider = colliderGo.AddComponent<ProcessSceneObject>();
             colliderGo.AddComponent<SphereCollider>().isTrigger = true;
@@ -188,7 +188,7 @@ namespace VRBuilder.Core.Tests.Builder
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(BasicProcessSteps.PutIntoCollider("TestColliderPutStep", "Collider", 1f, "ToPut")));
 
-            // When you build a training from it
+            // When you build a process from it
             IStep step = builder.Build().Data.FirstChapter.Data.FirstStep;
 
             // Then it has a step with a ObjectInColliderCondition.
@@ -207,7 +207,7 @@ namespace VRBuilder.Core.Tests.Builder
         [UnityTest]
         public IEnumerator HighlightTest()
         {
-            // Given we have a training scene object and a builder for a training with a step with highlight that object
+            // Given we have a process object and a builder for a process with a step with highlight that object
             GameObject go = new GameObject("Highlightable");
             EnableHighlightProperty highlightable = go.AddComponent<EnableHighlightProperty>();
             highlightable.SceneObject.ChangeUniqueName("Highlightable");
@@ -217,7 +217,7 @@ namespace VRBuilder.Core.Tests.Builder
                     .AddStep(new BasicProcessStepBuilder("TestHighlightStep")
                         .Highlight("Highlightable")));
 
-            // When we build a training from it
+            // When we build a process from it
             IStep step = builder.Build().Data.FirstChapter.Data.FirstStep;
 
             // Then we have a step with VRTKObjectHighlight behavior.
@@ -244,7 +244,7 @@ namespace VRBuilder.Core.Tests.Builder
                             .AddAudioDescription("Path1")
                             .AddAudioDescription("Path2")));
 
-                // When we build a training from it
+                // When we build a process from it
                 builder.Build();
             };
 
@@ -266,7 +266,7 @@ namespace VRBuilder.Core.Tests.Builder
                             .AddAudioSuccess("Path1")
                             .AddAudioSuccess("Path2")));
 
-                // When we build a training from it
+                // When we build a process from it
                 builder.Build();
             };
 
@@ -288,7 +288,7 @@ namespace VRBuilder.Core.Tests.Builder
                             .AddAudioHint("Path1")
                             .AddAudioHint("Path2")));
 
-                // When we build a training from it
+                // When we build a process from it
                 builder.Build();
             };
 
@@ -303,7 +303,7 @@ namespace VRBuilder.Core.Tests.Builder
         [UnityTest]
         public IEnumerator AudioFlagsCleanupTest()
         {
-            // Given a builder for a training
+            // Given a builder for a process
             LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
                     .AddStep(new BasicProcessStepBuilder("TestStep")
@@ -311,7 +311,7 @@ namespace VRBuilder.Core.Tests.Builder
                         .AddAudioDescription("Path1")
                         .AddAudioHint("Path2")));
 
-            // When we are building two trainings from it
+            // When we are building two processes from it
             builder.Build();
             builder.Build();
 

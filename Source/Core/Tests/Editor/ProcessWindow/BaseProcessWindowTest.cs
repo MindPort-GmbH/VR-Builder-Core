@@ -13,7 +13,7 @@ using UnityEditor;
 namespace VRBuilder.Editor.Tests.CourseWindowTests
 {
     /// <summary>
-    /// Base class for all training window tests.
+    /// Base class for all process window tests.
     /// </summary>
     internal abstract class BaseProcessWindowTest : EditorImguiTest<ProcessWindow>
     {
@@ -33,7 +33,7 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
         /// <summary>
         /// Returns the <see cref="IProcess"/> contained in given <see cref="ProcessWindow"/>.
         /// </summary>
-        protected static IProcess ExtractTraining(ProcessWindow window)
+        protected static IProcess ExtractProcess(ProcessWindow window)
         {
             IProcess course = window.GetCourse();
             Assert.NotNull(course);
@@ -53,7 +53,7 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
         }
 
         /// <inheritdoc />
-        public override string GivenDescription => "A training window with empty training and fixed size of 1024x512 pixels.";
+        public override string GivenDescription => "A process window with empty process and fixed size of 1024x512 pixels.";
 
         /// <inheritdoc />
         protected override string AssetFolderForRecordedActions => EditorUtils.GetCoreFolder() + "/Tests/Editor/CourseWindow/Records";

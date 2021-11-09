@@ -25,7 +25,7 @@ namespace VRBuilder.BasicInteraction.Builders
         /// Get grab step builder.
         /// </summary>
         /// <param name="name">Name of the step.</param>
-        /// <param name="objectsToGrab">List of objects that have to be grabbed before training chapter continues.</param>
+        /// <param name="objectsToGrab">List of objects that have to be grabbed before chapter continues.</param>
         /// <returns>Configured builder.</returns>
         public static BasicStepBuilder Grab(string name, params IGrabbableProperty[] objectsToGrab)
         {
@@ -36,7 +36,7 @@ namespace VRBuilder.BasicInteraction.Builders
         /// Get grab step builder.
         /// </summary>
         /// <param name="name">Name of the step.</param>
-        /// <param name="objectsToGrab">List of objects that have to be grabbed before training chapter continues.</param>
+        /// <param name="objectsToGrab">List of objects that have to be grabbed before chapter continues.</param>
         /// <returns>Configured builder.</returns>
         public static BasicStepBuilder Grab(string name, params string[] objectsToGrab)
         {

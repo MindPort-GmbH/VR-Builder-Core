@@ -14,7 +14,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.Configuration
 {
     /// <summary>
-    /// Custom editor for choosing the training configuration in the Unity game object inspector.
+    /// Custom editor for choosing the process configuration in the Unity game object inspector.
     /// </summary>
     [CustomEditor(typeof(RuntimeConfigurator))]
     public class RuntimeConfiguratorEditor : UnityEditor.Editor
@@ -27,7 +27,7 @@ namespace VRBuilder.Editor.Configuration
         private static readonly List<Type> configurationTypes;
         private static readonly string[] configurationTypeNames;
 
-        private static List<string> trainingCourseDisplayNames = new List<string> { "<none>" };
+        private static List<string> processDisplayNames = new List<string> { "<none>" };
 
         private string defaultCoursePath;
         private static bool isDirty = true;
@@ -44,16 +44,16 @@ namespace VRBuilder.Editor.Configuration
         }
 
         /// <summary>
-        /// True when the training course list is empty or missing.
+        /// True when the process list is empty or missing.
         /// </summary>
-        public static bool IsCourseListEmpty()
+        public static bool IsProcessListEmpty()
         {
             if(isDirty)
             {
-                PopulateCourseList();
+                PopulateProcessList();
             }
 
-            return trainingCourseDisplayNames.Count == 1 && trainingCourseDisplayNames[0] == "<none>";
+            return processDisplayNames.Count == 1 && processDisplayNames[0] == "<none>";
         }
 
         protected void OnEnable()
@@ -64,7 +64,7 @@ namespace VRBuilder.Editor.Configuration
 
             defaultCoursePath = EditorConfigurator.Instance.CourseStreamingAssetsSubdirectory;
 
-            // Create training course path if not present.
+            // Create process path if not present.
             string absolutePath = Path.Combine(Application.streamingAssetsPath, defaultCoursePath);
             if (Directory.Exists(absolutePath) == false)
             {
@@ -81,20 +81,20 @@ namespace VRBuilder.Editor.Configuration
 
             DrawRuntimeConfigurationDropDown();
 
-            EditorGUI.BeginDisabledGroup(IsCourseListEmpty());
+            EditorGUI.BeginDisabledGroup(IsProcessListEmpty());
             {
                 DrawCourseSelectionDropDown();
                 GUILayout.BeginHorizontal();
                 {
                     if (GUILayout.Button("Open Course in Workflow window"))
                     {
-                        GlobalEditorHandler.SetCurrentCourse(ProcessAssetUtils.GetCourseNameFromPath(configurator.GetSelectedCourse()));
+                        GlobalEditorHandler.SetCurrentCourse(ProcessAssetUtils.GetCourseNameFromPath(configurator.GetSelectedProcess()));
                         GlobalEditorHandler.StartEditingCourse();
                     }
 
                     if (GUILayout.Button(new GUIContent("Show Course in Explorer...")))
                     {
-                        string absolutePath = $"{new FileInfo(ProcessAssetUtils.GetCourseAssetPath(ProcessAssetUtils.GetCourseNameFromPath(configurator.GetSelectedCourse())))}";
+                        string absolutePath = $"{new FileInfo(ProcessAssetUtils.GetCourseAssetPath(ProcessAssetUtils.GetCourseNameFromPath(configurator.GetSelectedProcess())))}";
                         EditorUtility.RevealInFinder(absolutePath);
                     }
                 }
@@ -105,20 +105,20 @@ namespace VRBuilder.Editor.Configuration
             serializedObject.ApplyModifiedProperties();
         }
 
-        private static void PopulateCourseList()
+        private static void PopulateProcessList()
         {
             List<string> courses = ProcessAssetUtils.GetAllCourses().ToList();
 
             // Create dummy entry if no files are present.
             if (courses.Any() == false)
             {
-                trainingCourseDisplayNames.Clear();
-                trainingCourseDisplayNames.Add("<none>");
+                processDisplayNames.Clear();
+                processDisplayNames.Add("<none>");
                 return;
             }
 
-            trainingCourseDisplayNames = courses;
-            trainingCourseDisplayNames.Sort();
+            processDisplayNames = courses;
+            processDisplayNames.Sort();
         }
 
         private void DrawRuntimeConfigurationDropDown()
@@ -133,26 +133,26 @@ namespace VRBuilder.Editor.Configuration
         {
             int index = 0;
 
-            string courseName = ProcessAssetUtils.GetCourseNameFromPath(configurator.GetSelectedCourse());
+            string courseName = ProcessAssetUtils.GetCourseNameFromPath(configurator.GetSelectedProcess());
 
             if (string.IsNullOrEmpty(courseName) == false)
             {
-                index = trainingCourseDisplayNames.FindIndex(courseName.Equals);
+                index = processDisplayNames.FindIndex(courseName.Equals);
             }
 
-            index = EditorGUILayout.Popup("Selected Training Course", index, trainingCourseDisplayNames.ToArray());
+            index = EditorGUILayout.Popup("Selected Process", index, processDisplayNames.ToArray());
 
             if (index < 0)
             {
                 index = 0;
             }
 
-            string newCourseStreamingAssetsPath = ProcessAssetUtils.GetCourseStreamingAssetPath(trainingCourseDisplayNames[index]);
+            string newCourseStreamingAssetsPath = ProcessAssetUtils.GetCourseStreamingAssetPath(processDisplayNames[index]);
 
-            if (IsCourseListEmpty() == false && configurator.GetSelectedCourse() != newCourseStreamingAssetsPath)
+            if (IsProcessListEmpty() == false && configurator.GetSelectedProcess() != newCourseStreamingAssetsPath)
             {
                 SetConfiguratorSelectedCourse(newCourseStreamingAssetsPath);
-                GlobalEditorHandler.SetCurrentCourse(trainingCourseDisplayNames[index]);
+                GlobalEditorHandler.SetCurrentCourse(processDisplayNames[index]);
             }
         }
 
@@ -173,12 +173,12 @@ namespace VRBuilder.Editor.Configuration
                 return;
             }
 
-            PopulateCourseList();
+            PopulateProcessList();
 
-            if (string.IsNullOrEmpty(configurator.GetSelectedCourse()))
+            if (string.IsNullOrEmpty(configurator.GetSelectedProcess()))
             {
-                SetConfiguratorSelectedCourse(ProcessAssetUtils.GetCourseStreamingAssetPath(trainingCourseDisplayNames[0]));
-                GlobalEditorHandler.SetCurrentCourse(ProcessAssetUtils.GetCourseAssetPath(configurator.GetSelectedCourse()));
+                SetConfiguratorSelectedCourse(ProcessAssetUtils.GetCourseStreamingAssetPath(processDisplayNames[0]));
+                GlobalEditorHandler.SetCurrentCourse(ProcessAssetUtils.GetCourseAssetPath(configurator.GetSelectedProcess()));
             }
         }
     }

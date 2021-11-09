@@ -16,7 +16,7 @@ namespace VRBuilder.Editor.BuilderMenu
         [MenuItem("Window/VR Builder/Workflow Editor", false, 100)]
         private static void OpenWorkflowEditor()
         {
-            GlobalEditorHandler.SetCurrentCourse(ProcessAssetUtils.GetCourseNameFromPath(RuntimeConfigurator.Instance.GetSelectedCourse()));
+            GlobalEditorHandler.SetCurrentCourse(ProcessAssetUtils.GetCourseNameFromPath(RuntimeConfigurator.Instance.GetSelectedProcess()));
             GlobalEditorHandler.StartEditingCourse();
         }
 
@@ -29,7 +29,7 @@ namespace VRBuilder.Editor.BuilderMenu
                 return false;
             }
 
-            if (RuntimeConfiguratorEditor.IsCourseListEmpty())
+            if (RuntimeConfiguratorEditor.IsProcessListEmpty())
             {
                 return false;
             }

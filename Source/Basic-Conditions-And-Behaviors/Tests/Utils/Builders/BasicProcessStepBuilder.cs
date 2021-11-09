@@ -91,9 +91,9 @@ namespace VRBuilder.Tests.Builder
         {
             AddSecondPassAction(() =>
             {
-                foreach (ISceneObject trainingObject in toEnable)
+                foreach (ISceneObject processObject in toEnable)
                 {
-                    Result.Data.Behaviors.Data.Behaviors.Add(new EnableGameObjectBehavior(trainingObject));
+                    Result.Data.Behaviors.Data.Behaviors.Add(new EnableGameObjectBehavior(processObject));
                 }
             });
 
@@ -119,9 +119,9 @@ namespace VRBuilder.Tests.Builder
         {
             AddSecondPassAction(() =>
             {
-                foreach (ISceneObject trainingObject in toDisable)
+                foreach (ISceneObject processObject in toDisable)
                 {
-                    Result.Data.Behaviors.Data.Behaviors.Add(new DisableGameObjectBehavior(trainingObject));
+                    Result.Data.Behaviors.Data.Behaviors.Add(new DisableGameObjectBehavior(processObject));
                 }
             });
             return this;
@@ -156,11 +156,11 @@ namespace VRBuilder.Tests.Builder
         {
             AddSecondPassAction(() =>
             {
-                foreach (ISceneObject trainingObject in toHighlight)
+                foreach (ISceneObject processObject in toHighlight)
                 {
-                    if (trainingObject.CheckHasProperty<IHighlightProperty>())
+                    if (processObject.CheckHasProperty<IHighlightProperty>())
                     {
-                        Result.Data.Behaviors.Data.Behaviors.Add(new HighlightObjectBehavior(trainingObject.GetProperty<IHighlightProperty>()));
+                        Result.Data.Behaviors.Data.Behaviors.Add(new HighlightObjectBehavior(processObject.GetProperty<IHighlightProperty>()));
                     }
                 }
             });

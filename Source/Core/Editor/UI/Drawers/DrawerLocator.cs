@@ -54,7 +54,7 @@ namespace VRBuilder.Editor.UI.Drawers
         /// </summary>
         /// <param name="memberInfo">Reflection information about the member for which drawer is needed.</param>
         /// <param name="owner">Object to which this member belongs to.</param>
-        /// <returns>Returns suitable training drawer. Returns null only if the member is not a property or field, or the specified custom drawer is not found.</returns>
+        /// <returns>Returns suitable Process drawer. Returns null only if the member is not a property or field, or the specified custom drawer is not found.</returns>
         public static IProcessDrawer GetDrawerForMember(MemberInfo memberInfo, object owner)
         {
             if (ReflectionUtils.IsProperty(memberInfo) == false && ReflectionUtils.IsField(memberInfo) == false)
@@ -80,7 +80,7 @@ namespace VRBuilder.Editor.UI.Drawers
         /// </summary>
         /// <param name="value">Value to get drawer for.</param>
         /// <param name="declaredType">Declaring type of the class member that contains the value.</param>
-        /// <returns>Returns suitable training drawer.</returns>
+        /// <returns>Returns suitable Process drawer.</returns>
         public static IProcessDrawer GetDrawerForValue(object value, Type declaredType)
         {
             if (value == null)

@@ -35,9 +35,9 @@ namespace VRBuilder.Core.Configuration
         public override ISceneObjectRegistry SceneObjectRegistry => Configuration.SceneObjectRegistry;
 
         /// <inheritdoc />
-        public override IProcess LoadCourse(string path)
+        public override IProcess LoadProcess(string path)
         {
-            return Configuration.LoadCourse(path);
+            return Configuration.LoadProcess(path);
         }
     }
 }

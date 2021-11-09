@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -7,7 +7,7 @@ using VRBuilder.Core.Configuration.Modes;
 namespace VRBuilder.Core
 {
     /// <summary>
-    /// The basic interface for all components of a training course: behaviors, conditions, transitions, and so on.
+    /// The basic interface for all components of a process: behaviors, conditions, transitions, and so on.
     /// Do not implement this interface directly.
     /// Use <see cref="Behaviors.Behavior"/> or <see cref="Conditions.Condition"/> abstract classes instead.
     /// </summary>

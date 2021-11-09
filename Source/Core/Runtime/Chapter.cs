@@ -16,7 +16,7 @@ using VRBuilder.Core.Utils.Logging;
 namespace VRBuilder.Core
 {
     /// <summary>
-    /// A chapter of a training <see cref="Process"/>.
+    /// A chapter of a process <see cref="Process"/>.
     /// </summary>
     [DataContract(IsReference = true)]
     public class Chapter : Entity<Chapter.EntityData>, IChapter

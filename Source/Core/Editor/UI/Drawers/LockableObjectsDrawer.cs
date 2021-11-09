@@ -34,7 +34,7 @@ namespace VRBuilder.Editor.UI.Drawers
             }
 
             currentPosition.y += EditorDrawingHelper.SingleLineHeight;
-            EditorGUI.LabelField(currentPosition, "To add new TrainingSceneObject, drag it in here:");
+            EditorGUI.LabelField(currentPosition, "To add new ProcessSceneObject, drag it in here:");
             currentPosition.y += EditorDrawingHelper.SingleLineHeight + EditorDrawingHelper.VerticalSpacing;
 
             ProcessSceneObject newSceneObject = (ProcessSceneObject) EditorGUI.ObjectField(currentPosition, null, typeof(ProcessSceneObject), true);

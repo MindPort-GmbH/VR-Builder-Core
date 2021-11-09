@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -31,7 +31,7 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
         {
             get
             {
-                return "There is a training with exactly one execution flow.";
+                return "There is a process with exactly one execution flow.";
             }
         }
 
@@ -47,7 +47,7 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
         /// <inheritdoc />
         protected override void Then(ProcessWindow window)
         {
-            IProcess result = ExtractTraining(window);
+            IProcess result = ExtractProcess(window);
             IChapter firstChapter = result.Data.Chapters.First();
 
             Assert.NotNull(firstChapter);

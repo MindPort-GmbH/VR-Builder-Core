@@ -10,18 +10,18 @@ using UnityEngine;
 namespace VRBuilder.Core.Configuration
 {
     /// <summary>
-    /// Configurator to set the training runtime configuration which is used by a training course during its execution.
-    /// There has to be one and only one training runtime configurator game object per scene.
+    /// Configurator to set the process runtime configuration which is used by a process during its execution.
+    /// There has to be one and only one process runtime configurator game object per scene.
     /// </summary>
     public sealed class RuntimeConfigurator : MonoBehaviour
     {
         /// <summary>
-        /// The event that fires when a training mode or runtime configuration changes.
+        /// The event that fires when a process mode or runtime configuration changes.
         /// </summary>
         public static event EventHandler<ModeChangedEventArgs> ModeChanged;
 
         /// <summary>
-        /// The event that fires when a training runtime configuration changes.
+        /// The event that fires when a process runtime configuration changes.
         /// </summary>
         public static event EventHandler<EventArgs> RuntimeConfigurationChanged;
 
@@ -49,7 +49,7 @@ namespace VRBuilder.Core.Configuration
 
             if (instances.Length > 1)
             {
-                Debug.LogError("More than one training runtime configurator is found in the scene. Taking the first one. This may lead to unexpected behaviour.");
+                Debug.LogError("More than one process runtime configurator is found in the scene. Taking the first one. This may lead to unexpected behaviour.");
             }
 
             if (instances.Length == 0)
@@ -61,7 +61,7 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <summary>
-        /// Checks if a training runtime configurator instance exists in scene.
+        /// Checks if a process runtime configurator instance exists in scene.
         /// </summary>
         public static bool Exists
         {
@@ -113,7 +113,7 @@ namespace VRBuilder.Core.Configuration
             {
                 if (value == null)
                 {
-                    Debug.LogError("Training runtime configuration cannot be null.");
+                    Debug.LogError("Process runtime configuration cannot be null.");
                     return;
                 }
 
@@ -146,7 +146,7 @@ namespace VRBuilder.Core.Configuration
             {
                 if (Exists == false)
                 {
-                    throw new NullReferenceException("Training runtime configurator is not set in the scene. Create an empty game object with the 'RuntimeConfigurator' script attached to it.");
+                    throw new NullReferenceException("Process runtime configurator is not set in the scene. Create an empty game object with the 'RuntimeConfigurator' script attached to it.");
                 }
 
                 return instance;
@@ -170,15 +170,15 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <summary>
-        /// Returns the path to the selected training course.
+        /// Returns the path to the selected process.
         /// </summary>
-        public string GetSelectedCourse()
+        public string GetSelectedProcess()
         {
             return selectedCourseStreamingAssetsPath;
         }
 
         /// <summary>
-        /// Sets the path to the selected training course.
+        /// Sets the path to the selected process.
         /// </summary>
         public void SetSelectedCourse(string path)
         {

@@ -17,7 +17,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator CreateByReference()
         {
-            // Given two training scene objects and a duration,
+            // Given two process objects and a duration,
             GameObject movedGo = new GameObject(movedName);
             ProcessSceneObject moved = movedGo.AddComponent<ProcessSceneObject>();
             moved.ChangeUniqueName(movedName);
@@ -28,7 +28,7 @@ namespace VRBuilder.Core.Tests.Behaviors
 
             float duration = 0.25f;
 
-            // When we create MoveObjectBehavior and pass training scene objects by reference,
+            // When we create MoveObjectBehavior and pass process objects by reference,
             MoveObjectBehavior moveObjectBehavior = new MoveObjectBehavior(moved, positionProvider, duration);
 
             // Then all properties of the MoveObjectBehavior are properly assigned
@@ -46,7 +46,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator CreateByName()
         {
-            // Given two training scene objects and a duration,
+            // Given two process objects and a duration,
             GameObject movedGo = new GameObject(movedName);
             ProcessSceneObject moved = movedGo.AddComponent<ProcessSceneObject>();
             moved.ChangeUniqueName(movedName);
@@ -57,7 +57,7 @@ namespace VRBuilder.Core.Tests.Behaviors
 
             float duration = 0.25f;
 
-            // When we create MoveObjectBehavior and pass training scene objects by their unique name,
+            // When we create MoveObjectBehavior and pass process objects by their unique name,
             MoveObjectBehavior moveObjectBehavior = new MoveObjectBehavior(movedName, positionProviderName, duration);
 
             // Then all properties of the MoveObjectBehavior are properly assigned
@@ -75,7 +75,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator PositiveDuration()
         {
-            // Given MoveObjectBehavior that takes two training scene objects with different positions and rotations, and positive transition duration,
+            // Given MoveObjectBehavior that takes two process objects with different positions and rotations, and positive transition duration,
             float duration = 0.05f;
 
             GameObject movedGo = new GameObject(movedName);
@@ -116,7 +116,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator NegativeDuration()
         {
-            // Given MoveObjectBehavior that takes two training scene objects with different positions and rotations, and negative transition duration,
+            // Given MoveObjectBehavior that takes two process objects with different positions and rotations, and negative transition duration,
             float duration = -2.5f;
             GameObject movedGo = new GameObject(movedName);
             ProcessSceneObject moved = movedGo.AddComponent<ProcessSceneObject>();
@@ -152,7 +152,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator ZeroDuration()
         {
-            // Given MoveObjectBehavior that takes two training scene objects with different positions and rotations, and transition duration that equals zero,
+            // Given MoveObjectBehavior that takes two process objects with different positions and rotations, and transition duration that equals zero,
             float duration = 0f;
 
             GameObject movedGo = new GameObject(movedName);
@@ -189,7 +189,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator SamePosition()
         {
-            // Given MoveObjectBehavior that takes two training scene objects with the same position and rotation, and positive transition duration,
+            // Given MoveObjectBehavior that takes two process objects with the same position and rotation, and positive transition duration,
             float duration = 0.05f;
 
             GameObject movedGo = new GameObject(movedName);
@@ -222,7 +222,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardInactiveBehavior()
         {
-            // Given MoveObjectBehavior that takes two training scene objects with different positions and rotations, and positive transition duration,
+            // Given MoveObjectBehavior that takes two process objects with different positions and rotations, and positive transition duration,
             float duration = 0.05f;
 
             GameObject movedGo = new GameObject(movedName);
@@ -253,7 +253,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardInactiveBehaviorAndActivateIt()
         {
-            // Given MoveObjectBehavior that takes two training scene objects with different positions and rotations, and positive transition duration,
+            // Given MoveObjectBehavior that takes two process objects with different positions and rotations, and positive transition duration,
             float duration = 0.05f;
 
             GameObject movedGo = new GameObject(movedName);
@@ -287,7 +287,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardActivatingBehavior()
         {
-            // Given an activated MoveObjectBehavior that takes two training scene objects with different positions and rotations, and positive transition duration,
+            // Given an activated MoveObjectBehavior that takes two process objects with different positions and rotations, and positive transition duration,
             float duration = 0.05f;
 
             GameObject movedGo = new GameObject(movedName);

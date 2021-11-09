@@ -16,12 +16,12 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
         public override string WhenDescription => "Add one step to the workflow. Connect it to the start of the chapter.";
 
         /// <inheritdoc />
-        public override string ThenDescription => "There is a training with exactly one step created.";
+        public override string ThenDescription => "There is a process with exactly one step created.";
 
         /// <inheritdoc />
         protected override void Then(ProcessWindow window)
         {
-            IProcess result = ExtractTraining(window);
+            IProcess result = ExtractProcess(window);
 
             IChapter firstChapter = result.Data.Chapters.First();
             Assert.NotNull(firstChapter);

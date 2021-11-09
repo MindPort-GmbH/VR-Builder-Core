@@ -36,7 +36,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator LockBehaviorOnUnlockedObject()
         {
-            // Given a LockObjectBehavior, an unlocked game object, and a full training step,
+            // Given a LockObjectBehavior, an unlocked game object, and a full process step,
             GameObject gameObject = new GameObject("Test");
             ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
@@ -84,7 +84,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator LockBehaviorOnLockedObject()
         {
-            // Given a LockObjectBehavior, an locked game object, and a full training step,
+            // Given a LockObjectBehavior, an locked game object, and a full process step,
             GameObject gameObject = new GameObject("Test");
             ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
@@ -154,7 +154,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardInactiveBehaviorAndActivateIt()
         {
-            // Given a LockObjectBehavior, an unlocked game object, and a full training step,
+            // Given a LockObjectBehavior, an unlocked game object, and a full process step,
             GameObject gameObject = new GameObject("Test");
             ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
@@ -199,7 +199,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardActivatingBehavior()
         {
-            // Given a LockObjectBehavior, an unlocked game object, and an activated full training step,
+            // Given a LockObjectBehavior, an unlocked game object, and an activated full process step,
             GameObject gameObject = new GameObject("Test");
             ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 

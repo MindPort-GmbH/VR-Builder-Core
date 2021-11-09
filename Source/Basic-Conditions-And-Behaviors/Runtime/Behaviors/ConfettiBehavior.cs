@@ -29,7 +29,7 @@ namespace VRBuilder.Core.Behaviors
             public bool IsAboveUser { get; set; }
 
             /// <summary>
-            /// Name of the training object where to spawn the confetti machine.
+            /// Name of the process object where to spawn the confetti machine.
             /// Only needed if "Spawn Above User" is not checked.
             /// </summary>
 #if CREATOR_PRO     

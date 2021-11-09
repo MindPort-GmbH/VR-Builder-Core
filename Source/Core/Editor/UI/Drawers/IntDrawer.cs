@@ -9,7 +9,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// Training drawer for int values.
+    /// Process drawer for int values.
     /// </summary>
     [DefaultProcessDrawer(typeof(int))]
     internal class IntDrawer : AbstractDrawer

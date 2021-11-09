@@ -35,7 +35,7 @@ namespace VRBuilder.Core.Serialization.NewtonsoftJson
         }
 
         /// <summary>
-        /// Returns the json serializer settings used by the training deserialization.
+        /// Returns the json serializer settings used by the process deserialization.
         /// </summary>
         public static JsonSerializerSettings CourseSerializerSettings
         {

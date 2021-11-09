@@ -13,7 +13,7 @@ using UnityEngine;
 namespace VRBuilder.Editor
 {
     /// <summary>
-    /// Can be run to setup the current scene as a training scene.
+    /// Can be run to setup the current scene as a process scene.
     /// </summary>
     internal static class ProcessSceneSetup
     {

@@ -8,16 +8,16 @@ using VRBuilder.Core;
 namespace VRBuilder.Tests.Builder
 {
     /// <summary>
-    /// Builder that creates linear trainings.
+    /// Builder that creates linear processes.
     /// </summary>
     public class LinearProcessBuilder : ProcessBuilder<Process>
     {
         public List<IChapter> Chapters { get; set; }
 
         /// <summary>
-        /// The builder will create a training with given name.
+        /// The builder will create a process with given name.
         /// </summary>
-        /// <param name="name">Name of the training.</param>
+        /// <param name="name">Name of the process.</param>
         public LinearProcessBuilder(string name, string rootResourceFolder = "") : base(name)
         {
             Chapters = new List<IChapter>();

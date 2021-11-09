@@ -5,7 +5,7 @@
 namespace VRBuilder.Core
 {
     /// <summary>
-    /// Interface for a training step.
+    /// Interface for a process step.
     /// </summary>
     public interface IStep : IDataOwner<IStepData>, IEntity
     {

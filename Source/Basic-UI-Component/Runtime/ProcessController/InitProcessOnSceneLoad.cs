@@ -12,29 +12,29 @@ namespace VRBuilder.UX
     {
         private void OnEnable()
         {
-            InitTraining();
+            InitProcess();
         }
 
-        private void InitTraining()
+        private void InitProcess()
         {
-            // Load training course from a file.
-            string coursePath = RuntimeConfigurator.Instance.GetSelectedCourse();
+            // Load process from a file.
+            string processPath = RuntimeConfigurator.Instance.GetSelectedProcess();
 
-            IProcess trainingCourse;
-            
-            // Try to load the in the [TRAINING_CONFIGURATION] selected training course.
+            IProcess process;
+
+            // Try to load the in the [PROCESS_CONFIGURATION] selected process.
             try
             {
-                trainingCourse = RuntimeConfigurator.Configuration.LoadCourse(coursePath);
+                process = RuntimeConfigurator.Configuration.LoadProcess(processPath);
             }
             catch (Exception exception)
             {
-                Debug.LogError($"Error when loading training course. {exception.GetType().Name}, {exception.Message}\n{exception.StackTrace}", RuntimeConfigurator.Instance.gameObject);
+                Debug.LogError($"Error when loading process. {exception.GetType().Name}, {exception.Message}\n{exception.StackTrace}", RuntimeConfigurator.Instance.gameObject);
                 return;
             }
 
-            // Initializes the training course. That will synthesize an audio for the training instructions, too.
-            ProcessRunner.Initialize(trainingCourse);
+            // Initializes the process. That will synthesize an audio for the instructions, too.
+            ProcessRunner.Initialize(process);
         }
     }
 }

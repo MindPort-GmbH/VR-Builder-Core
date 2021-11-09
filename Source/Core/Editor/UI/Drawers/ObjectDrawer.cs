@@ -19,7 +19,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// Training drawer for object properties. Used when everything else does not fit.
+    /// Process drawer for object properties. Used when everything else does not fit.
     /// </summary>
     [DefaultProcessDrawer(typeof(object))]
     public class ObjectDrawer : AbstractDrawer

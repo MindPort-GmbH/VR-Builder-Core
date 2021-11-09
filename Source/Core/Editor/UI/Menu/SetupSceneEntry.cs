@@ -9,9 +9,9 @@ namespace VRBuilder.Editor.BuilderMenu
     internal static class SetupSceneEntry
     {
         /// <summary>
-        /// Setup the current unity scene to be a functioning training scene.
+        /// Setup the current unity scene to be a functioning process scene.
         /// </summary>
-        [MenuItem("Tools/VR Builder/Setup Training Scene", false, 2)]
+        [MenuItem("Tools/VR Builder/Setup Process Scene", false, 2)]
         public static void SetupScene()
         {
             ProcessSceneSetup.Run();

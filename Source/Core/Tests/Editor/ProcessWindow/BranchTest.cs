@@ -36,7 +36,7 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
         /// <inheritdoc />
         protected override void Then(ProcessWindow window)
         {
-            IProcess result = ExtractTraining(window);
+            IProcess result = ExtractProcess(window);
 
             IChapter firstChapter = result.Data.Chapters.First();
             Assert.NotNull(firstChapter);

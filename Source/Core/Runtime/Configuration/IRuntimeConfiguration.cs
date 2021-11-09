@@ -11,23 +11,23 @@ using VRBuilder.Core.Serialization;
 namespace VRBuilder.Core.Configuration
 {
     /// <summary>
-    /// An interface for training runtime configurations. Implement it to create your own.
+    /// An interface for process runtime configurations. Implement it to create your own.
     /// </summary>
     [Obsolete("To be more flexible with development we switched to an abstract class as configuration base, consider using BaseRuntimeConfiguration.")]
     public interface IRuntimeConfiguration
     {
         /// <summary>
-        /// SceneObjectRegistry gathers all created TrainingSceneEntities.
+        /// SceneObjectRegistry gathers all created ProcessSceneEntities.
         /// </summary>
         ISceneObjectRegistry SceneObjectRegistry { get; }
 
         /// <summary>
-        /// Defines the serializer which should be used to serialize training courses.
+        /// Defines the serializer which should be used to serialize processes.
         /// </summary>
         IProcessSerializer Serializer { get; set; }
 
         /// <summary>
-        /// Returns the mode handler for the training.
+        /// Returns the mode handler for the process.
         /// </summary>
         IModeHandler Modes { get; }
 
@@ -42,8 +42,8 @@ namespace VRBuilder.Core.Configuration
         AudioSource InstructionPlayer { get; }
 
         /// <summary>
-        /// Synchronously returns the deserialized training course from given path.
+        /// Synchronously returns the deserialized process from given path.
         /// </summary>
-        IProcess LoadCourse(string path);
+        IProcess LoadProcess(string path);
     }
 }

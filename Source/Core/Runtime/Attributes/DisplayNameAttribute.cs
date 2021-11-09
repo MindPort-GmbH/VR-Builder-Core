@@ -7,13 +7,13 @@ using System;
 namespace VRBuilder.Core.Attributes
 {
     /// <summary>
-    /// Displayed name of training entity's property or field.
+    /// Displayed name of process entity's property or field.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Class)]
     public class DisplayNameAttribute : Attribute
     {
         /// <summary>
-        /// Name of the training entity's property or field.
+        /// Name of the process entity's property or field.
         /// </summary>
         public string Name { get; private set; }
 

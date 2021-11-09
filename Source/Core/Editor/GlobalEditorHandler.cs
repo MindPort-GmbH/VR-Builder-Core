@@ -189,7 +189,7 @@ namespace VRBuilder.Editor
                 return;
             }
 
-            string coursePath = RuntimeConfigurator.Instance.GetSelectedCourse();
+            string coursePath = RuntimeConfigurator.Instance.GetSelectedProcess();
 
             if (string.IsNullOrEmpty(coursePath))
             {

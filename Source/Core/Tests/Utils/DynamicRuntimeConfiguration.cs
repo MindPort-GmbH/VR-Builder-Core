@@ -10,7 +10,7 @@ using VRBuilder.Core.Configuration.Modes;
 namespace VRBuilder.Tests.Utils
 {
     /// <summary>
-    /// DynamicDefinition allows to dynamically adjust training modes.
+    /// DynamicDefinition allows to dynamically adjust process modes.
     /// </summary>
     public class DynamicRuntimeConfiguration : DefaultRuntimeConfiguration
     {

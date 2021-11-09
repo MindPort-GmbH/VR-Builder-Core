@@ -82,7 +82,7 @@ namespace VRBuilder.Core.Behaviors
                 {
                     if (movingTransform == null || movingTransform.Equals(null) || targetPositionTransform == null || targetPositionTransform.Equals(null))
                     {
-                        string warningFormat = "The training scene object's game object is null, transition movement is not completed, behavior activation is forcefully finished.";
+                        string warningFormat = "The process scene object's game object is null, transition movement is not completed, behavior activation is forcefully finished.";
                         warningFormat += "Target object unique name: {0}, Position provider's unique name: {1}";
                         Debug.LogWarningFormat(warningFormat, Data.Target.UniqueName, Data.PositionProvider.UniqueName);
                         yield break;

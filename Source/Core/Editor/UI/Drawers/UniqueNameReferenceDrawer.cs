@@ -17,7 +17,7 @@ using Object = UnityEngine.Object;
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// Training drawer for <see cref="UniqueNameReference"/> members.
+    /// Process drawer for <see cref="UniqueNameReference"/> members.
     /// </summary>
     [DefaultProcessDrawer(typeof(UniqueNameReference))]
     internal class UniqueNameReferenceDrawer : AbstractDrawer
@@ -52,7 +52,7 @@ namespace VRBuilder.Editor.UI.Drawers
             if (selectedSceneObject == null && string.IsNullOrEmpty(oldUniqueName) == false && missingUniqueNames.Contains(oldUniqueName) == false)
             {
                 missingUniqueNames.Add(oldUniqueName);
-                Debug.LogError($"The Training Scene Object with the unique name '{oldUniqueName}' cannot be found!");
+                Debug.LogError($"The process object with the unique name '{oldUniqueName}' cannot be found!");
             }
 
             CheckForMisconfigurationIssues(selectedSceneObject, valueType, ref rect, ref guiLineRect);
@@ -92,7 +92,7 @@ namespace VRBuilder.Editor.UI.Drawers
                 return null;
             }
 
-            // If the Runtime Configurator exists, we try to retrieve the Training Scene Object
+            // If the Runtime Configurator exists, we try to retrieve the process object
             try
             {
                 if (RuntimeConfigurator.Configuration.SceneObjectRegistry.ContainsName(objectUniqueName) == false)
@@ -124,7 +124,7 @@ namespace VRBuilder.Editor.UI.Drawers
                     }
                     else if (typeof(ISceneObjectProperty).IsAssignableFrom(valueType))
                     {
-                        newUniqueName = GetUniqueNameFromTrainingProperty(selectedSceneObject, valueType, oldUniqueName);
+                        newUniqueName = GetUniqueNameFromProcessProperty(selectedSceneObject, valueType, oldUniqueName);
                     }
                 }
                 else
@@ -157,18 +157,18 @@ namespace VRBuilder.Editor.UI.Drawers
                 return sceneObject.UniqueName;
             }
 
-            Debug.LogWarning($"Game Object \"{selectedSceneObject.name}\" does not have a Training Scene Object component.");
+            Debug.LogWarning($"Game Object \"{selectedSceneObject.name}\" does not have a Process Object component.");
             return string.Empty;
         }
 
-        private string GetUniqueNameFromTrainingProperty(GameObject selectedTrainingPropertyObject, Type valueType, string oldUniqueName)
+        private string GetUniqueNameFromProcessProperty(GameObject selectedProcessPropertyObject, Type valueType, string oldUniqueName)
         {
-            if (selectedTrainingPropertyObject.GetComponent(valueType) is ISceneObjectProperty trainingProperty)
+            if (selectedProcessPropertyObject.GetComponent(valueType) is ISceneObjectProperty processProperty)
             {
-                return trainingProperty.SceneObject.UniqueName;
+                return processProperty.SceneObject.UniqueName;
             }
 
-            Debug.LogWarning($"Scene Object \"{selectedTrainingPropertyObject.name}\" with Unique Name \"{oldUniqueName}\" does not have a {valueType.Name} component.");
+            Debug.LogWarning($"Scene Object \"{selectedProcessPropertyObject.name}\" with Unique Name \"{oldUniqueName}\" does not have a {valueType.Name} component.");
             return string.Empty;
         }
 
@@ -184,7 +184,7 @@ namespace VRBuilder.Editor.UI.Drawers
 
                 if (GUI.Button(guiLineRect, button))
                 {
-                    // Only relevant for Undoing a Training Property.
+                    // Only relevant for Undoing a Process Property.
                     bool isAlreadySceneObject = selectedSceneObject.GetComponent<ProcessSceneObject>() != null && typeof(ISceneObjectProperty).IsAssignableFrom(valueType);
                     Component[] alreadyAttachedProperties = selectedSceneObject.GetComponents(typeof(Component));
 
@@ -211,22 +211,22 @@ namespace VRBuilder.Editor.UI.Drawers
 
             if (typeof(ISceneObjectProperty).IsAssignableFrom(valueType))
             {
-                sceneObject.AddTrainingProperty(valueType);
+                sceneObject.AddProcessProperty(valueType);
             }
 
             isUndoOperation = true;
         }
 
-        private void UndoSceneObjectAutomaticSetup(GameObject selectedSceneObject, Type valueType, bool hadTrainingComponent, Component[] alreadyAttachedProperties)
+        private void UndoSceneObjectAutomaticSetup(GameObject selectedSceneObject, Type valueType, bool hadProcessComponent, Component[] alreadyAttachedProperties)
         {
             ISceneObject sceneObject = selectedSceneObject.GetComponent<ProcessSceneObject>();
 
             if (typeof(ISceneObjectProperty).IsAssignableFrom(valueType))
             {
-                sceneObject.RemoveTrainingProperty(valueType, true, alreadyAttachedProperties);
+                sceneObject.RemoveProcessProperty(valueType, true, alreadyAttachedProperties);
             }
 
-            if (hadTrainingComponent == false)
+            if (hadProcessComponent == false)
             {
                 Object.DestroyImmediate((ProcessSceneObject) sceneObject);
             }

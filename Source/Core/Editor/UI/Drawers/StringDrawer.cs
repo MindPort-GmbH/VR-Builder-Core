@@ -9,7 +9,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// Training drawer for string members.
+    /// Process drawer for string members.
     /// </summary>
     [DefaultProcessDrawer(typeof(string))]
     internal class StringDrawer : AbstractDrawer

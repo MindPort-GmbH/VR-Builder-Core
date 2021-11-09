@@ -24,7 +24,7 @@ namespace VRBuilder.Core.Behaviors
         {
             /// <summary>
             /// <see cref="ModeParameter{T}"/> of the highlight color.
-            /// Training modes can change the highlight color.
+            /// Process modes can change the highlight color.
             /// </summary>
             public ModeParameter<Color> CustomHighlightColor { get; set; }
 

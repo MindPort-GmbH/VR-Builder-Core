@@ -21,8 +21,8 @@ namespace VRBuilder.Editor.UI.Wizard
                 GUILayout.Label("Have a look at How-To's and an in-depth Webinar for further information.", BuilderEditorStyles.Paragraph);
                 GUILayout.Label("How-To's", BuilderEditorStyles.Header);
 
-                BuilderGUILayout.DrawLink("How to build your VR Training application", "https://developers.innoactive.de/documentation/creator/latest/articles/getting-started/designer.html", BuilderEditorStyles.IndentLarge);
-                BuilderGUILayout.DrawLink("How to extend the Creator using a training template", "https://developers.innoactive.de/documentation/creator/latest/articles/developer/01-introduction.html", BuilderEditorStyles.IndentLarge);
+                BuilderGUILayout.DrawLink("How to build your VR process application", "https://developers.innoactive.de/documentation/creator/latest/articles/getting-started/designer.html", BuilderEditorStyles.IndentLarge);
+                BuilderGUILayout.DrawLink("How to extend the Creator using a template", "https://developers.innoactive.de/documentation/creator/latest/articles/developer/01-introduction.html", BuilderEditorStyles.IndentLarge);
 
                 GUILayout.Label("Need Help?", BuilderEditorStyles.Header);
 

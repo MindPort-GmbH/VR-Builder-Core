@@ -7,7 +7,7 @@ using System;
 namespace VRBuilder.Core.Attributes
 {
     /// <summary>
-    /// Use this attribute to explicitly specify an implementation of `ITrainingDrawer` that should be used.
+    /// Use this attribute to explicitly specify an implementation of `IProcessDrawer` that should be used.
     /// The drawer type is passed as string because you can't reference editor definitions in runtime classes.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]

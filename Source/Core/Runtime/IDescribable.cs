@@ -5,12 +5,12 @@
 namespace VRBuilder.Core
 {
     /// <summary>
-    /// Interface for all training entities that have a description.
+    /// Interface for all process entities that have a description.
     /// </summary>
     public interface IDescribable
     {
         /// <summary>
-        /// Description of this training entity.
+        /// Description of this process entity.
         /// </summary>
         string Description { get; set; }
     }

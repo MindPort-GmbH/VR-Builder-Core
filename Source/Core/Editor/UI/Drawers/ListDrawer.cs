@@ -11,7 +11,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// A default training drawer for types implementing `IList`.
+    /// A default Process drawer for types implementing `IList`.
     /// </summary>
     [DefaultProcessDrawer(typeof(IList))]
     internal class ListDrawer : AbstractDrawer

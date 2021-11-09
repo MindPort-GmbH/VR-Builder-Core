@@ -18,7 +18,7 @@ namespace VRBuilder.Editor.Tests
         public void RunSerializerWithLinear()
         {
             int length = 100;
-            IProcess course = CreateTrainingCourse(length);
+            IProcess course = CreateProcess(length);
 
             ImprovedNewtonsoftJsonProcessSerializer serializer = new ImprovedNewtonsoftJsonProcessSerializer();
             try
@@ -36,7 +36,7 @@ namespace VRBuilder.Editor.Tests
         public void RunSerializerWithSplit()
         {
             int length = 200;
-            IProcess course = CreateSplitTrainingCourse(length);
+            IProcess course = CreateSplitProcess(length);
 
             ImprovedNewtonsoftJsonProcessSerializer serializer = new ImprovedNewtonsoftJsonProcessSerializer();
             try
@@ -54,7 +54,7 @@ namespace VRBuilder.Editor.Tests
         public void RunSerializerWithEarlyFinish()
         {
             int length = 500;
-            IProcess course = CreateTrainingCourse(length);
+            IProcess course = CreateProcess(length);
 
             ImprovedNewtonsoftJsonProcessSerializer serializer = new ImprovedNewtonsoftJsonProcessSerializer();
             try
@@ -72,7 +72,7 @@ namespace VRBuilder.Editor.Tests
             }
         }
 
-        private IProcess CreateTrainingCourse(int length)
+        private IProcess CreateProcess(int length)
         {
 
             LinearChapterBuilder chapterBuilder = new LinearChapterBuilder("chapter");
@@ -81,12 +81,12 @@ namespace VRBuilder.Editor.Tests
                 chapterBuilder.AddStep(new BasicStepBuilder("Step#" + i));
             }
 
-            return new LinearProcessBuilder("Training")
+            return new LinearProcessBuilder("Process")
                 .AddChapter(chapterBuilder)
                 .Build();
         }
 
-        private IProcess CreateSplitTrainingCourse(int length)
+        private IProcess CreateSplitProcess(int length)
         {
 
             LinearChapterBuilder[] chapterBuilder = new[] {new LinearChapterBuilder("chapter"), new LinearChapterBuilder("chapter"), new LinearChapterBuilder("chapter")};

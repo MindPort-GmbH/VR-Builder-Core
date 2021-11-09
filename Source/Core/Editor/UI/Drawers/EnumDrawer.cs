@@ -10,7 +10,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// Training drawer for `System.Enum` members.
+    /// Process drawer for `System.Enum` members.
     /// </summary>
     [DefaultProcessDrawer(typeof(Enum))]
     internal class EnumDrawer : AbstractDrawer

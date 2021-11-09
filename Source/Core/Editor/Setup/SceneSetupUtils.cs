@@ -14,7 +14,7 @@ using UnityEditor.SceneManagement;
 namespace VRBuilder.Editor.Setup
 {
     /// <summary>
-    /// Helper class to setup scenes and trainings.
+    /// Helper class to setup scenes and processes.
     /// </summary>
     internal class SceneSetupUtils
     {
@@ -46,10 +46,10 @@ namespace VRBuilder.Editor.Setup
         }
 
         /// <summary>
-        /// Sets up the current scene and creates a new training course for this scene.
+        /// Sets up the current scene and creates a new process for this scene.
         /// </summary>
-        /// <param name="courseName">Name of the training course.</param>
-        public static void SetupSceneAndTraining(string courseName)
+        /// <param name="courseName">Name of the process.</param>
+        public static void SetupSceneAndProcess(string courseName)
         {
             ProcessSceneSetup.Run();
 
@@ -121,7 +121,7 @@ namespace VRBuilder.Editor.Setup
             plane.name = "Plane";
             plane.transform.localScale = new Vector3(2f, 2f, 2f);
 
-            SetupSceneAndTraining(courseName);
+            SetupSceneAndProcess(courseName);
         }
     }
 }

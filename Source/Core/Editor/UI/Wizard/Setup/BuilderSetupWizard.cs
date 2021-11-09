@@ -13,8 +13,8 @@ using VRBuilder.Editor.XRUtils;
 namespace VRBuilder.Editor.UI.Wizard
 {
     /// <summary>
-    /// Wizard which guides the user through setting up a new training project,
-    /// including a training course, scene and XR hardware.
+    /// Wizard which guides the user through setting up a new project,
+    /// including a process, scene and XR hardware.
     /// </summary>
     ///
 #if UNITY_2019_4_OR_NEWER && !UNITY_EDITOR_OSX
@@ -85,7 +85,7 @@ namespace VRBuilder.Editor.UI.Wizard
 
             wizard.WizardClosing += OnWizardClosing;
 
-            wizard.Setup("VR Builder - VR Training Setup Wizard", pages);
+            wizard.Setup("VR Builder - VR Process Setup Wizard", pages);
             wizard.ShowModalUtility();
         }
 

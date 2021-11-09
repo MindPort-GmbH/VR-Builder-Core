@@ -9,7 +9,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// Interface of a drawer for training members.
+    /// Interface of a drawer for process members.
     /// </summary>
     public interface IProcessDrawer
     {
@@ -51,10 +51,10 @@ namespace VRBuilder.Editor.UI.Drawers
         GUIContent GetLabel(object value, Type declaredType);
 
         /// <summary>
-        /// Call when the value has changed; it will create proper <see cref="TrainingCommand"/> to handle Do/Undo logic.
+        /// Call when the value has changed; it will create proper <see cref="ProcessCommand"/> to handle Do/Undo logic.
         /// <see cref="AbstractDrawer"/> for a proper implementation.
-        /// <param name="getNewValueCallback">A delegate that returns a new value for the drawn entity. Invoked during the <see cref="TrainingCommand.Do"/> call. The result is passed to the <paramref name="assignValueCallback"/>.</param>
-        /// <param name="getOldValueCallback">A delegate that returns an old value for the drawn entity. Invoked during the <see cref="TrainingCommand.Undo"/> call. The result is passed to the <paramref name="assignValueCallback"/>.</param>
+        /// <param name="getNewValueCallback">A delegate that returns a new value for the drawn entity. Invoked during the <see cref="ProcessCommand.Do"/> call. The result is passed to the <paramref name="assignValueCallback"/>.</param>
+        /// <param name="getOldValueCallback">A delegate that returns an old value for the drawn entity. Invoked during the <see cref="ProcessCommand.Undo"/> call. The result is passed to the <paramref name="assignValueCallback"/>.</param>
         /// <param name="assignValueCallback">A delegate that actually assigns a value to the property/field.</param>
         /// </summary>
         void ChangeValue(Func<object> getNewValueCallback, Func<object> getOldValueCallback, Action<object> assignValueCallback);

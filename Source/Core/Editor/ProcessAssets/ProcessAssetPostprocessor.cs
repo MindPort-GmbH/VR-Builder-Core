@@ -9,7 +9,7 @@ using UnityEditor;
 namespace VRBuilder.Editor
 {
     /// <summary>
-    /// Monitors training course files added or removed from the project.
+    /// Monitors process files added or removed from the project.
     /// </summary>
     internal class ProcessAssetPostprocessor : AssetPostprocessor
     {

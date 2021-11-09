@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -13,13 +13,13 @@ namespace VRBuilder.Editor
     /// </summary>
     internal class RuntimeConfigurationSetup : SceneSetup
     {
-        public static readonly string TrainingConfiugrationName = "[TRAINING_CONFIGURATION]";
+        public static readonly string ProcessConfiugrationName = "[PROCESS_CONFIGURATION]";
         /// <inheritdoc/>
         public override void Setup()
         {
             if (RuntimeConfigurator.Exists == false)
             {
-                GameObject obj = new GameObject(TrainingConfiugrationName);
+                GameObject obj = new GameObject(ProcessConfiugrationName);
                 obj.AddComponent<RuntimeConfigurator>();
                 Selection.activeObject = obj;
             }

@@ -100,7 +100,7 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <inheritdoc />
-        public virtual IProcess LoadCourse(string path)
+        public virtual IProcess LoadProcess(string path)
         {
             if (string.IsNullOrEmpty(path))
             {

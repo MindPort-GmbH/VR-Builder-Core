@@ -145,7 +145,7 @@ namespace VRBuilder.Editor.UI.Windows
             {
                 EditorGUILayout.LabelField("The property <i>AllowedMenuItemsSettingsAssetPath</i> of the current editor configuration returns <i>null</i> or an empty string. " +
                     "For this reason, this feature is disabled.\n\n" +
-                    "If you want to configure what menu items should be displayed in the <i>Training Step Inspector</i>, " +
+                    "If you want to configure what menu items should be displayed in the <i>Process Step Inspector</i>, " +
                     "override the <i>DefaultEditorConfiguration</i> (if you have not already done so) " +
                     "and let this property return a valid asset path.\n\n" +
                     "Example of a valid asset path:\n<i>Assets/Editor/Builder/allowed_menu_items_config.json</i>\n\n" +
@@ -158,7 +158,7 @@ namespace VRBuilder.Editor.UI.Windows
             {
                 EditorGUI.BeginDisabledGroup(isEditUnlocked == false);
                 {
-                    EditorGUILayout.LabelField("<b>Here you can change whether a behavior or a condition menu item is selectable in the <i>Training Step Inspector</i></b>.\n\n" +
+                    EditorGUILayout.LabelField("<b>Here you can change whether a behavior or a condition menu item is selectable in the <i>Process Step Inspector</i></b>.\n\n" +
                         "Non-editable entries are behavior or condition menu items that had been deleted from the project at some point.\n\n" +
                         "<i>Available Behaviors:</i>\n", labelStyle);
 
