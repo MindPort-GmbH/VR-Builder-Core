@@ -5,7 +5,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UX
 {
     /// <summary>
-    /// Will be called on OnSceneSetup to add the course controller menu.
+    /// Will be called on OnSceneSetup to add the process controller menu.
     /// </summary>
     public class ProcessControllerSceneSetup : SceneSetup
     {
@@ -18,7 +18,7 @@ namespace VRBuilder.Editor.UX
         /// <inheritdoc />
         public override void Setup()
         {
-            GameObject courseController = SetupPrefab("[COURSE_CONTROLLER]");
+            GameObject courseController = SetupPrefab("[PROCESS_CONTROLLER]");
             if (courseController != null)
             {
                 courseController.GetOrAddComponent<ProcessControllerSetup>().ResetToDefault();
