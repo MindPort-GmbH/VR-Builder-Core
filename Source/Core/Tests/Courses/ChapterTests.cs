@@ -79,8 +79,8 @@ namespace VRBuilder.Tests.Courses
             Chapter chapter = TestLinearChapterBuilder.SetupChapterBuilder(1, false).Build();
 
             // Activate should work on simple steps.
-            CourseRunner.Initialize(new Course("Course", chapter));
-            CourseRunner.Run();
+            ProcessRunner.Initialize(new Process("Course", chapter));
+            ProcessRunner.Run();
 
             while (chapter.LifeCycle.Stage != Stage.Inactive)
             {

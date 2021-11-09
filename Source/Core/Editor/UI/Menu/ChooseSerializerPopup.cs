@@ -18,18 +18,18 @@ namespace VRBuilder.Editor.BuilderMenu
     {
         private static ChooseSerializerPopup instance;
 
-        private List<ICourseSerializer> serializer;
+        private List<IProcessSerializer> serializer;
         private string[] names;
 
         private int selected = 0;
-        private Action<ICourseSerializer> closeAction;
+        private Action<IProcessSerializer> closeAction;
 
         /// <summary>
         /// Show the popup.
         /// </summary>
         /// <param name="serializer">Selectable serializer</param>
         /// <param name="closeAction">Action which will be invoked when closed successfully.</param>
-        public static void Show(List<ICourseSerializer> serializer, Action<ICourseSerializer> closeAction)
+        public static void Show(List<IProcessSerializer> serializer, Action<IProcessSerializer> closeAction)
         {
             if (instance != null)
             {

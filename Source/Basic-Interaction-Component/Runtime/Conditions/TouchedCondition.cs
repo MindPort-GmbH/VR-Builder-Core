@@ -74,7 +74,7 @@ namespace VRBuilder.BasicInteraction.Conditions
             Data.Name = name;
         }
 
-        public override IProcess GetActiveProcess()
+        public override IStageProcess GetActiveProcess()
         {
             return new ActiveProcess(Data);
         }

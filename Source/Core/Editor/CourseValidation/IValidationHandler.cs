@@ -35,6 +35,6 @@ namespace VRBuilder.Editor.CourseValidation
         /// <param name="course">Course where given <paramref name="data"/> belongs.</param>
         /// <param name="context">Context of the validation.</param>
         /// <returns>List of reports regarding invalid objects related to the <paramref name="data"/>.</returns>
-        IValidationReport Validate(IData data, ICourse course, IContext context = null);
+        IValidationReport Validate(IData data, IProcess course, IContext context = null);
     }
 }

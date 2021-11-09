@@ -21,7 +21,7 @@ namespace VRBuilder.Tests.Serialization
         public IEnumerator BaseTraining()
         {
             // Given base training
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")))
                 .Build();
@@ -29,10 +29,10 @@ namespace VRBuilder.Tests.Serialization
             Serializer.CourseToByteArray(training1);
 
             // When we serialize and deserialize it
-            ICourse training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
+            IProcess training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
 
             // Then it should still be base training, have the same name and the first chapter with the same name.
-            Assert.AreEqual(typeof(Course), training1.GetType());
+            Assert.AreEqual(typeof(Process), training1.GetType());
             Assert.AreEqual(training1.GetType(), training2.GetType());
 
             Assert.AreEqual(training1.Data.Name, "Training");
@@ -48,13 +48,13 @@ namespace VRBuilder.Tests.Serialization
         public IEnumerator Chapter()
         {
             // Given we have a training with a chapter
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")))
                 .Build();
 
             // When we serialize and deserialize it
-            ICourse training2 = Serializer.CourseFromByteArray((Serializer.CourseToByteArray(training1)));
+            IProcess training2 = Serializer.CourseFromByteArray((Serializer.CourseToByteArray(training1)));
 
             // Then chapter's type, name, first step and next chapter should not change.
             IChapter chapter1 = training1.Data.FirstChapter;
@@ -72,14 +72,14 @@ namespace VRBuilder.Tests.Serialization
         public IEnumerator Condition()
         {
             // Given a training which has a step with a condition
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new AutoCompletedCondition())))
                 .Build();
 
             // When we serialize and deserialize it
-            ICourse training2 = Serializer.CourseFromByteArray((Serializer.CourseToByteArray(training1)));
+            IProcess training2 = Serializer.CourseFromByteArray((Serializer.CourseToByteArray(training1)));
 
             // Then that condition's name should not change.
             ICondition condition1 = training1.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions.First()
@@ -96,7 +96,7 @@ namespace VRBuilder.Tests.Serialization
         public IEnumerator Transition()
         {
             // Given a training with more than one step
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("FirstStep"))
                     .AddStep(new BasicStepBuilder("SecondStep")))
@@ -104,7 +104,7 @@ namespace VRBuilder.Tests.Serialization
 
             // When we serialize and deserialize it
             byte[] serialized = Serializer.CourseToByteArray(training1);
-            ICourse training2 = Serializer.CourseFromByteArray(serialized);
+            IProcess training2 = Serializer.CourseFromByteArray(serialized);
 
             // Then transition from the first step should lead to the same step as before.
             Assert.AreEqual(
@@ -120,14 +120,14 @@ namespace VRBuilder.Tests.Serialization
         public IEnumerator Step()
         {
             // Given we have a training with a step
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new AutoCompletedCondition())))
                 .Build();
 
             // When we serialize and deserialize it
-            ICourse training2 = Serializer.CourseFromByteArray((Serializer.CourseToByteArray(training1)));
+            IProcess training2 = Serializer.CourseFromByteArray((Serializer.CourseToByteArray(training1)));
 
             // Then that step's name should still be the same.
             Assert.AreEqual(training1.Data.FirstChapter.Data.FirstStep.Data.Name,

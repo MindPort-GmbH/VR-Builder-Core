@@ -19,7 +19,7 @@ namespace VRBuilder.Editor.Configuration
             this.config = config;
         }
 
-        public override ICourseSerializer Serializer => config.Serializer;
+        public override IProcessSerializer Serializer => config.Serializer;
 
         public override AllowedMenuItemsSettings AllowedMenuItemsSettings
         {

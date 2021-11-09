@@ -36,7 +36,7 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <inheritdoc />
-        public ICourseSerializer Serializer { get; set; } = new ImprovedNewtonsoftJsonCourseSerializer();
+        public IProcessSerializer Serializer { get; set; } = new ImprovedNewtonsoftJsonProcessSerializer();
 
         /// <summary>
         /// Default input action asset which is used when no customization of key bindings are done.
@@ -100,7 +100,7 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <inheritdoc />
-        public virtual ICourse LoadCourse(string path)
+        public virtual IProcess LoadCourse(string path)
         {
             if (string.IsNullOrEmpty(path))
             {

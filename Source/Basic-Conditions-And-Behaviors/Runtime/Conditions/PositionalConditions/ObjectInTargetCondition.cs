@@ -6,7 +6,7 @@ namespace VRBuilder.Core.Conditions
     /// <summary>
     /// An active process for "object in target" conditions.
     /// </summary>
-    public abstract class ObjectInTargetActiveProcess<TData> : Process<TData> where TData : class, IObjectInTargetData
+    public abstract class ObjectInTargetActiveProcess<TData> : StageProcess<TData> where TData : class, IObjectInTargetData
     {
         protected ObjectInTargetActiveProcess(TData data) : base(data)
         {

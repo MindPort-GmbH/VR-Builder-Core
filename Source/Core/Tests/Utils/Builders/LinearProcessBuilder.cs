@@ -10,7 +10,7 @@ namespace VRBuilder.Tests.Builder
     /// <summary>
     /// Builder that creates linear trainings.
     /// </summary>
-    public class LinearProcessBuilder : ProcessBuilder<Course>
+    public class LinearProcessBuilder : ProcessBuilder<Process>
     {
         public List<IChapter> Chapters { get; set; }
 
@@ -22,7 +22,7 @@ namespace VRBuilder.Tests.Builder
         {
             Chapters = new List<IChapter>();
             AddFirstPassAction(() => SetRelativeResourcePathAction(() => rootResourceFolder));
-            AddSecondPassAction(() => Result = new Course(name, Chapters));
+            AddSecondPassAction(() => Result = new Process(name, Chapters));
         }
 
         /// <summary>

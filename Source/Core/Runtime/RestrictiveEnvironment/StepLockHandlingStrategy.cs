@@ -37,7 +37,7 @@ namespace VRBuilder.Core.RestrictiveEnvironment
         /// <summary>
         /// Will be called once when a course is started.
         /// </summary>
-        public virtual void OnCourseStarted(ICourse course)
+        public virtual void OnCourseStarted(IProcess course)
         {
 
         }
@@ -45,7 +45,7 @@ namespace VRBuilder.Core.RestrictiveEnvironment
         /// <summary>
         /// Will be called once when the currently running course finishes.
         /// </summary>
-        public virtual void OnCourseFinished(ICourse course)
+        public virtual void OnCourseFinished(IProcess course)
         {
 
         }

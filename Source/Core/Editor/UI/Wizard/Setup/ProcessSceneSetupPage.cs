@@ -58,7 +58,7 @@ namespace VRBuilder.Editor.UI.Wizard
             courseName = BuilderGUILayout.DrawTextField(courseName, MaxCourseNameLength, GUILayout.Width(window.width * 0.7f));
             GUI.enabled = true;
 
-            if (CourseAssetUtils.CanCreate(courseName, out string errorMessage) == false && lastCreatedCourse != courseName)
+            if (ProcessAssetUtils.CanCreate(courseName, out string errorMessage) == false && lastCreatedCourse != courseName)
             {
                 GUIContent courseWarningContent = warningContent;
                 courseWarningContent.text = errorMessage;

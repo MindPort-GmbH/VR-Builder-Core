@@ -55,7 +55,7 @@ namespace VRBuilder.Core.Behaviors
             public string Name { get; set; }
         }
 
-        private class ActivatingProcess : Process<EntityData>
+        private class ActivatingProcess : StageProcess<EntityData>
         {
             private float startingTime;
 
@@ -129,7 +129,7 @@ namespace VRBuilder.Core.Behaviors
         }
 
         /// <inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new ActivatingProcess(Data);
         }

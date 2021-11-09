@@ -19,7 +19,7 @@ internal class DisabledValidationHandler : IValidationHandler
         return false;
     }
 
-    public IValidationReport Validate(IData data, ICourse course, IContext context = null)
+    public IValidationReport Validate(IData data, IProcess course, IContext context = null)
     {
         return null;
     }

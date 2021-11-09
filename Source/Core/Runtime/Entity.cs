@@ -37,19 +37,19 @@ namespace VRBuilder.Core
         }
 
         /// <inheritdoc />
-        public virtual IProcess GetActivatingProcess()
+        public virtual IStageProcess GetActivatingProcess()
         {
             return new EmptyProcess();
         }
 
         /// <inheritdoc />
-        public virtual IProcess GetActiveProcess()
+        public virtual IStageProcess GetActiveProcess()
         {
             return new EmptyProcess();
         }
 
         /// <inheritdoc />
-        public virtual IProcess GetDeactivatingProcess()
+        public virtual IStageProcess GetDeactivatingProcess()
         {
             return new EmptyProcess();
         }

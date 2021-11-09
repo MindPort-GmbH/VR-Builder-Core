@@ -11,12 +11,12 @@ namespace VRBuilder.Core
     /// <summary>
     /// A process which consists of multiple processes which execute at the same time. It ends when all its child processes end.
     /// </summary>
-    public class CompositeProcess : IProcess
+    public class CompositeProcess : IStageProcess
     {
-        private readonly IEnumerable<IProcess> stageProcesses;
+        private readonly IEnumerable<IStageProcess> stageProcesses;
 
         /// <param name="processes">Child processes which are united into this composite process.</param>
-        public CompositeProcess(params IProcess[] processes)
+        public CompositeProcess(params IStageProcess[] processes)
         {
             stageProcesses = processes;
         }
@@ -24,7 +24,7 @@ namespace VRBuilder.Core
         /// <inheritdoc />
         public void Start()
         {
-            foreach (IProcess childProcess in stageProcesses)
+            foreach (IStageProcess childProcess in stageProcesses)
             {
                 childProcess.Start();
             }
@@ -65,7 +65,7 @@ namespace VRBuilder.Core
         /// <inheritdoc />
         public void End()
         {
-            foreach (IProcess childProcess in stageProcesses)
+            foreach (IStageProcess childProcess in stageProcesses)
             {
                 childProcess.End();
             }
@@ -74,7 +74,7 @@ namespace VRBuilder.Core
         /// <inheritdoc />
         public void FastForward()
         {
-            foreach (IProcess childProcess in stageProcesses)
+            foreach (IStageProcess childProcess in stageProcesses)
             {
                 childProcess.FastForward();
             }

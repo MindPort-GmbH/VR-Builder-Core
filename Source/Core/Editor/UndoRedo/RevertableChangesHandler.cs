@@ -90,7 +90,7 @@ namespace VRBuilder.Editor.UndoRedo
                 List<IRevertableCommand> undoCommands = groupedCommands[groupName];
                 List<IRevertableCommand> redoCommands = undoCommands;
 
-                RegisterCommand(new CourseCommand(
+                RegisterCommand(new ProcessCommand(
                     ()=>
                     {
                         foreach (IRevertableCommand command in redoCommands)

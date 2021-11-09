@@ -24,7 +24,7 @@ namespace VRBuilder.Core.Configuration
         /// <summary>
         /// Defines the serializer which should be used to serialize training courses.
         /// </summary>
-        ICourseSerializer Serializer { get; set; }
+        IProcessSerializer Serializer { get; set; }
 
         /// <summary>
         /// Returns the mode handler for the training.
@@ -44,6 +44,6 @@ namespace VRBuilder.Core.Configuration
         /// <summary>
         /// Synchronously returns the deserialized training course from given path.
         /// </summary>
-        ICourse LoadCourse(string path);
+        IProcess LoadCourse(string path);
     }
 }

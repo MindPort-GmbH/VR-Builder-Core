@@ -33,9 +33,9 @@ namespace VRBuilder.Editor.Configuration
         }
 
         /// <inheritdoc />
-        public virtual ICourseSerializer Serializer
+        public virtual IProcessSerializer Serializer
         {
-            get { return new ImprovedNewtonsoftJsonCourseSerializer(); }
+            get { return new ImprovedNewtonsoftJsonProcessSerializer(); }
         }
 
         /// <inheritdoc />

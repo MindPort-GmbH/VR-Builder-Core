@@ -141,7 +141,7 @@ namespace VRBuilder.Core.Conditions
         }
 
         /// <inheritdoc />
-        public override IProcess GetActiveProcess()
+        public override IStageProcess GetActiveProcess()
         {
             return new ActiveProcess(Data);
         }

@@ -74,7 +74,7 @@ namespace VRBuilder.Core
             }
         }
 
-        private class UnlockProcess : Process<EntityData>
+        private class UnlockProcess : StageProcess<EntityData>
         {
             private readonly IEnumerable<LockablePropertyData> toUnlock;
 
@@ -106,7 +106,7 @@ namespace VRBuilder.Core
             }
         }
 
-        private class LockProcess : Process<EntityData>
+        private class LockProcess : StageProcess<EntityData>
         {
             private readonly IEnumerable<LockablePropertyData> toUnlock;
 
@@ -138,7 +138,7 @@ namespace VRBuilder.Core
             }
         }
 
-        private class ActiveProcess : Process<EntityData>
+        private class ActiveProcess : StageProcess<EntityData>
         {
             private readonly IEnumerable<LockablePropertyData> toUnlock;
 
@@ -176,19 +176,19 @@ namespace VRBuilder.Core
         public StepMetadata StepMetadata { get; set; }
 
         ///<inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new CompositeProcess(new FoldedActivatingProcess<IStepChild>(Data), new UnlockProcess(Data));
         }
 
         ///<inheritdoc />
-        public override IProcess GetActiveProcess()
+        public override IStageProcess GetActiveProcess()
         {
             return new CompositeProcess(new FoldedActiveProcess<IStepChild>(Data), new ActiveProcess(Data));
         }
 
         ///<inheritdoc />
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new CompositeProcess(new FoldedDeactivatingProcess<IStepChild>(Data), new LockProcess(Data));
         }

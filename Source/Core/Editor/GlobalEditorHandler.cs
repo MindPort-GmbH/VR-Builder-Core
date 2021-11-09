@@ -57,7 +57,7 @@ namespace VRBuilder.Editor
         /// <summary>
         /// Returns the current active course, can be null.
         /// </summary>
-        internal static ICourse GetCurrentCourse()
+        internal static IProcess GetCurrentCourse()
         {
             return strategy.CurrentCourse;
         }
@@ -71,17 +71,17 @@ namespace VRBuilder.Editor
         }
 
         /// <summary>
-        /// Notifies selected <see cref="IEditingStrategy"/> when a new <see cref="CourseWindow"/> was just opened.
+        /// Notifies selected <see cref="IEditingStrategy"/> when a new <see cref="ProcessWindow"/> was just opened.
         /// </summary>
-        internal static void CourseWindowOpened(CourseWindow window)
+        internal static void CourseWindowOpened(ProcessWindow window)
         {
             strategy.HandleNewCourseWindow(window);
         }
 
         /// <summary>
-        /// Notifies selected <see cref="IEditingStrategy"/> when a <see cref="CourseWindow"/> was closed.
+        /// Notifies selected <see cref="IEditingStrategy"/> when a <see cref="ProcessWindow"/> was closed.
         /// </summary>
-        internal static void CourseWindowClosed(CourseWindow window)
+        internal static void CourseWindowClosed(ProcessWindow window)
         {
             strategy.HandleCourseWindowClosed(window);
         }

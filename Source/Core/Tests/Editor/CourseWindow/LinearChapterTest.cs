@@ -10,7 +10,7 @@ using VRBuilder.Editor.UI.Windows;
 
 namespace VRBuilder.Editor.Tests.CourseWindowTests
 {
-    internal class LinearChapterTest : BaseCourseWindowTest
+    internal class LinearChapterTest : BaseProcessWindowTest
     {
         private int iteratedSteps;
         private List<IStep> validatedSteps = new List<IStep>();
@@ -36,18 +36,18 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
         }
 
         /// <inheritdoc />
-        protected override CourseWindow Given()
+        protected override ProcessWindow Given()
         {
-            CourseWindow window = base.Given();
+            ProcessWindow window = base.Given();
             iteratedSteps = 0;
 
             return window;
         }
 
         /// <inheritdoc />
-        protected override void Then(CourseWindow window)
+        protected override void Then(ProcessWindow window)
         {
-            ICourse result = ExtractTraining(window);
+            IProcess result = ExtractTraining(window);
             IChapter firstChapter = result.Data.Chapters.First();
 
             Assert.NotNull(firstChapter);

@@ -16,7 +16,7 @@ namespace VRBuilder.Core
     {
         private bool deactivateAfterActivation;
         private IEnumerator update;
-        private IProcess process;
+        private IStageProcess process;
 
         private bool IsCurrentStageProcessFinished => update == null;
 

@@ -73,7 +73,7 @@ namespace VRBuilder.Editor.UI.Drawers
             Action doCallback = () => assignValueCallback(getNewValueCallback());
             // ReSharper disable once ImplicitlyCapturedClosure
             Action undoCallback = () => assignValueCallback(getOldValueCallback());
-            RevertableChangesHandler.Do(new CourseCommand(doCallback, undoCallback));
+            RevertableChangesHandler.Do(new ProcessCommand(doCallback, undoCallback));
         }
     }
 }

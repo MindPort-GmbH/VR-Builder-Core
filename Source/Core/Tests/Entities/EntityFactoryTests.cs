@@ -62,10 +62,10 @@ namespace VRBuilder.Tests
         public void CreateACourse()
         {
             string courseName = "Test Course";
-            ICourse course = EntityFactory.CreateCourse(courseName);
+            IProcess course = EntityFactory.CreateCourse(courseName);
 
             Assert.NotNull(course);
-            Assert.That(course is ICourse);
+            Assert.That(course is IProcess);
             Assert.That(course.Data.Name == courseName);
         }
     }

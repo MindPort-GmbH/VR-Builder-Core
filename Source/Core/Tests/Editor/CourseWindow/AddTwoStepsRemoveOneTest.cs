@@ -10,7 +10,7 @@ using VRBuilder.Editor.UI.Windows;
 
 namespace VRBuilder.Editor.Tests.CourseWindowTests
 {
-    internal class AddTwoStepsRemoveOneTest : BaseCourseWindowTest
+    internal class AddTwoStepsRemoveOneTest : BaseProcessWindowTest
     {
         /// <inheritdoc />
         public override string WhenDescription
@@ -33,9 +33,9 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
         }
 
         /// <inheritdoc />
-        protected override void Then(CourseWindow window)
+        protected override void Then(ProcessWindow window)
         {
-            ICourse result = ExtractTraining(window);
+            IProcess result = ExtractTraining(window);
 
             IChapter firstChapter = result.Data.Chapters.First();
             Assert.NotNull(firstChapter);

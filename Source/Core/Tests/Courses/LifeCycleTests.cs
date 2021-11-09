@@ -24,7 +24,7 @@ namespace VRBuilder.Tests.Courses
                 public bool IsEndCalled { get; set; }
             }
 
-            private class ActiveProcess : Process<EntityData>
+            private class ActiveProcess : StageProcess<EntityData>
             {
                 public ActiveProcess(EntityData data) : base(data)
                 {
@@ -53,7 +53,7 @@ namespace VRBuilder.Tests.Courses
                 }
             }
 
-            public override IProcess GetActiveProcess()
+            public override IStageProcess GetActiveProcess()
             {
                 return new ActiveProcess(Data);
             }

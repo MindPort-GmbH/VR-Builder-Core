@@ -13,11 +13,11 @@ namespace VRBuilder.Editor.TestTools
     /// </summary>
     internal class EmptyTestStrategy : IEditingStrategy
     {
-        public ICourse CurrentCourse { get; }
+        public IProcess CurrentCourse { get; }
         public IChapter CurrentChapter { get; private set; }
 
         /// <inheritdoc/>
-        public void HandleNewCourseWindow(CourseWindow window)
+        public void HandleNewCourseWindow(ProcessWindow window)
         {
         }
 
@@ -32,7 +32,7 @@ namespace VRBuilder.Editor.TestTools
         }
 
         /// <inheritdoc/>
-        public void HandleCourseWindowClosed(CourseWindow window)
+        public void HandleCourseWindowClosed(ProcessWindow window)
         {
         }
 

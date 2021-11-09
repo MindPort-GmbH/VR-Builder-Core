@@ -10,7 +10,7 @@ using VRBuilder.Editor.UI.Windows;
 
 namespace VRBuilder.Editor.Tests.CourseWindowTests
 {
-    internal class AddOneStepTest : BaseCourseWindowTest
+    internal class AddOneStepTest : BaseProcessWindowTest
     {
         /// <inheritdoc />
         public override string WhenDescription => "Add one step to the workflow. Connect it to the start of the chapter.";
@@ -19,9 +19,9 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
         public override string ThenDescription => "There is a training with exactly one step created.";
 
         /// <inheritdoc />
-        protected override void Then(CourseWindow window)
+        protected override void Then(ProcessWindow window)
         {
-            ICourse result = ExtractTraining(window);
+            IProcess result = ExtractTraining(window);
 
             IChapter firstChapter = result.Data.Chapters.First();
             Assert.NotNull(firstChapter);

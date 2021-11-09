@@ -101,9 +101,9 @@ namespace VRBuilder.Core.Behaviors
             }
         }
 
-        private class ActiveProcess : Process<EntityData>
+        private class ActiveProcess : StageProcess<EntityData>
         {
-            private readonly IProcess childProcess;
+            private readonly IStageProcess childProcess;
 
             public ActiveProcess(EntityData data) : base(data)
             {
@@ -174,19 +174,19 @@ namespace VRBuilder.Core.Behaviors
         }
 
         /// <inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new IteratingProcess(Data);
         }
 
         /// <inheritdoc />
-        public override IProcess GetActiveProcess()
+        public override IStageProcess GetActiveProcess()
         {
             return new ActiveProcess(Data);
         }
 
         /// <inheritdoc />
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new StopEntityIteratingProcess<IBehavior>(Data);
         }

@@ -18,9 +18,9 @@ namespace VRBuilder.Editor.Tests
         public void RunSerializerWithLinear()
         {
             int length = 100;
-            ICourse course = CreateTrainingCourse(length);
+            IProcess course = CreateTrainingCourse(length);
 
-            ImprovedNewtonsoftJsonCourseSerializer serializer = new ImprovedNewtonsoftJsonCourseSerializer();
+            ImprovedNewtonsoftJsonProcessSerializer serializer = new ImprovedNewtonsoftJsonProcessSerializer();
             try
             {
                 byte[] data = serializer.CourseToByteArray(course);
@@ -36,9 +36,9 @@ namespace VRBuilder.Editor.Tests
         public void RunSerializerWithSplit()
         {
             int length = 200;
-            ICourse course = CreateSplitTrainingCourse(length);
+            IProcess course = CreateSplitTrainingCourse(length);
 
-            ImprovedNewtonsoftJsonCourseSerializer serializer = new ImprovedNewtonsoftJsonCourseSerializer();
+            ImprovedNewtonsoftJsonProcessSerializer serializer = new ImprovedNewtonsoftJsonProcessSerializer();
             try
             {
                 byte[] data = serializer.CourseToByteArray(course);
@@ -54,9 +54,9 @@ namespace VRBuilder.Editor.Tests
         public void RunSerializerWithEarlyFinish()
         {
             int length = 500;
-            ICourse course = CreateTrainingCourse(length);
+            IProcess course = CreateTrainingCourse(length);
 
-            ImprovedNewtonsoftJsonCourseSerializer serializer = new ImprovedNewtonsoftJsonCourseSerializer();
+            ImprovedNewtonsoftJsonProcessSerializer serializer = new ImprovedNewtonsoftJsonProcessSerializer();
             try
             {
                 Transition t1 = new Transition();
@@ -72,7 +72,7 @@ namespace VRBuilder.Editor.Tests
             }
         }
 
-        private ICourse CreateTrainingCourse(int length)
+        private IProcess CreateTrainingCourse(int length)
         {
 
             LinearChapterBuilder chapterBuilder = new LinearChapterBuilder("chapter");
@@ -86,7 +86,7 @@ namespace VRBuilder.Editor.Tests
                 .Build();
         }
 
-        private ICourse CreateSplitTrainingCourse(int length)
+        private IProcess CreateSplitTrainingCourse(int length)
         {
 
             LinearChapterBuilder[] chapterBuilder = new[] {new LinearChapterBuilder("chapter"), new LinearChapterBuilder("chapter"), new LinearChapterBuilder("chapter")};
@@ -128,7 +128,7 @@ namespace VRBuilder.Editor.Tests
             c1.Data.Steps.ToList().ForEach(chapter.Data.Steps.Add);
             c2.Data.Steps.ToList().ForEach(chapter.Data.Steps.Add);
 
-            return new Course("name", chapter);
+            return new Process("name", chapter);
         }
     }
 }

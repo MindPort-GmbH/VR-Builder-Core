@@ -54,7 +54,7 @@ namespace VRBuilder.UX
                 canvas = GetComponentInChildren<Canvas>();
                 canvas.worldCamera = Camera.main;
 
-                canvas.enabled = CourseRunner.Current != null;
+                canvas.enabled = ProcessRunner.Current != null;
             }
             catch (Exception exception)
             {

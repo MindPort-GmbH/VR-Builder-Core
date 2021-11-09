@@ -97,7 +97,7 @@ namespace VRBuilder.Core.Behaviors
             Data.ExecutionStages = executionStages;
         }
 
-        private class EmitConfettiProcess : Process<EntityData>
+        private class EmitConfettiProcess : StageProcess<EntityData>
         {
             private readonly BehaviorExecutionStages stages;
             private float timeStarted;
@@ -209,13 +209,13 @@ namespace VRBuilder.Core.Behaviors
 
 
         /// <inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new EmitConfettiProcess(Data, BehaviorExecutionStages.Activation);
         }
         
         /// <inheritdoc />
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new EmitConfettiProcess(Data, BehaviorExecutionStages.Deactivation);
         }

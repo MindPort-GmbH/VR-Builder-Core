@@ -15,14 +15,14 @@ namespace VRBuilder.Editor
         /// <summary>
         /// Returns the current course.
         /// </summary>
-        ICourse CurrentCourse { get; }
+        IProcess CurrentCourse { get; }
 
         IChapter CurrentChapter { get; }
 
         /// <summary>
-        /// Invoked when a new <see cref="CourseWindow"/> was just opened.
+        /// Invoked when a new <see cref="ProcessWindow"/> was just opened.
         /// </summary>
-        void HandleNewCourseWindow(CourseWindow window);
+        void HandleNewCourseWindow(ProcessWindow window);
 
         /// <summary>
         /// Invoked when a new <see cref="StepWindow"/> was just opened.
@@ -35,9 +35,9 @@ namespace VRBuilder.Editor
         void HandleCurrentCourseModified();
 
         /// <summary>
-        /// Invoked when a <see cref="CourseWindow"/> was closed.
+        /// Invoked when a <see cref="ProcessWindow"/> was closed.
         /// </summary>
-        void HandleCourseWindowClosed(CourseWindow window);
+        void HandleCourseWindowClosed(ProcessWindow window);
 
         /// <summary>
         /// Invoked when a <see cref="StepWindow"/> was closed.

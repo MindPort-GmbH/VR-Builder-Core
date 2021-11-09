@@ -12,7 +12,7 @@ namespace VRBuilder.Core.EntityOwners.ParallelEntityCollection
     /// A base process for entity collection.
     /// </summary>
     /// <typeparam name="TData"></typeparam>
-    internal abstract class Process<TData> : Core.Process<TData> where TData : class, IEntityCollectionData, IModeData
+    internal abstract class Process<TData> : Core.StageProcess<TData> where TData : class, IEntityCollectionData, IModeData
     {
         /// <summary>
         /// Takes a <paramref name="collection"/> of entities and filters out the ones that must be skipped due to <paramref name="mode"/>

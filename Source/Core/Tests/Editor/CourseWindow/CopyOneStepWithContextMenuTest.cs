@@ -9,13 +9,13 @@ using NUnit.Framework;
 
 namespace VRBuilder.Editor.Tests.CourseWindowTests
 {
-    internal class CopyOneStepWithContextMenuTest : BaseCourseWindowTest
+    internal class CopyOneStepWithContextMenuTest : BaseProcessWindowTest
     {
         public override string WhenDescription => "Add one step to the workflow. Copy it with RMB -> Copy Step, RMB -> Paste step.";
 
         public override string ThenDescription => "Then there are two identical steps.";
 
-        protected override void Then(CourseWindow window)
+        protected override void Then(ProcessWindow window)
         {
             IList<IStep> steps = window.GetCourse().Data.FirstChapter.Data.Steps;
             Assert.AreEqual(2, steps.Count);

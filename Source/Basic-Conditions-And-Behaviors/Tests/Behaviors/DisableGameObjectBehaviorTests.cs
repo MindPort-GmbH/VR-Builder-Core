@@ -20,9 +20,9 @@ namespace VRBuilder.Core.Tests.Behaviors
             ProcessSceneObject toDisable = TestingUtils.CreateSceneObject("ToDisable");
             EndlessConditionMock trigger = new EndlessConditionMock();
             
-            BasicCourseStepBuilder basicStepBuilder = new BasicCourseStepBuilder("Step");
+            BasicProcessStepBuilder basicStepBuilder = new BasicProcessStepBuilder("Step");
 
-            ICourse course = new LinearProcessBuilder("Course")
+            IProcess course = new LinearProcessBuilder("Course")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(basicStepBuilder
                         .Disable(toDisable)
@@ -32,8 +32,8 @@ namespace VRBuilder.Core.Tests.Behaviors
             course.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
             // When the behavior is activated
-            CourseRunner.Initialize(course);
-            CourseRunner.Run();
+            ProcessRunner.Initialize(course);
+            ProcessRunner.Run();
 
             yield return new WaitUntil(()=> course.Data.FirstChapter.Data.Steps[0].LifeCycle.Stage == Stage.Active);
 
@@ -57,19 +57,19 @@ namespace VRBuilder.Core.Tests.Behaviors
             ProcessSceneObject toDisable = TestingUtils.CreateSceneObject("ToDisable");
             EndlessConditionMock trigger = new EndlessConditionMock();
 
-            ICourse course = new LinearProcessBuilder("Course")
+            IProcess course = new LinearProcessBuilder("Course")
                 .AddChapter(new LinearChapterBuilder("Chapter")
-                    .AddStep(new BasicCourseStepBuilder("Step")
+                    .AddStep(new BasicProcessStepBuilder("Step")
                         .Disable(toDisable))
-                    .AddStep(new BasicCourseStepBuilder("Step")
+                    .AddStep(new BasicProcessStepBuilder("Step")
                         .AddCondition(trigger)))
                 .Build();
 
             course.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
             // When the behavior is activated and after the step is completed
-            CourseRunner.Initialize(course);
-            CourseRunner.Run();
+            ProcessRunner.Initialize(course);
+            ProcessRunner.Run();
 
             yield return new WaitUntil(()=> course.Data.FirstChapter.Data.Steps[1].LifeCycle.Stage == Stage.Active);
 

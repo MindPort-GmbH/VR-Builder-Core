@@ -29,7 +29,7 @@ namespace VRBuilder.Editor.Configuration
         /// <summary>
         /// Serializer used to serialize training courses and steps.
         /// </summary>
-        ICourseSerializer Serializer { get; }
+        IProcessSerializer Serializer { get; }
 
         /// <summary>
         /// The current instance of the <see cref="AllowedMenuItemsSettings"/> object.

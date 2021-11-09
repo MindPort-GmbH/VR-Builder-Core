@@ -26,7 +26,7 @@ namespace VRBuilder.Core.Tests.Builder
                 );
 
             // When we build a training from it
-            ICourse course = builder.Build();
+            IProcess course = builder.Build();
 
             // Then it consists of exactly one chapter and one step, and their names are the same as expected
             Assert.True(course.Data.Name == "Training1");
@@ -48,7 +48,7 @@ namespace VRBuilder.Core.Tests.Builder
                     .AddStep(new BasicStepBuilder("Step1.1.3")));
 
             // When we build a training from it
-            ICourse course = builder.Build();
+            IProcess course = builder.Build();
 
             // Then it has exactly three steps in the same order.
             IStep firstStep = course.Data.FirstChapter.Data.FirstStep;
@@ -75,7 +75,7 @@ namespace VRBuilder.Core.Tests.Builder
                     .AddStep(new BasicStepBuilder("1.3.1")));
 
             // When we build a training from it
-            ICourse course = builder.Build();
+            IProcess course = builder.Build();
 
             // Then it has exactly three chapters in it with one, three, and one steps,
             // `NextChapter` properties are properly assigned,
@@ -119,8 +119,8 @@ namespace VRBuilder.Core.Tests.Builder
                     .AddStep(new BasicStepBuilder("1.3.1")));
 
             // When we build two trainings from it
-            ICourse training1 = builder.Build();
-            ICourse training2 = builder.Build();
+            IProcess training1 = builder.Build();
+            IProcess training2 = builder.Build();
 
             Assert.True(training1.Data.Chapters.Count == training2.Data.Chapters.Count, "Both trainings should have the same length");
 
@@ -186,7 +186,7 @@ namespace VRBuilder.Core.Tests.Builder
 
             LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
-                    .AddStep(BasicCourseSteps.PutIntoCollider("TestColliderPutStep", "Collider", 1f, "ToPut")));
+                    .AddStep(BasicProcessSteps.PutIntoCollider("TestColliderPutStep", "Collider", 1f, "ToPut")));
 
             // When you build a training from it
             IStep step = builder.Build().Data.FirstChapter.Data.FirstStep;
@@ -214,7 +214,7 @@ namespace VRBuilder.Core.Tests.Builder
 
             LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
-                    .AddStep(new BasicCourseStepBuilder("TestHighlightStep")
+                    .AddStep(new BasicProcessStepBuilder("TestHighlightStep")
                         .Highlight("Highlightable")));
 
             // When we build a training from it
@@ -240,7 +240,7 @@ namespace VRBuilder.Core.Tests.Builder
                 // Given a builder with two .AddAudioDescription calls
                 LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                     .AddChapter(new LinearChapterBuilder("TestChapter")
-                        .AddStep(new BasicCourseStepBuilder("TestStep")
+                        .AddStep(new BasicProcessStepBuilder("TestStep")
                             .AddAudioDescription("Path1")
                             .AddAudioDescription("Path2")));
 
@@ -262,7 +262,7 @@ namespace VRBuilder.Core.Tests.Builder
                 // Given a builder with two .AddAudioSuccess calls
                 LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                     .AddChapter(new LinearChapterBuilder("TestChapter")
-                        .AddStep(new BasicCourseStepBuilder("TestStep")
+                        .AddStep(new BasicProcessStepBuilder("TestStep")
                             .AddAudioSuccess("Path1")
                             .AddAudioSuccess("Path2")));
 
@@ -284,7 +284,7 @@ namespace VRBuilder.Core.Tests.Builder
                 // Given a builder with two .AddAudioHint calls
                 LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                     .AddChapter(new LinearChapterBuilder("TestChapter")
-                        .AddStep(new BasicCourseStepBuilder("TestStep")
+                        .AddStep(new BasicProcessStepBuilder("TestStep")
                             .AddAudioHint("Path1")
                             .AddAudioHint("Path2")));
 
@@ -306,7 +306,7 @@ namespace VRBuilder.Core.Tests.Builder
             // Given a builder for a training
             LinearProcessBuilder builder = new LinearProcessBuilder("TestProcess")
                 .AddChapter(new LinearChapterBuilder("TestChapter")
-                    .AddStep(new BasicCourseStepBuilder("TestStep")
+                    .AddStep(new BasicProcessStepBuilder("TestStep")
                         .AddAudioSuccess("Path1")
                         .AddAudioDescription("Path1")
                         .AddAudioHint("Path2")));

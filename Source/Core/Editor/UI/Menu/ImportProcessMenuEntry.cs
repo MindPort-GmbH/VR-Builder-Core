@@ -29,7 +29,7 @@ namespace VRBuilder.Editor.BuilderMenu
             }
 
             string format = Path.GetExtension(path).Replace(".", "");
-            List<ICourseSerializer> result = GetFittingSerializer(format);
+            List<IProcessSerializer> result = GetFittingSerializer(format);
 
             if (result.Count == 0)
             {
@@ -39,22 +39,22 @@ namespace VRBuilder.Editor.BuilderMenu
 
             if (result.Count == 1)
             {
-                CourseAssetManager.Import(path, result.First());
+                ProcessAssetManager.Import(path, result.First());
             }
             else
             {
                 ChooseSerializerPopup.Show(result, (serializer) =>
                 {
-                    CourseAssetManager.Import(path, serializer);
+                    ProcessAssetManager.Import(path, serializer);
                 });
             }
         }
 
-        private static List<ICourseSerializer> GetFittingSerializer(string format)
+        private static List<IProcessSerializer> GetFittingSerializer(string format)
         {
-            return ReflectionUtils.GetConcreteImplementationsOf<ICourseSerializer>()
+            return ReflectionUtils.GetConcreteImplementationsOf<IProcessSerializer>()
                 .Where(t => t.GetConstructor(Type.EmptyTypes) != null)
-                .Select(type => (ICourseSerializer)ReflectionUtils.CreateInstanceOfType(type))
+                .Select(type => (IProcessSerializer)ReflectionUtils.CreateInstanceOfType(type))
                 .Where(s => s.FileFormat.Equals(format))
                 .ToList();
         }

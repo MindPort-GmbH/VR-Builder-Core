@@ -24,14 +24,14 @@ namespace VRBuilder.Core.Tests.Serialization
             TransformInRangeDetectorProperty detector = testObjectToo.gameObject.AddComponent<TransformInRangeDetectorProperty>();
             ProcessSceneObject testObject = TestingUtils.CreateSceneObject("TestObject");
 
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new ObjectInRangeCondition(testObject, detector, 1.5f))))
                 .Build();
 
             // When we serialize and deserialize it
-            ICourse training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
+            IProcess training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
 
             // Then that condition's target, detector and range should stay unchanged.
             ObjectInRangeCondition condition1 = training1.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions.First().Data.Conditions.First() as ObjectInRangeCondition;
@@ -54,14 +54,14 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator TimeoutCondition()
         {
             // Given a training with a timeout condition
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new TimeoutCondition(2.5f))))
                 .Build();
 
             // When we serialize and deserialize it
-            ICourse training2 = Serializer.CourseFromByteArray((Serializer.CourseToByteArray(training1)));
+            IProcess training2 = Serializer.CourseFromByteArray((Serializer.CourseToByteArray(training1)));
 
             // Then that condition's timeout value should stay unchanged.
             TimeoutCondition condition1 = training1.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions.First().Data.Conditions.First() as TimeoutCondition;
@@ -80,14 +80,14 @@ namespace VRBuilder.Core.Tests.Serialization
             // Given training with MoveObjectBehavior
             ProcessSceneObject moved = TestingUtils.CreateSceneObject("moved");
             ProcessSceneObject positionProvider = TestingUtils.CreateSceneObject("positionprovider");
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new MoveObjectBehavior(moved, positionProvider, 24.7f))))
                 .Build();
 
             // When that training is serialized and deserialzied
-            ICourse training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
+            IProcess training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
 
             // Then we should have two identical move object behaviors
             MoveObjectBehavior behavior1 = training1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as MoveObjectBehavior;
@@ -141,14 +141,14 @@ namespace VRBuilder.Core.Tests.Serialization
                 new DelayBehavior(0f),
                 new EmptyBehaviorMock()
             });
-            ICourse course = new LinearProcessBuilder("Process")
+            IProcess course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(sequence)))
                 .Build();
 
             // When we serialize and deserialize it
-            ICourse deserializedCourse = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(course));
+            IProcess deserializedCourse = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(course));
 
             BehaviorSequence deserializedSequence = deserializedCourse.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as BehaviorSequence;
 
@@ -168,7 +168,7 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator DelayBehavior()
         {
             // Given we have a training with a delayed activation behavior,
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new DelayBehavior(7f))))
@@ -176,7 +176,7 @@ namespace VRBuilder.Core.Tests.Serialization
 
             // When we serialize and deserialize it,
             byte[] serialized = Serializer.CourseToByteArray(training1);
-            ICourse training2 = Serializer.CourseFromByteArray(serialized);
+            IProcess training2 = Serializer.CourseFromByteArray(serialized);
 
             // Then that delayed behaviors should have the same target behaviors and delay time.
             DelayBehavior behavior1 = training1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as DelayBehavior;
@@ -193,16 +193,16 @@ namespace VRBuilder.Core.Tests.Serialization
             // Given DisableGameObjectBehavior,
             ProcessSceneObject trainingSceneObject = TestingUtils.CreateSceneObject("TestObject");
 
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
-                    .AddStep(new BasicCourseStepBuilder("Step")
+                    .AddStep(new BasicProcessStepBuilder("Step")
                         .Disable("TestObject")))
                 .Build();
 
             // When we serialize and deserialize a training with it
             byte[] serialized = Serializer.CourseToByteArray(training1);
 
-            ICourse training2 = Serializer.CourseFromByteArray(serialized);
+            IProcess training2 = Serializer.CourseFromByteArray(serialized);
 
             DisableGameObjectBehavior behavior1 = training1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as DisableGameObjectBehavior;
             DisableGameObjectBehavior behavior2 = training2.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as DisableGameObjectBehavior;
@@ -223,14 +223,14 @@ namespace VRBuilder.Core.Tests.Serialization
             // Given EnableGameObjectBehavior,
             ProcessSceneObject trainingSceneObject = TestingUtils.CreateSceneObject("TestObject");
 
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
-                    .AddStep(new BasicCourseStepBuilder("Step")
+                    .AddStep(new BasicProcessStepBuilder("Step")
                         .Enable("TestObject")))
                 .Build();
 
             // When we serialize and deserialize a training course with it
-            ICourse training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
+            IProcess training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
 
             EnableGameObjectBehavior behavior1 = training1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as EnableGameObjectBehavior;
             EnableGameObjectBehavior behavior2 = training2.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as EnableGameObjectBehavior;
@@ -252,14 +252,14 @@ namespace VRBuilder.Core.Tests.Serialization
             // Given a training with LockObjectBehavior
             ProcessSceneObject trainingSceneObject = TestingUtils.CreateSceneObject("TestObject");
 
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new LockObjectBehavior(trainingSceneObject))))
                 .Build();
 
             // When we serialize and deserialize it
-            ICourse training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
+            IProcess training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
 
 
             // Then that's behavior target is still the same.
@@ -281,14 +281,14 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator PlayAudioOnActivationBehavior()
         {
             // Given a training with PlayAudioOnActivationBehavior with some ResourceAudio
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new PlayAudioBehavior(new ResourceAudio("TestPath"), BehaviorExecutionStages.Activation))))
                 .Build();
 
             // When we serialize and deserialize it,
-            ICourse training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
+            IProcess training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
 
             // Then path to the audiofile should not change.
             PlayAudioBehavior behavior1 = training1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as PlayAudioBehavior;
@@ -305,14 +305,14 @@ namespace VRBuilder.Core.Tests.Serialization
         public IEnumerator PlayAudioOnDectivationBehavior()
         {
             // Given a training with PlayAudioOnDeactivationBehavior and some ResourceData,
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new PlayAudioBehavior(new ResourceAudio("TestPath"), BehaviorExecutionStages.Activation))))
                 .Build();
 
             // When we serialize and deserialize it,
-            ICourse training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
+            IProcess training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
 
             PlayAudioBehavior behavior1 = training1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as PlayAudioBehavior;
             PlayAudioBehavior behavior2 = training2.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as PlayAudioBehavior;
@@ -332,14 +332,14 @@ namespace VRBuilder.Core.Tests.Serialization
             // Given a training with UnlockObjectBehavior
             ProcessSceneObject trainingSceneObject = TestingUtils.CreateSceneObject("TestObject");
 
-            ICourse training1 = new LinearProcessBuilder("Process")
+            IProcess training1 = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new UnlockObjectBehavior(trainingSceneObject))))
                 .Build();
 
             // When we serialize and deserialize it
-            ICourse training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
+            IProcess training2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(training1));
 
             UnlockObjectBehavior behavior1 = training1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as UnlockObjectBehavior;
             UnlockObjectBehavior behavior2 = training2.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as UnlockObjectBehavior;
@@ -361,14 +361,14 @@ namespace VRBuilder.Core.Tests.Serialization
             // Given we have a ResourceAudio instance,
             ResourceAudio audio = new ResourceAudio("TestPath");
 
-            ICourse course = new LinearProcessBuilder("Process")
+            IProcess course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new PlayAudioBehavior(audio, BehaviorExecutionStages.Activation))))
                 .Build();
 
             // When we serialize and deserialize a training with it
-            ICourse testCourse = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(course));
+            IProcess testCourse = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(course));
 
             // Then the path to audio resource should be the same.
             string audioPath1 = TestingUtils.GetField<string>(((PlayAudioBehavior)course.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First()).Data.AudioData, "path");

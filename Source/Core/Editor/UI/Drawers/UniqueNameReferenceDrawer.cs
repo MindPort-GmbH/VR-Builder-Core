@@ -63,7 +63,7 @@ namespace VRBuilder.Editor.UI.Drawers
             if (oldUniqueName != newUniqueName)
             {
                 RevertableChangesHandler.Do(
-                    new CourseCommand(
+                    new ProcessCommand(
                         () =>
                         {
                             uniqueNameReference.UniqueName = newUniqueName;
@@ -189,7 +189,7 @@ namespace VRBuilder.Editor.UI.Drawers
                     Component[] alreadyAttachedProperties = selectedSceneObject.GetComponents(typeof(Component));
 
                     RevertableChangesHandler.Do(
-                        new CourseCommand(
+                        new ProcessCommand(
                             ()=> SceneObjectAutomaticSetup(selectedSceneObject, valueType),
                             ()=> UndoSceneObjectAutomaticSetup(selectedSceneObject, valueType, isAlreadySceneObject, alreadyAttachedProperties)),
                         undoGroupName);

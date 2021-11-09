@@ -45,7 +45,7 @@ namespace VRBuilder.Tests.Utils
             chapterBuilder.Steps[2].Data.Behaviors.Data.Behaviors = new List<IBehavior> { behavior3 };
             IChapter chapter = chapterBuilder.Build();
 
-            ICourse course = new Course("course", chapter);
+            IProcess course = new Process("course", chapter);
 
             // And given a "restricted" and an "unrestricted" mode.
             IMode restricted = new Mode("Restricted", new WhitelistTypeRule<IOptional>().Add<ActivationStageBehaviorMock>());
@@ -54,8 +54,8 @@ namespace VRBuilder.Tests.Utils
             // When running it and changing the mode during execution several times,
             // Then the corresponding ActivationStageBehaviorMock of the current step is activated and deactivated accordingly.
             // The other ActivationStageBehaviorMock of the other steps stay inactive.
-            CourseRunner.Initialize(course);
-            CourseRunner.Run();
+            ProcessRunner.Initialize(course);
+            ProcessRunner.Run();
             course.Configure(unrestricted);
 
             yield return new WaitUntil(() => behavior1.LifeCycle.Stage == Stage.Activating);
@@ -132,7 +132,7 @@ namespace VRBuilder.Tests.Utils
             chapterBuilder.Steps[2].Data.Behaviors.Data.Behaviors = new List<IBehavior> { behavior3 };
             IChapter chapter = chapterBuilder.Build();
 
-            ICourse course = new Course("course", chapter);
+            IProcess course = new Process("course", chapter);
 
             // And given a "restricted" and an "unrestricted" mode.
             IMode restricted = new Mode("Restricted", new WhitelistTypeRule<IOptional>().Add<ActivationStageBehaviorMock>());
@@ -141,8 +141,8 @@ namespace VRBuilder.Tests.Utils
             // When running it and changing the mode during execution several times,
             // Then the corresponding ActivationStageBehaviorMock of the current step is activated and deactivated accordingly.
             // The other ActivationStageBehaviorMock of the other steps stay inactive.
-            CourseRunner.Initialize(course);
-            CourseRunner.Run();
+            ProcessRunner.Initialize(course);
+            ProcessRunner.Run();
             course.Configure(unrestricted);
 
             ICondition condition1 = course.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions[0].Data.Conditions[0];

@@ -16,14 +16,14 @@ namespace VRBuilder.Editor
     /// </summary>
     internal class DefaultEditingStrategy : IEditingStrategy
     {
-        private CourseWindow courseWindow;
+        private ProcessWindow courseWindow;
         private StepWindow stepWindow;
 
-        public ICourse CurrentCourse { get; protected set; }
+        public IProcess CurrentCourse { get; protected set; }
         public IChapter CurrentChapter { get; protected set; }
 
         /// <inheritdoc/>
-        public void HandleNewCourseWindow(CourseWindow window)
+        public void HandleNewCourseWindow(ProcessWindow window)
         {
             courseWindow = window;
             courseWindow.SetCourse(CurrentCourse);
@@ -49,7 +49,7 @@ namespace VRBuilder.Editor
         }
 
         /// <inheritdoc/>
-        public void HandleCourseWindowClosed(CourseWindow window)
+        public void HandleCourseWindowClosed(ProcessWindow window)
         {
             if (courseWindow != window)
             {
@@ -58,7 +58,7 @@ namespace VRBuilder.Editor
 
             if (CurrentCourse != null)
             {
-                CourseAssetManager.Save(CurrentCourse);
+                ProcessAssetManager.Save(CurrentCourse);
             }
         }
 
@@ -67,7 +67,7 @@ namespace VRBuilder.Editor
         {
             if (CurrentCourse != null)
             {
-                CourseAssetManager.Save(CurrentCourse);
+                ProcessAssetManager.Save(CurrentCourse);
             }
 
             stepWindow = null;
@@ -78,7 +78,7 @@ namespace VRBuilder.Editor
         {
             if (courseWindow == null)
             {
-                courseWindow = EditorWindow.GetWindow<CourseWindow>();
+                courseWindow = EditorWindow.GetWindow<ProcessWindow>();
                 courseWindow.minSize = new Vector2(400f, 100f);
             }
             else
@@ -92,14 +92,14 @@ namespace VRBuilder.Editor
         {
             if (CurrentCourse != null)
             {
-                CourseAssetManager.Save(CurrentCourse);
+                ProcessAssetManager.Save(CurrentCourse);
             }
 
             EditorPrefs.SetString(GlobalEditorHandler.LastEditedCourseNameKey, courseName);
-            LoadCourse(CourseAssetManager.Load(courseName));
+            LoadCourse(ProcessAssetManager.Load(courseName));
         }
 
-        private void LoadCourse(ICourse newCourse)
+        private void LoadCourse(IProcess newCourse)
         {
             CurrentCourse = newCourse;
             CurrentChapter = null;
@@ -168,7 +168,7 @@ namespace VRBuilder.Editor
         {
             if (CurrentCourse != null)
             {
-                CourseAssetManager.Save(CurrentCourse);
+                ProcessAssetManager.Save(CurrentCourse);
             }
         }
 
@@ -177,7 +177,7 @@ namespace VRBuilder.Editor
         {
             if (CurrentCourse != null)
             {
-                CourseAssetManager.Save(CurrentCourse);
+                ProcessAssetManager.Save(CurrentCourse);
             }
         }
 

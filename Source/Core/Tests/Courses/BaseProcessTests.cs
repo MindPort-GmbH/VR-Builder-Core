@@ -22,7 +22,7 @@ namespace VRBuilder.Tests.Courses
         {
             Chapter chapter1 = TestLinearChapterBuilder.SetupChapterBuilder(3, false).Build();
             Chapter chapter2 = TestLinearChapterBuilder.SetupChapterBuilder().Build();
-            Course course = new Course("MyCourse", new List<IChapter>
+            Process course = new Process("MyCourse", new List<IChapter>
             {
                 chapter1,
                 chapter2
@@ -35,10 +35,10 @@ namespace VRBuilder.Tests.Courses
         public IEnumerator OneChapterCourse()
         {
             Chapter chapter1 = TestLinearChapterBuilder.SetupChapterBuilder(3, false).Build();
-            Course course = new Course("MyCourse", chapter1);
+            Process course = new Process("MyCourse", chapter1);
 
-            CourseRunner.Initialize(course);
-            CourseRunner.Run();
+            ProcessRunner.Initialize(course);
+            ProcessRunner.Run();
 
             Debug.Log(chapter1.LifeCycle.Stage);
             yield return null;
@@ -59,14 +59,14 @@ namespace VRBuilder.Tests.Courses
         {
             Chapter chapter1 = TestLinearChapterBuilder.SetupChapterBuilder(3, false).Build();
             Chapter chapter2 = TestLinearChapterBuilder.SetupChapterBuilder().Build();
-            Course course = new Course("MyCourse", new List<IChapter>
+            Process course = new Process("MyCourse", new List<IChapter>
             {
                 chapter1,
                 chapter2
             });
 
-            CourseRunner.Initialize(course);
-            CourseRunner.Run();
+            ProcessRunner.Initialize(course);
+            ProcessRunner.Run();
 
             yield return new WaitUntil(() => chapter1.LifeCycle.Stage == Stage.Activating);
 
@@ -83,7 +83,7 @@ namespace VRBuilder.Tests.Courses
         {
             Chapter chapter1 = TestLinearChapterBuilder.SetupChapterBuilder(3, false).Build();
             Chapter chapter2 = TestLinearChapterBuilder.SetupChapterBuilder(3, false).Build();
-            Course course = new Course("MyCourse", new List<IChapter>
+            Process course = new Process("MyCourse", new List<IChapter>
             {
                 chapter1,
                 chapter2
@@ -104,8 +104,8 @@ namespace VRBuilder.Tests.Courses
                 }
             };
 
-            CourseRunner.Initialize(course);
-            CourseRunner.Run();
+            ProcessRunner.Initialize(course);
+            ProcessRunner.Run();
 
             while (course.LifeCycle.Stage != Stage.Inactive)
             {
@@ -120,7 +120,7 @@ namespace VRBuilder.Tests.Courses
         public IEnumerator FastForwardInactiveCourse()
         {
             // Given a training course
-            Course course = new LinearProcessBuilder("Process")
+            Process course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new EndlessConditionMock())))
@@ -140,7 +140,7 @@ namespace VRBuilder.Tests.Courses
         public IEnumerator FastForwardInactiveCourseAndActivateIt()
         {
             // Given a training
-            Course course = new LinearProcessBuilder("Process")
+            Process course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new EndlessConditionMock())))
@@ -149,8 +149,8 @@ namespace VRBuilder.Tests.Courses
             // When you mark it to fast-forward and activate it,
             course.LifeCycle.MarkToFastForward();
 
-            CourseRunner.Initialize(course);
-            CourseRunner.Run();
+            ProcessRunner.Initialize(course);
+            ProcessRunner.Run();
 
             yield return null;
 
@@ -163,14 +163,14 @@ namespace VRBuilder.Tests.Courses
         public IEnumerator FastForwardActivatingCourse()
         {
             // Given an activated training
-            Course course = new LinearProcessBuilder("Process")
+            Process course = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new EndlessConditionMock())))
                 .Build();
 
-            CourseRunner.Initialize(course);
-            CourseRunner.Run();
+            ProcessRunner.Initialize(course);
+            ProcessRunner.Run();
 
             // When you mark it to fast-forward,
             course.LifeCycle.MarkToFastForward();

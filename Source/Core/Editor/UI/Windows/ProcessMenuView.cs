@@ -14,7 +14,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Windows
 {
     /// <summary>
-    /// TrainingMenuView is shown on the left side of the <see cref="CourseWindow"/> and takes care about overall
+    /// TrainingMenuView is shown on the left side of the <see cref="ProcessWindow"/> and takes care about overall
     /// settings for the Training itself, especially chapters.
     /// </summary>
     internal class ProcessMenuView : ScriptableObject
@@ -85,21 +85,21 @@ namespace VRBuilder.Editor.UI.Windows
         }
         #endregion
 
-        protected ICourse Course { get; private set; }
+        protected IProcess Course { get; private set; }
 
-        protected CourseWindow ParentWindow { get; private set; }
+        protected ProcessWindow ParentWindow { get; private set; }
 
         [SerializeField]
         private Vector2 scrollPosition;
 
         private ChangeNamePopup changeNamePopup;
-        private RenameCoursePopup renameCoursePopup;
+        private RenameProcessPopup renameCoursePopup;
 
         /// <summary>
         /// Initialises the windows with the correct training and TrainingWindow (parent).
         /// This has to be done after every time the editor reloaded the assembly (recompile).
         /// </summary>
-        public void Initialise(ICourse course, CourseWindow parent)
+        public void Initialise(IProcess course, ProcessWindow parent)
         {
             Course = course;
             ParentWindow = parent;
@@ -183,7 +183,7 @@ namespace VRBuilder.Editor.UI.Windows
                     if (FlatIconButton(editIcon.Texture))
                     {
                         labelPosition = new Rect(labelPosition.x + ParentWindow.position.x - 2, labelPosition.height + labelPosition.y + ParentWindow.position.y + 4 + ExpandButtonHeight, labelPosition.width, labelPosition.height);
-                        renameCoursePopup = RenameCoursePopup.Open(Course, labelPosition, scrollPosition);
+                        renameCoursePopup = RenameProcessPopup.Open(Course, labelPosition, scrollPosition);
                     }
                 }
             }
@@ -311,7 +311,7 @@ namespace VRBuilder.Editor.UI.Windows
             {
                 if (position > 0)
                 {
-                    RevertableChangesHandler.Do(new CourseCommand(
+                    RevertableChangesHandler.Do(new ProcessCommand(
                         // ReSharper disable once ImplicitlyCapturedClosure
                         () =>
                         {
@@ -333,7 +333,7 @@ namespace VRBuilder.Editor.UI.Windows
             {
                 if (position + 1 < Course.Data.Chapters.Count)
                 {
-                    RevertableChangesHandler.Do(new CourseCommand(
+                    RevertableChangesHandler.Do(new ProcessCommand(
                         // ReSharper disable once ImplicitlyCapturedClosure
                         () =>
                         {
@@ -371,7 +371,7 @@ namespace VRBuilder.Editor.UI.Windows
 
                     if (isDeleteTriggered)
                     {
-                        RevertableChangesHandler.Do(new CourseCommand(
+                        RevertableChangesHandler.Do(new ProcessCommand(
                             // ReSharper disable once ImplicitlyCapturedClosure
                             () =>
                             {
@@ -403,7 +403,7 @@ namespace VRBuilder.Editor.UI.Windows
                 GUILayout.FlexibleSpace();
                 if (GUILayout.Button("+Add Chapter", GUILayout.Width(128), GUILayout.Height(32)))
                 {
-                    RevertableChangesHandler.Do(new CourseCommand(
+                    RevertableChangesHandler.Do(new ProcessCommand(
                         // ReSharper disable once ImplicitlyCapturedClosure
                         () =>
                         {

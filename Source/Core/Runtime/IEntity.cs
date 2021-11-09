@@ -21,17 +21,17 @@ namespace VRBuilder.Core
         /// <summary>
         /// Returns a new instance of a process for the Activating <seealso cref="Stage"/>.
         /// </summary>
-        IProcess GetActivatingProcess();
+        IStageProcess GetActivatingProcess();
 
         /// <summary>
         /// Returns a new instance of a process for the Active <seealso cref="Stage"/>.
         /// </summary>
-        IProcess GetActiveProcess();
+        IStageProcess GetActiveProcess();
 
         /// <summary>
         /// Returns a new instance of a process for the Deactivating <seealso cref="Stage"/>.
         /// </summary>
-        IProcess GetDeactivatingProcess();
+        IStageProcess GetDeactivatingProcess();
 
         /// <summary>
         /// Configures the entity according to the given <paramref name="mode"/>.

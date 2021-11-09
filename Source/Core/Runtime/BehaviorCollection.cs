@@ -47,19 +47,19 @@ namespace VRBuilder.Core
         }
 
         /// <inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new ParallelActivatingProcess<EntityData>(Data);
         }
 
         /// <inheritdoc />
-        public override IProcess GetActiveProcess()
+        public override IStageProcess GetActiveProcess()
         {
             return new ParallelActiveProcess<EntityData>(Data);
         }
 
         /// <inheritdoc />
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new ParallelDeactivatingProcess<EntityData>(Data);
         }

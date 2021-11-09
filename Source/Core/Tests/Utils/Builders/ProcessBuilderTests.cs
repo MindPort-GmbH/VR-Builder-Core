@@ -32,7 +32,7 @@ namespace VRBuilder.Tests.Builder
                 );
 
             // When we build a training from it
-            ICourse course = builder.Build();
+            IProcess course = builder.Build();
 
             // Then it consists of exactly one chapter and one step, and their names are the same as expected
             Assert.True(course.Data.Name == "Training1");
@@ -54,7 +54,7 @@ namespace VRBuilder.Tests.Builder
                     .AddStep(new BasicStepBuilder("Step1.1.3")));
 
             // When we build a training from it
-            ICourse course = builder.Build();
+            IProcess course = builder.Build();
 
             // Then it has exactly three steps in the same order.
             IStep firstStep = course.Data.FirstChapter.Data.FirstStep;
@@ -81,7 +81,7 @@ namespace VRBuilder.Tests.Builder
                     .AddStep(new BasicStepBuilder("1.3.1")));
 
             // When we build a training from it
-            ICourse course = builder.Build();
+            IProcess course = builder.Build();
 
             // Then it has exactly three chapters in it with one, three, and one steps,
             // `NextChapter` properties are properly assigned,
@@ -125,8 +125,8 @@ namespace VRBuilder.Tests.Builder
                     .AddStep(new BasicStepBuilder("1.3.1")));
 
             // When we build two trainings from it
-            ICourse training1 = builder.Build();
-            ICourse training2 = builder.Build();
+            IProcess training1 = builder.Build();
+            IProcess training2 = builder.Build();
 
             Assert.True(training1.Data.Chapters.Count == training2.Data.Chapters.Count, "Both trainings should have the same length");
 

@@ -54,15 +54,15 @@ namespace VRBuilder.Editor.Setup
             ProcessSceneSetup.Run();
 
             string errorMessage = null;
-            if (CourseAssetUtils.DoesCourseAssetExist(courseName) || CourseAssetUtils.CanCreate(courseName, out errorMessage))
+            if (ProcessAssetUtils.DoesCourseAssetExist(courseName) || ProcessAssetUtils.CanCreate(courseName, out errorMessage))
             {
-                if (CourseAssetUtils.DoesCourseAssetExist(courseName))
+                if (ProcessAssetUtils.DoesCourseAssetExist(courseName))
                 {
-                     CourseAssetManager.Load(courseName);
+                     ProcessAssetManager.Load(courseName);
                 }
                 else
                 {
-                    CourseAssetManager.Import(EntityFactory.CreateCourse(courseName));
+                    ProcessAssetManager.Import(EntityFactory.CreateCourse(courseName));
                     AssetDatabase.Refresh();
                 }
 
@@ -90,7 +90,7 @@ namespace VRBuilder.Editor.Setup
         /// <param name="courseName">Name of the course.</param>
         public static void SetCourseInCurrentScene(string courseName)
         {
-            RuntimeConfigurator.Instance.SetSelectedCourse(CourseAssetUtils.GetCourseStreamingAssetPath(courseName));
+            RuntimeConfigurator.Instance.SetSelectedCourse(ProcessAssetUtils.GetCourseStreamingAssetPath(courseName));
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
             GlobalEditorHandler.SetCurrentCourse(courseName);
             GlobalEditorHandler.StartEditingCourse();
@@ -105,7 +105,7 @@ namespace VRBuilder.Editor.Setup
             string courseName = SimpleExampleName;
             int counter = 1;
 
-            while (CourseAssetUtils.DoesCourseAssetExist(courseName) || CourseAssetUtils.CanCreate(courseName, out string errorMessage) == false)
+            while (ProcessAssetUtils.DoesCourseAssetExist(courseName) || ProcessAssetUtils.CanCreate(courseName, out string errorMessage) == false)
             {
                 courseName = $"{SimpleExampleName}_{counter}";
                 counter++;

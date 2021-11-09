@@ -40,7 +40,7 @@ namespace VRBuilder.Editor.Configuration
             configurationTypes.Sort(((type1, type2) => string.Compare(type1.Name, type2.Name, StringComparison.Ordinal)));
             configurationTypeNames = configurationTypes.Select(t => t.Name).ToArray();
 
-            CourseAssetPostprocessor.CourseFileStructureChanged += OnCourseFileStructureChanged;
+            ProcessAssetPostprocessor.CourseFileStructureChanged += OnCourseFileStructureChanged;
         }
 
         /// <summary>
@@ -88,13 +88,13 @@ namespace VRBuilder.Editor.Configuration
                 {
                     if (GUILayout.Button("Open Course in Workflow window"))
                     {
-                        GlobalEditorHandler.SetCurrentCourse(CourseAssetUtils.GetCourseNameFromPath(configurator.GetSelectedCourse()));
+                        GlobalEditorHandler.SetCurrentCourse(ProcessAssetUtils.GetCourseNameFromPath(configurator.GetSelectedCourse()));
                         GlobalEditorHandler.StartEditingCourse();
                     }
 
                     if (GUILayout.Button(new GUIContent("Show Course in Explorer...")))
                     {
-                        string absolutePath = $"{new FileInfo(CourseAssetUtils.GetCourseAssetPath(CourseAssetUtils.GetCourseNameFromPath(configurator.GetSelectedCourse())))}";
+                        string absolutePath = $"{new FileInfo(ProcessAssetUtils.GetCourseAssetPath(ProcessAssetUtils.GetCourseNameFromPath(configurator.GetSelectedCourse())))}";
                         EditorUtility.RevealInFinder(absolutePath);
                     }
                 }
@@ -107,7 +107,7 @@ namespace VRBuilder.Editor.Configuration
 
         private static void PopulateCourseList()
         {
-            List<string> courses = CourseAssetUtils.GetAllCourses().ToList();
+            List<string> courses = ProcessAssetUtils.GetAllCourses().ToList();
 
             // Create dummy entry if no files are present.
             if (courses.Any() == false)
@@ -133,7 +133,7 @@ namespace VRBuilder.Editor.Configuration
         {
             int index = 0;
 
-            string courseName = CourseAssetUtils.GetCourseNameFromPath(configurator.GetSelectedCourse());
+            string courseName = ProcessAssetUtils.GetCourseNameFromPath(configurator.GetSelectedCourse());
 
             if (string.IsNullOrEmpty(courseName) == false)
             {
@@ -147,7 +147,7 @@ namespace VRBuilder.Editor.Configuration
                 index = 0;
             }
 
-            string newCourseStreamingAssetsPath = CourseAssetUtils.GetCourseStreamingAssetPath(trainingCourseDisplayNames[index]);
+            string newCourseStreamingAssetsPath = ProcessAssetUtils.GetCourseStreamingAssetPath(trainingCourseDisplayNames[index]);
 
             if (IsCourseListEmpty() == false && configurator.GetSelectedCourse() != newCourseStreamingAssetsPath)
             {
@@ -161,7 +161,7 @@ namespace VRBuilder.Editor.Configuration
             configuratorSelectedCourseProperty.stringValue = newPath;
         }
 
-        private static void OnCourseFileStructureChanged(object sender, CourseAssetPostprocessorEventArgs args)
+        private static void OnCourseFileStructureChanged(object sender, ProcessAssetPostprocessorEventArgs args)
         {
             isDirty = true;
         }
@@ -177,8 +177,8 @@ namespace VRBuilder.Editor.Configuration
 
             if (string.IsNullOrEmpty(configurator.GetSelectedCourse()))
             {
-                SetConfiguratorSelectedCourse(CourseAssetUtils.GetCourseStreamingAssetPath(trainingCourseDisplayNames[0]));
-                GlobalEditorHandler.SetCurrentCourse(CourseAssetUtils.GetCourseAssetPath(configurator.GetSelectedCourse()));
+                SetConfiguratorSelectedCourse(ProcessAssetUtils.GetCourseStreamingAssetPath(trainingCourseDisplayNames[0]));
+                GlobalEditorHandler.SetCurrentCourse(ProcessAssetUtils.GetCourseAssetPath(configurator.GetSelectedCourse()));
             }
         }
     }

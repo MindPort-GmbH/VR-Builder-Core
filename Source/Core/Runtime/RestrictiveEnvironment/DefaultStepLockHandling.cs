@@ -76,12 +76,12 @@ namespace VRBuilder.Core.RestrictiveEnvironment
                 return completedTransition.Data.TargetStep.Data;
             }
 
-            if (CourseRunner.IsRunning == false)
+            if (ProcessRunner.IsRunning == false)
             {
                 return null;
             }
 
-            ICourseData course = CourseRunner.Current.Data;
+            IProcessData course = ProcessRunner.Current.Data;
             // Test all chapters, but the last.
             for (int i = 0; i < course.Chapters.Count - 1; i++)
             {
@@ -113,7 +113,7 @@ namespace VRBuilder.Core.RestrictiveEnvironment
         }
 
         /// <inheritdoc />
-        public override void OnCourseStarted(ICourse course)
+        public override void OnCourseStarted(IProcess course)
         {
             if (lockOnCourseStart)
             {
@@ -125,7 +125,7 @@ namespace VRBuilder.Core.RestrictiveEnvironment
         }
 
         /// <inheritdoc />
-        public override void OnCourseFinished(ICourse course)
+        public override void OnCourseFinished(IProcess course)
         {
             if (lockOnCourseFinished)
             {
