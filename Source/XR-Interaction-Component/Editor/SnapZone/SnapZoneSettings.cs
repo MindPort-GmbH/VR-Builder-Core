@@ -14,7 +14,7 @@ namespace VRBuilder.Editor.XRInteraction
     [CreateAssetMenu(fileName = "SnapZoneSettings", menuName = "VR Builder/SnapZoneSettings", order = 1)]
     public class SnapZoneSettings : SettingsObject<SnapZoneSettings>
     {
-        private const string MaterialsPath = "Assets/MindPort/VRBuilder/Resources/SnapZones";
+        private const string MaterialsPath = "Assets/MindPort/VR Builder/Resources/SnapZones";
         private static SnapZoneSettings settings;
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace VRBuilder.Editor.XRInteraction
         {
             SnapZoneSettings snapZoneSettings = CreateInstance<SnapZoneSettings>();
 
-            string filePath = "Assets/MindPort/VRBuilder/Resources";
+            string filePath = "Assets/MindPort/VR Builder/Resources";
 
             if (Directory.Exists(filePath) == false)
             {

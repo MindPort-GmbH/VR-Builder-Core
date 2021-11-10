@@ -20,7 +20,7 @@ namespace VRBuilder.Editor.PackageManager.XRInteraction
         private const string SamplePrefabName = "XR Device Simulator";
         private const string ActionRigName = "[XR_Setup_Action_Based]";
         private const string SimulatorPrefabName = "[XR_Setup_Simulator]";
-        private const string SimulatorSavePath = "Assets/MindPort/VRBuilder/Resources";
+        private const string SimulatorSavePath = "Assets/MindPort/VR Builder/Resources";
 
         public XRSimulatorImporter()
         {
