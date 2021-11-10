@@ -13,7 +13,7 @@ using UnityEngine;
 public partial class BuilderProjectSettings : ScriptableObject
 {
     /// <summary>
-    /// Was the VR Builder imported and therefore started for the first time.
+    /// Was VR Builder imported and therefore started for the first time.
     /// </summary>
     [HideInInspector]
     public bool IsFirstTimeStarted = true;

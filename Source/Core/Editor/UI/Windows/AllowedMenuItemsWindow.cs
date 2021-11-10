@@ -120,7 +120,7 @@ namespace VRBuilder.Editor.UI.Windows
 
             GUILayout.Space(20f);
 
-            EditorGUILayout.HelpBox("This window provides editor configuration settings for the VR Builder. "
+            EditorGUILayout.HelpBox("This window provides editor configuration settings for VR Builder. "
                 + "It is supposed to be changed only by a software developer. "
                 + "Modification of these values may lead to various issues.", MessageType.Warning);
 

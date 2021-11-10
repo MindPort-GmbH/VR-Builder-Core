@@ -7,7 +7,7 @@ using VRBuilder.Core.Runtime.Utils;
 namespace VRBuilder.Core.Internationalization
 {
     /// <summary>
-    /// Language settings for the VR Builder.
+    /// Language settings for VR Builder.
     /// </summary>
     public class LanguageSettings : SettingsObject<LanguageSettings>
     {
