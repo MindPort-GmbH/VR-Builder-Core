@@ -29,7 +29,7 @@ namespace VRBuilder.Core.Serialization.NewtonsoftJson
                 PreserveReferencesHandling = PreserveReferencesHandling.All,
                 Formatting = Formatting.Indented,
                 ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
-                SerializationBinder = new CourseSerializationBinder(),
+                SerializationBinder = new ProcessSerializationBinder(),
                 TypeNameHandling = TypeNameHandling.All
             };
         }
@@ -37,7 +37,7 @@ namespace VRBuilder.Core.Serialization.NewtonsoftJson
         /// <summary>
         /// Returns the json serializer settings used by the process deserialization.
         /// </summary>
-        public static JsonSerializerSettings CourseSerializerSettings
+        public static JsonSerializerSettings ProcessSerializerSettings
         {
             get { return CreateSettings(GetJsonConverters()); }
         }
@@ -88,24 +88,24 @@ namespace VRBuilder.Core.Serialization.NewtonsoftJson
         }
 
         /// <inheritdoc/>
-        public virtual byte[] CourseToByteArray(IProcess course)
+        public virtual byte[] ProcessToByteArray(IProcess process)
         {
-            return Serialize(course, CourseSerializerSettings);
+            return Serialize(process, ProcessSerializerSettings);
         }
 
         /// <inheritdoc/>
-        public virtual IProcess CourseFromByteArray(byte[] data)
+        public virtual IProcess ProcessFromByteArray(byte[] data)
         {
-            JObject dataObject = JsonConvert.DeserializeObject<JObject>(new UTF8Encoding().GetString(data), CourseSerializerSettings);
+            JObject dataObject = JsonConvert.DeserializeObject<JObject>(new UTF8Encoding().GetString(data), ProcessSerializerSettings);
 
-            // Check if course was serialized with version 1
+            // Check if process was serialized with version 1
             int version = dataObject.GetValue("$serializerVersion").ToObject<int>();
             if (version != 1)
             {
-                throw new Exception($"The loaded course is serialized with a serializer version {version}, which in compatible with this serializer.");
+                throw new Exception($"The loaded process is serialized with a serializer version {version}, which in compatible with this serializer.");
             }
 
-            return Deserialize<IProcess>(data, CourseSerializerSettings);
+            return Deserialize<IProcess>(data, ProcessSerializerSettings);
         }
 
         /// <inheritdoc/>
@@ -120,7 +120,7 @@ namespace VRBuilder.Core.Serialization.NewtonsoftJson
             return Deserialize<IStep>(data, StepSerializerSettings);
         }
 
-        internal class CourseSerializationBinder : DefaultSerializationBinder
+        internal class ProcessSerializationBinder : DefaultSerializationBinder
         {
             public override Type BindToType(string assemblyName, string typeName)
             {

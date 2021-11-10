@@ -17,14 +17,14 @@ namespace VRBuilder.Editor.UX
     [CustomEditor(typeof(ProcessControllerSetup))]
     internal class ProcessControllerSetupEditor : UnityEditor.Editor
     {
-        private SerializedProperty courseControllerProperty;
+        private SerializedProperty processControllerProperty;
         private SerializedProperty useCustomPrefabProperty;
         private SerializedProperty customPrefabProperty;
 
         private ProcessControllerSetup setupObject;
         
-        private IProcessController[] availableCourseControllers;
-        private string[] availableCourseControllerNames;
+        private IProcessController[] availableProcessControllers;
+        private string[] availableProcessControllerNames;
         private GameObject customPrefab = null;
         private int selectedIndex = 0;
         private bool useCustomPrefab;
@@ -33,25 +33,25 @@ namespace VRBuilder.Editor.UX
         
         private void OnEnable()
         {
-            courseControllerProperty = serializedObject.FindProperty("courseControllerQualifiedName");
+            processControllerProperty = serializedObject.FindProperty("processControllerQualifiedName");
             useCustomPrefabProperty = serializedObject.FindProperty("useCustomPrefab");
             customPrefabProperty = serializedObject.FindProperty("customPrefab");
 
             customPrefab = (GameObject) customPrefabProperty.objectReferenceValue;
             setupObject = (ProcessControllerSetup) serializedObject.targetObject;
 
-            availableCourseControllers = ReflectionUtils.GetConcreteImplementationsOf<IProcessController>()
+            availableProcessControllers = ReflectionUtils.GetConcreteImplementationsOf<IProcessController>()
                 .Select(c => (IProcessController) ReflectionUtils.CreateInstanceOfType(c)).OrderByDescending(controller => controller.Priority).ToArray();
 
-            availableCourseControllerNames = availableCourseControllers.Select(controller => controller.Name).ToArray();
+            availableProcessControllerNames = availableProcessControllers.Select(controller => controller.Name).ToArray();
 
-            selectedIndex = availableCourseControllers.Select(controller => controller.GetType().AssemblyQualifiedName).ToList().IndexOf(courseControllerProperty.stringValue);
+            selectedIndex = availableProcessControllers.Select(controller => controller.GetType().AssemblyQualifiedName).ToList().IndexOf(processControllerProperty.stringValue);
             if (selectedIndex < 0)
             {
                 selectedIndex = 0;
             }
             
-            currentRequiredComponents = availableCourseControllers[selectedIndex].GetRequiredSetupComponents();
+            currentRequiredComponents = availableProcessControllers[selectedIndex].GetRequiredSetupComponents();
             currentRequiredComponents.AddRange(currentRequiredComponents
                 .SelectMany(type => type.GetCustomAttributes(typeof(RequireComponent)).Cast<RequireComponent>())
                 .SelectMany(component => new List<Type>() {component.m_Type0, component.m_Type1, component.m_Type2})
@@ -69,7 +69,7 @@ namespace VRBuilder.Editor.UX
             bool prevUseCustomPrefab = useCustomPrefab;
             int prevIndex = selectedIndex;
             
-            selectedIndex = EditorGUILayout.Popup("Course Controller", selectedIndex, availableCourseControllerNames);
+            selectedIndex = EditorGUILayout.Popup("Process Controller", selectedIndex, availableProcessControllerNames);
             
             GUI.enabled = !Application.isPlaying;
 
@@ -99,13 +99,13 @@ namespace VRBuilder.Editor.UX
             else if (prevIndex != selectedIndex || HasComponents(currentRequiredComponents) == false || useCustomPrefab != prevUseCustomPrefab)
             {
                 RemoveComponents(currentRequiredComponents);
-                currentRequiredComponents = availableCourseControllers[selectedIndex].GetRequiredSetupComponents();
+                currentRequiredComponents = availableProcessControllers[selectedIndex].GetRequiredSetupComponents();
                 AddComponents(currentRequiredComponents);
-                availableCourseControllers[selectedIndex].HandlePostSetup(setupObject.gameObject);
+                availableProcessControllers[selectedIndex].HandlePostSetup(setupObject.gameObject);
             }
 
             useCustomPrefabProperty.boolValue = useCustomPrefab;
-            courseControllerProperty.stringValue = availableCourseControllers[selectedIndex].GetType().AssemblyQualifiedName;
+            processControllerProperty.stringValue = availableProcessControllers[selectedIndex].GetType().AssemblyQualifiedName;
             
             serializedObject.ApplyModifiedProperties();
         }

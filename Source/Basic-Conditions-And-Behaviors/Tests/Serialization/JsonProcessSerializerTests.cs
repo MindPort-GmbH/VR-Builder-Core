@@ -31,7 +31,7 @@ namespace VRBuilder.Core.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize it
-            IProcess process2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(process1));
+            IProcess process2 = Serializer.ProcessFromByteArray(Serializer.ProcessToByteArray(process1));
 
             // Then that condition's target, detector and range should stay unchanged.
             ObjectInRangeCondition condition1 = process1.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions.First().Data.Conditions.First() as ObjectInRangeCondition;
@@ -61,7 +61,7 @@ namespace VRBuilder.Core.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize it
-            IProcess process2 = Serializer.CourseFromByteArray((Serializer.CourseToByteArray(process1)));
+            IProcess process2 = Serializer.ProcessFromByteArray((Serializer.ProcessToByteArray(process1)));
 
             // Then that condition's timeout value should stay unchanged.
             TimeoutCondition condition1 = process1.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions.First().Data.Conditions.First() as TimeoutCondition;
@@ -87,7 +87,7 @@ namespace VRBuilder.Core.Tests.Serialization
                 .Build();
 
             // When that process is serialized and deserialzied
-            IProcess process2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(process1));
+            IProcess process2 = Serializer.ProcessFromByteArray(Serializer.ProcessToByteArray(process1));
 
             // Then we should have two identical move object behaviors
             MoveObjectBehavior behavior1 = process1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as MoveObjectBehavior;
@@ -115,11 +115,11 @@ namespace VRBuilder.Core.Tests.Serialization
 
         //    Step step = new Step("");
         //    step.Data.Behaviors.Data.Behaviors.Add(new PlayAudioBehavior(new ResourceAudio(original), BehaviorExecutionStages.Activation));
-        //    ICourse course = new Course("", new Chapter("", step));
+        //    IProcess process = new Process("", new Chapter("", step));
 
         //    // When we serialize and deserialize a process with it
-        //    ICourse deserializedCourse = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(course));
-        //    PlayAudioBehavior deserializedBehavior = deserializedCourse.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as PlayAudioBehavior;
+        //    IProcess deserializedProcess = Serializer.ProcessFromByteArray(Serializer.ProcessToByteArray(process));
+        //    PlayAudioBehavior deserializedBehavior = deserializedProcess.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as PlayAudioBehavior;
         //    // ReSharper disable once PossibleNullReferenceException
         //    LocalizedString deserialized = ((ResourceAudio)deserializedBehavior.Data.AudioData).Path;
 
@@ -141,16 +141,16 @@ namespace VRBuilder.Core.Tests.Serialization
                 new DelayBehavior(0f),
                 new EmptyBehaviorMock()
             });
-            IProcess course = new LinearProcessBuilder("Process")
+            IProcess process = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(sequence)))
                 .Build();
 
             // When we serialize and deserialize it
-            IProcess deserializedCourse = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(course));
+            IProcess deserializedProcess = Serializer.ProcessFromByteArray(Serializer.ProcessToByteArray(process));
 
-            BehaviorSequence deserializedSequence = deserializedCourse.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as BehaviorSequence;
+            BehaviorSequence deserializedSequence = deserializedProcess.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as BehaviorSequence;
 
             // Then the values stay the same.
             Assert.IsNotNull(deserializedSequence);
@@ -175,8 +175,8 @@ namespace VRBuilder.Core.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize it,
-            byte[] serialized = Serializer.CourseToByteArray(process1);
-            IProcess process2 = Serializer.CourseFromByteArray(serialized);
+            byte[] serialized = Serializer.ProcessToByteArray(process1);
+            IProcess process2 = Serializer.ProcessFromByteArray(serialized);
 
             // Then that delayed behaviors should have the same target behaviors and delay time.
             DelayBehavior behavior1 = process1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as DelayBehavior;
@@ -200,9 +200,9 @@ namespace VRBuilder.Core.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize a process with it
-            byte[] serialized = Serializer.CourseToByteArray(process1);
+            byte[] serialized = Serializer.ProcessToByteArray(process1);
 
-            IProcess process2 = Serializer.CourseFromByteArray(serialized);
+            IProcess process2 = Serializer.ProcessFromByteArray(serialized);
 
             DisableGameObjectBehavior behavior1 = process1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as DisableGameObjectBehavior;
             DisableGameObjectBehavior behavior2 = process2.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as DisableGameObjectBehavior;
@@ -230,7 +230,7 @@ namespace VRBuilder.Core.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize a process with it
-            IProcess process2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(process1));
+            IProcess process2 = Serializer.ProcessFromByteArray(Serializer.ProcessToByteArray(process1));
 
             EnableGameObjectBehavior behavior1 = process1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as EnableGameObjectBehavior;
             EnableGameObjectBehavior behavior2 = process2.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as EnableGameObjectBehavior;
@@ -259,7 +259,7 @@ namespace VRBuilder.Core.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize it
-            IProcess process2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(process1));
+            IProcess process2 = Serializer.ProcessFromByteArray(Serializer.ProcessToByteArray(process1));
 
 
             // Then that's behavior target is still the same.
@@ -288,7 +288,7 @@ namespace VRBuilder.Core.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize it,
-            IProcess process2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(process1));
+            IProcess process2 = Serializer.ProcessFromByteArray(Serializer.ProcessToByteArray(process1));
 
             // Then path to the audiofile should not change.
             PlayAudioBehavior behavior1 = process1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as PlayAudioBehavior;
@@ -312,7 +312,7 @@ namespace VRBuilder.Core.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize it,
-            IProcess process2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(process1));
+            IProcess process2 = Serializer.ProcessFromByteArray(Serializer.ProcessToByteArray(process1));
 
             PlayAudioBehavior behavior1 = process1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as PlayAudioBehavior;
             PlayAudioBehavior behavior2 = process2.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as PlayAudioBehavior;
@@ -339,7 +339,7 @@ namespace VRBuilder.Core.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize it
-            IProcess process2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(process1));
+            IProcess process2 = Serializer.ProcessFromByteArray(Serializer.ProcessToByteArray(process1));
 
             UnlockObjectBehavior behavior1 = process1.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as UnlockObjectBehavior;
             UnlockObjectBehavior behavior2 = process2.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First() as UnlockObjectBehavior;
@@ -361,18 +361,18 @@ namespace VRBuilder.Core.Tests.Serialization
             // Given we have a ResourceAudio instance,
             ResourceAudio audio = new ResourceAudio("TestPath");
 
-            IProcess course = new LinearProcessBuilder("Process")
+            IProcess process = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddBehavior(new PlayAudioBehavior(audio, BehaviorExecutionStages.Activation))))
                 .Build();
 
             // When we serialize and deserialize a process with it
-            IProcess testCourse = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(course));
+            IProcess testProcess = Serializer.ProcessFromByteArray(Serializer.ProcessToByteArray(process));
 
             // Then the path to audio resource should be the same.
-            string audioPath1 = TestingUtils.GetField<string>(((PlayAudioBehavior)course.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First()).Data.AudioData, "path");
-            string audioPath2 = TestingUtils.GetField<string>(((PlayAudioBehavior)testCourse.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First()).Data.AudioData, "path");
+            string audioPath1 = TestingUtils.GetField<string>(((PlayAudioBehavior)process.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First()).Data.AudioData, "path");
+            string audioPath2 = TestingUtils.GetField<string>(((PlayAudioBehavior)testProcess.Data.FirstChapter.Data.FirstStep.Data.Behaviors.Data.Behaviors.First()).Data.AudioData, "path");
 
             Assert.AreEqual(audioPath1, audioPath2);
 

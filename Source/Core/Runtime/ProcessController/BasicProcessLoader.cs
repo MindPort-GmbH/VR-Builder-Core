@@ -3,7 +3,7 @@ using VRBuilder.Core;
 using VRBuilder.Core.Configuration;
 using System;
 
-namespace VRBuilder.CourseController
+namespace VRBuilder.ProcessController
 {
     /// <summary>
     /// Loads and starts the process currently selected in the '[PROCESS_CONFIGURATION]' gameObject.
@@ -13,14 +13,14 @@ namespace VRBuilder.CourseController
        private void Start()
         {
             // Load process from a file.
-            string coursePath = RuntimeConfigurator.Instance.GetSelectedProcess();
+            string processPath = RuntimeConfigurator.Instance.GetSelectedProcess();
 
             IProcess process;
 
             // Try to load the in the [PROCESS_CONFIGURATION] selected process.
             try
             {
-                process = RuntimeConfigurator.Configuration.LoadProcess(coursePath);
+                process = RuntimeConfigurator.Configuration.LoadProcess(processPath);
             }
             catch (Exception exception)
             {

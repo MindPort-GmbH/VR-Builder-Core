@@ -26,10 +26,10 @@ namespace VRBuilder.Tests.Serialization
                     .AddStep(new BasicStepBuilder("Step")))
                 .Build();
 
-            Serializer.CourseToByteArray(process1);
+            Serializer.ProcessToByteArray(process1);
 
             // When we serialize and deserialize it
-            IProcess process2 = Serializer.CourseFromByteArray(Serializer.CourseToByteArray(process1));
+            IProcess process2 = Serializer.ProcessFromByteArray(Serializer.ProcessToByteArray(process1));
 
             // Then it should still be base process, have the same name and the first chapter with the same name.
             Assert.AreEqual(typeof(Process), process1.GetType());
@@ -54,7 +54,7 @@ namespace VRBuilder.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize it
-            IProcess process2 = Serializer.CourseFromByteArray((Serializer.CourseToByteArray(process1)));
+            IProcess process2 = Serializer.ProcessFromByteArray((Serializer.ProcessToByteArray(process1)));
 
             // Then chapter's type, name, first step and next chapter should not change.
             IChapter chapter1 = process1.Data.FirstChapter;
@@ -79,7 +79,7 @@ namespace VRBuilder.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize it
-            IProcess process2 = Serializer.CourseFromByteArray((Serializer.CourseToByteArray(process1)));
+            IProcess process2 = Serializer.ProcessFromByteArray((Serializer.ProcessToByteArray(process1)));
 
             // Then that condition's name should not change.
             ICondition condition1 = process1.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions.First()
@@ -103,8 +103,8 @@ namespace VRBuilder.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize it
-            byte[] serialized = Serializer.CourseToByteArray(process1);
-            IProcess process2 = Serializer.CourseFromByteArray(serialized);
+            byte[] serialized = Serializer.ProcessToByteArray(process1);
+            IProcess process2 = Serializer.ProcessFromByteArray(serialized);
 
             // Then transition from the first step should lead to the same step as before.
             Assert.AreEqual(
@@ -127,7 +127,7 @@ namespace VRBuilder.Tests.Serialization
                 .Build();
 
             // When we serialize and deserialize it
-            IProcess process2 = Serializer.CourseFromByteArray((Serializer.CourseToByteArray(process1)));
+            IProcess process2 = Serializer.ProcessFromByteArray((Serializer.ProcessToByteArray(process1)));
 
             // Then that step's name should still be the same.
             Assert.AreEqual(process1.Data.FirstChapter.Data.FirstStep.Data.Name,

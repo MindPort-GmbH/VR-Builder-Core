@@ -13,54 +13,54 @@ using UnityEngine;
 namespace VRBuilder.Editor
 {
     /// <summary>
-    /// A static class that handles the course assets. It lets you to save, load, delete, and import processes and provides multiple related utility methods.
+    /// A static class that handles the process assets. It lets you to save, load, delete, and import processes and provides multiple related utility methods.
     /// </summary>
     internal static class ProcessAssetManager
     {
         /// <summary>
-        /// Deletes the process with <paramref name="courseName"/>.
+        /// Deletes the process with <paramref name="processName"/>.
         /// </summary>
-        internal static void Delete(string courseName)
+        internal static void Delete(string processName)
         {
-            if (ProcessAssetUtils.DoesCourseAssetExist(courseName))
+            if (ProcessAssetUtils.DoesProcessAssetExist(processName))
             {
-                Directory.Delete(ProcessAssetUtils.GetCourseAssetDirectory(courseName), true);
+                Directory.Delete(ProcessAssetUtils.GetProcessAssetDirectory(processName), true);
                 AssetDatabase.Refresh();
             }
         }
 
         /// <summary>
-        /// Imports the given <paramref name="course"/> by saving it to the proper directory. If there is a name collision, this course will be renamed.
+        /// Imports the given <paramref name="process"/> by saving it to the proper directory. If there is a name collision, this process will be renamed.
         /// </summary>
-        internal static void Import(IProcess course)
+        internal static void Import(IProcess process)
         {
             int counter = 0;
-            string oldName = course.Data.Name;
-            while (ProcessAssetUtils.DoesCourseAssetExist(course.Data.Name))
+            string oldName = process.Data.Name;
+            while (ProcessAssetUtils.DoesProcessAssetExist(process.Data.Name))
             {
                 if (counter > 0)
                 {
-                    course.Data.Name = course.Data.Name.Substring(0, course.Data.Name.Length - 2);
+                    process.Data.Name = process.Data.Name.Substring(0, process.Data.Name.Length - 2);
                 }
 
                 counter++;
-                course.Data.Name += " " + counter;
+                process.Data.Name += " " + counter;
             }
 
-            if (oldName != course.Data.Name)
+            if (oldName != process.Data.Name)
             {
-                Debug.LogWarning($"We detected a name collision while importing course \"{oldName}\". We have renamed it to \"{course.Data.Name}\" before importing.");
+                Debug.LogWarning($"We detected a name collision while importing process \"{oldName}\". We have renamed it to \"{process.Data.Name}\" before importing.");
             }
 
-            Save(course);
+            Save(process);
         }
 
         /// <summary>
-        /// Imports the course from file at given file <paramref name="path"/> if the file extensions matches the <paramref name="serializer"/>.
+        /// Imports the process from file at given file <paramref name="path"/> if the file extensions matches the <paramref name="serializer"/>.
         /// </summary>
         internal static void Import(string path, IProcessSerializer serializer)
         {
-            IProcess course;
+            IProcess process;
 
             if (Path.GetExtension(path) != $".{serializer.FileFormat}")
             {
@@ -70,7 +70,7 @@ namespace VRBuilder.Editor
             try
             {
                 byte[] file = File.ReadAllBytes(path);
-                course = serializer.CourseFromByteArray(file);
+                process = serializer.ProcessFromByteArray(file);
             }
             catch (Exception e)
             {
@@ -78,19 +78,19 @@ namespace VRBuilder.Editor
                 return;
             }
 
-            Import(course);
+            Import(process);
         }
 
         /// <summary>
-        /// Save the <paramref name="course"/> to the file system.
+        /// Save the <paramref name="process"/> to the file system.
         /// </summary>
-        internal static void Save(IProcess course)
+        internal static void Save(IProcess process)
         {
             try
             {
-                string path = ProcessAssetUtils.GetCourseAssetPath(course.Data.Name);
-                byte[] courseData = EditorConfigurator.Instance.Serializer.CourseToByteArray(course);
-                WriteCourse(path, courseData);
+                string path = ProcessAssetUtils.GetProcessAssetPath(process.Data.Name);
+                byte[] processData = EditorConfigurator.Instance.Serializer.ProcessToByteArray(process);
+                WriteProcess(path, processData);
             }
             catch (Exception ex)
             {
@@ -98,7 +98,7 @@ namespace VRBuilder.Editor
             }
         }
 
-        private static void WriteCourse(string path, byte[] courseData)
+        private static void WriteProcess(string path, byte[] processData)
         {
             FileStream stream = null;
             try
@@ -106,7 +106,7 @@ namespace VRBuilder.Editor
                 Directory.CreateDirectory(Path.GetDirectoryName(path));
 
                 stream = File.Create(path);
-                stream.Write(courseData, 0, courseData.Length);
+                stream.Write(processData, 0, processData.Length);
                 stream.Close();
             }
             catch (Exception ex)
@@ -124,22 +124,22 @@ namespace VRBuilder.Editor
         }
 
         /// <summary>
-        /// Loads the course with the given <paramref name="courseName"/> from the file system and converts it into the <seealso cref="IProcess"/> instance.
+        /// Loads the process with the given <paramref name="processName"/> from the file system and converts it into the <seealso cref="IProcess"/> instance.
         /// </summary>
-        internal static IProcess Load(string courseName)
+        internal static IProcess Load(string processName)
         {
-            if (ProcessAssetUtils.DoesCourseAssetExist(courseName))
+            if (ProcessAssetUtils.DoesProcessAssetExist(processName))
             {
-                string courseAssetPath = ProcessAssetUtils.GetCourseAssetPath(courseName);
-                byte[] courseBytes = File.ReadAllBytes(courseAssetPath);
+                string processAssetPath = ProcessAssetUtils.GetProcessAssetPath(processName);
+                byte[] processBytes = File.ReadAllBytes(processAssetPath);
 
                 try
                 {
-                    return EditorConfigurator.Instance.Serializer.CourseFromByteArray(courseBytes);
+                    return EditorConfigurator.Instance.Serializer.ProcessFromByteArray(processBytes);
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogError($"Failed to load the course '{courseName}' from '{courseAssetPath}' because of: \n{ex.Message}");
+                    Debug.LogError($"Failed to load the process '{processName}' from '{processAssetPath}' because of: \n{ex.Message}");
                     Debug.LogError(ex);
                 }
             }
@@ -147,29 +147,29 @@ namespace VRBuilder.Editor
         }
 
         /// <summary>
-        /// Renames the <paramref name="course"/> to the <paramref name="newName"/> and moves it to the appropriate directory. Check if you can rename before with the <seealso cref="CanRename"/> method.
+        /// Renames the <paramref name="process"/> to the <paramref name="newName"/> and moves it to the appropriate directory. Check if you can rename before with the <seealso cref="CanRename"/> method.
         /// </summary>
-        internal static void RenameCourse(IProcess course, string newName)
+        internal static void RenameProcess(IProcess process, string newName)
         {
-            if (ProcessAssetUtils.CanRename(course, newName, out string errorMessage) == false)
+            if (ProcessAssetUtils.CanRename(process, newName, out string errorMessage) == false)
             {
-                Debug.LogError($"Course {course.Data.Name} was not renamed because:\n\n{errorMessage}");
+                Debug.LogError($"Process {process.Data.Name} was not renamed because:\n\n{errorMessage}");
                 return;
             }
 
-            string oldDirectory = ProcessAssetUtils.GetCourseAssetDirectory(course.Data.Name);
-            string newDirectory = ProcessAssetUtils.GetCourseAssetDirectory(newName);
+            string oldDirectory = ProcessAssetUtils.GetProcessAssetDirectory(process.Data.Name);
+            string newDirectory = ProcessAssetUtils.GetProcessAssetDirectory(newName);
 
             Directory.Move(oldDirectory, newDirectory);
             File.Move($"{oldDirectory}.meta", $"{newDirectory}.meta");
 
-            string newAsset = ProcessAssetUtils.GetCourseAssetPath(newName);
-            string oldAsset = $"{ProcessAssetUtils.GetCourseAssetDirectory(newName)}/{course.Data.Name}.{EditorConfigurator.Instance.Serializer.FileFormat}";
+            string newAsset = ProcessAssetUtils.GetProcessAssetPath(newName);
+            string oldAsset = $"{ProcessAssetUtils.GetProcessAssetDirectory(newName)}/{process.Data.Name}.{EditorConfigurator.Instance.Serializer.FileFormat}";
             File.Move(oldAsset, newAsset);
             File.Move($"{oldAsset}.meta", $"{newAsset}.meta");
-            course.Data.Name = newName;
+            process.Data.Name = newName;
 
-            Save(course);
+            Save(process);
         }
     }
 }

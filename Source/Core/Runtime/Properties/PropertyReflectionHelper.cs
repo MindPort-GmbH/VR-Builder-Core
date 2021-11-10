@@ -18,7 +18,7 @@ using UnityEngine;
 namespace VRBuilder.Core
 {
     /// <summary>
-    /// Helper class which provides methods to extract <see cref="LockablePropertyData"/> from different course entities.
+    /// Helper class which provides methods to extract <see cref="LockablePropertyData"/> from different process entities.
     /// </summary>
     internal static class PropertyReflectionHelper
     {

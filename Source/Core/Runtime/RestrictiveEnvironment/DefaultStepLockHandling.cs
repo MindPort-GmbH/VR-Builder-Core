@@ -15,8 +15,8 @@ namespace VRBuilder.Core.RestrictiveEnvironment
     /// </summary>
     public class DefaultStepLockHandling : StepLockHandlingStrategy
     {
-        private bool lockOnCourseStart = true;
-        private bool lockOnCourseFinished = true;
+        private bool lockOnProcessStart = true;
+        private bool lockOnProcessFinished = true;
 
         /// <inheritdoc />
         public override void Unlock(IStepData data, IEnumerable<LockablePropertyData> manualUnlocked)
@@ -81,15 +81,15 @@ namespace VRBuilder.Core.RestrictiveEnvironment
                 return null;
             }
 
-            IProcessData course = ProcessRunner.Current.Data;
+            IProcessData process = ProcessRunner.Current.Data;
             // Test all chapters, but the last.
-            for (int i = 0; i < course.Chapters.Count - 1; i++)
+            for (int i = 0; i < process.Chapters.Count - 1; i++)
             {
-                if (course.Chapters[i] == course.Current)
+                if (process.Chapters[i] == process.Current)
                 {
-                    if (course.Chapters[i + 1].Data.FirstStep != null)
+                    if (process.Chapters[i + 1].Data.FirstStep != null)
                     {
-                        return course.Chapters[i + 1].Data.FirstStep.Data;
+                        return process.Chapters[i + 1].Data.FirstStep.Data;
                     }
                     break;
                 }
@@ -101,21 +101,21 @@ namespace VRBuilder.Core.RestrictiveEnvironment
         /// <inheritdoc />
         public override void Configure(IMode mode)
         {
-            if (mode.ContainsParameter<bool>("LockOnCourseStart"))
+            if (mode.ContainsParameter<bool>("LockOnProcessStart"))
             {
-                lockOnCourseStart = mode.GetParameter<bool>("LockOnCourseStart");
+                lockOnProcessStart = mode.GetParameter<bool>("LockOnProcessStart");
             }
 
-            if (mode.ContainsParameter<bool>("LockOnCourseFinished"))
+            if (mode.ContainsParameter<bool>("LockOnProcessFinished"))
             {
-                lockOnCourseFinished = mode.GetParameter<bool>("LockOnCourseFinished");
+                lockOnProcessFinished = mode.GetParameter<bool>("LockOnProcessFinished");
             }
         }
 
         /// <inheritdoc />
-        public override void OnCourseStarted(IProcess course)
+        public override void OnProcessStarted(IProcess process)
         {
-            if (lockOnCourseStart)
+            if (lockOnProcessStart)
             {
                 foreach (LockableProperty prop in SceneUtils.GetActiveAndInactiveComponents<LockableProperty>())
                 {
@@ -125,9 +125,9 @@ namespace VRBuilder.Core.RestrictiveEnvironment
         }
 
         /// <inheritdoc />
-        public override void OnCourseFinished(IProcess course)
+        public override void OnProcessFinished(IProcess process)
         {
-            if (lockOnCourseFinished)
+            if (lockOnProcessFinished)
             {
                 foreach (LockableProperty prop in SceneUtils.GetActiveAndInactiveComponents<LockableProperty>())
                 {

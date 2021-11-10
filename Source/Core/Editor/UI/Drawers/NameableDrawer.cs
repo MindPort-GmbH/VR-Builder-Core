@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using VRBuilder.Core;
 using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Conditions;
-using VRBuilder.Editor.CourseValidation;
+using VRBuilder.Editor.ProcessValidation;
 using UnityEditor;
 using UnityEngine;
 

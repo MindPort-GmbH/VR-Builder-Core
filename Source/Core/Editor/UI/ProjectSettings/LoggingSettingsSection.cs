@@ -11,7 +11,7 @@ namespace VRBuilder.Editor.UI
 {
     internal class LoggingSettingsSection : IProjectSettingsSection
     {
-        public string Title { get; } = "Course LifeCycle Logging";
+        public string Title { get; } = "Process LifeCycle Logging";
         public Type TargetPageProvider { get; } = typeof(BuilderSettingsProvider);
         public int Priority { get; } = 1000;
 

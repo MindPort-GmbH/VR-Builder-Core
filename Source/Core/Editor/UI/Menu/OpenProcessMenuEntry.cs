@@ -16,8 +16,8 @@ namespace VRBuilder.Editor.BuilderMenu
         [MenuItem("Window/VR Builder/Workflow Editor", false, 100)]
         private static void OpenWorkflowEditor()
         {
-            GlobalEditorHandler.SetCurrentCourse(ProcessAssetUtils.GetCourseNameFromPath(RuntimeConfigurator.Instance.GetSelectedProcess()));
-            GlobalEditorHandler.StartEditingCourse();
+            GlobalEditorHandler.SetCurrentProcess(ProcessAssetUtils.GetProcessNameFromPath(RuntimeConfigurator.Instance.GetSelectedProcess()));
+            GlobalEditorHandler.StartEditingProcess();
         }
 
         [MenuItem("Tools/VR Builder/Open Workflow Editor", true, 2)]

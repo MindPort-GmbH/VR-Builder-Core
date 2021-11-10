@@ -9,7 +9,7 @@ using VRBuilder.Tests.Utils.Mocks;
 using UnityEngine.Assertions;
 using UnityEngine.TestTools;
 
-namespace VRBuilder.Tests.Courses
+namespace VRBuilder.Tests.Processes
 {
     public class LifeCycleTests : RuntimeTests
     {

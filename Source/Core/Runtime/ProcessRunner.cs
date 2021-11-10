@@ -17,17 +17,17 @@ namespace VRBuilder.Core
     /// </summary>
     public static class ProcessRunner
     {
-        public class CourseEvents
+        public class ProcessEvents
         {
             /// <summary>
-            /// Will be called before the course is setup internally.
+            /// Will be called before the process is setup internally.
             /// </summary>
-            public EventHandler<ProcessEventArgs> CourseSetup;
+            public EventHandler<ProcessEventArgs> ProcessSetup;
 
             /// <summary>
-            /// Will be called on course start.
+            /// Will be called on process start.
             /// </summary>
-            public EventHandler<ProcessEventArgs> CourseStarted;
+            public EventHandler<ProcessEventArgs> ProcessStarted;
 
             /// <summary>
             /// Will be called each time a chapter activates.
@@ -40,9 +40,9 @@ namespace VRBuilder.Core
             public EventHandler<ProcessEventArgs> StepStarted;
 
             /// <summary>
-            /// Will be called when the course finishes.
+            /// Will be called when the process finishes.
             /// </summary>
-            public EventHandler<ProcessEventArgs> CourseFinished;
+            public EventHandler<ProcessEventArgs> ProcessFinished;
 
             /// <summary>
             /// Will be called when manual fast forward is triggered.
@@ -50,23 +50,23 @@ namespace VRBuilder.Core
             public EventHandler<FastForwardProcessEventArgs> FastForwardStep;
         }
 
-        private class CourseRunnerInstance : MonoBehaviour
+        private class ProcessRunnerInstance : MonoBehaviour
         {
             /// <summary>
             /// Reference to the currently used <see cref="IProcess"/>.
             /// </summary>
-            public IProcess course = null;
+            public IProcess process = null;
 
             private void HandleModeChanged(object sender, ModeChangedEventArgs args)
             {
-                if (course != null)
+                if (process != null)
                 {
-                    course.Configure(args.Mode);
+                    process.Configure(args.Mode);
                     RuntimeConfigurator.Configuration.StepLockHandling.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
                 }
             }
 
-            private void HandleCourseStageChanged(object sender, ActivationStateChangedEventArgs e)
+            private void HandleProcessStageChanged(object sender, ActivationStateChangedEventArgs e)
             {
                 if (e.Stage == Stage.Inactive)
                 {
@@ -77,33 +77,33 @@ namespace VRBuilder.Core
 
             private void Update()
             {
-                if (course == null)
+                if (process == null)
                 {
                     return;
                 }
 
-                if (course.LifeCycle.Stage == Stage.Inactive)
+                if (process.LifeCycle.Stage == Stage.Inactive)
                 {
                     return;
                 }
 
-                course.Update();
+                process.Update();
 
-                if (course.Data.Current?.LifeCycle.Stage == Stage.Activating)
+                if (process.Data.Current?.LifeCycle.Stage == Stage.Activating)
                 {
-                    Events.ChapterStarted?.Invoke(this, new ProcessEventArgs(course));
+                    Events.ChapterStarted?.Invoke(this, new ProcessEventArgs(process));
                 }
 
-                if (course.Data.Current?.Data.Current?.LifeCycle.Stage == Stage.Activating)
+                if (process.Data.Current?.Data.Current?.LifeCycle.Stage == Stage.Activating)
                 {
-                    Events.StepStarted?.Invoke(this, new ProcessEventArgs(course));
+                    Events.StepStarted?.Invoke(this, new ProcessEventArgs(process));
                 }
 
-                if (course.LifeCycle.Stage == Stage.Active)
+                if (process.LifeCycle.Stage == Stage.Active)
                 {
-                    course.LifeCycle.Deactivate();
-                    RuntimeConfigurator.Configuration.StepLockHandling.OnCourseFinished(course);
-                    Events.CourseFinished?.Invoke(this, new ProcessEventArgs(course));
+                    process.LifeCycle.Deactivate();
+                    RuntimeConfigurator.Configuration.StepLockHandling.OnProcessFinished(process);
+                    Events.ProcessFinished?.Invoke(this, new ProcessEventArgs(process));
                 }
             }
 
@@ -112,35 +112,35 @@ namespace VRBuilder.Core
             /// </summary>
             public void Execute()
             {
-                Events.CourseSetup?.Invoke(this, new ProcessEventArgs(course));
+                Events.ProcessSetup?.Invoke(this, new ProcessEventArgs(process));
 
                 RuntimeConfigurator.ModeChanged += HandleModeChanged;
 
-                course.LifeCycle.StageChanged += HandleCourseStageChanged;
-                course.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
+                process.LifeCycle.StageChanged += HandleProcessStageChanged;
+                process.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
                 RuntimeConfigurator.Configuration.StepLockHandling.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
-                RuntimeConfigurator.Configuration.StepLockHandling.OnCourseStarted(course);
-                course.LifeCycle.Activate();
+                RuntimeConfigurator.Configuration.StepLockHandling.OnProcessStarted(process);
+                process.LifeCycle.Activate();
 
-                Events.CourseStarted?.Invoke(this, new ProcessEventArgs(course));
+                Events.ProcessStarted?.Invoke(this, new ProcessEventArgs(process));
             }
         }
 
-        private static CourseRunnerInstance instance;
+        private static ProcessRunnerInstance instance;
 
-        private static CourseEvents events;
+        private static ProcessEvents events;
 
         /// <summary>
-        /// Returns all course events for the current scene.
+        /// Returns all process events for the current scene.
         /// </summary>
-        public static CourseEvents Events
+        public static ProcessEvents Events
         {
             get
             {
                 if (events == null)
                 {
-                    events = new CourseEvents();
+                    events = new ProcessEvents();
                     SceneManager.sceneUnloaded += OnSceneUnloaded;
                 }
                 return events;
@@ -160,7 +160,7 @@ namespace VRBuilder.Core
         {
             get
             {
-                return instance == null ? null : instance.course;
+                return instance == null ? null : instance.process;
             }
         }
 
@@ -178,11 +178,11 @@ namespace VRBuilder.Core
         /// <summary>
         /// Initializes the process runner by creating all required component in scene.
         /// </summary>
-        /// <param name="course">The course which should be run.</param>
-        public static void Initialize(IProcess course)
+        /// <param name="process">The process which should be run.</param>
+        public static void Initialize(IProcess process)
         {
-            instance = instance == null ? new GameObject("[PROCESS_RUNNER]").AddComponent<CourseRunnerInstance>() : instance;
-            instance.course = course;
+            instance = instance == null ? new GameObject("[PROCESS_RUNNER]").AddComponent<ProcessRunnerInstance>() : instance;
+            instance.process = process;
         }
 
         /// <summary>

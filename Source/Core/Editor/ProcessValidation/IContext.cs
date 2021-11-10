@@ -2,10 +2,10 @@
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
-namespace VRBuilder.Editor.CourseValidation
+namespace VRBuilder.Editor.ProcessValidation
 {
     /// <summary>
-    /// Context is used to indicate the position in the course structure.
+    /// Context is used to indicate the position in the process structure.
     /// </summary>
     public interface IContext
     {

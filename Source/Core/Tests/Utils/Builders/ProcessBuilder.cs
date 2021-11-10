@@ -6,7 +6,7 @@ using VRBuilder.Core;
 
 namespace VRBuilder.Tests.Builder
 {
-    public abstract class ProcessBuilder<TCourse> : BuilderWithResourcePath<TCourse> where TCourse : IProcess
+    public abstract class ProcessBuilder<TProcess> : BuilderWithResourcePath<TProcess> where TProcess : IProcess
     {
         public ProcessBuilder(string name) : base(name)
         {

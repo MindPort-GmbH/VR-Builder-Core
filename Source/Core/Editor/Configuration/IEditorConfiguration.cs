@@ -18,7 +18,7 @@ namespace VRBuilder.Editor.Configuration
         /// <summary>
         /// Absolute path where processes are stored.
         /// </summary>
-        string CourseStreamingAssetsSubdirectory { get; }
+        string ProcessStreamingAssetsSubdirectory { get; }
 
         /// <summary>
         /// Assets path where to save the serialized <see cref="AllowedMenuItemsSettings"/> file.

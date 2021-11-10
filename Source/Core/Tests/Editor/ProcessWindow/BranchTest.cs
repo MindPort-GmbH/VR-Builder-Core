@@ -8,7 +8,7 @@ using NUnit.Framework;
 using VRBuilder.Core;
 using VRBuilder.Editor.UI.Windows;
 
-namespace VRBuilder.Editor.Tests.CourseWindowTests
+namespace VRBuilder.Editor.Tests.ProcessWindowTests
 {
     internal class BranchTest : BaseProcessWindowTest
     {

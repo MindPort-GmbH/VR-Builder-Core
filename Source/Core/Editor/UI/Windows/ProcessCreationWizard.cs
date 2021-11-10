@@ -17,9 +17,9 @@ namespace VRBuilder.Editor.UI.Windows
     {
         private static ProcessCreationWizard window;
 
-        // CourseCreationWizard is obsolete and was replaced by BuilderSetupWizard
+        // ProcessCreationWizard is obsolete and was replaced by BuilderSetupWizard
 #if !UNITY_2019_4_OR_NEWER || UNITY_EDITOR_OSX
-        [MenuItem("Tools/VR Builder/Create New Course...")]
+        [MenuItem("Tools/VR Builder/Create New Process...")]
 #endif
         private static void ShowWizard()
         {
@@ -34,7 +34,7 @@ namespace VRBuilder.Editor.UI.Windows
                         openedProcessWizards[i].Close();
                     }
 
-                    Debug.LogWarning("There were more than one create course windows open. This should not happen. The redundant windows were closed.");
+                    Debug.LogWarning("There were more than one create process windows open. This should not happen. The redundant windows were closed.");
                 }
 
                 window = openedProcessWizards.Length > 0 ? openedProcessWizards[0] : GetWindow<ProcessCreationWizard>();
@@ -63,7 +63,7 @@ namespace VRBuilder.Editor.UI.Windows
 
             if (RuntimeConfigurator.Exists == false)
             {
-                EditorGUILayout.HelpBox("The current scene is not a process scene. No course can be created. To automatically setup the scene, select \"Tools > VR Builder > Setup Process Scene\".", MessageType.Error);
+                EditorGUILayout.HelpBox("The current scene is not a process scene. No process can be created. To automatically setup the scene, select \"Tools > VR Builder > Setup Process Scene\".", MessageType.Error);
             }
 
             EditorGUI.BeginDisabledGroup(RuntimeConfigurator.Exists == false);
@@ -80,11 +80,11 @@ namespace VRBuilder.Editor.UI.Windows
             {
                 if (ProcessAssetUtils.CanCreate(processName, out errorMessage))
                 {
-                    ProcessAssetManager.Import(EntityFactory.CreateCourse(processName));
-                    RuntimeConfigurator.Instance.SetSelectedCourse(ProcessAssetUtils.GetCourseStreamingAssetPath(processName));
+                    ProcessAssetManager.Import(EntityFactory.CreateProcess(processName));
+                    RuntimeConfigurator.Instance.SetSelectedProcess(ProcessAssetUtils.GetProcessStreamingAssetPath(processName));
                     EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
-                    GlobalEditorHandler.SetCurrentCourse(processName);
-                    GlobalEditorHandler.StartEditingCourse();
+                    GlobalEditorHandler.SetCurrentProcess(processName);
+                    GlobalEditorHandler.StartEditingProcess();
 
                     Close();
                 }

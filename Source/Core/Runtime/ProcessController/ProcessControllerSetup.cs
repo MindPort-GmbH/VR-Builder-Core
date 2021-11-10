@@ -1,24 +1,24 @@
 using System.IO;
 using UnityEngine;
 
-namespace VRBuilder.CourseController
+namespace VRBuilder.ProcessController
 {
     /// <summary>
-    /// Allows to select a desired CourseController.
+    /// Allows to select a desired ProcessController.
     /// </summary>
     public class ProcessControllerSetup : MonoBehaviour
     {
-        private enum CourseMode
+        private enum ProcessMode
         {
             Default = 0,
             Standalone = 1
         }
         
         [SerializeField]
-        private CourseMode courseMode;
+        private ProcessMode processMode;
         
         [SerializeField, HideInInspector]
-        private GameObject courseControllerPrefab = null;
+        private GameObject processControllerPrefab = null;
 
         private GameObject currentControllerInstance = null;
 
@@ -29,9 +29,9 @@ namespace VRBuilder.CourseController
 
         private void InstantiateSpectator()
         {
-            if (courseControllerPrefab == null)
+            if (processControllerPrefab == null)
             {
-                throw new FileNotFoundException($"No course controller prefabs set." );
+                throw new FileNotFoundException($"No process controller prefabs set." );
             }
             
             if (currentControllerInstance != null)
@@ -39,7 +39,7 @@ namespace VRBuilder.CourseController
                 Destroy(currentControllerInstance);
             }
             
-            currentControllerInstance = Instantiate(courseControllerPrefab);
+            currentControllerInstance = Instantiate(processControllerPrefab);
         }
     }
 }

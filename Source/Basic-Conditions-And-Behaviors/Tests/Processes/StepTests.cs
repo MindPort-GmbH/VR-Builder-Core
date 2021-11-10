@@ -8,7 +8,7 @@ using UnityEngine;
 using NUnit.Framework;
 using UnityEngine.TestTools;
 
-namespace VRBuilder.Core.Tests.Courses
+namespace VRBuilder.Core.Tests.Processes
 {
     public class StepTests : RuntimeTests
     {

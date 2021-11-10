@@ -22,24 +22,24 @@ namespace VRBuilder.Core.Tests.Behaviors
             
             BasicProcessStepBuilder basicStepBuilder = new BasicProcessStepBuilder("Step");
 
-            IProcess course = new LinearProcessBuilder("Course")
+            IProcess process = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(basicStepBuilder
                         .Disable(toDisable)
                         .AddCondition(trigger)))
                 .Build();
 
-            course.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
+            process.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
             // When the behavior is activated
-            ProcessRunner.Initialize(course);
+            ProcessRunner.Initialize(process);
             ProcessRunner.Run();
 
-            yield return new WaitUntil(()=> course.Data.FirstChapter.Data.Steps[0].LifeCycle.Stage == Stage.Active);
+            yield return new WaitUntil(()=> process.Data.FirstChapter.Data.Steps[0].LifeCycle.Stage == Stage.Active);
 
             trigger.Autocomplete();
 
-            yield return new WaitUntil(()=> course.Data.FirstChapter.Data.Steps[0].LifeCycle.Stage == Stage.Inactive);
+            yield return new WaitUntil(()=> process.Data.FirstChapter.Data.Steps[0].LifeCycle.Stage == Stage.Inactive);
 
             // Then the process object is disabled.
             Assert.False(toDisable.GameObject.activeSelf);
@@ -57,7 +57,7 @@ namespace VRBuilder.Core.Tests.Behaviors
             ProcessSceneObject toDisable = TestingUtils.CreateSceneObject("ToDisable");
             EndlessConditionMock trigger = new EndlessConditionMock();
 
-            IProcess course = new LinearProcessBuilder("Course")
+            IProcess process = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicProcessStepBuilder("Step")
                         .Disable(toDisable))
@@ -65,17 +65,17 @@ namespace VRBuilder.Core.Tests.Behaviors
                         .AddCondition(trigger)))
                 .Build();
 
-            course.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
+            process.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
             // When the behavior is activated and after the step is completed
-            ProcessRunner.Initialize(course);
+            ProcessRunner.Initialize(process);
             ProcessRunner.Run();
 
-            yield return new WaitUntil(()=> course.Data.FirstChapter.Data.Steps[1].LifeCycle.Stage == Stage.Active);
+            yield return new WaitUntil(()=> process.Data.FirstChapter.Data.Steps[1].LifeCycle.Stage == Stage.Active);
 
             trigger.Autocomplete();
 
-            yield return new WaitUntil(()=> course.Data.FirstChapter.Data.Steps[1].LifeCycle.Stage == Stage.Inactive);
+            yield return new WaitUntil(()=> process.Data.FirstChapter.Data.Steps[1].LifeCycle.Stage == Stage.Inactive);
 
             // Then the process object stays disabled.
             Assert.False(toDisable.GameObject.activeSelf);

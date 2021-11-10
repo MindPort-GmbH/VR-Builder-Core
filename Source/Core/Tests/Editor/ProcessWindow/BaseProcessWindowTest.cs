@@ -10,7 +10,7 @@ using VRBuilder.Editor.TestTools;
 using VRBuilder.Editor.UI.Windows;
 using UnityEditor;
 
-namespace VRBuilder.Editor.Tests.CourseWindowTests
+namespace VRBuilder.Editor.Tests.ProcessWindowTests
 {
     /// <summary>
     /// Base class for all process window tests.
@@ -35,9 +35,9 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
         /// </summary>
         protected static IProcess ExtractProcess(ProcessWindow window)
         {
-            IProcess course = window.GetCourse();
-            Assert.NotNull(course);
-            return course;
+            IProcess process = window.GetProcess();
+            Assert.NotNull(process);
+            return process;
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
         public override string GivenDescription => "A process window with empty process and fixed size of 1024x512 pixels.";
 
         /// <inheritdoc />
-        protected override string AssetFolderForRecordedActions => EditorUtils.GetCoreFolder() + "/Tests/Editor/CourseWindow/Records";
+        protected override string AssetFolderForRecordedActions => EditorUtils.GetCoreFolder() + "/Tests/Editor/ProcessWindow/Records";
 
         /// <inheritdoc />
         protected override ProcessWindow Given()
@@ -73,7 +73,7 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
             window.ShowUtility();
             window.position = new Rect(Vector2.zero, window.position.size);
             window.minSize = window.maxSize = new Vector2(1024f, 512f);
-            window.SetCourse(new Process("Test", new Chapter("Test", null)));
+            window.SetProcess(new Process("Test", new Chapter("Test", null)));
             window.Focus();
 
             return window;

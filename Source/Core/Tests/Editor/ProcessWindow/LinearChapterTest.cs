@@ -8,7 +8,7 @@ using NUnit.Framework;
 using VRBuilder.Core;
 using VRBuilder.Editor.UI.Windows;
 
-namespace VRBuilder.Editor.Tests.CourseWindowTests
+namespace VRBuilder.Editor.Tests.ProcessWindowTests
 {
     internal class LinearChapterTest : BaseProcessWindowTest
     {
@@ -56,12 +56,12 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
             IList<IStep> steps = firstChapter.Data.Steps;
 
             validatedSteps.Clear();
-            ValidateLinearCourse(firstStep);
+            ValidateLinearProcess(firstStep);
 
             Assert.That(iteratedSteps == steps.Count);
         }
 
-        private void ValidateLinearCourse(IStep step)
+        private void ValidateLinearProcess(IStep step)
         {
             iteratedSteps++;
 
@@ -82,7 +82,7 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
             // If not, the step is the end of the chapter.
             if (TryToGetStepFromTransition(transitions.First(), out nextStep))
             {
-                ValidateLinearCourse(nextStep);
+                ValidateLinearProcess(nextStep);
             }
         }
     }

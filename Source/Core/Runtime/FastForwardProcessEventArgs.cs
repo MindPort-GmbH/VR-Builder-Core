@@ -16,7 +16,7 @@ namespace VRBuilder.Core
         /// </summary>
         public readonly ITransition CompletedTransition;
 
-        public FastForwardProcessEventArgs(ITransition transition, IProcess course) : base(course)
+        public FastForwardProcessEventArgs(ITransition transition, IProcess process) : base(process)
         {
             CompletedTransition = transition;
         }

@@ -23,7 +23,7 @@ namespace VRBuilder.Editor
         public static void Run()
         {
             // Create default save folder.
-            Directory.CreateDirectory(EditorConfigurator.Instance.CourseStreamingAssetsSubdirectory);
+            Directory.CreateDirectory(EditorConfigurator.Instance.ProcessStreamingAssetsSubdirectory);
 
             // Find and setup all OnSceneSetup classes in the project.
             IEnumerable<Type> types = ReflectionUtils.GetConcreteImplementationsOf<SceneSetup>();

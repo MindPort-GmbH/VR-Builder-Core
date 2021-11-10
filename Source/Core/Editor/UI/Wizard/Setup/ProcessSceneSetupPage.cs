@@ -16,7 +16,7 @@ namespace VRBuilder.Editor.UI.Wizard
     /// </summary>
     internal class ProcessSceneSetupPage : WizardPage
     {
-        private const int MaxCourseNameLength = 40;
+        private const int MaxProcessNameLength = 40;
         private const int MinHeightOfInfoText = 30;
 
         [SerializeField]
@@ -32,10 +32,10 @@ namespace VRBuilder.Editor.UI.Wizard
         private bool loadDemoScene = false;
 
         [SerializeField]
-        private string courseName = "My VR Process";
+        private string processName = "My VR Process";
 
         [SerializeField]
-        private string lastCreatedCourse = null;
+        private string lastCreatedProcess = null;
 
         private readonly GUIContent infoContent;
         private readonly GUIContent warningContent;
@@ -55,14 +55,14 @@ namespace VRBuilder.Editor.UI.Wizard
 
             GUI.enabled = loadSampleScene == false;
             GUILayout.Label("Name of your VR Process", BuilderEditorStyles.Header);
-            courseName = BuilderGUILayout.DrawTextField(courseName, MaxCourseNameLength, GUILayout.Width(window.width * 0.7f));
+            processName = BuilderGUILayout.DrawTextField(processName, MaxProcessNameLength, GUILayout.Width(window.width * 0.7f));
             GUI.enabled = true;
 
-            if (ProcessAssetUtils.CanCreate(courseName, out string errorMessage) == false && lastCreatedCourse != courseName)
+            if (ProcessAssetUtils.CanCreate(processName, out string errorMessage) == false && lastCreatedProcess != processName)
             {
-                GUIContent courseWarningContent = warningContent;
-                courseWarningContent.text = errorMessage;
-                GUILayout.Label(courseWarningContent, BuilderEditorStyles.Label, GUILayout.MinHeight(MinHeightOfInfoText));
+                GUIContent processWarningContent = warningContent;
+                processWarningContent.text = errorMessage;
+                GUILayout.Label(processWarningContent, BuilderEditorStyles.Label, GUILayout.MinHeight(MinHeightOfInfoText));
                 CanProceed = false;
             }
             else
@@ -128,7 +128,7 @@ namespace VRBuilder.Editor.UI.Wizard
             {
                 GUIContent helpContent;
                 string sceneInfoText = "Scene will have the same name as the process.";
-                if (SceneSetupUtils.SceneExists(courseName))
+                if (SceneSetupUtils.SceneExists(processName))
                 {
                     sceneInfoText += " Scene already exists";
                     CanProceed = false;
@@ -154,7 +154,7 @@ namespace VRBuilder.Editor.UI.Wizard
         /// <inheritdoc />
         public override void Apply()
         {
-            if (courseName == lastCreatedCourse)
+            if (processName == lastCreatedProcess)
             {
                 return;
             }
@@ -177,11 +177,11 @@ namespace VRBuilder.Editor.UI.Wizard
 
             if (useCurrentScene == false)
             {
-                SceneSetupUtils.CreateNewScene(courseName);
+                SceneSetupUtils.CreateNewScene(processName);
             }
 
-            SceneSetupUtils.SetupSceneAndProcess(courseName);
-            lastCreatedCourse = courseName;
+            SceneSetupUtils.SetupSceneAndProcess(processName);
+            lastCreatedProcess = processName;
             EditorWindow.FocusWindowIfItsOpen<WizardWindow>();
         }
     }

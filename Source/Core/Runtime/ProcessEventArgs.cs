@@ -7,14 +7,14 @@ using System;
 namespace VRBuilder.Core
 {
     /// <summary>
-    /// EventArgs for course events.
+    /// EventArgs for process events.
     /// </summary>
     public class ProcessEventArgs : EventArgs
     {
         /// <summary>
-        /// Active course.
+        /// Active process.
         /// </summary>
-        public readonly IProcess Course;
+        public readonly IProcess Process;
 
         /// <summary>
         /// Active Chapter.
@@ -26,10 +26,10 @@ namespace VRBuilder.Core
         /// </summary>
         public readonly IStep Step;
 
-        public ProcessEventArgs(IProcess course)
+        public ProcessEventArgs(IProcess process)
         {
-            Course = course;
-            Chapter = course.Data.Current;
+            Process = process;
+            Chapter = process.Data.Current;
             if (Chapter != null)
             {
                 Step = Chapter.Data.Current;

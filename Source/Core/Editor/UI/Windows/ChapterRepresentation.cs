@@ -589,7 +589,7 @@ namespace VRBuilder.Editor.UI.Windows
 
             if (EditorConfigurator.Instance.Validation.IsAllowedToValidate())
             {
-                EditorConfigurator.Instance.Validation.Validate(CurrentChapter.Data, GlobalEditorHandler.GetCurrentCourse(), null);
+                EditorConfigurator.Instance.Validation.Validate(CurrentChapter.Data, GlobalEditorHandler.GetCurrentProcess(), null);
             }
         }
 

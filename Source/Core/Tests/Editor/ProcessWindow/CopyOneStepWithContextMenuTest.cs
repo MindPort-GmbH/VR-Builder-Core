@@ -7,7 +7,7 @@ using VRBuilder.Core;
 using VRBuilder.Editor.UI.Windows;
 using NUnit.Framework;
 
-namespace VRBuilder.Editor.Tests.CourseWindowTests
+namespace VRBuilder.Editor.Tests.ProcessWindowTests
 {
     internal class CopyOneStepWithContextMenuTest : BaseProcessWindowTest
     {
@@ -17,7 +17,7 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
 
         protected override void Then(ProcessWindow window)
         {
-            IList<IStep> steps = window.GetCourse().Data.FirstChapter.Data.Steps;
+            IList<IStep> steps = window.GetProcess().Data.FirstChapter.Data.Steps;
             Assert.AreEqual(2, steps.Count);
             Assert.AreEqual("Copy of " + steps[0].Data.Name, steps[1].Data.Name);
             Assert.True(steps[0].Data.Behaviors.Data.Behaviors.Count == 0);

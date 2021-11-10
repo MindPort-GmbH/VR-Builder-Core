@@ -13,16 +13,16 @@ namespace VRBuilder.Editor
     internal interface IEditingStrategy
     {
         /// <summary>
-        /// Returns the current course.
+        /// Returns the current process.
         /// </summary>
-        IProcess CurrentCourse { get; }
+        IProcess CurrentProcess { get; }
 
         IChapter CurrentChapter { get; }
 
         /// <summary>
         /// Invoked when a new <see cref="ProcessWindow"/> was just opened.
         /// </summary>
-        void HandleNewCourseWindow(ProcessWindow window);
+        void HandleNewProcessWindow(ProcessWindow window);
 
         /// <summary>
         /// Invoked when a new <see cref="StepWindow"/> was just opened.
@@ -30,14 +30,14 @@ namespace VRBuilder.Editor
         void HandleNewStepWindow(StepWindow window);
 
         /// <summary>
-        /// Invoked when a designer has just modified the course in the editor.
+        /// Invoked when a designer has just modified the process in the editor.
         /// </summary>
-        void HandleCurrentCourseModified();
+        void HandleCurrentProcessModified();
 
         /// <summary>
         /// Invoked when a <see cref="ProcessWindow"/> was closed.
         /// </summary>
-        void HandleCourseWindowClosed(ProcessWindow window);
+        void HandleProcessWindowClosed(ProcessWindow window);
 
         /// <summary>
         /// Invoked when a <see cref="StepWindow"/> was closed.
@@ -45,14 +45,14 @@ namespace VRBuilder.Editor
         void HandleStepWindowClosed(StepWindow window);
 
         /// <summary>
-        /// Invoked when user wants to start working on the current course.
+        /// Invoked when user wants to start working on the current process.
         /// </summary>
-        void HandleStartEditingCourse();
+        void HandleStartEditingProcess();
 
         /// <summary>
-        /// Invoked when the currently edited course was changed to a different one.
+        /// Invoked when the currently edited process was changed to a different one.
         /// </summary>
-        void HandleCurrentCourseChanged(string courseName);
+        void HandleCurrentProcessChanged(string processName);
 
         /// <summary>
         /// Invoked when the currently edited <see cref="IStep"/> was modified.

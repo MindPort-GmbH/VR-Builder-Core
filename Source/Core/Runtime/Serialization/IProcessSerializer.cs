@@ -5,7 +5,7 @@
 namespace VRBuilder.Core.Serialization
 {
     /// <summary>
-    /// A serializer which can de/serialize courses and steps to a certain format.
+    /// A serializer which can de/serialize processes and steps to a certain format.
     /// </summary>
     public interface IProcessSerializer
     {
@@ -20,14 +20,14 @@ namespace VRBuilder.Core.Serialization
         string FileFormat { get; }
 
         /// <summary>
-        /// Serializes a given course into a byte array.
+        /// Serializes a given process into a byte array.
         /// </summary>
-        byte[] CourseToByteArray(IProcess target);
+        byte[] ProcessToByteArray(IProcess target);
 
         /// <summary>
-        /// Deserializes a given course to a usable object.
+        /// Deserializes a given process to a usable object.
         /// </summary>
-        IProcess CourseFromByteArray(byte[] data);
+        IProcess ProcessFromByteArray(byte[] data);
 
         /// <summary>
         /// Serializes a given step into a byte array. The implementation should trim target steps of the step.

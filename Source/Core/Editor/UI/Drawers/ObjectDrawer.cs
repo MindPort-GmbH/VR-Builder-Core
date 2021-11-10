@@ -12,7 +12,7 @@ using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Conditions;
 using VRBuilder.Core.Utils;
 using VRBuilder.Editor.Configuration;
-using VRBuilder.Editor.CourseValidation;
+using VRBuilder.Editor.ProcessValidation;
 using UnityEditor;
 using UnityEngine;
 

@@ -33,11 +33,11 @@ namespace VRBuilder.Core.Configuration
         private string runtimeConfigurationName = typeof(DefaultRuntimeConfiguration).AssemblyQualifiedName;
 
         /// <summary>
-        /// Course name which is selected.
+        /// Process name which is selected.
         /// This field is magically filled by <see cref="RuntimeConfiguratorEditor"/>
         /// </summary>
         [SerializeField]
-        private string selectedCourseStreamingAssetsPath = "";
+        private string selectedProcessStreamingAssetsPath = "";
 
         private BaseRuntimeConfiguration runtimeConfiguration;
 
@@ -174,15 +174,15 @@ namespace VRBuilder.Core.Configuration
         /// </summary>
         public string GetSelectedProcess()
         {
-            return selectedCourseStreamingAssetsPath;
+            return selectedProcessStreamingAssetsPath;
         }
 
         /// <summary>
         /// Sets the path to the selected process.
         /// </summary>
-        public void SetSelectedCourse(string path)
+        public void SetSelectedProcess(string path)
         {
-            selectedCourseStreamingAssetsPath = path;
+            selectedProcessStreamingAssetsPath = path;
         }
 
         private void Awake()

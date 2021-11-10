@@ -18,13 +18,13 @@ namespace VRBuilder.Editor.Tests
         public void RunSerializerWithLinear()
         {
             int length = 100;
-            IProcess course = CreateProcess(length);
+            IProcess process = CreateProcess(length);
 
             ImprovedNewtonsoftJsonProcessSerializer serializer = new ImprovedNewtonsoftJsonProcessSerializer();
             try
             {
-                byte[] data = serializer.CourseToByteArray(course);
-                serializer.CourseFromByteArray(data);
+                byte[] data = serializer.ProcessToByteArray(process);
+                serializer.ProcessFromByteArray(data);
             }
             catch (Exception)
             {
@@ -36,13 +36,13 @@ namespace VRBuilder.Editor.Tests
         public void RunSerializerWithSplit()
         {
             int length = 200;
-            IProcess course = CreateSplitProcess(length);
+            IProcess process = CreateSplitProcess(length);
 
             ImprovedNewtonsoftJsonProcessSerializer serializer = new ImprovedNewtonsoftJsonProcessSerializer();
             try
             {
-                byte[] data = serializer.CourseToByteArray(course);
-                serializer.CourseFromByteArray(data);
+                byte[] data = serializer.ProcessToByteArray(process);
+                serializer.ProcessFromByteArray(data);
             }
             catch (Exception)
             {
@@ -54,17 +54,17 @@ namespace VRBuilder.Editor.Tests
         public void RunSerializerWithEarlyFinish()
         {
             int length = 500;
-            IProcess course = CreateProcess(length);
+            IProcess process = CreateProcess(length);
 
             ImprovedNewtonsoftJsonProcessSerializer serializer = new ImprovedNewtonsoftJsonProcessSerializer();
             try
             {
                 Transition t1 = new Transition();
                 t1.Data.TargetStep = null;
-                course.Data.Chapters[0].Data.Steps.First().Data.Transitions.Data.Transitions.Insert(0, t1);
+                process.Data.Chapters[0].Data.Steps.First().Data.Transitions.Data.Transitions.Insert(0, t1);
 
-                byte[] data = serializer.CourseToByteArray(course);
-                serializer.CourseFromByteArray(data);
+                byte[] data = serializer.ProcessToByteArray(process);
+                serializer.ProcessFromByteArray(data);
             }
             catch (Exception)
             {

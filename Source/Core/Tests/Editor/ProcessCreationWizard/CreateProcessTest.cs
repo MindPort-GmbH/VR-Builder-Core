@@ -7,15 +7,15 @@ using VRBuilder.Editor.TestTools;
 using NUnit.Framework;
 using UnityEngine;
 
-namespace VRBuilder.Editor.Tests.CourseWizardTests
+namespace VRBuilder.Editor.Tests.ProcessWizardTests
 {
     internal class CreateProcessTest : EditorImguiTest<ProcessCreationWizard>
     {
-        private const string courseName = "very_unique_test_course_name_which_you_should_never_use_1534";
+        private const string processName = "very_unique_test_name_which_you_should_never_use_1534";
 
         public override string GivenDescription => "Opened process wizard window.";
 
-        public override string WhenDescription => $"Type in \"{courseName}\". Click 'Create process' button.";
+        public override string WhenDescription => $"Type in \"{processName}\". Click 'Create process' button.";
 
         public override string ThenDescription => "Process window is opened.";
 
@@ -25,7 +25,7 @@ namespace VRBuilder.Editor.Tests.CourseWizardTests
         {
             GlobalEditorHandler.SetStrategy(new EmptyTestStrategy());
 
-            ProcessAssetManager.Delete(courseName);
+            ProcessAssetManager.Delete(processName);
 
             foreach (ProcessCreationWizard window in Resources.FindObjectsOfTypeAll<ProcessCreationWizard>())
             {
@@ -52,7 +52,7 @@ namespace VRBuilder.Editor.Tests.CourseWizardTests
                 window.Close();
             }
 
-            ProcessAssetManager.Delete(courseName);
+            ProcessAssetManager.Delete(processName);
             GlobalEditorHandler.SetDefaultStrategy();
         }
     }

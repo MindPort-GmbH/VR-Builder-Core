@@ -6,7 +6,7 @@ using System;
 using VRBuilder.Core;
 using VRBuilder.Core.Validation;
 using VRBuilder.Editor.Configuration;
-using VRBuilder.Editor.CourseValidation;
+using VRBuilder.Editor.ProcessValidation;
 using VRBuilder.Editor.UndoRedo;
 using UnityEditor;
 using UnityEngine;
@@ -80,12 +80,12 @@ namespace VRBuilder.Editor.UI.Windows
         {
             get
             {
-                return Course.Data.Chapters[activeChapter];
+                return Process.Data.Chapters[activeChapter];
             }
         }
         #endregion
 
-        protected IProcess Course { get; private set; }
+        protected IProcess Process { get; private set; }
 
         protected ProcessWindow ParentWindow { get; private set; }
 
@@ -93,15 +93,15 @@ namespace VRBuilder.Editor.UI.Windows
         private Vector2 scrollPosition;
 
         private ChangeNamePopup changeNamePopup;
-        private RenameProcessPopup renameCoursePopup;
+        private RenameProcessPopup renameProcessPopup;
 
         /// <summary>
         /// Initialises the windows with the correct process and ProcessWindow (parent).
         /// This has to be done after every time the editor reloaded the assembly (recompile).
         /// </summary>
-        public void Initialise(IProcess course, ProcessWindow parent)
+        public void Initialise(IProcess process, ProcessWindow parent)
         {
-            Course = course;
+            Process = process;
             ParentWindow = parent;
 
             activeChapter = 0;
@@ -171,19 +171,19 @@ namespace VRBuilder.Editor.UI.Windows
             GUILayout.BeginHorizontal();
             {
                 GUIStyle labelStyle = new GUIStyle(EditorStyles.boldLabel);
-                GUIContent labelContent = new GUIContent("Course Name:");
+                GUIContent labelContent = new GUIContent("Process Name:");
                 EditorGUILayout.LabelField(labelContent, labelStyle, GUILayout.Width(labelStyle.CalcSize(labelContent).x));
 
                 GUIStyle nameStyle = new GUIStyle(EditorStyles.label) { wordWrap = true };
-                GUIContent nameContent = new GUIContent(Course.Data.Name, Course.Data.Name);
+                GUIContent nameContent = new GUIContent(Process.Data.Name, Process.Data.Name);
 
-                if (renameCoursePopup == null || renameCoursePopup.IsClosed)
+                if (renameProcessPopup == null || renameProcessPopup.IsClosed)
                 {
-                    EditorGUILayout.LabelField(Course.Data.Name, nameStyle, GUILayout.Width(180f), GUILayout.Height(nameStyle.CalcHeight(nameContent, 180f)));Rect labelPosition = GUILayoutUtility.GetLastRect();
+                    EditorGUILayout.LabelField(Process.Data.Name, nameStyle, GUILayout.Width(180f), GUILayout.Height(nameStyle.CalcHeight(nameContent, 180f)));Rect labelPosition = GUILayoutUtility.GetLastRect();
                     if (FlatIconButton(editIcon.Texture))
                     {
                         labelPosition = new Rect(labelPosition.x + ParentWindow.position.x - 2, labelPosition.height + labelPosition.y + ParentWindow.position.y + 4 + ExpandButtonHeight, labelPosition.width, labelPosition.height);
-                        renameCoursePopup = RenameProcessPopup.Open(Course, labelPosition, scrollPosition);
+                        renameProcessPopup = RenameProcessPopup.Open(Process, labelPosition, scrollPosition);
                     }
                 }
             }
@@ -202,7 +202,7 @@ namespace VRBuilder.Editor.UI.Windows
 
             GUILayout.Space(VerticalSpace);
 
-            for (int position = 0; position < Course.Data.Chapters.Count; position++)
+            for (int position = 0; position < Process.Data.Chapters.Count; position++)
             {
                 DrawChapter(position);
             }
@@ -264,7 +264,7 @@ namespace VRBuilder.Editor.UI.Windows
 
                 if (EditorConfigurator.Instance.Validation.IsAllowedToValidate())
                 {
-                    IContext context = EditorConfigurator.Instance.Validation.ContextResolver.FindContext(Course.Data.Chapters[position].Data, Course);
+                    IContext context = EditorConfigurator.Instance.Validation.ContextResolver.FindContext(Process.Data.Chapters[position].Data, Process);
                     if (EditorConfigurator.Instance.Validation.LastReport != null && EditorConfigurator.Instance.Validation.LastReport.GetEntriesFor(context).Count > 0)
                     {
 
@@ -277,13 +277,13 @@ namespace VRBuilder.Editor.UI.Windows
 
                 GUIStyle style = new GUIStyle(GUI.skin.label);
                 style.alignment = TextAnchor.UpperLeft;
-                GUILayout.Label(Course.Data.Chapters[position].Data.Name, style, GUILayout.Width(160f), GUILayout.Height(20f));
+                GUILayout.Label(Process.Data.Chapters[position].Data.Name, style, GUILayout.Width(160f), GUILayout.Height(20f));
                 Rect labelPosition = GUILayoutUtility.GetLastRect();
 
                 GUILayout.FlexibleSpace();
                 AddMoveUpButton(position);
                 AddMoveDownButton(position);
-                AddRemoveButton(position, Course.Data.Chapters.Count == 1);
+                AddRemoveButton(position, Process.Data.Chapters.Count == 1);
                 AddRenameButton(position, labelPosition);
 
                 GUILayout.Space(4);
@@ -331,7 +331,7 @@ namespace VRBuilder.Editor.UI.Windows
         {
             if (FlatIconButton(arrowDownIcon.Texture))
             {
-                if (position + 1 < Course.Data.Chapters.Count)
+                if (position + 1 < Process.Data.Chapters.Count)
                 {
                     RevertableChangesHandler.Do(new ProcessCommand(
                         // ReSharper disable once ImplicitlyCapturedClosure
@@ -354,7 +354,7 @@ namespace VRBuilder.Editor.UI.Windows
             if (FlatIconButton(editIcon.Texture))
             {
                 labelPosition = new Rect(labelPosition.x + ParentWindow.position.x - 2, labelPosition.height + labelPosition.y + ParentWindow.position.y + 4 + ExpandButtonHeight, labelPosition.width, labelPosition.height);
-                changeNamePopup = ChangeNamePopup.Open(Course.Data.Chapters[position].Data, labelPosition, scrollPosition);
+                changeNamePopup = ChangeNamePopup.Open(Process.Data.Chapters[position].Data, labelPosition, scrollPosition);
             }
         }
 
@@ -364,7 +364,7 @@ namespace VRBuilder.Editor.UI.Windows
             {
                 if (FlatIconButton(deleteIcon.Texture))
                 {
-                    IChapter chapter = Course.Data.Chapters[position];
+                    IChapter chapter = Process.Data.Chapters[position];
                     bool isDeleteTriggered = EditorUtility.DisplayDialog($"Delete Chapter '{chapter.Data.Name}'",
                         $"Do you really want to delete chapter '{chapter.Data.Name}'? You will lose all steps stored there.", "Delete",
                         "Cancel");
@@ -380,7 +380,7 @@ namespace VRBuilder.Editor.UI.Windows
                             // ReSharper disable once ImplicitlyCapturedClosure
                             () =>
                             {
-                                Course.Data.Chapters.Insert(position, chapter);
+                                Process.Data.Chapters.Insert(position, chapter);
                                 if (position == activeChapter)
                                 {
                                     EmitChapterChanged();
@@ -407,14 +407,14 @@ namespace VRBuilder.Editor.UI.Windows
                         // ReSharper disable once ImplicitlyCapturedClosure
                         () =>
                         {
-                            Course.Data.Chapters.Add(EntityFactory.CreateChapter($"Chapter {(Course.Data.Chapters.Count + 1)}"));
-                            activeChapter = Course.Data.Chapters.Count - 1;
+                            Process.Data.Chapters.Add(EntityFactory.CreateChapter($"Chapter {(Process.Data.Chapters.Count + 1)}"));
+                            activeChapter = Process.Data.Chapters.Count - 1;
                             EmitChapterChanged();
                         },
                         // ReSharper disable once ImplicitlyCapturedClosure
                         () =>
                         {
-                            RemoveChapterAt(Course.Data.Chapters.Count - 1);
+                            RemoveChapterAt(Process.Data.Chapters.Count - 1);
                         }
                     ));
                 }
@@ -431,9 +431,9 @@ namespace VRBuilder.Editor.UI.Windows
         #region Private helpers
         private void MoveChapterUp(int position)
         {
-            IChapter chapter = Course.Data.Chapters[position];
-            Course.Data.Chapters.RemoveAt(position);
-            Course.Data.Chapters.Insert(position - 1, chapter);
+            IChapter chapter = Process.Data.Chapters[position];
+            Process.Data.Chapters.RemoveAt(position);
+            Process.Data.Chapters.Insert(position - 1, chapter);
 
             if (activeChapter == position)
             {
@@ -447,9 +447,9 @@ namespace VRBuilder.Editor.UI.Windows
 
         private void MoveChapterDown(int position)
         {
-            IChapter chapter = Course.Data.Chapters[position];
-            Course.Data.Chapters.RemoveAt(position);
-            Course.Data.Chapters.Insert(position + 1, chapter);
+            IChapter chapter = Process.Data.Chapters[position];
+            Process.Data.Chapters.RemoveAt(position);
+            Process.Data.Chapters.Insert(position + 1, chapter);
 
             if (activeChapter == position)
             {
@@ -489,11 +489,11 @@ namespace VRBuilder.Editor.UI.Windows
         {
             if (position > 0)
             {
-                Course.Data.Chapters.RemoveAt(position);
+                Process.Data.Chapters.RemoveAt(position);
             }
-            else if (Course.Data.Chapters.Count > 1)
+            else if (Process.Data.Chapters.Count > 1)
             {
-                Course.Data.Chapters.RemoveAt(position);
+                Process.Data.Chapters.RemoveAt(position);
             }
 
             if (position < activeChapter)
@@ -503,7 +503,7 @@ namespace VRBuilder.Editor.UI.Windows
 
             if (activeChapter == position)
             {
-                if (Course.Data.Chapters.Count == position)
+                if (Process.Data.Chapters.Count == position)
                 {
                     activeChapter--;
                 }

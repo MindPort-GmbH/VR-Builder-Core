@@ -9,7 +9,7 @@ using VRBuilder.Core.Configuration;
 namespace VRBuilder.UX
 {
     /// <summary>
-    /// Shows and hides the StandaloneCourseController prefab.
+    /// Shows and hides the StandaloneProcessController prefab.
     /// </summary>
     public class StandaloneMenuHandler : MonoBehaviour
     {
@@ -102,7 +102,7 @@ namespace VRBuilder.UX
         {
             if (IsActionButtonPressDown())
             {
-                ToggleCourseControllerMenu();
+                ToggleProcessControllerMenu();
             }
         }
 
@@ -114,7 +114,7 @@ namespace VRBuilder.UX
             }
         }
 
-        private void ToggleCourseControllerMenu()
+        private void ToggleProcessControllerMenu()
         {
             canvas.enabled = !canvas.enabled;
 

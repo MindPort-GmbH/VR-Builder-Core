@@ -64,7 +64,7 @@ namespace VRBuilder.Editor.UX
             {Button.SecondaryAxis2DRight, typeof(Vector2)}
         };
 
-        private readonly GUIContent actionButtonInformation = new GUIContent("Action Button", "The button that triggers the Standalone Course Controller");
+        private readonly GUIContent actionButtonInformation = new GUIContent("Action Button", "The button that triggers the Standalone Process Controller");
 
         private SerializedProperty buttonTypeNameProperty;
         private SerializedProperty buttonNameProperty;

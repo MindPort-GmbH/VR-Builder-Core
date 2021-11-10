@@ -13,7 +13,7 @@ using UnityEngine;
 namespace VRBuilder.Core.Configuration
 {
     /// <summary>
-    /// Base class for your runtime course configuration. Extend it to create your own.
+    /// Base class for your runtime process configuration. Extend it to create your own.
     /// </summary>
 #pragma warning disable 0618
     public abstract class BaseRuntimeConfiguration : IRuntimeConfiguration
@@ -108,7 +108,7 @@ namespace VRBuilder.Core.Configuration
             }
 
             byte[] serialized = FileManager.Read(path);
-            return Serializer.CourseFromByteArray(serialized);
+            return Serializer.ProcessFromByteArray(serialized);
         }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace VRBuilder.UX
 {
     /// <summary>
-    /// Initializes the <see cref="ProcessRunner"/> with the current selected course on scene start.
+    /// Initializes the <see cref="ProcessRunner"/> with the current selected process on scene start.
     /// </summary>
     public class InitProcessOnSceneLoad : MonoBehaviour
     {

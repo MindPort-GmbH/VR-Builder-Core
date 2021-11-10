@@ -10,7 +10,7 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Windows
 {
     /// <summary>
-    /// Handles changing the course name.
+    /// Handles changing the process name.
     /// </summary>
     internal class RenameProcessPopup : EditorWindow
     {
@@ -18,14 +18,14 @@ namespace VRBuilder.Editor.UI.Windows
 
         private readonly GUID textFieldIdentifier = new GUID();
 
-        private IProcess course;
+        private IProcess process;
         private string newName;
 
         private bool isFocusSet;
 
         public bool IsClosed { get; private set; }
 
-        public static RenameProcessPopup Open(IProcess course, Rect labelPosition, Vector2 offset)
+        public static RenameProcessPopup Open(IProcess process, Rect labelPosition, Vector2 offset)
         {
             if (instance != null)
             {
@@ -34,8 +34,8 @@ namespace VRBuilder.Editor.UI.Windows
 
             instance = CreateInstance<RenameProcessPopup>();
 
-            instance.course = course;
-            instance.newName = instance.course.Data.Name;
+            instance.process = process;
+            instance.newName = instance.process.Data.Name;
 
             instance.position = new Rect(labelPosition.x - offset.x, labelPosition.y - offset.y, labelPosition.width, labelPosition.height);
             instance.ShowPopup();
@@ -52,7 +52,7 @@ namespace VRBuilder.Editor.UI.Windows
 
         private void OnGUI()
         {
-            if (course == null || focusedWindow != this)
+            if (process == null || focusedWindow != this)
             {
                 Close();
                 instance.IsClosed = true;
@@ -70,48 +70,48 @@ namespace VRBuilder.Editor.UI.Windows
 
             if ((Event.current.keyCode == KeyCode.Return || Event.current.keyCode == KeyCode.KeypadEnter))
             {
-                if (ProcessAssetUtils.CanRename(course, newName, out string error) == false)
+                if (ProcessAssetUtils.CanRename(process, newName, out string error) == false)
                 {
                     if (string.IsNullOrEmpty(error) == false && string.IsNullOrEmpty(error) == false)
                     {
-                        TestableEditorElements.DisplayDialog("Cannot rename the course", error, "OK");
+                        TestableEditorElements.DisplayDialog("Cannot rename the process", error, "OK");
                     }
                 }
                 else
                 {
-                    string oldName = course.Data.Name;
+                    string oldName = process.Data.Name;
 
                     RevertableChangesHandler.Do(new ProcessCommand(
                         () =>
                         {
-                            if (ProcessAssetUtils.CanRename(course, newName, out string errorMessage) == false)
+                            if (ProcessAssetUtils.CanRename(process, newName, out string errorMessage) == false)
                             {
                                 if (string.IsNullOrEmpty(errorMessage) == false)
                                 {
-                                    TestableEditorElements.DisplayDialog("Cannot rename the course", errorMessage, "OK");
+                                    TestableEditorElements.DisplayDialog("Cannot rename the process", errorMessage, "OK");
                                 }
 
                                 RevertableChangesHandler.FlushStack();
                             }
                             else
                             {
-                                ProcessAssetManager.RenameCourse(course, newName);
+                                ProcessAssetManager.RenameProcess(process, newName);
                             }
                         },
                         () =>
                         {
-                            if (ProcessAssetUtils.CanRename(course, newName, out string errorMessage) == false)
+                            if (ProcessAssetUtils.CanRename(process, newName, out string errorMessage) == false)
                             {
                                 if (string.IsNullOrEmpty(errorMessage) == false)
                                 {
-                                    TestableEditorElements.DisplayDialog("Cannot rename the course", errorMessage, "OK");
+                                    TestableEditorElements.DisplayDialog("Cannot rename the process", errorMessage, "OK");
                                 }
 
                                 RevertableChangesHandler.FlushStack();
                             }
                             else
                             {
-                                ProcessAssetManager.RenameCourse(course, oldName);
+                                ProcessAssetManager.RenameProcess(process, oldName);
                             }
                         }
                     ));

@@ -8,7 +8,7 @@ using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Conditions;
 using VRBuilder.Core.Serialization;
 using VRBuilder.Core.Serialization.NewtonsoftJson;
-using VRBuilder.Editor.CourseValidation;
+using VRBuilder.Editor.ProcessValidation;
 using VRBuilder.Editor.UI.StepInspector.Menu;
 
 namespace VRBuilder.Editor.Configuration
@@ -21,7 +21,7 @@ namespace VRBuilder.Editor.Configuration
         private AllowedMenuItemsSettings allowedMenuItemsSettings;
 
         /// <inheritdoc />
-        public virtual string CourseStreamingAssetsSubdirectory
+        public virtual string ProcessStreamingAssetsSubdirectory
         {
             get { return "Processes"; }
         }

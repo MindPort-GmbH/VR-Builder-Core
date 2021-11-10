@@ -15,7 +15,7 @@ using VRBuilder.Tests.Utils.Mocks;
 using UnityEngine;
 using NUnit.Framework;
 
-namespace VRBuilder.Tests.Courses
+namespace VRBuilder.Tests.Processes
 {
     public class StepTests : RuntimeTests
     {

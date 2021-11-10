@@ -13,12 +13,12 @@ using VRBuilder.Core.Configuration;
 namespace VRBuilder.Editor
 {
     /// <summary>
-    /// A class that handles interactions between Builder windows and course assets by using selected <seealso cref="IEditingStrategy"/> strategy.
+    /// A class that handles interactions between Builder windows and process assets by using selected <seealso cref="IEditingStrategy"/> strategy.
     /// </summary>
     [InitializeOnLoad]
     internal static class GlobalEditorHandler
     {
-        internal const string LastEditedCourseNameKey = "VRBuilder.Editors.LastEditedCourseName";
+        internal const string LastEditedProcessNameKey = "VRBuilder.Editors.LastEditedProcessName";
 
         private static IEditingStrategy strategy;
 
@@ -26,8 +26,8 @@ namespace VRBuilder.Editor
         {
             SetDefaultStrategy();
 
-            string lastEditedCourseName = EditorPrefs.GetString(LastEditedCourseNameKey);
-            SetCurrentCourse(lastEditedCourseName);
+            string lastEditedProcessName = EditorPrefs.GetString(LastEditedProcessNameKey);
+            SetCurrentProcess(lastEditedProcessName);
 
             EditorSceneManager.sceneOpened += OnSceneOpened;
         }
@@ -55,11 +55,11 @@ namespace VRBuilder.Editor
         }
 
         /// <summary>
-        /// Returns the current active course, can be null.
+        /// Returns the current active process, can be null.
         /// </summary>
-        internal static IProcess GetCurrentCourse()
+        internal static IProcess GetCurrentProcess()
         {
-            return strategy.CurrentCourse;
+            return strategy.CurrentProcess;
         }
 
         /// <summary>
@@ -73,17 +73,17 @@ namespace VRBuilder.Editor
         /// <summary>
         /// Notifies selected <see cref="IEditingStrategy"/> when a new <see cref="ProcessWindow"/> was just opened.
         /// </summary>
-        internal static void CourseWindowOpened(ProcessWindow window)
+        internal static void ProcessWindowOpened(ProcessWindow window)
         {
-            strategy.HandleNewCourseWindow(window);
+            strategy.HandleNewProcessWindow(window);
         }
 
         /// <summary>
         /// Notifies selected <see cref="IEditingStrategy"/> when a <see cref="ProcessWindow"/> was closed.
         /// </summary>
-        internal static void CourseWindowClosed(ProcessWindow window)
+        internal static void ProcessWindowClosed(ProcessWindow window)
         {
-            strategy.HandleCourseWindowClosed(window);
+            strategy.HandleProcessWindowClosed(window);
         }
 
         /// <summary>
@@ -103,11 +103,11 @@ namespace VRBuilder.Editor
         }
 
         /// <summary>
-        /// Notifies selected <see cref="IEditingStrategy"/> when the currently edited course was changed to a different one.
+        /// Notifies selected <see cref="IEditingStrategy"/> when the currently edited process was changed to a different one.
         /// </summary>
-        internal static void SetCurrentCourse(string courseName)
+        internal static void SetCurrentProcess(string processName)
         {
-            strategy.HandleCurrentCourseChanged(courseName);
+            strategy.HandleCurrentProcessChanged(processName);
         }
 
         internal static void SetCurrentChapter(IChapter chapter)
@@ -116,19 +116,19 @@ namespace VRBuilder.Editor
         }
 
         /// <summary>
-        /// Notifies selected <see cref="IEditingStrategy"/> when user wants to start working on the current course.
+        /// Notifies selected <see cref="IEditingStrategy"/> when user wants to start working on the current process.
         /// </summary>
-        internal static void StartEditingCourse()
+        internal static void StartEditingProcess()
         {
-            strategy.HandleStartEditingCourse();
+            strategy.HandleStartEditingProcess();
         }
 
         /// <summary>
-        /// Notifies selected <see cref="IEditingStrategy"/> when a designer has just modified the course in the editor.
+        /// Notifies selected <see cref="IEditingStrategy"/> when a designer has just modified the process in the editor.
         /// </summary>
-        internal static void CurrentCourseModified()
+        internal static void CurrentProcessModified()
         {
-            strategy.HandleCurrentCourseModified();
+            strategy.HandleCurrentProcessModified();
         }
 
         /// <summary>
@@ -185,20 +185,20 @@ namespace VRBuilder.Editor
         {
             if (RuntimeConfigurator.Exists == false)
             {
-                SetCurrentCourse(string.Empty);
+                SetCurrentProcess(string.Empty);
                 return;
             }
 
-            string coursePath = RuntimeConfigurator.Instance.GetSelectedProcess();
+            string processPath = RuntimeConfigurator.Instance.GetSelectedProcess();
 
-            if (string.IsNullOrEmpty(coursePath))
+            if (string.IsNullOrEmpty(processPath))
             {
-                SetCurrentCourse(string.Empty);
+                SetCurrentProcess(string.Empty);
                 return;
             }
 
-            string courseName = System.IO.Path.GetFileNameWithoutExtension(coursePath);
-            SetCurrentCourse(courseName);
+            string processName = System.IO.Path.GetFileNameWithoutExtension(processPath);
+            SetCurrentProcess(processName);
         }
     }
 }

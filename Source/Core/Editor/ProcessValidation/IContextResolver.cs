@@ -4,7 +4,7 @@
 
 using VRBuilder.Core;
 
-namespace VRBuilder.Editor.CourseValidation
+namespace VRBuilder.Editor.ProcessValidation
 {
     /// <summary>
     /// Retrieves <see cref="IContext"/> from any provided <see cref="IData"/>.
@@ -14,6 +14,6 @@ namespace VRBuilder.Editor.CourseValidation
         /// <summary>
         /// Resolves the fitting <see cref="IContext"/> for the given <see cref="IData"/>.
         /// </summary>
-        IContext FindContext(IData data, IProcess course);
+        IContext FindContext(IData data, IProcess process);
     }
 }

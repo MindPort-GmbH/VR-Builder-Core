@@ -7,14 +7,14 @@ using VRBuilder.Core.Utils;
 namespace VRBuilder.UX
 {
     /// <summary>
-    /// Manages the setup of the course controller and lets the developer choose the <see cref="IProcessController"/>.
+    /// Manages the setup of the process controller and lets the developer choose the <see cref="IProcessController"/>.
     /// </summary>
     [DefaultExecutionOrder(1000)]
     public class ProcessControllerSetup : MonoBehaviour
     {
 #pragma warning disable 0649
         [SerializeField, SerializeReference]
-        private string courseControllerQualifiedName;
+        private string processControllerQualifiedName;
         
         [SerializeField, SerializeReference]
         private bool useCustomPrefab;
@@ -24,14 +24,14 @@ namespace VRBuilder.UX
 #pragma warning restore 0649
         
         /// <summary>
-        /// Current used course controller.
+        /// Current used process controller.
         /// </summary>
-        public IProcessController CurrentCourseController { get; protected set; }
+        public IProcessController CurrentProcessController { get; protected set; }
         
         /// <summary>
-        /// Enforced course controller will be use.
+        /// Enforced process controller will be use.
         /// </summary>
-        protected static IProcessController enforcedCourseController = null;
+        protected static IProcessController enforcedProcessController = null;
 
         protected virtual void OnEnable()
         {
@@ -40,16 +40,16 @@ namespace VRBuilder.UX
 
         private void Setup()
         {
-            CreateCourseController();
-            AddComponents(CurrentCourseController.GetRequiredSetupComponents());
-            CurrentCourseController.HandlePostSetup(gameObject);
+            CreateProcessController();
+            AddComponents(CurrentProcessController.GetRequiredSetupComponents());
+            CurrentProcessController.HandlePostSetup(gameObject);
         }
 
-        private void CreateCourseController()
+        private void CreateProcessController()
         {
-            if (enforcedCourseController != null)
+            if (enforcedProcessController != null)
             {
-                CurrentCourseController = enforcedCourseController;
+                CurrentProcessController = enforcedProcessController;
             }
             else if (useCustomPrefab && customPrefab != null)
             {
@@ -57,46 +57,46 @@ namespace VRBuilder.UX
                 return;
             }
             
-            IProcessController defaultCourseController = GetCourseControllerFromType();
+            IProcessController defaultProcessController = GetProcessControllerFromType();
             
-            if (CurrentCourseController == null)
+            if (CurrentProcessController == null)
             {
-                CurrentCourseController = defaultCourseController;
-                if (CurrentCourseController == null)
+                CurrentProcessController = defaultProcessController;
+                if (CurrentProcessController == null)
                 {
-                    Debug.LogError("CourseControllerSetup was not configured properly.");
+                    Debug.LogError("ProcessControllerSetup was not configured properly.");
                     return;
                 }
             }
             else
             {
-                RemoveComponents(defaultCourseController.GetRequiredSetupComponents().Except(CurrentCourseController.GetRequiredSetupComponents()).ToList());
+                RemoveComponents(defaultProcessController.GetRequiredSetupComponents().Except(CurrentProcessController.GetRequiredSetupComponents()).ToList());
             }
             
-            GameObject courseControllerPrefab = CurrentCourseController.GetCourseControllerPrefab();
-            if (courseControllerPrefab != null)
+            GameObject processControllerPrefab = CurrentProcessController.GetProcessControllerPrefab();
+            if (processControllerPrefab != null)
             {
-                Instantiate(CurrentCourseController.GetCourseControllerPrefab());
+                Instantiate(CurrentProcessController.GetProcessControllerPrefab());
             }
         }
 
-        private IProcessController GetCourseControllerFromType()
+        private IProcessController GetProcessControllerFromType()
         {
-            Type courseControllerType = RetrieveCourseControllerType();
-            IProcessController courseController = ReflectionUtils.CreateInstanceOfType(courseControllerType) as IProcessController;
+            Type processControllerType = RetrieveProcessControllerType();
+            IProcessController processController = ReflectionUtils.CreateInstanceOfType(processControllerType) as IProcessController;
 
-            return courseController;
+            return processController;
         }
 
-        private Type RetrieveCourseControllerType()
+        private Type RetrieveProcessControllerType()
         {
-            if (string.IsNullOrEmpty(courseControllerQualifiedName))
+            if (string.IsNullOrEmpty(processControllerQualifiedName))
             {
                 return RetrieveDefaultControllerType();
             }
             
-            Type courseControllerType = ReflectionUtils.GetTypeFromAssemblyQualifiedName(courseControllerQualifiedName);
-            return courseControllerType != null ? courseControllerType : RetrieveDefaultControllerType();
+            Type processControllerType = ReflectionUtils.GetTypeFromAssemblyQualifiedName(processControllerQualifiedName);
+            return processControllerType != null ? processControllerType : RetrieveDefaultControllerType();
         }
 
         private Type RetrieveDefaultControllerType()
@@ -132,22 +132,22 @@ namespace VRBuilder.UX
         /// <summary>
         /// Enforces the given controller to be used, if possible.
         /// </summary>
-        /// <param name="courseController">Controller to be used.</param>
-        /// <remarks>Scene has to be reloaded to use enforced CourseController.</remarks>
-        public static void SetEnforcedCourseController(IProcessController courseController)
+        /// <param name="processController">Controller to be used.</param>
+        /// <remarks>Scene has to be reloaded to use enforced ProcessController.</remarks>
+        public static void SetEnforcedProcessController(IProcessController processController)
         {
-            enforcedCourseController = courseController;
+            enforcedProcessController = processController;
         }
 
         /// <summary>
-        /// Resets the <cref name="courseControllerQualifiedName"/> to the name of the course controller with the highest priority.
+        /// Resets the <cref name="processControllerQualifiedName"/> to the name of the process controller with the highest priority.
         /// </summary>
-        /// <remarks>This may be used when instantiating a course controller prefab to make sure the default course controller is used.</remarks>
+        /// <remarks>This may be used when instantiating a process controller prefab to make sure the default process controller is used.</remarks>
         public void ResetToDefault()
         {
-            RemoveComponents(GetCourseControllerFromType().GetRequiredSetupComponents());
-            Type courseControllerType = RetrieveDefaultControllerType();
-            courseControllerQualifiedName = courseControllerType.Name;
+            RemoveComponents(GetProcessControllerFromType().GetRequiredSetupComponents());
+            Type processControllerType = RetrieveDefaultControllerType();
+            processControllerQualifiedName = processControllerType.Name;
         }
     }
 }

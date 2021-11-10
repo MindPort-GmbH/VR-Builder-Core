@@ -34,7 +34,7 @@ namespace VRBuilder.Tests.Utils
         [UnityTest]
         public IEnumerator ActivationBehavior()
         {
-            // Given a linear three step course with 3 ActivationStageBehaviorMock set to Activation and an EndlessConditionMock
+            // Given a linear three step process with 3 ActivationStageBehaviorMock set to Activation and an EndlessConditionMock
             IBehavior behavior1 = new ActivationStageBehaviorMock(BehaviorExecutionStages.Activation);
             IBehavior behavior2 = new ActivationStageBehaviorMock(BehaviorExecutionStages.Activation);
             IBehavior behavior3 = new ActivationStageBehaviorMock(BehaviorExecutionStages.Activation);
@@ -45,7 +45,7 @@ namespace VRBuilder.Tests.Utils
             chapterBuilder.Steps[2].Data.Behaviors.Data.Behaviors = new List<IBehavior> { behavior3 };
             IChapter chapter = chapterBuilder.Build();
 
-            IProcess course = new Process("course", chapter);
+            IProcess process = new Process("process", chapter);
 
             // And given a "restricted" and an "unrestricted" mode.
             IMode restricted = new Mode("Restricted", new WhitelistTypeRule<IOptional>().Add<ActivationStageBehaviorMock>());
@@ -54,9 +54,9 @@ namespace VRBuilder.Tests.Utils
             // When running it and changing the mode during execution several times,
             // Then the corresponding ActivationStageBehaviorMock of the current step is activated and deactivated accordingly.
             // The other ActivationStageBehaviorMock of the other steps stay inactive.
-            ProcessRunner.Initialize(course);
+            ProcessRunner.Initialize(process);
             ProcessRunner.Run();
-            course.Configure(unrestricted);
+            process.Configure(unrestricted);
 
             yield return new WaitUntil(() => behavior1.LifeCycle.Stage == Stage.Activating);
 
@@ -64,25 +64,25 @@ namespace VRBuilder.Tests.Utils
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior3.LifeCycle.Stage);
 
-            course.Configure(restricted);
+            process.Configure(restricted);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior3.LifeCycle.Stage);
 
-            ICondition condition1 = course.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions[0].Data.Conditions[0];
+            ICondition condition1 = process.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions[0].Data.Conditions[0];
             yield return new WaitUntil(() => condition1.LifeCycle.Stage == Stage.Active);
 
             condition1.Autocomplete();
 
-            ICondition condition2 = course.Data.FirstChapter.Data.Steps[1].Data.Transitions.Data.Transitions[0].Data.Conditions[0];
+            ICondition condition2 = process.Data.FirstChapter.Data.Steps[1].Data.Transitions.Data.Transitions[0].Data.Conditions[0];
             yield return new WaitUntil(() => condition2.LifeCycle.Stage == Stage.Active);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior3.LifeCycle.Stage);
 
-            course.Configure(unrestricted);
+            process.Configure(unrestricted);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Activating, behavior2.LifeCycle.Stage);
@@ -90,20 +90,20 @@ namespace VRBuilder.Tests.Utils
 
             condition2.Autocomplete();
 
-            ICondition condition3 = course.Data.FirstChapter.Data.Steps[2].Data.Transitions.Data.Transitions[0].Data.Conditions[0];
+            ICondition condition3 = process.Data.FirstChapter.Data.Steps[2].Data.Transitions.Data.Transitions[0].Data.Conditions[0];
             yield return new WaitUntil(() => condition3.LifeCycle.Stage == Stage.Active);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
             Assert.AreEqual(Stage.Active, behavior3.LifeCycle.Stage);
 
-            course.Configure(restricted);
+            process.Configure(restricted);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior3.LifeCycle.Stage);
 
-            course.Configure(unrestricted);
+            process.Configure(unrestricted);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
@@ -121,7 +121,7 @@ namespace VRBuilder.Tests.Utils
         [UnityTest]
         public IEnumerator DeactivationBehavior()
         {
-            // Given a linear three step course with 3 ActivationStageBehaviorMock set to Activation and an EndlessConditionMock
+            // Given a linear three step process with 3 ActivationStageBehaviorMock set to Activation and an EndlessConditionMock
             IBehavior behavior1 = new ActivationStageBehaviorMock(BehaviorExecutionStages.Deactivation);
             IBehavior behavior2 = new ActivationStageBehaviorMock(BehaviorExecutionStages.Deactivation);
             IBehavior behavior3 = new ActivationStageBehaviorMock(BehaviorExecutionStages.Deactivation);
@@ -132,7 +132,7 @@ namespace VRBuilder.Tests.Utils
             chapterBuilder.Steps[2].Data.Behaviors.Data.Behaviors = new List<IBehavior> { behavior3 };
             IChapter chapter = chapterBuilder.Build();
 
-            IProcess course = new Process("course", chapter);
+            IProcess process = new Process("process", chapter);
 
             // And given a "restricted" and an "unrestricted" mode.
             IMode restricted = new Mode("Restricted", new WhitelistTypeRule<IOptional>().Add<ActivationStageBehaviorMock>());
@@ -141,18 +141,18 @@ namespace VRBuilder.Tests.Utils
             // When running it and changing the mode during execution several times,
             // Then the corresponding ActivationStageBehaviorMock of the current step is activated and deactivated accordingly.
             // The other ActivationStageBehaviorMock of the other steps stay inactive.
-            ProcessRunner.Initialize(course);
+            ProcessRunner.Initialize(process);
             ProcessRunner.Run();
-            course.Configure(unrestricted);
+            process.Configure(unrestricted);
 
-            ICondition condition1 = course.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions[0].Data.Conditions[0];
+            ICondition condition1 = process.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions[0].Data.Conditions[0];
             yield return new WaitUntil(() => condition1.LifeCycle.Stage == Stage.Active);
 
             Assert.AreEqual(Stage.Active, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior3.LifeCycle.Stage);
 
-            course.Configure(restricted);
+            process.Configure(restricted);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
@@ -165,14 +165,14 @@ namespace VRBuilder.Tests.Utils
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior3.LifeCycle.Stage);
 
-            ICondition condition2 = course.Data.FirstChapter.Data.Steps[1].Data.Transitions.Data.Transitions[0].Data.Conditions[0];
+            ICondition condition2 = process.Data.FirstChapter.Data.Steps[1].Data.Transitions.Data.Transitions[0].Data.Conditions[0];
             yield return new WaitUntil(() => condition2.LifeCycle.Stage == Stage.Active);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior3.LifeCycle.Stage);
 
-            course.Configure(unrestricted);
+            process.Configure(unrestricted);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Activating, behavior2.LifeCycle.Stage);
@@ -185,20 +185,20 @@ namespace VRBuilder.Tests.Utils
             Assert.AreEqual(Stage.Active, behavior2.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior3.LifeCycle.Stage);
 
-            ICondition condition3 = course.Data.FirstChapter.Data.Steps[2].Data.Transitions.Data.Transitions[0].Data.Conditions[0];
+            ICondition condition3 = process.Data.FirstChapter.Data.Steps[2].Data.Transitions.Data.Transitions[0].Data.Conditions[0];
             yield return new WaitUntil(() => condition3.LifeCycle.Stage == Stage.Active);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
             Assert.AreEqual(Stage.Active, behavior3.LifeCycle.Stage);
 
-            course.Configure(restricted);
+            process.Configure(restricted);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior3.LifeCycle.Stage);
 
-            course.Configure(unrestricted);
+            process.Configure(unrestricted);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
@@ -211,7 +211,7 @@ namespace VRBuilder.Tests.Utils
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);
             Assert.AreEqual(Stage.Active, behavior3.LifeCycle.Stage);
 
-            course.Configure(restricted);
+            process.Configure(restricted);
 
             Assert.AreEqual(Stage.Inactive, behavior1.LifeCycle.Stage);
             Assert.AreEqual(Stage.Inactive, behavior2.LifeCycle.Stage);

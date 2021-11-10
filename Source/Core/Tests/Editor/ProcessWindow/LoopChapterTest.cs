@@ -8,7 +8,7 @@ using NUnit.Framework;
 using VRBuilder.Core;
 using VRBuilder.Editor.UI.Windows;
 
-namespace VRBuilder.Editor.Tests.CourseWindowTests
+namespace VRBuilder.Editor.Tests.ProcessWindowTests
 {
     internal class LoopChapterTest : BaseProcessWindowTest
     {
@@ -66,7 +66,7 @@ namespace VRBuilder.Editor.Tests.CourseWindowTests
                 Assert.That(firstStep == nextStep);
             }
 
-            // The second step's transition is the end of the course.
+            // The second step's transition is the end of the process.
             Assert.False(TryToGetStepFromTransition(secondTransition, out nextStep));
         }
     }

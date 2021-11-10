@@ -3,7 +3,7 @@
 // Modifications copyright (c) 2021 MindPort GmbH
 
 using VRBuilder.Core;
-using VRBuilder.Editor.CourseValidation;
+using VRBuilder.Editor.ProcessValidation;
 
 /// <summary>
 /// Does not validate, used to disabled the validation system.
@@ -19,7 +19,7 @@ internal class DisabledValidationHandler : IValidationHandler
         return false;
     }
 
-    public IValidationReport Validate(IData data, IProcess course, IContext context = null)
+    public IValidationReport Validate(IData data, IProcess process, IContext context = null)
     {
         return null;
     }

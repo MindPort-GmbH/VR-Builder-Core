@@ -17,95 +17,95 @@ namespace VRBuilder.Editor
     internal static class ProcessAssetUtils
     {
         /// <summary>
-        /// Extracts the file name from the <paramref name="coursePath"/>. Works with both relative and full paths.
+        /// Extracts the file name from the <paramref name="processPath"/>. Works with both relative and full paths.
         /// </summary>
-        internal static string GetCourseNameFromPath(string coursePath)
+        internal static string GetProcessNameFromPath(string processPath)
         {
-            return Path.GetFileNameWithoutExtension(coursePath);
+            return Path.GetFileNameWithoutExtension(processPath);
         }
 
         /// <summary>
-        /// Returns the asset path to the course with the <paramref name="courseName"/>.
+        /// Returns the asset path to the process with the <paramref name="processName"/>.
         /// </summary>
-        internal static string GetCourseAssetPath(string courseName)
+        internal static string GetProcessAssetPath(string processName)
         {
-            return $"{GetCourseAssetDirectory(courseName)}/{courseName}.{EditorConfigurator.Instance.Serializer.FileFormat}";
+            return $"{GetProcessAssetDirectory(processName)}/{processName}.{EditorConfigurator.Instance.Serializer.FileFormat}";
         }
 
         /// <summary>
-        /// Returns the relative path from the streaming assets directory to the course with the <paramref name="courseName"/>.
+        /// Returns the relative path from the streaming assets directory to the process with the <paramref name="processName"/>.
         /// </summary>
-        internal static string GetCourseStreamingAssetPath(string courseName)
+        internal static string GetProcessStreamingAssetPath(string processName)
         {
-            return $"{GetCourseStreamingAssetsSubdirectory(courseName)}/{courseName}.{EditorConfigurator.Instance.Serializer.FileFormat}";
+            return $"{GetProcessStreamingAssetsSubdirectory(processName)}/{processName}.{EditorConfigurator.Instance.Serializer.FileFormat}";
         }
 
         /// <summary>
-        /// Returns true if the file at given <paramref name="assetPath"/> is a course. It does not check the validity of the file's contents.
+        /// Returns true if the file at given <paramref name="assetPath"/> is a process. It does not check the validity of the file's contents.
         /// </summary>
-        internal static bool IsValidCourseAssetPath(string assetPath)
+        internal static bool IsValidProcessAssetPath(string assetPath)
         {
             string filePath = Path.Combine(Application.dataPath.Remove(Application.dataPath.LastIndexOf('/')), assetPath).Replace('/', Path.DirectorySeparatorChar);
-            string courseFolderPath = Path.Combine(Application.streamingAssetsPath, EditorConfigurator.Instance.CourseStreamingAssetsSubdirectory).Replace('/', Path.DirectorySeparatorChar);
+            string processFolderPath = Path.Combine(Application.streamingAssetsPath, EditorConfigurator.Instance.ProcessStreamingAssetsSubdirectory).Replace('/', Path.DirectorySeparatorChar);
 
             FileInfo file = new FileInfo(filePath);
 
             return
                 file.Directory?.Parent != null
-                && new DirectoryInfo(courseFolderPath).FullName == file.Directory.Parent.FullName
+                && new DirectoryInfo(processFolderPath).FullName == file.Directory.Parent.FullName
                 && Path.GetFileNameWithoutExtension(assetPath) == file.Directory.Name;
         }
 
         /// <summary>
-        /// Returns a list of names of all courses in the project.
+        /// Returns a list of names of all processes in the project.
         /// </summary>
-        internal static IEnumerable<string> GetAllCourses()
+        internal static IEnumerable<string> GetAllProcesses()
         {
-            DirectoryInfo coursesDirectory = new DirectoryInfo($"{Application.streamingAssetsPath}/{EditorConfigurator.Instance.CourseStreamingAssetsSubdirectory}");
-            return coursesDirectory.GetDirectories()
+            DirectoryInfo processesDirectory = new DirectoryInfo($"{Application.streamingAssetsPath}/{EditorConfigurator.Instance.ProcessStreamingAssetsSubdirectory}");
+            return processesDirectory.GetDirectories()
                 .Select(directory => directory.Name)
-                .Where(courseName => File.Exists(GetCourseAssetPath(courseName)))
+                .Where(processName => File.Exists(GetProcessAssetPath(processName)))
                 .ToList();
         }
 
         /// <summary>
-        /// Checks if any course exists.
+        /// Checks if any process exists.
         /// </summary>
-        internal static bool DoesAnyCourseExist()
+        internal static bool DoesAnyProcessExist()
         {
-            DirectoryInfo coursesDirectory = new DirectoryInfo($"{Application.streamingAssetsPath}/{EditorConfigurator.Instance.CourseStreamingAssetsSubdirectory}");
-            if (coursesDirectory.Exists == false)
+            DirectoryInfo processesDirectory = new DirectoryInfo($"{Application.streamingAssetsPath}/{EditorConfigurator.Instance.ProcessStreamingAssetsSubdirectory}");
+            if (processesDirectory.Exists == false)
             {
                 return false;
             }
 
-            return GetAllCourses().Any();
+            return GetAllProcesses().Any();
         }
 
         /// <summary>
-        /// Checks if you can create a course with the given <paramref name="courseName"/>.
+        /// Checks if you can create a process with the given <paramref name="processName"/>.
         /// </summary>
-        /// <param name="errorMessage">Empty if you can create the course or must fail silently.</param>
-        internal static bool CanCreate(string courseName, out string errorMessage)
+        /// <param name="errorMessage">Empty if you can create the process or must fail silently.</param>
+        internal static bool CanCreate(string processName, out string errorMessage)
         {
             errorMessage = string.Empty;
 
-            if (string.IsNullOrEmpty(courseName))
+            if (string.IsNullOrEmpty(processName))
             {
-                errorMessage = "The course name is empty!";
+                errorMessage = "The process name is empty!";
                 return false;
             }
 
             int invalidCharacterIndex;
-            if ((invalidCharacterIndex = courseName.IndexOfAny(Path.GetInvalidFileNameChars())) >= 0)
+            if ((invalidCharacterIndex = processName.IndexOfAny(Path.GetInvalidFileNameChars())) >= 0)
             {
-                errorMessage = $"The course name contains invalid character `{courseName[invalidCharacterIndex]}` at index {invalidCharacterIndex}";
+                errorMessage = $"The process name contains invalid character `{processName[invalidCharacterIndex]}` at index {invalidCharacterIndex}";
                 return false;
             }
 
-            if (DoesCourseAssetExist(courseName))
+            if (DoesProcessAssetExist(processName))
             {
-                errorMessage = $"A course with the name \"{courseName}\" already exists!";
+                errorMessage = $"A process with the name \"{processName}\" already exists!";
                 return false;
             }
 
@@ -113,35 +113,35 @@ namespace VRBuilder.Editor
         }
 
         /// <summary>
-        /// Checks if you can rename the <paramref name="course"/> to the <paramref name="newName"/>.
+        /// Checks if you can rename the <paramref name="process"/> to the <paramref name="newName"/>.
         /// </summary>
-        /// <param name="errorMessage">Empty if you can create the course or must fail silently.</param>
-        internal static bool CanRename(IProcess course, string newName, out string errorMessage)
+        /// <param name="errorMessage">Empty if you can create the process or must fail silently.</param>
+        internal static bool CanRename(IProcess process, string newName, out string errorMessage)
         {
             errorMessage = string.Empty;
 
-            return course.Data.Name != newName && CanCreate(newName, out errorMessage);
+            return process.Data.Name != newName && CanCreate(newName, out errorMessage);
         }
 
         /// <summary>
-        /// Returns true if there is a course asset for the <paramref name="courseName"/>.
+        /// Returns true if there is a process asset for the <paramref name="processName"/>.
         /// </summary>
-        internal static bool DoesCourseAssetExist(string courseName)
+        internal static bool DoesProcessAssetExist(string processName)
         {
-            return File.Exists(GetCourseAssetPath(courseName));
+            return File.Exists(GetProcessAssetPath(processName));
         }
 
         /// <summary>
-        /// Returns the directory of the course <paramref name="courseName"/> relative to the project root folder (Assets/StreamingAssets/...).
+        /// Returns the directory of the process <paramref name="processName"/> relative to the project root folder (Assets/StreamingAssets/...).
         /// </summary>
-        internal static string GetCourseAssetDirectory(string courseName)
+        internal static string GetProcessAssetDirectory(string processName)
         {
-            return $"{Application.streamingAssetsPath}/{GetCourseStreamingAssetsSubdirectory(courseName)}";
+            return $"{Application.streamingAssetsPath}/{GetProcessStreamingAssetsSubdirectory(processName)}";
         }
 
-        private static string GetCourseStreamingAssetsSubdirectory(string courseName)
+        private static string GetProcessStreamingAssetsSubdirectory(string processName)
         {
-            return $"{EditorConfigurator.Instance.CourseStreamingAssetsSubdirectory}/{courseName}";
+            return $"{EditorConfigurator.Instance.ProcessStreamingAssetsSubdirectory}/{processName}";
         }
     }
 }

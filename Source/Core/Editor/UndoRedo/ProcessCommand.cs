@@ -17,7 +17,7 @@ namespace VRBuilder.Editor.UndoRedo
         {
             base.Do();
 
-            GlobalEditorHandler.CurrentCourseModified();
+            GlobalEditorHandler.CurrentProcessModified();
         }
 
         /// <inheritdoc />
@@ -25,7 +25,7 @@ namespace VRBuilder.Editor.UndoRedo
         {
             base.Undo();
 
-            GlobalEditorHandler.CurrentCourseModified();
+            GlobalEditorHandler.CurrentProcessModified();
         }
 
         public ProcessCommand(Action doCallback, Action undoCallback) : base(doCallback, undoCallback) { }

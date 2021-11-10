@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace VRBuilder.UX
 {
     /// <summary>
-    /// Course controller for standalone devices like the Oculus Quest.
+    /// Process controller for standalone devices like the Oculus Quest.
     /// </summary>
     public class StandaloneProcessController : BaseProcessController
     {

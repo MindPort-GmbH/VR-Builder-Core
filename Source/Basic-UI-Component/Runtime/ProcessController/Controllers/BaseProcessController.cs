@@ -5,7 +5,7 @@ using UnityEngine;
 namespace VRBuilder.UX
 {
     /// <summary>
-    /// Base course controller which instantiates a defined prefab.
+    /// Base process controller which instantiates a defined prefab.
     /// </summary>
     public abstract class BaseProcessController : IProcessController
     {
@@ -16,12 +16,12 @@ namespace VRBuilder.UX
         public abstract int Priority { get; }
 
         /// <summary>
-        /// Name of the course controller prefab.
+        /// Name of the process controller prefab.
         /// </summary>
         protected abstract string PrefabName { get; }
 
         /// <inheritdoc />
-        public virtual GameObject GetCourseControllerPrefab()
+        public virtual GameObject GetProcessControllerPrefab()
         {
             if (PrefabName == null)
             {
@@ -37,7 +37,7 @@ namespace VRBuilder.UX
         }
 
         /// <inheritdoc />
-        public virtual void HandlePostSetup(GameObject courseControllerObject)
+        public virtual void HandlePostSetup(GameObject processControllerObject)
         {
             // do nothing
         }

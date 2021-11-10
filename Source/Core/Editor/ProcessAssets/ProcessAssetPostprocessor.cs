@@ -14,19 +14,19 @@ namespace VRBuilder.Editor
     internal class ProcessAssetPostprocessor : AssetPostprocessor
     {
         /// <summary>
-        /// Raised when a course file is added, removed or moved from the course folder.
+        /// Raised when a process file is added, removed or moved from the process folder.
         /// </summary>
-        public static event EventHandler<ProcessAssetPostprocessorEventArgs> CourseFileStructureChanged;
+        public static event EventHandler<ProcessAssetPostprocessorEventArgs> ProcessFileStructureChanged;
 
         private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
         {
-            if (CourseFileStructureChanged != null &&
+            if (ProcessFileStructureChanged != null &&
                 importedAssets.Concat(deletedAssets)
                     .Concat(movedAssets)
                     .Concat(movedFromAssetPaths)
-                    .Any(ProcessAssetUtils.IsValidCourseAssetPath))
+                    .Any(ProcessAssetUtils.IsValidProcessAssetPath))
             {
-                CourseFileStructureChanged.Invoke(null, new ProcessAssetPostprocessorEventArgs());
+                ProcessFileStructureChanged.Invoke(null, new ProcessAssetPostprocessorEventArgs());
             }
         }
     }

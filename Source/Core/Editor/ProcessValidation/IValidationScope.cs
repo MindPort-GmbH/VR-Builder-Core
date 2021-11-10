@@ -4,11 +4,11 @@
 
 using System.Collections.Generic;
 
-namespace VRBuilder.Editor.CourseValidation
+namespace VRBuilder.Editor.ProcessValidation
 {
     /// <summary>
     /// ValidationScope limits the scope of the validation done. For example scopes are:
-    /// * Course <see cref="CourseValidationScope"/>
+    /// * Process <see cref="ProcessValidationScope"/>
     /// * Chapter <see cref="ChapterValidationScope"/>
     /// * Step <see cref="StepValidationScope"/>
     /// </summary>

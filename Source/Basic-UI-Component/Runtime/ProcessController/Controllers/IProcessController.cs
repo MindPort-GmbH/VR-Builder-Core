@@ -5,7 +5,7 @@ using UnityEngine;
 namespace VRBuilder.UX
 {
     /// <summary>
-    /// Controller for managing the course.
+    /// Controller for managing the process.
     /// Can for example instantiate a controller menu and a spectator camera.
     /// </summary>
     public interface IProcessController
@@ -21,9 +21,9 @@ namespace VRBuilder.UX
         int Priority { get; }
 
         /// <summary>
-        /// Gets a course controller game object.
+        /// Gets a process controller game object.
         /// </summary>
-        GameObject GetCourseControllerPrefab();
+        GameObject GetProcessControllerPrefab();
 
         /// <summary>
         /// List of component types which are required on the setup object.
@@ -35,7 +35,7 @@ namespace VRBuilder.UX
         /// Handles post-setup logic.
         /// Should be called after all components are added and object is initialized.
         /// </summary>
-        /// <param name="courseControllerObject">Actual course controller object</param>
-        void HandlePostSetup(GameObject courseControllerObject);
+        /// <param name="processControllerObject">Actual process controller object</param>
+        void HandlePostSetup(GameObject processControllerObject);
     }
 }

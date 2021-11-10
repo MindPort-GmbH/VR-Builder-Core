@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace VRBuilder.Editor.CourseValidation
+namespace VRBuilder.Editor.ProcessValidation
 {
     /// <summary>
     /// Validator provides validation for a specific Type.

@@ -18,7 +18,7 @@ namespace VRBuilder.Editor.UI.Windows
     /// </summary>
     public class ProcessWindow : EditorWindow
     {
-        private IProcess activeCourse;
+        private IProcess activeProcess;
 
         [SerializeField]
         private Vector2 currentScrollPosition;
@@ -34,34 +34,34 @@ namespace VRBuilder.Editor.UI.Windows
         private Vector2 mousePosition;
 
         /// <summary>
-        /// Sets the <paramref name="course"/> to be displayed and edited in this window.
+        /// Sets the <paramref name="process"/> to be displayed and edited in this window.
         /// </summary>
-        public void SetCourse(IProcess course)
+        public void SetProcess(IProcess process)
         {
             RevertableChangesHandler.FlushStack();
 
-            activeCourse = course;
+            activeProcess = process;
 
-            if (course == null)
+            if (process == null)
             {
                 return;
             }
 
-            chapterMenu.Initialise(course, this);
+            chapterMenu.Initialise(process, this);
             chapterMenu.ChapterChanged += (sender, args) =>
             {
                 chapterRepresentation.SetChapter(args.CurrentChapter);
             };
 
-            chapterRepresentation.SetChapter(course.Data.FirstChapter);
+            chapterRepresentation.SetChapter(process.Data.FirstChapter);
         }
 
         /// <summary>
-        /// Returns currently edited course.
+        /// Returns currently edited process.
         /// </summary>
-        internal IProcess GetCourse()
+        internal IProcess GetProcess()
         {
-            return activeCourse;
+            return activeProcess;
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace VRBuilder.Editor.UI.Windows
         /// </summary>
         internal void RefreshChapterRepresentation()
         {
-            if (activeCourse != null)
+            if (activeProcess != null)
             {
                 chapterRepresentation.SetChapter(chapterMenu.CurrentChapter);
             }
@@ -80,7 +80,7 @@ namespace VRBuilder.Editor.UI.Windows
         /// </summary>
         internal IChapter GetChapter()
         {
-            return activeCourse == null ? null : chapterMenu.CurrentChapter;
+            return activeProcess == null ? null : chapterMenu.CurrentChapter;
         }
 
         private void OnInspectorUpdate()
@@ -113,14 +113,14 @@ namespace VRBuilder.Editor.UI.Windows
 
             EditorSceneManager.newSceneCreated += OnNewScene;
             EditorSceneManager.sceneOpened += OnSceneOpened;
-            GlobalEditorHandler.CourseWindowOpened(this);
+            GlobalEditorHandler.ProcessWindowOpened(this);
         }
 
         private void OnDestroy()
         {
             EditorSceneManager.newSceneCreated -= OnNewScene;
             EditorSceneManager.sceneOpened -= OnSceneOpened;
-            GlobalEditorHandler.CourseWindowClosed(this);
+            GlobalEditorHandler.ProcessWindowClosed(this);
         }
 
         private void SetTabName()
@@ -130,7 +130,7 @@ namespace VRBuilder.Editor.UI.Windows
 
         private void OnGUI()
         {
-            if (activeCourse == null)
+            if (activeProcess == null)
             {
                 return;
             }
@@ -149,9 +149,9 @@ namespace VRBuilder.Editor.UI.Windows
 
         private void OnFocus()
         {
-            if (EditorConfigurator.Instance.Validation.IsAllowedToValidate() && activeCourse != null)
+            if (EditorConfigurator.Instance.Validation.IsAllowedToValidate() && activeProcess != null)
             {
-                EditorConfigurator.Instance.Validation.Validate(activeCourse.Data, GlobalEditorHandler.GetCurrentCourse());
+                EditorConfigurator.Instance.Validation.Validate(activeProcess.Data, GlobalEditorHandler.GetCurrentProcess());
             }
         }
 

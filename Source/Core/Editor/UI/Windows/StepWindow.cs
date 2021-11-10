@@ -65,7 +65,7 @@ namespace VRBuilder.Editor.UI.Windows
 
             if (EditorConfigurator.Instance.Validation.IsAllowedToValidate())
             {
-                EditorConfigurator.Instance.Validation.Validate(step.Data, GlobalEditorHandler.GetCurrentCourse());
+                EditorConfigurator.Instance.Validation.Validate(step.Data, GlobalEditorHandler.GetCurrentProcess());
             }
         }
 

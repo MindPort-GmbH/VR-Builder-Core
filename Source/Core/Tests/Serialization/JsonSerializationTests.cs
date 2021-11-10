@@ -16,7 +16,7 @@ namespace VRBuilder.Tests.Serialization
         [SetUp]
         protected void Setup()
         {
-            settings = NewtonsoftJsonProcessSerializer.CourseSerializerSettings;
+            settings = NewtonsoftJsonProcessSerializer.ProcessSerializerSettings;
         }
 
         [Test]

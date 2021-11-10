@@ -14,7 +14,7 @@ using Newtonsoft.Json.Linq;
 namespace VRBuilder.Core.Serialization
 {
     /// <summary>
-    /// Improved version of the NewtonsoftJsonCourseSerializer, which now allows to serialize very long chapters.
+    /// Improved version of the NewtonsoftJsonProcessSerializer, which now allows to serialize very long chapters.
     /// </summary>
     public class ImprovedNewtonsoftJsonProcessSerializer : NewtonsoftJsonProcessSerializer
     {
@@ -24,51 +24,51 @@ namespace VRBuilder.Core.Serialization
         protected override int Version { get; } = 2;
 
         /// <inheritdoc/>
-        public override IProcess CourseFromByteArray(byte[] data)
+        public override IProcess ProcessFromByteArray(byte[] data)
         {
             string stringData = new UTF8Encoding().GetString(data);
-            JObject dataObject = JsonConvert.DeserializeObject<JObject>(stringData, CourseSerializerSettings);
+            JObject dataObject = JsonConvert.DeserializeObject<JObject>(stringData, ProcessSerializerSettings);
 
-            // Check if course was serialized with version 1
+            // Check if process was serialized with version 1
             int version = dataObject.GetValue("$serializerVersion").ToObject<int>();
             if (version == 1)
             {
-                return base.CourseFromByteArray(data);
+                return base.ProcessFromByteArray(data);
             }
 
-            CourseWrapper wrapper = Deserialize<CourseWrapper>(data, CourseSerializerSettings);
-            return wrapper.GetCourse();
+            ProcessWrapper wrapper = Deserialize<ProcessWrapper>(data, ProcessSerializerSettings);
+            return wrapper.GetProcess();
         }
 
         /// <inheritdoc/>
-        public override byte[] CourseToByteArray(IProcess course)
+        public override byte[] ProcessToByteArray(IProcess process)
         {
-            CourseWrapper wrapper = new CourseWrapper(course);
-            JObject jObject = JObject.FromObject(wrapper, JsonSerializer.Create(CourseSerializerSettings));
+            ProcessWrapper wrapper = new ProcessWrapper(process);
+            JObject jObject = JObject.FromObject(wrapper, JsonSerializer.Create(ProcessSerializerSettings));
             jObject.Add("$serializerVersion", Version);
-            // This line is required to undo the changes applied to the course.
-            wrapper.GetCourse();
+            // This line is required to undo the changes applied to the process.
+            wrapper.GetProcess();
 
             return new UTF8Encoding().GetBytes(jObject.ToString());
         }
 
         [Serializable]
-        private class CourseWrapper
+        private class ProcessWrapper
         {
             [DataMember]
             public List<IStep> Steps = new List<IStep>();
 
             [DataMember]
-            public IProcess Course;
+            public IProcess Process;
 
-            public CourseWrapper()
+            public ProcessWrapper()
             {
 
             }
 
-            public CourseWrapper(IProcess course)
+            public ProcessWrapper(IProcess process)
             {
-                foreach (IChapter chapter in course.Data.Chapters)
+                foreach (IChapter chapter in process.Data.Chapters)
                 {
                     Steps.AddRange(chapter.Data.Steps);
                 }
@@ -83,10 +83,10 @@ namespace VRBuilder.Core.Serialization
                         }
                     }
                 }
-                Course = course;
+                Process = process;
             }
 
-            public IProcess GetCourse()
+            public IProcess GetProcess()
             {
                 foreach (IStep step in Steps)
                 {
@@ -102,7 +102,7 @@ namespace VRBuilder.Core.Serialization
                     }
                 }
 
-                return Course;
+                return Process;
             }
 
             [Serializable]

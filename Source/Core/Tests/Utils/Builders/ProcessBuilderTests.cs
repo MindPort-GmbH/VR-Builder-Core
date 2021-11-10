@@ -32,15 +32,15 @@ namespace VRBuilder.Tests.Builder
                 );
 
             // When we build a process from it
-            IProcess course = builder.Build();
+            IProcess process = builder.Build();
 
             // Then it consists of exactly one chapter and one step, and their names are the same as expected
-            Assert.True(course.Data.Name == "Process1");
-            Assert.True(course.Data.FirstChapter.Data.Name == "Chapter1.1");
-            Assert.True(course.Data.FirstChapter.Data.FirstStep.Data.Name == "Step1.1.1");
-            Assert.True(course.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions.Count == 1);
-            Assert.True(course.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions.First().Data.TargetStep == null);
-            Assert.AreEqual(1, course.Data.Chapters.Count);
+            Assert.True(process.Data.Name == "Process1");
+            Assert.True(process.Data.FirstChapter.Data.Name == "Chapter1.1");
+            Assert.True(process.Data.FirstChapter.Data.FirstStep.Data.Name == "Step1.1.1");
+            Assert.True(process.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions.Count == 1);
+            Assert.True(process.Data.FirstChapter.Data.FirstStep.Data.Transitions.Data.Transitions.First().Data.TargetStep == null);
+            Assert.AreEqual(1, process.Data.Chapters.Count);
         }
 
         [Test]
@@ -54,10 +54,10 @@ namespace VRBuilder.Tests.Builder
                     .AddStep(new BasicStepBuilder("Step1.1.3")));
 
             // When we build a process from it
-            IProcess course = builder.Build();
+            IProcess process = builder.Build();
 
             // Then it has exactly three steps in the same order.
-            IStep firstStep = course.Data.FirstChapter.Data.FirstStep;
+            IStep firstStep = process.Data.FirstChapter.Data.FirstStep;
             Assert.True(firstStep.Data.Name == "Step1.1.1");
             IStep secondStep = firstStep.Data.Transitions.Data.Transitions.First().Data.TargetStep;
             Assert.True(secondStep.Data.Name == "Step1.1.2");
@@ -81,18 +81,18 @@ namespace VRBuilder.Tests.Builder
                     .AddStep(new BasicStepBuilder("1.3.1")));
 
             // When we build a process from it
-            IProcess course = builder.Build();
+            IProcess process = builder.Build();
 
             // Then it has exactly three chapters in it with one, three, and one steps,
             // `NextChapter` properties are properly assigned,
             // and every chapter has expected composition of steps.
-            IChapter chapter = course.Data.FirstChapter;
+            IChapter chapter = process.Data.FirstChapter;
             Assert.True(chapter.Data.Name == "1.1");
             IStep step = chapter.Data.FirstStep;
             Assert.True(chapter.Data.FirstStep.Data.Name == "1.1.1");
             Assert.True(step.Data.Transitions.Data.Transitions.First().Data.TargetStep == null);
 
-            chapter = course.Data.Chapters[1];
+            chapter = process.Data.Chapters[1];
             Assert.True(chapter.Data.Name == "1.2");
             step = chapter.Data.FirstStep;
             Assert.True(step.Data.Name == "1.2.1");
@@ -102,12 +102,12 @@ namespace VRBuilder.Tests.Builder
             Assert.True(step.Data.Name == "1.2.3");
             Assert.True(step.Data.Transitions.Data.Transitions.First().Data.TargetStep == null);
 
-            chapter = course.Data.Chapters[2];
+            chapter = process.Data.Chapters[2];
             Assert.True(chapter.Data.Name == "1.3");
             step = chapter.Data.FirstStep;
             Assert.True(step.Data.Name == "1.3.1");
             Assert.True(step.Data.Transitions.Data.Transitions.First().Data.TargetStep == null);
-            Assert.AreEqual(3, course.Data.Chapters.Count);
+            Assert.AreEqual(3, process.Data.Chapters.Count);
         }
 
         [Test]

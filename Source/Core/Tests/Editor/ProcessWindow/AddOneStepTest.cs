@@ -8,7 +8,7 @@ using VRBuilder.Core;
 using System.Collections.Generic;
 using VRBuilder.Editor.UI.Windows;
 
-namespace VRBuilder.Editor.Tests.CourseWindowTests
+namespace VRBuilder.Editor.Tests.ProcessWindowTests
 {
     internal class AddOneStepTest : BaseProcessWindowTest
     {

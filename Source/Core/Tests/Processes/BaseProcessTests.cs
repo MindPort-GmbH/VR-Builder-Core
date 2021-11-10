@@ -13,7 +13,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace VRBuilder.Tests.Courses
+namespace VRBuilder.Tests.Processes
 {
     public class BaseProcessTests : RuntimeTests
     {
@@ -22,22 +22,22 @@ namespace VRBuilder.Tests.Courses
         {
             Chapter chapter1 = TestLinearChapterBuilder.SetupChapterBuilder(3, false).Build();
             Chapter chapter2 = TestLinearChapterBuilder.SetupChapterBuilder().Build();
-            Process course = new Process("MyCourse", new List<IChapter>
+            Process process = new Process("MyProcess", new List<IChapter>
             {
                 chapter1,
                 chapter2
             });
 
-            Assert.AreEqual(chapter1, course.Data.FirstChapter);
+            Assert.AreEqual(chapter1, process.Data.FirstChapter);
         }
 
         [UnityTest]
-        public IEnumerator OneChapterCourse()
+        public IEnumerator OneChapterProcess()
         {
             Chapter chapter1 = TestLinearChapterBuilder.SetupChapterBuilder(3, false).Build();
-            Process course = new Process("MyCourse", chapter1);
+            Process process = new Process("MyProcess", chapter1);
 
-            ProcessRunner.Initialize(course);
+            ProcessRunner.Initialize(process);
             ProcessRunner.Run();
 
             Debug.Log(chapter1.LifeCycle.Stage);
@@ -55,17 +55,17 @@ namespace VRBuilder.Tests.Courses
         }
 
         [UnityTest]
-        public IEnumerator TwoChapterCourse()
+        public IEnumerator TwoChapterProcess()
         {
             Chapter chapter1 = TestLinearChapterBuilder.SetupChapterBuilder(3, false).Build();
             Chapter chapter2 = TestLinearChapterBuilder.SetupChapterBuilder().Build();
-            Process course = new Process("MyCourse", new List<IChapter>
+            Process process = new Process("MyProcess", new List<IChapter>
             {
                 chapter1,
                 chapter2
             });
 
-            ProcessRunner.Initialize(course);
+            ProcessRunner.Initialize(process);
             ProcessRunner.Run();
 
             yield return new WaitUntil(() => chapter1.LifeCycle.Stage == Stage.Activating);
@@ -83,7 +83,7 @@ namespace VRBuilder.Tests.Courses
         {
             Chapter chapter1 = TestLinearChapterBuilder.SetupChapterBuilder(3, false).Build();
             Chapter chapter2 = TestLinearChapterBuilder.SetupChapterBuilder(3, false).Build();
-            Process course = new Process("MyCourse", new List<IChapter>
+            Process process = new Process("MyProcess", new List<IChapter>
             {
                 chapter1,
                 chapter2
@@ -92,7 +92,7 @@ namespace VRBuilder.Tests.Courses
             bool wasStarted = false;
             bool wasCompleted = false;
 
-            course.LifeCycle.StageChanged += (obj, args) =>
+            process.LifeCycle.StageChanged += (obj, args) =>
             {
                 if (args.Stage == Stage.Activating)
                 {
@@ -104,10 +104,10 @@ namespace VRBuilder.Tests.Courses
                 }
             };
 
-            ProcessRunner.Initialize(course);
+            ProcessRunner.Initialize(process);
             ProcessRunner.Run();
 
-            while (course.LifeCycle.Stage != Stage.Inactive)
+            while (process.LifeCycle.Stage != Stage.Inactive)
             {
                 yield return null;
             }
@@ -117,66 +117,66 @@ namespace VRBuilder.Tests.Courses
         }
 
         [UnityTest]
-        public IEnumerator FastForwardInactiveCourse()
+        public IEnumerator FastForwardInactiveProcess()
         {
             // Given a process
-            Process course = new LinearProcessBuilder("Process")
+            Process process = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new EndlessConditionMock())))
                 .Build();
 
-            course.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
+            process.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
             // When you mark it to fast-forward,
-            course.LifeCycle.MarkToFastForward();
+            process.LifeCycle.MarkToFastForward();
 
             // Then it doesn't autocomplete because it weren't activated yet.
-            Assert.AreEqual(Stage.Inactive, course.LifeCycle.Stage);
+            Assert.AreEqual(Stage.Inactive, process.LifeCycle.Stage);
             yield break;
         }
 
         [UnityTest]
-        public IEnumerator FastForwardInactiveCourseAndActivateIt()
+        public IEnumerator FastForwardInactiveProcessAndActivateIt()
         {
             // Given a process
-            Process course = new LinearProcessBuilder("Process")
+            Process process = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new EndlessConditionMock())))
                 .Build();
 
             // When you mark it to fast-forward and activate it,
-            course.LifeCycle.MarkToFastForward();
+            process.LifeCycle.MarkToFastForward();
 
-            ProcessRunner.Initialize(course);
+            ProcessRunner.Initialize(process);
             ProcessRunner.Run();
 
             yield return null;
 
             // Then it autocompletes.
-            Assert.AreEqual(Stage.Inactive, course.LifeCycle.Stage);
+            Assert.AreEqual(Stage.Inactive, process.LifeCycle.Stage);
             yield break;
         }
 
         [UnityTest]
-        public IEnumerator FastForwardActivatingCourse()
+        public IEnumerator FastForwardActivatingProcess()
         {
             // Given an activated process
-            Process course = new LinearProcessBuilder("Process")
+            Process process = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
                     .AddStep(new BasicStepBuilder("Step")
                         .AddCondition(new EndlessConditionMock())))
                 .Build();
 
-            ProcessRunner.Initialize(course);
+            ProcessRunner.Initialize(process);
             ProcessRunner.Run();
 
             // When you mark it to fast-forward,
-            course.LifeCycle.MarkToFastForward();
+            process.LifeCycle.MarkToFastForward();
 
             // Then it finishes activation.
-            Assert.AreEqual(Stage.Active, course.LifeCycle.Stage);
+            Assert.AreEqual(Stage.Active, process.LifeCycle.Stage);
             yield break;
         }
     }
