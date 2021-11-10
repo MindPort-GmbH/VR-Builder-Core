@@ -13,13 +13,13 @@ namespace VRBuilder.Core
 {
     /// <summary>
     /// An implementation of <see cref="IProcess"/> class.
-    /// It contains a complete information about the training workflow.
+    /// It contains a complete information about the process workflow.
     /// </summary>
     [DataContract(IsReference = true)]
     public class Process : Entity<Process.EntityData>, IProcess
     {
         /// <summary>
-        /// The data class for a course.
+        /// The data class for a process.
         /// </summary>
         public class EntityData : EntityCollectionData<IChapter>, IProcessData
         {
