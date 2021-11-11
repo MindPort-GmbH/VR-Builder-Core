@@ -14,28 +14,28 @@ namespace VRBuilder.Core.Tests.Conditions
         [SetUp]
         public void SetUpColliderSceneObject()
         {
-            // Setup collider training scene object
+            // Setup collider process object
             BoxCollider boxCollider = TargetPositionObject.AddComponent<BoxCollider>();
             boxCollider.isTrigger = true;
             TargetPositionObject.AddComponent<ColliderWithTriggerProperty>();
-            TargetTrainingSceneObject = TargetPositionObject.AddComponent<TrainingSceneObject>();
+            TargetProcessSceneObject = TargetPositionObject.AddComponent<ProcessSceneObject>();
         }
 
         [SetUp]
         public void SetUpTrackedSceneObject()
         {
-            // Setup tracked training scene object
+            // Setup tracked process object
             TrackedObject.AddComponent<BoxCollider>();
             Rigidbody rigidbody = TrackedObject.AddComponent<Rigidbody>();
             rigidbody.isKinematic = true;
-            TrackedTrainingSceneObject = TrackedObject.AddComponent<TrainingSceneObject>();
+            TrackedProcessSceneObject = TrackedObject.AddComponent<ProcessSceneObject>();
         }
 
         [UnityTest]
         public IEnumerator CompleteWhenTargetObjectIsAtExactPositionAsCollider()
         {
             // Activate collider condition
-            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedTrainingSceneObject);
+            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetProcessSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedProcessSceneObject);
             condition.LifeCycle.Activate();
 
             yield return null;
@@ -56,7 +56,7 @@ namespace VRBuilder.Core.Tests.Conditions
         public IEnumerator CompleteWhenTargetObjectIsInsideCollider()
         {
             // Activate collider condition
-            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedTrainingSceneObject);
+            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetProcessSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedProcessSceneObject);
             condition.LifeCycle.Activate();
 
             yield return null;
@@ -81,7 +81,7 @@ namespace VRBuilder.Core.Tests.Conditions
             yield return null;
 
             // Activate collider condition
-            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedTrainingSceneObject);
+            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetProcessSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedProcessSceneObject);
             condition.LifeCycle.Activate();
 
             while (condition.IsCompleted == false)
@@ -103,7 +103,7 @@ namespace VRBuilder.Core.Tests.Conditions
             yield return null;
 
             // Activate collider condition
-            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedTrainingSceneObject);
+            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetProcessSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedProcessSceneObject);
             condition.LifeCycle.Activate();
 
             while (condition.IsCompleted == false)
@@ -123,7 +123,7 @@ namespace VRBuilder.Core.Tests.Conditions
             const float targetDuration = 0.1f;
 
             // Activate collider condition
-            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedTrainingSceneObject, targetDuration);
+            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetProcessSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedProcessSceneObject, targetDuration);
             condition.LifeCycle.Activate();
 
             while (condition.LifeCycle.Stage != Stage.Active)
@@ -161,7 +161,7 @@ namespace VRBuilder.Core.Tests.Conditions
             const float targetDuration = 0.1f;
 
             // Activate collider condition
-            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedTrainingSceneObject, targetDuration);
+            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetProcessSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedProcessSceneObject, targetDuration);
             condition.LifeCycle.Activate();
 
             while (condition.LifeCycle.Stage != Stage.Active)
@@ -198,7 +198,7 @@ namespace VRBuilder.Core.Tests.Conditions
         public IEnumerator NotCompleted()
         {
             // Activate collider condition
-            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedTrainingSceneObject);
+            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetProcessSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedProcessSceneObject);
             condition.LifeCycle.Activate();
 
             while (condition.LifeCycle.Stage != Stage.Active)
@@ -219,10 +219,10 @@ namespace VRBuilder.Core.Tests.Conditions
             wrongObj.transform.position = PositionFarFromTarget;
             wrongObj.AddComponent<BoxCollider>();
             wrongObj.AddComponent<Rigidbody>();
-            TrainingSceneObject wrongTrainingSceneObject = wrongObj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject wrongProcessSceneObject = wrongObj.AddComponent<ProcessSceneObject>();
 
             // Activate collider condition
-            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedTrainingSceneObject);
+            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetProcessSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedProcessSceneObject);
             condition.LifeCycle.Activate();
 
             while (condition.LifeCycle.Stage != Stage.Active)
@@ -232,7 +232,7 @@ namespace VRBuilder.Core.Tests.Conditions
             }
 
             // Move tracked object to the target position
-            wrongTrainingSceneObject.transform.position = TargetPositionObject.transform.position;
+            wrongProcessSceneObject.transform.position = TargetPositionObject.transform.position;
 
             float startTime = Time.time;
             while (Time.time < startTime + 0.1f)
@@ -249,10 +249,10 @@ namespace VRBuilder.Core.Tests.Conditions
         public IEnumerator AutoCompleteActive()
         {
             // Given an object in an activated collider condition,
-            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedTrainingSceneObject);
+            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetProcessSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedProcessSceneObject);
 
             bool isColliding = false;
-            TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>().EnteredTrigger += (sender, args) => isColliding = true;
+            TargetProcessSceneObject.GetProperty<ColliderWithTriggerProperty>().EnteredTrigger += (sender, args) => isColliding = true;
 
             condition.LifeCycle.Activate();
 
@@ -276,10 +276,10 @@ namespace VRBuilder.Core.Tests.Conditions
         public IEnumerator FastForwardDoesNotCompleteCondition()
         {
             // Given an activated object in collider condition,
-            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedTrainingSceneObject);
+            ObjectInColliderCondition condition = new ObjectInColliderCondition(TargetProcessSceneObject.GetProperty<ColliderWithTriggerProperty>(), TrackedProcessSceneObject);
 
             bool isColliding = false;
-            TargetTrainingSceneObject.GetProperty<ColliderWithTriggerProperty>().EnteredTrigger += (sender, args) => isColliding = true;
+            TargetProcessSceneObject.GetProperty<ColliderWithTriggerProperty>().EnteredTrigger += (sender, args) => isColliding = true;
 
             condition.LifeCycle.Activate();
 

@@ -14,7 +14,7 @@
 //                return;
 //            }
 
-//            TrainingSceneSetup.Run();
+//            ProcessSceneSetup.Run();
 //        }
 
 //        [Test]

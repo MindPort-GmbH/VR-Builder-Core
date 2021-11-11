@@ -17,18 +17,18 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator CreateByReference()
         {
-            // Given two training scene objects and a duration,
+            // Given two process objects and a duration,
             GameObject movedGo = new GameObject(movedName);
-            TrainingSceneObject moved = movedGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject moved = movedGo.AddComponent<ProcessSceneObject>();
             moved.ChangeUniqueName(movedName);
 
             GameObject targetGo = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = targetGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = targetGo.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             float duration = 0.25f;
 
-            // When we create MoveObjectBehavior and pass training scene objects by reference,
+            // When we create MoveObjectBehavior and pass process objects by reference,
             MoveObjectBehavior moveObjectBehavior = new MoveObjectBehavior(moved, positionProvider, duration);
 
             // Then all properties of the MoveObjectBehavior are properly assigned
@@ -46,18 +46,18 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator CreateByName()
         {
-            // Given two training scene objects and a duration,
+            // Given two process objects and a duration,
             GameObject movedGo = new GameObject(movedName);
-            TrainingSceneObject moved = movedGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject moved = movedGo.AddComponent<ProcessSceneObject>();
             moved.ChangeUniqueName(movedName);
 
             GameObject targetGo = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = targetGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = targetGo.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             float duration = 0.25f;
 
-            // When we create MoveObjectBehavior and pass training scene objects by their unique name,
+            // When we create MoveObjectBehavior and pass process objects by their unique name,
             MoveObjectBehavior moveObjectBehavior = new MoveObjectBehavior(movedName, positionProviderName, duration);
 
             // Then all properties of the MoveObjectBehavior are properly assigned
@@ -75,17 +75,17 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator PositiveDuration()
         {
-            // Given MoveObjectBehavior that takes two training scene objects with different positions and rotations, and positive transition duration,
+            // Given MoveObjectBehavior that takes two process objects with different positions and rotations, and positive transition duration,
             float duration = 0.05f;
 
             GameObject movedGo = new GameObject(movedName);
-            TrainingSceneObject moved = movedGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject moved = movedGo.AddComponent<ProcessSceneObject>();
             moved.ChangeUniqueName(movedName);
 
             GameObject positionProviderGo = new GameObject(positionProviderName);
             positionProviderGo.transform.position = new Vector3(1, 2, 50);
             positionProviderGo.transform.rotation = Quaternion.Euler(57, 195, 188);
-            TrainingSceneObject target = positionProviderGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject target = positionProviderGo.AddComponent<ProcessSceneObject>();
             target.ChangeUniqueName(positionProviderName);
 
             MoveObjectBehavior behavior = new MoveObjectBehavior(moved, target, duration);
@@ -116,16 +116,16 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator NegativeDuration()
         {
-            // Given MoveObjectBehavior that takes two training scene objects with different positions and rotations, and negative transition duration,
+            // Given MoveObjectBehavior that takes two process objects with different positions and rotations, and negative transition duration,
             float duration = -2.5f;
             GameObject movedGo = new GameObject(movedName);
-            TrainingSceneObject moved = movedGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject moved = movedGo.AddComponent<ProcessSceneObject>();
             moved.ChangeUniqueName(movedName);
 
             GameObject positionProviderGameObject = new GameObject(positionProviderName);
             positionProviderGameObject.transform.position = new Vector3(1, 2, 50);
             positionProviderGameObject.transform.rotation = Quaternion.Euler(123, 15, 8);
-            TrainingSceneObject positionProvider = positionProviderGameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = positionProviderGameObject.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             MoveObjectBehavior behavior = new MoveObjectBehavior(moved, positionProvider, duration);
@@ -152,17 +152,17 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator ZeroDuration()
         {
-            // Given MoveObjectBehavior that takes two training scene objects with different positions and rotations, and transition duration that equals zero,
+            // Given MoveObjectBehavior that takes two process objects with different positions and rotations, and transition duration that equals zero,
             float duration = 0f;
 
             GameObject movedGo = new GameObject(movedName);
-            TrainingSceneObject moved = movedGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject moved = movedGo.AddComponent<ProcessSceneObject>();
             moved.ChangeUniqueName(movedName);
 
             GameObject targetGo = new GameObject(positionProviderName);
             targetGo.transform.position = new Vector3(1, 2, 50);
             targetGo.transform.rotation = Quaternion.Euler(123, 15, 8);
-            TrainingSceneObject target = targetGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject target = targetGo.AddComponent<ProcessSceneObject>();
             target.ChangeUniqueName(positionProviderName);
 
             MoveObjectBehavior behavior = new MoveObjectBehavior(moved, target, duration);
@@ -189,15 +189,15 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator SamePosition()
         {
-            // Given MoveObjectBehavior that takes two training scene objects with the same position and rotation, and positive transition duration,
+            // Given MoveObjectBehavior that takes two process objects with the same position and rotation, and positive transition duration,
             float duration = 0.05f;
 
             GameObject movedGo = new GameObject(movedName);
-            TrainingSceneObject moved = movedGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject moved = movedGo.AddComponent<ProcessSceneObject>();
             moved.ChangeUniqueName(movedName);
 
             GameObject targetGo = new GameObject(positionProviderName);
-            TrainingSceneObject target = targetGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject target = targetGo.AddComponent<ProcessSceneObject>();
             target.ChangeUniqueName(positionProviderName);
 
             MoveObjectBehavior behavior = new MoveObjectBehavior(moved, target, duration);
@@ -222,17 +222,17 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardInactiveBehavior()
         {
-            // Given MoveObjectBehavior that takes two training scene objects with different positions and rotations, and positive transition duration,
+            // Given MoveObjectBehavior that takes two process objects with different positions and rotations, and positive transition duration,
             float duration = 0.05f;
 
             GameObject movedGo = new GameObject(movedName);
-            TrainingSceneObject moved = movedGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject moved = movedGo.AddComponent<ProcessSceneObject>();
             moved.ChangeUniqueName(movedName);
 
             GameObject positionProviderGo = new GameObject(positionProviderName);
             positionProviderGo.transform.position = new Vector3(1, 2, 50);
             positionProviderGo.transform.rotation = Quaternion.Euler(57, 195, 188);
-            TrainingSceneObject target = positionProviderGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject target = positionProviderGo.AddComponent<ProcessSceneObject>();
             target.ChangeUniqueName(positionProviderName);
 
             MoveObjectBehavior behavior = new MoveObjectBehavior(moved, target, duration);
@@ -253,17 +253,17 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardInactiveBehaviorAndActivateIt()
         {
-            // Given MoveObjectBehavior that takes two training scene objects with different positions and rotations, and positive transition duration,
+            // Given MoveObjectBehavior that takes two process objects with different positions and rotations, and positive transition duration,
             float duration = 0.05f;
 
             GameObject movedGo = new GameObject(movedName);
-            TrainingSceneObject moved = movedGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject moved = movedGo.AddComponent<ProcessSceneObject>();
             moved.ChangeUniqueName(movedName);
 
             GameObject positionProviderGo = new GameObject(positionProviderName);
             positionProviderGo.transform.position = new Vector3(1, 2, 50);
             positionProviderGo.transform.rotation = Quaternion.Euler(57, 195, 188);
-            TrainingSceneObject target = positionProviderGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject target = positionProviderGo.AddComponent<ProcessSceneObject>();
             target.ChangeUniqueName(positionProviderName);
 
             MoveObjectBehavior behavior = new MoveObjectBehavior(moved, target, duration);
@@ -287,17 +287,17 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardActivatingBehavior()
         {
-            // Given an activated MoveObjectBehavior that takes two training scene objects with different positions and rotations, and positive transition duration,
+            // Given an activated MoveObjectBehavior that takes two process objects with different positions and rotations, and positive transition duration,
             float duration = 0.05f;
 
             GameObject movedGo = new GameObject(movedName);
-            TrainingSceneObject moved = movedGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject moved = movedGo.AddComponent<ProcessSceneObject>();
             moved.ChangeUniqueName(movedName);
 
             GameObject positionProviderGo = new GameObject(positionProviderName);
             positionProviderGo.transform.position = new Vector3(1, 2, 50);
             positionProviderGo.transform.rotation = Quaternion.Euler(57, 195, 188);
-            TrainingSceneObject target = positionProviderGo.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject target = positionProviderGo.AddComponent<ProcessSceneObject>();
             target.ChangeUniqueName(positionProviderName);
 
             MoveObjectBehavior behavior = new MoveObjectBehavior(moved, target, duration);

@@ -48,14 +48,14 @@ namespace VRBuilder.Core
         }
 
         /// <summary>
-        /// Creates a new <see cref="ICourse"/> with given <paramref name="name"/> and, if there is any valid <see cref="PostProcessEntity{T}"/>, executes corresponding post processing.
+        /// Creates a new <see cref="IProcess"/> with given <paramref name="name"/> and, if there is any valid <see cref="PostProcessEntity{T}"/>, executes corresponding post processing.
         /// </summary>
-        public static ICourse CreateCourse(string name)
+        public static IProcess CreateProcess(string name)
         {
-            ICourse course = CourseFactory.Instance.Create(name);
-            PostProcessEntity<ICourse>(course);
+            IProcess process = ProcessFactory.Instance.Create(name);
+            PostProcessEntity<IProcess>(process);
 
-            return course;
+            return process;
         }
 
         private static void PostProcessEntity<T>(IEntity entity) where T : IEntity

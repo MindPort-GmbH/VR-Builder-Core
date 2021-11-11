@@ -15,7 +15,7 @@ using Debug = UnityEngine.Debug;
 namespace VRBuilder.Editor.UI
 {
     /// <summary>
-    /// Layout extension for the VR Builder.
+    /// Layout extension for VR Builder.
     /// </summary>
     public static class BuilderGUILayout
     {

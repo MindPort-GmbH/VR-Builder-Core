@@ -55,7 +55,7 @@ namespace VRBuilder.Core.Behaviors
             public string Name { get; set; }
         }
 
-        private class ActivatingProcess : Process<EntityData>
+        private class ActivatingProcess : StageProcess<EntityData>
         {
             private float startingTime;
 
@@ -82,7 +82,7 @@ namespace VRBuilder.Core.Behaviors
                 {
                     if (movingTransform == null || movingTransform.Equals(null) || targetPositionTransform == null || targetPositionTransform.Equals(null))
                     {
-                        string warningFormat = "The training scene object's game object is null, transition movement is not completed, behavior activation is forcefully finished.";
+                        string warningFormat = "The process scene object's game object is null, transition movement is not completed, behavior activation is forcefully finished.";
                         warningFormat += "Target object unique name: {0}, Position provider's unique name: {1}";
                         Debug.LogWarningFormat(warningFormat, Data.Target.UniqueName, Data.PositionProvider.UniqueName);
                         yield break;
@@ -116,7 +116,7 @@ namespace VRBuilder.Core.Behaviors
         {
         }
 
-        public MoveObjectBehavior(ISceneObject target, ISceneObject positionProvider, float duration) : this(TrainingReferenceUtils.GetNameFrom(target), TrainingReferenceUtils.GetNameFrom(positionProvider), duration)
+        public MoveObjectBehavior(ISceneObject target, ISceneObject positionProvider, float duration) : this(ProcessReferenceUtils.GetNameFrom(target), ProcessReferenceUtils.GetNameFrom(positionProvider), duration)
         {
         }
 
@@ -129,7 +129,7 @@ namespace VRBuilder.Core.Behaviors
         }
 
         /// <inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new ActivatingProcess(Data);
         }

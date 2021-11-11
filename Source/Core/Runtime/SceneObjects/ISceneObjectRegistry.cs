@@ -19,13 +19,13 @@ namespace VRBuilder.Core.SceneObjects
         bool ContainsName(string name);
 
         /// <summary>
-        /// Returns the ITrainingSceneEntity belonging to the given Guid.
+        /// Returns the IProcessSceneEntity belonging to the given Guid.
         /// If there is no fitting Entity found a MissingEntityException will be thrown.
         /// </summary>
         ISceneObject GetByGuid(Guid guid);
 
         /// <summary>
-        /// Returns the ITrainingSceneEntity belonging to the given unique name.
+        /// Returns the IProcessSceneEntity belonging to the given unique name.
         /// If there is no fitting Entity found a MissingEntityException will be thrown.
         /// </summary>
         ISceneObject GetByName(string name);

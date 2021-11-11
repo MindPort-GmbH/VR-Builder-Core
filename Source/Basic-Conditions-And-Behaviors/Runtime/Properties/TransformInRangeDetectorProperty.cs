@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace VRBuilder.Core.Properties
 {
-    public class TransformInRangeDetectorProperty : TrainingSceneObjectProperty
+    public class TransformInRangeDetectorProperty : ProcessSceneObjectProperty
     {
         private bool isTransformInRange = false;
         private Transform trackedTransform;

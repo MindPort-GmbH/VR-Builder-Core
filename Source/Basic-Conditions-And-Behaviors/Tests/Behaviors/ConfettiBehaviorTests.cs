@@ -24,19 +24,19 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator CreateByReference()
         {
-            // Given the path to the confetti machine prefab, the position provider name, the duration, the bool isAboveTrainee, the area radius, and the activation mode,
+            // Given the path to the confetti machine prefab, the position provider name, the duration, the bool isAboveUser, the area radius, and the activation mode,
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             BehaviorExecutionStages executionStages = BehaviorExecutionStages.ActivationAndDeactivation;
 
-            // When we create ConfettiBehavior and pass training objects by reference,
+            // When we create ConfettiBehavior and pass process objects by reference,
             ConfettiBehavior confettiBehavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, duration, executionStages);
             confettiBehavior.Configure(defaultMode);
 
             // Then all properties of the ConfettiBehavior are properly assigned
-            Assert.AreEqual(false, confettiBehavior.Data.IsAboveTrainee);
+            Assert.AreEqual(false, confettiBehavior.Data.IsAboveUser);
             Assert.AreEqual(positionProvider, confettiBehavior.Data.PositionProvider.Value);
             Assert.AreEqual(pathToPrefab,confettiBehavior.Data.ConfettiMachinePrefabPath);
             Assert.AreEqual(areaRadius, confettiBehavior.Data.AreaRadius);
@@ -49,19 +49,19 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator CreateByName()
         {
-            // Given the path to the confetti machine prefab, the position provider name, the duration, the bool isAboveTrainee, the area radius, and the activation mode,
+            // Given the path to the confetti machine prefab, the position provider name, the duration, the bool isAboveUser, the area radius, and the activation mode,
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             BehaviorExecutionStages executionStages = BehaviorExecutionStages.ActivationAndDeactivation;
 
-            // When we create ConfettiBehavior and pass training objects by their unique name,
+            // When we create ConfettiBehavior and pass process objects by their unique name,
             ConfettiBehavior confettiBehavior = new ConfettiBehavior(false, positionProviderName, pathToMockPrefab, areaRadius, duration, executionStages);
             confettiBehavior.Configure(defaultMode);
 
             // Then all properties of the MoveObjectBehavior are properly assigned.
-            Assert.AreEqual(false, confettiBehavior.Data.IsAboveTrainee);
+            Assert.AreEqual(false, confettiBehavior.Data.IsAboveUser);
             Assert.AreEqual(positionProvider, confettiBehavior.Data.PositionProvider.Value);
             Assert.AreEqual(pathToMockPrefab,confettiBehavior.Data.ConfettiMachinePrefabPath);
             Assert.AreEqual(areaRadius, confettiBehavior.Data.AreaRadius);
@@ -76,7 +76,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given a positive duration, a position provider, some valid default settings, and the activation mode = Activation,
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, duration, BehaviorExecutionStages.Activation);
@@ -104,7 +104,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given a positive duration, a position provider, some valid default settings, and the activation mode = Activation,
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, duration, BehaviorExecutionStages.Activation);
@@ -142,7 +142,7 @@ namespace VRBuilder.Core.Tests.Behaviors
             float newDuration = -0.25f;
 
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, newDuration, BehaviorExecutionStages.Activation);
@@ -180,7 +180,7 @@ namespace VRBuilder.Core.Tests.Behaviors
             float newDuration = 0f;
 
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, newDuration, BehaviorExecutionStages.Activation);
@@ -217,10 +217,10 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator SpawnAtPositionProvider()
         {
-            // Given the position provider training object, some valid default settings, and the activation mode = Activation,
+            // Given the position provider process object, some valid default settings, and the activation mode = Activation,
             GameObject target = new GameObject(positionProviderName);
             target.transform.position = new Vector3(5, 10, 20);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, duration, BehaviorExecutionStages.Activation);
@@ -250,9 +250,9 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator StillActivatingWhenPositiveDurationNotFinished()
         {
-            // Given the position provider training object, some valid default settings, and the activation mode = Activation,
+            // Given the position provider process object, some valid default settings, and the activation mode = Activation,
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, 2f, BehaviorExecutionStages.Activation);
@@ -281,9 +281,9 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator IsActiveAfterPositiveDuration()
         {
-            // Given the position provider training object, some valid default settings, and the activation mode = Activation,
+            // Given the position provider process object, some valid default settings, and the activation mode = Activation,
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, duration, BehaviorExecutionStages.Activation);
@@ -316,9 +316,9 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator NotExistingPrefab()
         {
-            // Given the position provider training object, an invalid path to a not existing prefab, some valid default settings, and the activation mode = Activation,
+            // Given the position provider process object, an invalid path to a not existing prefab, some valid default settings, and the activation mode = Activation,
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToMockPrefab, areaRadius, duration, BehaviorExecutionStages.Activation);
@@ -349,7 +349,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given a ConfettiBehavior with activation mode "Activation",
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, duration, BehaviorExecutionStages.Activation);
@@ -369,7 +369,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given a ConfettiBehavior with activation mode "Activation",
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, duration, BehaviorExecutionStages.Activation);
@@ -390,7 +390,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given a ConfettiBehavior with activation mode "Deactivation",
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, duration, BehaviorExecutionStages.Deactivation);
@@ -417,7 +417,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given an active ConfettiBehavior with activation mode "Activation",
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, duration, BehaviorExecutionStages.Activation);
@@ -443,7 +443,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given an active ConfettiBehavior with activation mode "Deactivation",
             GameObject target = new GameObject(positionProviderName);
-            TrainingSceneObject positionProvider = target.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject positionProvider = target.AddComponent<ProcessSceneObject>();
             positionProvider.ChangeUniqueName(positionProviderName);
 
             ConfettiBehavior behavior = new ConfettiBehavior(false, positionProvider, pathToPrefab, areaRadius, duration, BehaviorExecutionStages.Deactivation);

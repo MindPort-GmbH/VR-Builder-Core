@@ -40,7 +40,7 @@ namespace VRBuilder.Core
             public IMode Mode { get; set; }
         }
 
-        private class ActiveProcess : Process<EntityData>
+        private class ActiveProcess : StageProcess<EntityData>
         {
             public ActiveProcess(EntityData data) : base(data)
             {
@@ -89,19 +89,19 @@ namespace VRBuilder.Core
         }
 
         ///<inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new ParallelActivatingProcess<EntityData>(Data);
         }
 
         ///<inheritdoc />
-        public override IProcess GetActiveProcess()
+        public override IStageProcess GetActiveProcess()
         {
             return new CompositeProcess(new ParallelActiveProcess<EntityData>(Data), new ActiveProcess(Data));
         }
 
         ///<inheritdoc />
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new ParallelDeactivatingProcess<EntityData>(Data);
         }

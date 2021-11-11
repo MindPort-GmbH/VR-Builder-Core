@@ -6,7 +6,7 @@ namespace VRBuilder.Core.Properties
     /// <summary>
     /// Abstract base property for highlight properties.
     /// </summary>
-    public abstract class BaseHighlightProperty : TrainingSceneObjectProperty, IHighlightProperty
+    public abstract class BaseHighlightProperty : ProcessSceneObjectProperty, IHighlightProperty
     {
         /// <summary>
         /// Event data for events of <see cref="BaseHighlightProperty"/>.

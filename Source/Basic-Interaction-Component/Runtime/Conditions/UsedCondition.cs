@@ -32,7 +32,7 @@ namespace VRBuilder.BasicInteraction.Conditions
             public bool IsCompleted { get; set; }
 
             [DataMember]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public string Name { get; set; }
             
             public Metadata Metadata { get; set; }
@@ -66,7 +66,7 @@ namespace VRBuilder.BasicInteraction.Conditions
         {
         }
 
-        public UsedCondition(IUsableProperty target, string name = null) : this(TrainingReferenceUtils.GetNameFrom(target), name)
+        public UsedCondition(IUsableProperty target, string name = null) : this(ProcessReferenceUtils.GetNameFrom(target), name)
         {
         }
 
@@ -93,7 +93,7 @@ namespace VRBuilder.BasicInteraction.Conditions
             return references;
         }
 
-        public override IProcess GetActiveProcess()
+        public override IStageProcess GetActiveProcess()
         {
             return new ActiveProcess(Data);
         }

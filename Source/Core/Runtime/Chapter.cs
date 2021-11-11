@@ -16,7 +16,7 @@ using VRBuilder.Core.Utils.Logging;
 namespace VRBuilder.Core
 {
     /// <summary>
-    /// A chapter of a training <see cref="Course"/>.
+    /// A chapter of a process <see cref="Process"/>.
     /// </summary>
     [DataContract(IsReference = true)]
     public class Chapter : Entity<Chapter.EntityData>, IChapter
@@ -29,7 +29,7 @@ namespace VRBuilder.Core
         {
             /// <inheritdoc />
             [DataMember]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public string Name { get; set; }
 
             /// <summary>
@@ -161,13 +161,13 @@ namespace VRBuilder.Core
         public ChapterMetadata ChapterMetadata { get; set; }
 
         /// <inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new ActivatingProcess(Data);
         }
 
         /// <inheritdoc />
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new StopEntityIteratingProcess<IStep>(Data);
         }

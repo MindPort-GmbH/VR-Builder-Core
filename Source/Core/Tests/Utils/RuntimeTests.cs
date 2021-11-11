@@ -15,7 +15,7 @@ namespace VRBuilder.Tests.Utils
 {
     public abstract class RuntimeTests
     {
-        protected ICourseSerializer Serializer { get; } = new NewtonsoftJsonCourseSerializer();
+        protected IProcessSerializer Serializer { get; } = new NewtonsoftJsonProcessSerializer();
 
         [SetUp]
         public virtual void SetUp()

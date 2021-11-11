@@ -12,16 +12,16 @@ using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Conditions;
 using VRBuilder.Core.Utils;
 using VRBuilder.Editor.Configuration;
-using VRBuilder.Editor.CourseValidation;
+using VRBuilder.Editor.ProcessValidation;
 using UnityEditor;
 using UnityEngine;
 
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// Training drawer for object properties. Used when everything else does not fit.
+    /// Process drawer for object properties. Used when everything else does not fit.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(object))]
+    [DefaultProcessDrawer(typeof(object))]
     public class ObjectDrawer : AbstractDrawer
     {
         /// <inheritdoc />
@@ -56,7 +56,7 @@ namespace VRBuilder.Editor.UI.Drawers
                 }
                 else
                 {
-                    ITrainingDrawer memberDrawer = DrawerLocator.GetDrawerForMember(closuredMemberInfo, currentValue);
+                    IProcessDrawer memberDrawer = DrawerLocator.GetDrawerForMember(closuredMemberInfo, currentValue);
 
                     object memberValue = ReflectionUtils.GetValueFromPropertyOrField(currentValue, closuredMemberInfo);
 
@@ -163,7 +163,7 @@ namespace VRBuilder.Editor.UI.Drawers
             }
 
             object memberValue = ReflectionUtils.GetValueFromPropertyOrField(ownerObject, drawnMemberInfo);
-            ITrainingDrawer memberDrawer = DrawerLocator.GetDrawerForMember(drawnMemberInfo, ownerObject);
+            IProcessDrawer memberDrawer = DrawerLocator.GetDrawerForMember(drawnMemberInfo, ownerObject);
 
             MetadataWrapper wrapper = new MetadataWrapper()
             {
@@ -232,7 +232,7 @@ namespace VRBuilder.Editor.UI.Drawers
                 wrapperChangedCallback(wrapper);
             }
 
-            ITrainingDrawer wrapperDrawer = DrawerLocator.GetDrawerForValue(wrapper, typeof(MetadataWrapper));
+            IProcessDrawer wrapperDrawer = DrawerLocator.GetDrawerForValue(wrapper, typeof(MetadataWrapper));
 
             GUIContent displayName = memberDrawer.GetLabel(drawnMemberInfo, ownerObject);
 

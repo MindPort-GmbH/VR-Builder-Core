@@ -13,7 +13,7 @@ using UnityEngine;
 public partial class BuilderProjectSettings : ScriptableObject
 {
     /// <summary>
-    /// Was the VR Builder imported and therefore started for the first time.
+    /// Was VR Builder imported and therefore started for the first time.
     /// </summary>
     [HideInInspector]
     public bool IsFirstTimeStarted = true;
@@ -33,13 +33,13 @@ public partial class BuilderProjectSettings : ScriptableObject
         BuilderProjectSettings settings = Resources.Load<BuilderProjectSettings>("BuilderProjectSettings");
         if (settings == null)
         {
-            if (!Directory.Exists("Assets/MindPort/VRBuilder/Resources"))
+            if (!Directory.Exists("Assets/MindPort/VR Builder/Resources"))
             {
-                Directory.CreateDirectory("Assets/MindPort/VRBuilder/Resources");
+                Directory.CreateDirectory("Assets/MindPort/VR Builder/Resources");
             }
             // Create an instance
             settings = CreateInstance<BuilderProjectSettings>();
-            AssetDatabase.CreateAsset(settings, "Assets/MindPort/VRBuilder/Resources/BuilderProjectSettings.asset");
+            AssetDatabase.CreateAsset(settings, "Assets/MindPort/VR Builder/Resources/BuilderProjectSettings.asset");
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 

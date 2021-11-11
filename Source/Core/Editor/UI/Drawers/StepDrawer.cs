@@ -15,7 +15,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// Drawer for a step to skip NameableDrawer.
     /// Skip label draw call, as well.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(Step.EntityData))]
+    [DefaultProcessDrawer(typeof(Step.EntityData))]
     internal class StepDrawer : ObjectDrawer
     {
         private IStepData lastStep;

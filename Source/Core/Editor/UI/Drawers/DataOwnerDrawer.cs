@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace VRBuilder.Editor.UI.Drawers
 {
-    [DefaultTrainingDrawer(typeof(IDataOwner))]
+    [DefaultProcessDrawer(typeof(IDataOwner))]
     internal class DataOwnerDrawer : AbstractDrawer
     {
         public override Rect Draw(Rect rect, object currentValue, Action<object> changeValueCallback, GUIContent label)
@@ -21,7 +21,7 @@ namespace VRBuilder.Editor.UI.Drawers
 
             IData data = ((IDataOwner)currentValue).Data;
 
-            ITrainingDrawer dataDrawer = DrawerLocator.GetDrawerForMember(EditorReflectionUtils.GetFieldsAndPropertiesToDraw(currentValue).First(member => member.Name == "Data"), currentValue);
+            IProcessDrawer dataDrawer = DrawerLocator.GetDrawerForMember(EditorReflectionUtils.GetFieldsAndPropertiesToDraw(currentValue).First(member => member.Name == "Data"), currentValue);
 
             return dataDrawer.Draw(rect, data, (value) => changeValueCallback(currentValue), label);
         }
@@ -30,7 +30,7 @@ namespace VRBuilder.Editor.UI.Drawers
         {
             IData data = ((IDataOwner)value).Data;
 
-            ITrainingDrawer dataDrawer = DrawerLocator.GetDrawerForMember(EditorReflectionUtils.GetFieldsAndPropertiesToDraw(value).First(member => member.Name == "Data"), value);
+            IProcessDrawer dataDrawer = DrawerLocator.GetDrawerForMember(EditorReflectionUtils.GetFieldsAndPropertiesToDraw(value).First(member => member.Name == "Data"), value);
             return dataDrawer.GetLabel(data, declaredType);
         }
     }

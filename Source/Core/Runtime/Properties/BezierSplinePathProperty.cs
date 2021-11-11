@@ -7,7 +7,7 @@ namespace VRBuilder.Core.Properties
     /// Path property that generates a path from a <see cref="BezierSpline"/>.
     /// </summary>
     [RequireComponent(typeof(BezierSpline))]
-    public class BezierSplinePathProperty : TrainingSceneObjectProperty, IPathProperty
+    public class BezierSplinePathProperty : ProcessSceneObjectProperty, IPathProperty
     {
         private BezierSpline spline;
 

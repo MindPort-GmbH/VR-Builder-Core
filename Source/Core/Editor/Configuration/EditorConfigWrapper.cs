@@ -19,7 +19,7 @@ namespace VRBuilder.Editor.Configuration
             this.config = config;
         }
 
-        public override ICourseSerializer Serializer => config.Serializer;
+        public override IProcessSerializer Serializer => config.Serializer;
 
         public override AllowedMenuItemsSettings AllowedMenuItemsSettings
         {
@@ -27,7 +27,7 @@ namespace VRBuilder.Editor.Configuration
             set => config.AllowedMenuItemsSettings = value;
         }
 
-        public override string CourseStreamingAssetsSubdirectory => config.CourseStreamingAssetsSubdirectory;
+        public override string ProcessStreamingAssetsSubdirectory => config.ProcessStreamingAssetsSubdirectory;
 
         public override string AllowedMenuItemsSettingsAssetPath => config.AllowedMenuItemsSettingsAssetPath;
 

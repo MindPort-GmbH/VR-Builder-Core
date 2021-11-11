@@ -29,8 +29,8 @@ namespace VRBuilder.BasicInteraction.RigSetup
         [SerializeField]
         public RigInfo[] PossibleInteractionRigs = new RigInfo[0];
         
-        [Tooltip("Dummy Trainee object")]
-        public GameObject DummyTrainee;
+        [Tooltip("Dummy user object")]
+        public GameObject DummyUser;
 
         /// <summary>
         /// Enforced provider will be use.
@@ -56,11 +56,11 @@ namespace VRBuilder.BasicInteraction.RigSetup
                 Vector3 position = Vector3.zero;
                 Quaternion rotation = new Quaternion();
 
-                if (DummyTrainee != null)
+                if (DummyUser != null)
                 {
-                    position = DummyTrainee.transform.position;
-                    rotation = DummyTrainee.transform.rotation;
-                    DestroyImmediate(DummyTrainee);
+                    position = DummyUser.transform.position;
+                    rotation = DummyUser.transform.rotation;
+                    DestroyImmediate(DummyUser);
                 }
 
                 GameObject prefab = rigProvider.GetPrefab();
@@ -74,9 +74,9 @@ namespace VRBuilder.BasicInteraction.RigSetup
 
                 rigProvider.OnSetup();
             }
-            else if (DummyTrainee != null)
+            else if (DummyUser != null)
             {
-                DestroyImmediate(DummyTrainee);
+                DestroyImmediate(DummyUser);
             }
             Destroy(gameObject);
         }

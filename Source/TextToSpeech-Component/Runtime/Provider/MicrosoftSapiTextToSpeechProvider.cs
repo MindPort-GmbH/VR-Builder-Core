@@ -8,7 +8,7 @@ using VRBuilder.Core.Internationalization;
 namespace VRBuilder.TextToSpeech
 {
     /// <summary>
-    /// Training TTS provider which uses Microsoft SAPI to generate audio.
+    /// TTS provider which uses Microsoft SAPI to generate audio.
     /// TextToSpeechConfig.Voice has to be either "male", "female", or "neutral".
     /// TextToSpeechConfig.Language is a language code ("de" or "de-DE" for German, "en" or "en-US" for English).
     /// It runs the TTS synthesis in a separate thread, saving the result to a temporary cache file.
@@ -92,7 +92,7 @@ namespace VRBuilder.TextToSpeech
             {
                 // If it fails, use English as default language.
                 twoLetterIsoCode = "en";
-                Debug.LogWarningFormat("The language \"{0}\" given in the training configuration is not valid. It was changed to default: \"en\".", LanguageSettings.Instance.ActiveOrDefaultLanguage);
+                Debug.LogWarningFormat("The language \"{0}\" given in the process configuration is not valid. It was changed to default: \"en\".", LanguageSettings.Instance.ActiveOrDefaultLanguage);
             }
 
             // Check the validity of the voice in the configuration.

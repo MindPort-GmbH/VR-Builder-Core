@@ -20,7 +20,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given an game object with a changed unique name,
             GameObject gameObject = new GameObject("Test");
-            TrainingSceneObject targetObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
             targetObject.ChangeUniqueName(targetName);
 
             // When we reference it by reference or unique name in the UnlockObjectBehavior,
@@ -40,9 +40,9 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator UnlockBehaviorOnUnlockedObject()
         {
-            // Given an UnlockObjectBehavior, an unlocked game object, and a full training step,
+            // Given an UnlockObjectBehavior, an unlocked game object, and a full process step,
             GameObject gameObject = new GameObject("Test");
-            TrainingSceneObject targetObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
             Step step = new Step("TestStep");
             Transition transition = new Transition();
@@ -89,9 +89,9 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator UnlockBehaviorOnLockedObject()
         {
-            // Given an UnlockObjectBehavior, a locked game object, and a full training step,
+            // Given an UnlockObjectBehavior, a locked game object, and a full process step,
             GameObject gameObject = new GameObject("Test");
-            TrainingSceneObject targetObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
             Step step = new Step("TestStep");
             Transition transition = new Transition();
@@ -141,7 +141,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given an UnlockObjectBehavior and an unlocked game object,
             GameObject gameObject = new GameObject("Test");
-            TrainingSceneObject targetObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
             UnlockObjectBehavior behavior = new UnlockObjectBehavior(targetObject);
 
@@ -162,7 +162,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given an UnlockObjectBehavior and a locked game object,
             GameObject gameObject = new GameObject("Test");
-            TrainingSceneObject targetObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
             UnlockObjectBehavior behavior = new UnlockObjectBehavior(targetObject);
             behavior.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
@@ -197,7 +197,7 @@ namespace VRBuilder.Core.Tests.Behaviors
         {
             // Given an UnlockObjectBehavior and a locked game object,
             GameObject gameObject = new GameObject("Test");
-            TrainingSceneObject targetObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject targetObject = gameObject.AddComponent<ProcessSceneObject>();
 
             UnlockObjectBehavior behavior = new UnlockObjectBehavior(targetObject);
             behavior.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);

@@ -4,7 +4,7 @@
 
 using System;
 using VRBuilder.Core;
-using VRBuilder.Editor.CourseValidation;
+using VRBuilder.Editor.ProcessValidation;
 using VRBuilder.Editor.UI.Graphics.Renderers;
 using UnityEngine;
 

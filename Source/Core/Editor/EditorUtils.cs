@@ -97,7 +97,7 @@ namespace VRBuilder.Editor
         }
 
         /// <summary>
-        /// Gets the root folder of the training module.
+        /// Gets the root folder of VR Builder.
         /// </summary>
         internal static string GetCoreFolder()
         {

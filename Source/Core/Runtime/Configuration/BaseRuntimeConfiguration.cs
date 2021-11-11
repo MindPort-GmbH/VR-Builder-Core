@@ -13,7 +13,7 @@ using UnityEngine;
 namespace VRBuilder.Core.Configuration
 {
     /// <summary>
-    /// Base class for your runtime course configuration. Extend it to create your own.
+    /// Base class for your runtime process configuration. Extend it to create your own.
     /// </summary>
 #pragma warning disable 0618
     public abstract class BaseRuntimeConfiguration : IRuntimeConfiguration
@@ -36,7 +36,7 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <inheritdoc />
-        public ICourseSerializer Serializer { get; set; } = new ImprovedNewtonsoftJsonCourseSerializer();
+        public IProcessSerializer Serializer { get; set; } = new ImprovedNewtonsoftJsonProcessSerializer();
 
         /// <summary>
         /// Default input action asset which is used when no customization of key bindings are done.
@@ -80,7 +80,7 @@ namespace VRBuilder.Core.Configuration
         public IModeHandler Modes { get; protected set; }
 
         /// <inheritdoc />
-        public abstract TrainingSceneObject Trainee { get; }
+        public abstract ProcessSceneObject User { get; }
 
         /// <inheritdoc />
         public abstract AudioSource InstructionPlayer { get; }
@@ -100,7 +100,7 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <inheritdoc />
-        public virtual ICourse LoadCourse(string path)
+        public virtual IProcess LoadProcess(string path)
         {
             if (string.IsNullOrEmpty(path))
             {
@@ -108,7 +108,7 @@ namespace VRBuilder.Core.Configuration
             }
 
             byte[] serialized = FileManager.Read(path);
-            return Serializer.CourseFromByteArray(serialized);
+            return Serializer.ProcessFromByteArray(serialized);
         }
     }
 }

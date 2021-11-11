@@ -82,7 +82,7 @@ namespace VRBuilder.Editor.UI.Windows
                 }
 
                 string oldName = nameable.Name;
-                RevertableChangesHandler.Do(new CourseCommand(
+                RevertableChangesHandler.Do(new ProcessCommand(
                     // ReSharper disable once ImplicitlyCapturedClosure
                     () =>
                     {

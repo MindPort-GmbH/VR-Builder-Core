@@ -24,7 +24,7 @@ namespace VRBuilder.XRInteraction.Properties
         }
 
         /// <summary>
-        /// The <see cref="DefaultHighlighter"/> which is used to highlight the <see cref="Core.SceneObjects.TrainingSceneObject"/>.
+        /// The <see cref="DefaultHighlighter"/> which is used to highlight the <see cref="Core.SceneObjects.ProcessSceneObject"/>.
         /// </summary>
         protected DefaultHighlighter DefaultHighlighter;
 

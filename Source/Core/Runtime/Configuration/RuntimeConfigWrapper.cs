@@ -26,7 +26,7 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <inheritdoc />
-        public override TrainingSceneObject Trainee => Configuration.Trainee;
+        public override ProcessSceneObject User => Configuration.User;
 
         /// <inheritdoc />
         public override AudioSource InstructionPlayer => Configuration.InstructionPlayer;
@@ -35,9 +35,9 @@ namespace VRBuilder.Core.Configuration
         public override ISceneObjectRegistry SceneObjectRegistry => Configuration.SceneObjectRegistry;
 
         /// <inheritdoc />
-        public override ICourse LoadCourse(string path)
+        public override IProcess LoadProcess(string path)
         {
-            return Configuration.LoadCourse(path);
+            return Configuration.LoadProcess(path);
         }
     }
 }

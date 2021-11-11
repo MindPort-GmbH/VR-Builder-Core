@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace VRBuilder.Editor.UI.Drawers
 {
-    [DefaultTrainingDrawer(typeof(ITabsGroup))]
+    [DefaultProcessDrawer(typeof(ITabsGroup))]
     internal class TabsGroupDrawer : AbstractDrawer
     {
         public override Rect Draw(Rect rect, object currentValue, Action<object> changeValueCallback, GUIContent label)
@@ -21,7 +21,7 @@ namespace VRBuilder.Editor.UI.Drawers
             float tabsHeight = DrawToolbox(rect, tabsGroup, changeValueCallback).height;
 
             // Get drawer for the object under the tab.
-            ITrainingDrawer tabValueDrawer = DrawerLocator.GetDrawerForValue(tabsGroup.Tabs[tabsGroup.Selected].GetValue(), typeof(object));
+            IProcessDrawer tabValueDrawer = DrawerLocator.GetDrawerForValue(tabsGroup.Tabs[tabsGroup.Selected].GetValue(), typeof(object));
 
             void ChangeValueCallback(object newValue)
             {

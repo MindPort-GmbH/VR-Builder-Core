@@ -44,7 +44,7 @@ namespace VRBuilder.Core.Conditions
 
             /// <inheritdoc />
             [DataMember]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public string Name { get; set; }
 
             /// <inheritdoc />
@@ -65,7 +65,7 @@ namespace VRBuilder.Core.Conditions
 
         // ReSharper disable once SuggestBaseTypeForParameter
         public ObjectInColliderCondition(ColliderWithTriggerProperty targetPosition, ISceneObject targetObject, float requiredTimeInTarget = 0, string name = null)
-            : this(TrainingReferenceUtils.GetNameFrom(targetPosition), TrainingReferenceUtils.GetNameFrom(targetObject), requiredTimeInTarget, name)
+            : this(ProcessReferenceUtils.GetNameFrom(targetPosition), ProcessReferenceUtils.GetNameFrom(targetObject), requiredTimeInTarget, name)
         {
         }
 
@@ -104,7 +104,7 @@ namespace VRBuilder.Core.Conditions
         }
 
         /// <inheritdoc />
-        public override IProcess GetActiveProcess()
+        public override IStageProcess GetActiveProcess()
         {
             return new ActiveProcess(Data);
         }

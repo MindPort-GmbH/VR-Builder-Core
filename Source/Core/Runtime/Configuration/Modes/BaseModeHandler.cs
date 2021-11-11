@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -40,12 +40,12 @@ namespace VRBuilder.Core.Configuration.Modes
         {
             if (AvailableModes.Count == 0)
             {
-                throw new MissingModeException("You cannot access the current training mode index because there are no training modes available.");
+                throw new MissingModeException("You cannot access the current process mode index because there are no process modes available.");
             }
 
             if (CurrentModeIndex >= AvailableModes.Count)
             {
-                string message = string.Format("The current training mode index is set to {0} but the current number of available training modes is {1}.", CurrentModeIndex, AvailableModes.Count);
+                string message = string.Format("The current process mode index is set to {0} but the current number of available process modes is {1}.", CurrentModeIndex, AvailableModes.Count);
                 throw new IndexOutOfRangeException(message);
             }
 

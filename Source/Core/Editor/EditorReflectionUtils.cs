@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -129,7 +129,7 @@ namespace VRBuilder.Editor
         }
 
         /// <summary>
-        /// Returns all properties and fields of the object that have to be drawn by training drawers.
+        /// Returns all properties and fields of the object that have to be drawn by process drawers.
         /// </summary>
         public static IEnumerable<MemberInfo> GetFieldsAndPropertiesToDraw(object value)
         {
@@ -194,7 +194,7 @@ namespace VRBuilder.Editor
 
             type = value.GetType();
 
-            fieldAndPropertiesToDrawCache[type] = result.Where(memberInfo => memberInfo.GetAttributes<HideInTrainingInspectorAttribute>(true).Any() == false)
+            fieldAndPropertiesToDrawCache[type] = result.Where(memberInfo => memberInfo.GetAttributes<HideInProcessInspectorAttribute>(true).Any() == false)
                 .Where(memberInfo => memberInfo.GetAttributes<DataMemberAttribute>(true).Any() && DrawerLocator.GetDrawerForMember(memberInfo, value) != null)
                 .OrderBy(memberInfo =>
                 {

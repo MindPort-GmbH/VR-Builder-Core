@@ -9,7 +9,7 @@ namespace VRBuilder.Core.EntityOwners
     /// <summary>
     /// A process that stops activation of a current entity in the entity sequence.
     /// </summary>
-    public class StopEntityIteratingProcess<TEntity> : Process<IEntitySequenceData<TEntity>> where TEntity : IEntity
+    public class StopEntityIteratingProcess<TEntity> : StageProcess<IEntitySequenceData<TEntity>> where TEntity : IEntity
     {
         ///<inheritdoc />
         public override void Start()

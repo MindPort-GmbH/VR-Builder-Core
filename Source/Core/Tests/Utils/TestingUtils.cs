@@ -55,24 +55,24 @@ namespace VRBuilder.Tests.Utils
         }
 
         /// <summary>
-        /// Creates game object and attaches <see cref="TrainingSceneObject"/> component with the name <paramref name="name"/> to it.
+        /// Creates game object and attaches <see cref="ProcessSceneObject"/> component with the name <paramref name="name"/> to it.
         /// </summary>
-        public static TrainingSceneObject CreateSceneObject(string name, GameObject gameObject = null)
+        public static ProcessSceneObject CreateSceneObject(string name, GameObject gameObject = null)
         {
             if (gameObject == null)
             {
                 gameObject = new GameObject(name);
             }
 
-            TrainingSceneObject trainingSceneObject = gameObject.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject processSceneObject = gameObject.AddComponent<ProcessSceneObject>();
 
-            return trainingSceneObject;
+            return processSceneObject;
         }
 
         /// <summary>
         /// As <see cref="CreateSceneObject"/> but also attaches component of type <typeparamref name="T1"/>.
         /// </summary>
-        public static TrainingSceneObject CreateSceneObject<T1>(string name, GameObject gameObject = null) where T1 : Component
+        public static ProcessSceneObject CreateSceneObject<T1>(string name, GameObject gameObject = null) where T1 : Component
         {
             if (gameObject == null)
             {
@@ -86,7 +86,7 @@ namespace VRBuilder.Tests.Utils
         /// <summary>
         /// As <see cref="CreateSceneObject"/> but also attaches components of types <typeparamref name="T1"/>, <typeparamref name="T2"/>.
         /// </summary>
-        public static TrainingSceneObject CreateSceneObject<T1, T2>(string name, GameObject gameObject = null) where T1 : Component where T2 : Component
+        public static ProcessSceneObject CreateSceneObject<T1, T2>(string name, GameObject gameObject = null) where T1 : Component where T2 : Component
         {
             if (gameObject == null)
             {
@@ -100,7 +100,7 @@ namespace VRBuilder.Tests.Utils
         /// <summary>
         /// As <see cref="CreateSceneObject"/> but also attaches components of types <typeparamref name="T1"/>, <typeparamref name="T2"/>, <typeparamref name="T3"/>.
         /// </summary>
-        public static TrainingSceneObject CreateSceneObject<T1, T2, T3>(string name, GameObject gameObject = null) where T1 : Component where T2 : Component where T3 : Component
+        public static ProcessSceneObject CreateSceneObject<T1, T2, T3>(string name, GameObject gameObject = null) where T1 : Component where T2 : Component where T3 : Component
         {
             if (gameObject == null)
             {
@@ -115,7 +115,7 @@ namespace VRBuilder.Tests.Utils
         /// As <see cref="CreateSceneObject"/> but also attaches components of types <typeparamref name="T1"/>, <typeparamref name="T2"/>, <typeparamref name="T3"/>, <typeparamref name="T4"/>.
         /// </summary>
         // ReSharper disable once UnusedMember.Local
-        public static TrainingSceneObject CreateSceneObject<T1, T2, T3, T4>(string name, GameObject gameObject = null) where T1 : Component where T2 : Component where T3 : Component where T4 : Component
+        public static ProcessSceneObject CreateSceneObject<T1, T2, T3, T4>(string name, GameObject gameObject = null) where T1 : Component where T2 : Component where T3 : Component where T4 : Component
         {
             if (gameObject == null)
             {

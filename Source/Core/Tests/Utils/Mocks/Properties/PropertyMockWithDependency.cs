@@ -11,7 +11,7 @@ namespace VRBuilder.Tests.Utils.Mocks
     /// Property requiring a <see cref="PropertyMock"/>.
     /// </summary>
     [RequireComponent(typeof(PropertyMock))]
-    public class PropertyMockWithDependency : TrainingSceneObjectProperty
+    public class PropertyMockWithDependency : ProcessSceneObjectProperty
     {
 
     }

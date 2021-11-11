@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -13,7 +13,7 @@ namespace VRBuilder.Editor.UI
     /// <summary>
     /// This class adds names to newly added entities.
     /// </summary>
-    [CustomEditor(typeof(TrainingSceneObject))]
+    [CustomEditor(typeof(ProcessSceneObject))]
     internal class SceneObjectEditor : UnityEditor.Editor
     {
         private void OnEnable()
@@ -28,22 +28,22 @@ namespace VRBuilder.Editor.UI
             }
         }
 
-        [MenuItem ("CONTEXT/TrainingSceneObject/Remove Training Properties", false)]
-        private static void RemoveTrainingProperties()
+        [MenuItem ("CONTEXT/ProcessSceneObject/Remove Process Properties", false)]
+        private static void RemoveProcessProperties()
         {
-            Component[] trainingProperties = Selection.activeGameObject.GetComponents(typeof(TrainingSceneObjectProperty));
+            Component[] processProperties = Selection.activeGameObject.GetComponents(typeof(ProcessSceneObjectProperty));
             ISceneObject sceneObject = Selection.activeGameObject.GetComponent(typeof(ISceneObject)) as ISceneObject;
 
-            foreach (Component trainingProperty in trainingProperties)
+            foreach (Component processProperty in processProperties)
             {
-                sceneObject.RemoveTrainingProperty(trainingProperty, true);
+                sceneObject.RemoveProcessProperty(processProperty, true);
             }
         }
 
-        [MenuItem("CONTEXT/TrainingSceneObject/Remove Training Properties", true)]
-        private static bool ValidateRemoveTrainingProperties()
+        [MenuItem("CONTEXT/ProcessSceneObject/Remove Process Properties", true)]
+        private static bool ValidateRemoveProcessProperties()
         {
-            return Selection.activeGameObject.GetComponents(typeof(TrainingSceneObjectProperty)) != null;
+            return Selection.activeGameObject.GetComponents(typeof(ProcessSceneObjectProperty)) != null;
         }
     }
 }

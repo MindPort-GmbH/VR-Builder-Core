@@ -14,7 +14,7 @@ using UnityEditor.SceneManagement;
 namespace VRBuilder.Editor.Setup
 {
     /// <summary>
-    /// Helper class to setup scenes and trainings.
+    /// Helper class to setup scenes and processes.
     /// </summary>
     internal class SceneSetupUtils
     {
@@ -46,27 +46,27 @@ namespace VRBuilder.Editor.Setup
         }
 
         /// <summary>
-        /// Sets up the current scene and creates a new training course for this scene.
+        /// Sets up the current scene and creates a new process for this scene.
         /// </summary>
-        /// <param name="courseName">Name of the training course.</param>
-        public static void SetupSceneAndTraining(string courseName)
+        /// <param name="processName">Name of the process.</param>
+        public static void SetupSceneAndProcess(string processName)
         {
-            TrainingSceneSetup.Run();
+            ProcessSceneSetup.Run();
 
             string errorMessage = null;
-            if (CourseAssetUtils.DoesCourseAssetExist(courseName) || CourseAssetUtils.CanCreate(courseName, out errorMessage))
+            if (ProcessAssetUtils.DoesProcessAssetExist(processName) || ProcessAssetUtils.CanCreate(processName, out errorMessage))
             {
-                if (CourseAssetUtils.DoesCourseAssetExist(courseName))
+                if (ProcessAssetUtils.DoesProcessAssetExist(processName))
                 {
-                     CourseAssetManager.Load(courseName);
+                     ProcessAssetManager.Load(processName);
                 }
                 else
                 {
-                    CourseAssetManager.Import(EntityFactory.CreateCourse(courseName));
+                    ProcessAssetManager.Import(EntityFactory.CreateProcess(processName));
                     AssetDatabase.Refresh();
                 }
 
-                SetCourseInCurrentScene(courseName);
+                SetProcessInCurrentScene(processName);
             }
 
             if (string.IsNullOrEmpty(errorMessage) == false)
@@ -85,15 +85,15 @@ namespace VRBuilder.Editor.Setup
         }
 
         /// <summary>
-        /// Sets the course with given <paramref name="courseName"/> for the current scene.
+        /// Sets the process with given <paramref name="processName"/> for the current scene.
         /// </summary>
-        /// <param name="courseName">Name of the course.</param>
-        public static void SetCourseInCurrentScene(string courseName)
+        /// <param name="processName">Name of the process.</param>
+        public static void SetProcessInCurrentScene(string processName)
         {
-            RuntimeConfigurator.Instance.SetSelectedCourse(CourseAssetUtils.GetCourseStreamingAssetPath(courseName));
+            RuntimeConfigurator.Instance.SetSelectedProcess(ProcessAssetUtils.GetProcessStreamingAssetPath(processName));
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-            GlobalEditorHandler.SetCurrentCourse(courseName);
-            GlobalEditorHandler.StartEditingCourse();
+            GlobalEditorHandler.SetCurrentProcess(processName);
+            GlobalEditorHandler.StartEditingProcess();
         }
 
         /// <summary>
@@ -102,16 +102,16 @@ namespace VRBuilder.Editor.Setup
         /// <remarks>The new scene is meant to be used for step by step guides.</remarks>
         public static void CreateNewSimpleExampleScene()
         {
-            string courseName = SimpleExampleName;
+            string processName = SimpleExampleName;
             int counter = 1;
 
-            while (CourseAssetUtils.DoesCourseAssetExist(courseName) || CourseAssetUtils.CanCreate(courseName, out string errorMessage) == false)
+            while (ProcessAssetUtils.DoesProcessAssetExist(processName) || ProcessAssetUtils.CanCreate(processName, out string errorMessage) == false)
             {
-                courseName = $"{SimpleExampleName}_{counter}";
+                processName = $"{SimpleExampleName}_{counter}";
                 counter++;
             }
 
-            CreateNewScene(courseName);
+            CreateNewScene(processName);
 
             GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             sphere.name = "Sphere";
@@ -121,7 +121,7 @@ namespace VRBuilder.Editor.Setup
             plane.name = "Plane";
             plane.transform.localScale = new Vector3(2f, 2f, 2f);
 
-            SetupSceneAndTraining(courseName);
+            SetupSceneAndProcess(processName);
         }
     }
 }

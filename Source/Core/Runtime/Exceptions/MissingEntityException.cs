@@ -4,7 +4,7 @@
 
 namespace VRBuilder.Core.Exceptions
 {
-    public class MissingEntityException : TrainingException
+    public class MissingEntityException : ProcessException
     {
         public MissingEntityException(string message) : base(message)
         {

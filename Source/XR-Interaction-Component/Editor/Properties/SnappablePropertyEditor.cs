@@ -16,7 +16,7 @@ namespace VRBuilder.Editor.XRInteraction
     [CustomEditor(typeof(SnappableProperty)), CanEditMultipleObjects]
     internal class SnappablePropertyEditor : UnityEditor.Editor
     {
-        private const string PrefabPath = "Assets/MindPort/VRBuilder/Resources/SnapZones/Prefabs";
+        private const string PrefabPath = "Assets/MindPort/VR Builder/Resources/SnapZones/Prefabs";
 
         public override void OnInspectorGUI()
         {
@@ -57,8 +57,8 @@ namespace VRBuilder.Editor.XRInteraction
             // Adds a Snap Zone component to our new object.
             SnapZone snapZone = snapObject.AddComponent<SnapZoneProperty>().SnapZone;
             snapZone.ShownHighlightObject = snapZonePrefab;
-            IsTrainingSceneObjectValidation validation = snapZone.gameObject.AddComponent<IsTrainingSceneObjectValidation>();
-            validation.AddTrainingSceneObject(snappable.GetComponent<TrainingSceneObject>());
+            IsProcessSceneObjectValidation validation = snapZone.gameObject.AddComponent<IsProcessSceneObjectValidation>();
+            validation.AddProcessSceneObject(snappable.GetComponent<ProcessSceneObject>());
 
             settings.ApplySettingsToSnapZone(snapZone);
 

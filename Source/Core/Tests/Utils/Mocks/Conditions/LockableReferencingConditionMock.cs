@@ -57,7 +57,7 @@ namespace VRBuilder.Tests.Utils.Mocks
             return LockableProperties;
         }
 
-        public override IProcess GetActiveProcess()
+        public override IStageProcess GetActiveProcess()
         {
             return new ActiveProcess(Data);
         }

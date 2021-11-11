@@ -29,7 +29,7 @@ namespace VRBuilder.Tests.Utils.Mocks
             Data.DeactivatingTime = deactivatingTime;
         }
 
-        private class ActivatingProcess : Process<EntityData>
+        private class ActivatingProcess : StageProcess<EntityData>
         {
             public ActivatingProcess(EntityData data) : base(data)
             {
@@ -58,7 +58,7 @@ namespace VRBuilder.Tests.Utils.Mocks
             }
         }
 
-        private class DeactivatingProcess : Process<EntityData>
+        private class DeactivatingProcess : StageProcess<EntityData>
         {
             public DeactivatingProcess(EntityData data) : base(data)
             {
@@ -87,12 +87,12 @@ namespace VRBuilder.Tests.Utils.Mocks
             }
         }
 
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new ActivatingProcess(Data);
         }
 
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new DeactivatingProcess(Data);
         }

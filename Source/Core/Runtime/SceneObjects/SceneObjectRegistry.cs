@@ -35,22 +35,22 @@ namespace VRBuilder.Core.SceneObjects
         /// <inheritdoc />
         public void RegisterAll()
         {
-            foreach (TrainingSceneObject trainingObject in SceneUtils.GetActiveAndInactiveComponents<TrainingSceneObject>())
+            foreach (ProcessSceneObject processObject in SceneUtils.GetActiveAndInactiveComponents<ProcessSceneObject>())
             {
                 try
                 {
-                    Register(trainingObject);
+                    Register(processObject);
                 }
                 catch (NameNotUniqueException)
                 {
 #if UNITY_EDITOR
                     string isPlayingText = Application.isPlaying ? "\n\nThe object will be restored after ending Play Mode." : "\n\nThe object will be deleted from the scene.";
-                    if (EditorUtility.DisplayDialog("Scene Object Name Conflict", $"The game object {trainingObject.gameObject.name} cannot be registered because it has an already existing unique name: {trainingObject.UniqueName}. Do you want to delete it?{isPlayingText}", "Yes", "No"))
+                    if (EditorUtility.DisplayDialog("Scene Object Name Conflict", $"The game object {processObject.gameObject.name} cannot be registered because it has an already existing unique name: {processObject.UniqueName}. Do you want to delete it?{isPlayingText}", "Yes", "No"))
                     {
-                        Object.DestroyImmediate(trainingObject.gameObject);
+                        Object.DestroyImmediate(processObject.gameObject);
                     }
 #else
-                    Debug.LogErrorFormat("Registration of training scene object entity with name '{0}' failed. Name is not unique! Errors will ensue. Referenced game object: '{1}'.", trainingObject.UniqueName, trainingObject.GameObject.name);
+                    Debug.LogErrorFormat("Registration of process object entity with name '{0}' failed. Name is not unique! Errors will ensue. Referenced game object: '{1}'.", processObject.UniqueName, processObject.GameObject.name);
 #endif
                 }
                 catch (AlreadyRegisteredException)

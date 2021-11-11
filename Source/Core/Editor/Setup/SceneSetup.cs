@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -13,10 +13,10 @@ namespace VRBuilder.Editor
 {
     /// <summary>
     /// This base class is supposed to be implemented by classes which will be called to setup the scene.
-    /// Can be used to e.g. setup training classes or interaction frameworks.
+    /// Can be used to e.g. setup process classes or interaction frameworks.
     /// </summary>
     /// <remarks>
-    /// See <see cref="TrainingConfigurationSetup"/> as a reference.
+    /// See <see cref="ProcessConfigurationSetup"/> as a reference.
     /// </remarks>
     public abstract class SceneSetup
     {

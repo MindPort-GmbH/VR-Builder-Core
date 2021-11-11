@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -9,7 +9,7 @@ using UnityEngine;
 namespace VRBuilder.Core.SceneObjects
 {
     /// <summary>
-    /// Weak reference by a unique name to a training scene object in a scene.
+    /// Weak reference by a unique name to a process object in a scene.
     /// </summary>
     [DataContract(IsReference = true)]
     public sealed class SceneObjectReference : ObjectReference<ISceneObject>

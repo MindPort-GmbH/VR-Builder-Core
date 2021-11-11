@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -18,13 +18,13 @@ namespace VRBuilder.Editor.Tests
         public void RunSerializerWithLinear()
         {
             int length = 100;
-            ICourse course = CreateTrainingCourse(length);
+            IProcess process = CreateProcess(length);
 
-            ImprovedNewtonsoftJsonCourseSerializer serializer = new ImprovedNewtonsoftJsonCourseSerializer();
+            ImprovedNewtonsoftJsonProcessSerializer serializer = new ImprovedNewtonsoftJsonProcessSerializer();
             try
             {
-                byte[] data = serializer.CourseToByteArray(course);
-                serializer.CourseFromByteArray(data);
+                byte[] data = serializer.ProcessToByteArray(process);
+                serializer.ProcessFromByteArray(data);
             }
             catch (Exception)
             {
@@ -36,13 +36,13 @@ namespace VRBuilder.Editor.Tests
         public void RunSerializerWithSplit()
         {
             int length = 200;
-            ICourse course = CreateSplitTrainingCourse(length);
+            IProcess process = CreateSplitProcess(length);
 
-            ImprovedNewtonsoftJsonCourseSerializer serializer = new ImprovedNewtonsoftJsonCourseSerializer();
+            ImprovedNewtonsoftJsonProcessSerializer serializer = new ImprovedNewtonsoftJsonProcessSerializer();
             try
             {
-                byte[] data = serializer.CourseToByteArray(course);
-                serializer.CourseFromByteArray(data);
+                byte[] data = serializer.ProcessToByteArray(process);
+                serializer.ProcessFromByteArray(data);
             }
             catch (Exception)
             {
@@ -54,17 +54,17 @@ namespace VRBuilder.Editor.Tests
         public void RunSerializerWithEarlyFinish()
         {
             int length = 500;
-            ICourse course = CreateTrainingCourse(length);
+            IProcess process = CreateProcess(length);
 
-            ImprovedNewtonsoftJsonCourseSerializer serializer = new ImprovedNewtonsoftJsonCourseSerializer();
+            ImprovedNewtonsoftJsonProcessSerializer serializer = new ImprovedNewtonsoftJsonProcessSerializer();
             try
             {
                 Transition t1 = new Transition();
                 t1.Data.TargetStep = null;
-                course.Data.Chapters[0].Data.Steps.First().Data.Transitions.Data.Transitions.Insert(0, t1);
+                process.Data.Chapters[0].Data.Steps.First().Data.Transitions.Data.Transitions.Insert(0, t1);
 
-                byte[] data = serializer.CourseToByteArray(course);
-                serializer.CourseFromByteArray(data);
+                byte[] data = serializer.ProcessToByteArray(process);
+                serializer.ProcessFromByteArray(data);
             }
             catch (Exception)
             {
@@ -72,7 +72,7 @@ namespace VRBuilder.Editor.Tests
             }
         }
 
-        private ICourse CreateTrainingCourse(int length)
+        private IProcess CreateProcess(int length)
         {
 
             LinearChapterBuilder chapterBuilder = new LinearChapterBuilder("chapter");
@@ -81,12 +81,12 @@ namespace VRBuilder.Editor.Tests
                 chapterBuilder.AddStep(new BasicStepBuilder("Step#" + i));
             }
 
-            return new LinearTrainingBuilder("Training")
+            return new LinearProcessBuilder("Process")
                 .AddChapter(chapterBuilder)
                 .Build();
         }
 
-        private ICourse CreateSplitTrainingCourse(int length)
+        private IProcess CreateSplitProcess(int length)
         {
 
             LinearChapterBuilder[] chapterBuilder = new[] {new LinearChapterBuilder("chapter"), new LinearChapterBuilder("chapter"), new LinearChapterBuilder("chapter")};
@@ -128,7 +128,7 @@ namespace VRBuilder.Editor.Tests
             c1.Data.Steps.ToList().ForEach(chapter.Data.Steps.Add);
             c2.Data.Steps.ToList().ForEach(chapter.Data.Steps.Add);
 
-            return new Course("name", chapter);
+            return new Process("name", chapter);
         }
     }
 }

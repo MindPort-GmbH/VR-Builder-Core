@@ -19,7 +19,7 @@ namespace VRBuilder.Core
         /// If false, the behavior does not hinder the completion of a step.
         /// </summary>
         [DataMember]
-        [HideInTrainingInspector]
+        [HideInProcessInspector]
         bool IsBlocking { get; set; }
     }
 }

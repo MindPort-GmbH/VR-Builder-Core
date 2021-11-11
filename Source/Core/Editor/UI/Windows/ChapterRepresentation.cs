@@ -57,7 +57,7 @@ namespace VRBuilder.Editor.UI.Windows
                 Vector2 positionAfterDrag = node.Position;
                 Vector2 closuredPositionBeforeDrag = positionBeforeDrag;
 
-                RevertableChangesHandler.Do(new CourseCommand(() =>
+                RevertableChangesHandler.Do(new ProcessCommand(() =>
                 {
                     setPositionInModel(positionAfterDrag);
                     MarkToRefresh();
@@ -101,7 +101,7 @@ namespace VRBuilder.Editor.UI.Windows
 
             bool wasFirstStep = step == CurrentChapter.Data.FirstStep;
 
-            RevertableChangesHandler.Do(new CourseCommand(
+            RevertableChangesHandler.Do(new ProcessCommand(
                 () =>
                 {
                     foreach (ITransition transition in incomingTransitions)
@@ -180,7 +180,7 @@ namespace VRBuilder.Editor.UI.Windows
             {
                 ITransition transition = EntityFactory.CreateTransition();
 
-                RevertableChangesHandler.Do(new CourseCommand(
+                RevertableChangesHandler.Do(new ProcessCommand(
                     () =>
                     {
                         step.Data.Transitions.Data.Transitions.Add(transition);
@@ -281,7 +281,7 @@ namespace VRBuilder.Editor.UI.Windows
                     {
                         IStep firstStep = chapter.Data.FirstStep;
 
-                        RevertableChangesHandler.Do(new CourseCommand(() =>
+                        RevertableChangesHandler.Do(new ProcessCommand(() =>
                             {
                                 chapter.Data.FirstStep = null;
                                 MarkToRefresh();
@@ -312,7 +312,7 @@ namespace VRBuilder.Editor.UI.Windows
                     return;
                 }
 
-                RevertableChangesHandler.Do(new CourseCommand(() =>
+                RevertableChangesHandler.Do(new ProcessCommand(() =>
                     {
                         chapter.Data.FirstStep = target;
                         MarkToRefresh();
@@ -370,7 +370,7 @@ namespace VRBuilder.Editor.UI.Windows
                             return;
                         }
 
-                        RevertableChangesHandler.Do(new CourseCommand(() =>
+                        RevertableChangesHandler.Do(new ProcessCommand(() =>
                             {
                                 closuredTransition.Data.TargetStep = targetStep;
                                 SelectStepNode(stepNodes[closuredStep]);
@@ -392,7 +392,7 @@ namespace VRBuilder.Editor.UI.Windows
                             new TestableEditorElements.MenuItem(new GUIContent("Delete transition"), false, () =>
                             {
                                 bool isLast = closuredStep.Data.Transitions.Data.Transitions.Count == 1;
-                                RevertableChangesHandler.Do(new CourseCommand(() =>
+                                RevertableChangesHandler.Do(new ProcessCommand(() =>
                                     {
                                         closuredStep.Data.Transitions.Data.Transitions.Remove(closuredTransition);
                                         if (isLast)
@@ -478,7 +478,7 @@ namespace VRBuilder.Editor.UI.Windows
 
         private void AddStepWithUndo(IStep step)
         {
-            RevertableChangesHandler.Do(new CourseCommand(() =>
+            RevertableChangesHandler.Do(new ProcessCommand(() =>
                 {
                     AddStep(step);
                     CurrentChapter.ChapterMetadata.LastSelectedStep = step;
@@ -530,7 +530,7 @@ namespace VRBuilder.Editor.UI.Windows
                 {
                     IStep oldStep = CurrentChapter.Data.FirstStep;
 
-                    RevertableChangesHandler.Do(new CourseCommand(() =>
+                    RevertableChangesHandler.Do(new ProcessCommand(() =>
                     {
                         CurrentChapter.Data.FirstStep = targetStep;
                         MarkToRefresh();
@@ -549,7 +549,7 @@ namespace VRBuilder.Editor.UI.Windows
                     ITransition transition = stepNode.Step.Data.Transitions.Data.Transitions[index];
                     IStep oldStep = transition.Data.TargetStep;
 
-                    RevertableChangesHandler.Do(new CourseCommand(() =>
+                    RevertableChangesHandler.Do(new ProcessCommand(() =>
                     {
                         transition.Data.TargetStep = targetStep;
                         SelectStepNode(stepNode);
@@ -589,7 +589,7 @@ namespace VRBuilder.Editor.UI.Windows
 
             if (EditorConfigurator.Instance.Validation.IsAllowedToValidate())
             {
-                EditorConfigurator.Instance.Validation.Validate(CurrentChapter.Data, GlobalEditorHandler.GetCurrentCourse(), null);
+                EditorConfigurator.Instance.Validation.Validate(CurrentChapter.Data, GlobalEditorHandler.GetCurrentProcess(), null);
             }
         }
 

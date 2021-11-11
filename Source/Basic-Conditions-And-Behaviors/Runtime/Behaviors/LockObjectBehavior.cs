@@ -83,11 +83,11 @@ namespace VRBuilder.Core.Behaviors
         {
         }
 
-        public LockObjectBehavior(ISceneObject target) : this(TrainingReferenceUtils.GetNameFrom(target))
+        public LockObjectBehavior(ISceneObject target) : this(ProcessReferenceUtils.GetNameFrom(target))
         {
         }
 
-        public LockObjectBehavior(ISceneObject target, bool isOnlyLockedInStep) : this(TrainingReferenceUtils.GetNameFrom(target), isOnlyLockedInStep: isOnlyLockedInStep)
+        public LockObjectBehavior(ISceneObject target, bool isOnlyLockedInStep) : this(ProcessReferenceUtils.GetNameFrom(target), isOnlyLockedInStep: isOnlyLockedInStep)
         {
         }
 
@@ -99,13 +99,13 @@ namespace VRBuilder.Core.Behaviors
         }
 
         ///<inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new ActivatingProcess(Data);
         }
 
         ///<inheritdoc />
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new DeactivatingProcess(Data);
         }

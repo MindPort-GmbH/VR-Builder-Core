@@ -15,7 +15,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Draws a dropdown button with all <see cref="InstantiationOption{IBehavior}"/> in the project, and creates a new instance of choosen behavior on click.
     /// </summary>
-    [InstantiatorTrainingDrawer(typeof(IBehavior))]
+    [InstantiatorProcessDrawer(typeof(IBehavior))]
     internal class BehaviorInstantiatiorDrawer : AbstractInstantiatorDrawer<IBehavior>
     {
         /// <inheritdoc />

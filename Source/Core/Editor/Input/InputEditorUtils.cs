@@ -26,23 +26,23 @@ namespace VRBuilder.Editor.Input
                 AssetDatabase.CreateFolder("Assets", "MindPort");
             }
 
-            if (AssetDatabase.IsValidFolder("Assets/MindPort/VRBuilder") == false)
+            if (AssetDatabase.IsValidFolder("Assets/MindPort/VR Builder") == false)
             {
-                AssetDatabase.CreateFolder("Assets/MindPort", "VRBuilder");
+                AssetDatabase.CreateFolder("Assets/MindPort", "VR Builder");
             }
 
-            if (AssetDatabase.IsValidFolder("Assets/MindPort/VRBuilder/Resources") == false)
+            if (AssetDatabase.IsValidFolder("Assets/MindPort/VR Builder/Resources") == false)
             {
-                AssetDatabase.CreateFolder("Assets/MindPort/VRBuilder", "Resources");
+                AssetDatabase.CreateFolder("Assets/MindPort/VR Builder", "Resources");
             }
 
-            if (AssetDatabase.IsValidFolder("Assets/MindPort/VRBuilder/Resources/KeyBindings") == false)
+            if (AssetDatabase.IsValidFolder("Assets/MindPort/VR Builder/Resources/KeyBindings") == false)
             {
-                AssetDatabase.CreateFolder("Assets/MindPort/VRBuilder/Resources", "KeyBindings");
+                AssetDatabase.CreateFolder("Assets/MindPort/VR Builder/Resources", "KeyBindings");
             }
 
             AssetDatabase.CopyAsset(AssetDatabase.GetAssetPath(defaultBindings),
-                $"Assets/MindPort/VRBuilder/Resources/{RuntimeConfigurator.Configuration.CustomInputActionAssetPath}.inputactions");
+                $"Assets/MindPort/VR Builder/Resources/{RuntimeConfigurator.Configuration.CustomInputActionAssetPath}.inputactions");
 
             AssetDatabase.Refresh();
 
@@ -56,7 +56,7 @@ namespace VRBuilder.Editor.Input
         public static bool UsesCustomKeyBindingAsset()
         {
             return AssetDatabase.GetAssetPath(RuntimeConfigurator.Configuration.CurrentInputActionAsset)
-                .Equals("Assets/MindPort/VRBuilder/Resources" + RuntimeConfigurator.Configuration.CustomInputActionAssetPath);
+                .Equals("Assets/MindPort/VR Builder/Resources" + RuntimeConfigurator.Configuration.CustomInputActionAssetPath);
         }
 
         /// <summary>
