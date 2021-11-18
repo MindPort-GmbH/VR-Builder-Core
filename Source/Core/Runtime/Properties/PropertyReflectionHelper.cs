@@ -118,7 +118,8 @@ namespace VRBuilder.Core
 
                 IEnumerable<Type> refs = ExtractFittingPropertyTypeFrom<LockableProperty>(reference);
 
-                Type refType = refs.FirstOrDefault();
+                ISceneObject sceneObject = RuntimeConfigurator.Configuration.SceneObjectRegistry.GetByName(reference.UniqueName);
+                Type refType = refs.Where(type => sceneObject.Properties.Select(property => property.GetType()).Contains(type)).FirstOrDefault();
                 if (refType != null)
                 {
                     IEnumerable<Type> types = new[] {refType};
