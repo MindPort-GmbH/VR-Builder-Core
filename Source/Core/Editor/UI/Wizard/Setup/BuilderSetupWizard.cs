@@ -60,19 +60,16 @@ namespace VRBuilder.Editor.UI.Wizard
             List<WizardPage> pages = new List<WizardPage>()
             {
                 new WelcomePage(),
+#if !XR_INTERACTION_COMPONENT
+                new InteractionComponentPage(),
+#endif
                 new ProcessSceneSetupPage(),
                 //new AnalyticsPage(),
                 new AllAboutPage()
             };
 
             int xrSetupIndex = 2;
-#if CREATOR_PRO
-            if (CreatorPro.Account.UserAccount.IsAllowedToUsePro() == false)
-            {
-                pages.Insert(1, new CreatorPro.Core.CreatorLoginPage());
-                xrSetupIndex++;
-            }
-#endif
+
             bool isShowingXRSetupPage = EditorReflectionUtils.AssemblyExists(XRDefaultAssemblyName);
             isShowingXRSetupPage &= EditorReflectionUtils.AssemblyExists(XRAssemblyName) == false;
             isShowingXRSetupPage &= XRLoaderHelper.GetCurrentXRConfiguration()

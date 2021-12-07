@@ -94,22 +94,6 @@ namespace VRBuilder.Editor.UI.Wizard
 
                 EditorGUILayout.Space();
 
-                loadSampleScene = GUILayout.Toggle(loadSampleScene, "Load Step by Step Guide Scene", BuilderEditorStyles.RadioButton);
-                if (loadSampleScene)
-                {
-                    createNewScene = false;
-                    useCurrentScene = false;
-                    loadDemoScene = false;
-                    CanProceed = true;
-
-                    GUILayout.BeginHorizontal();
-                    {
-                        GUILayout.Space(BuilderEditorStyles.Indent);
-                        BuilderGUILayout.DrawLink("Hello Creator – a 5-step guide to a basic application", "https://developers.innoactive.de/documentation/creator/latest/articles/step-by-step-guides/hello-creator.html");
-                    }
-                    GUILayout.EndHorizontal();
-                }
-
                 if(EditorReflectionUtils.AssemblyExists("VRBuilder.Editor.DemoScene"))
                 {
                     loadDemoScene = GUILayout.Toggle(loadDemoScene, "Load Demo Scene", BuilderEditorStyles.RadioButton);
