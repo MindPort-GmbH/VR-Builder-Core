@@ -9,6 +9,6 @@ namespace VRBuilder.Editor.PackageManager
         public override string Package { get; } = "com.unity.inputsystem";
 
         /// <inheritdoc/>
-        public override int Priority { get; } = 10;
+        public override int Priority { get; } = 5;
     }
 }
