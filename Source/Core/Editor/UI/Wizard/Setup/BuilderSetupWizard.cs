@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using VRBuilder.Editor.PackageManager;
 using VRBuilder.Editor.XRUtils;
+using VRBuilder.Core.Utils;
+using VRBuilder.Core.Configuration;
 
 namespace VRBuilder.Editor.UI.Wizard
 {
@@ -60,13 +62,10 @@ namespace VRBuilder.Editor.UI.Wizard
             List<WizardPage> pages = new List<WizardPage>()
             {
                 new WelcomePage(),
-#if !XR_INTERACTION_COMPONENT
-                new InteractionComponentPage(),
-#endif
                 new ProcessSceneSetupPage(),
                 //new AnalyticsPage(),
                 new AllAboutPage()
-            };
+            };            
 
             int xrSetupIndex = 2;
 
@@ -78,6 +77,14 @@ namespace VRBuilder.Editor.UI.Wizard
             if (isShowingXRSetupPage)
             {
                 pages.Insert(xrSetupIndex, new XRSDKSetupPage());
+            }
+
+            int interactionComponentSetupIndex = 1;
+            bool isShowingInteractionComponentPage = ReflectionUtils.GetConcreteImplementationsOf<IInteractionComponentConfiguration>().Count() != 1;
+
+            if(isShowingInteractionComponentPage)
+            {
+                pages.Insert(interactionComponentSetupIndex, new InteractionComponentPage());
             }
 
             wizard.WizardClosing += OnWizardClosing;
