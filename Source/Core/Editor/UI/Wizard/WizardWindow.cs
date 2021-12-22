@@ -97,6 +97,7 @@ namespace VRBuilder.Editor.UI.Wizard
 
             buttonPosition = DrawFinishButton(buttonPosition);
             buttonPosition = DrawNextButton(buttonPosition);
+            buttonPosition = DrawRestartButton(buttonPosition);
             buttonPosition = DrawPreviousButton(buttonPosition);
             buttonPosition = DrawSkipButton(buttonPosition);
             buttonPosition = DrawCloseButton(buttonPosition);
@@ -118,9 +119,25 @@ namespace VRBuilder.Editor.UI.Wizard
             return position;
         }
 
+        private Vector2 DrawRestartButton(Vector2 position)
+        {
+            if (GetActivePage().ShouldRestart)
+            {
+                EditorGUI.BeginDisabledGroup(GetActivePage().CanProceed == false);
+                if (GUI.Button(new Rect(position, buttonSize), "Restart"))
+                {
+                    RestartButtonPressed();
+                }
+                EditorGUI.EndDisabledGroup();
+                return new Vector2(position.x - (buttonSize.x + Settings.ButtonPadding), position.y);
+            }
+
+            return position;
+        }
+
         private Vector2 DrawNextButton(Vector2 position)
         {
-            if (selectedPage < pages.Count - 1)
+            if (selectedPage < pages.Count - 1 && GetActivePage().ShouldRestart == false)
             {
                 EditorGUI.BeginDisabledGroup(GetActivePage().CanProceed == false);
                 if (GUI.Button(new Rect(position, buttonSize), "Next"))
@@ -195,6 +212,16 @@ namespace VRBuilder.Editor.UI.Wizard
         {
             GetActivePage().Apply();
             Close();
+        }
+
+        protected virtual void RestartButtonPressed()
+        {
+            GetActivePage().Apply();
+            Close();
+
+            BuilderProjectSettings settings = BuilderProjectSettings.Load();
+            settings.IsFirstTimeStarted = true;
+            settings.Save();
         }
 
         protected virtual void BackButtonPressed()

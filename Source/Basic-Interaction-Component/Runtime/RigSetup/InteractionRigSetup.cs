@@ -156,7 +156,6 @@ namespace VRBuilder.BasicInteraction.RigSetup
         /// <summary>
         /// Enforces the giving Rig to be used, if possible.
         /// </summary>
-        /// <param name="prefab">Prefab of the rig to be used.</param>
         public static void SetEnforcedInteractionRig(InteractionRigProvider provider)
         {
             enforcedProvider = provider;

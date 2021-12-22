@@ -18,21 +18,16 @@ namespace VRBuilder.Editor.UI.Wizard
         {
             GUILayout.BeginArea(window);
                 GUILayout.Label("Hit Play to Preview", BuilderEditorStyles.Title);
-                GUILayout.Label("Have a look at How-To's and an in-depth Webinar for further information.", BuilderEditorStyles.Paragraph);
-                GUILayout.Label("How-To's", BuilderEditorStyles.Header);
+                GUILayout.Label("Have a look at the following resources for further information.", BuilderEditorStyles.Paragraph);
+                GUILayout.Label("Help", BuilderEditorStyles.Header);
 
-                BuilderGUILayout.DrawLink("How to build your VR process application", "https://developers.innoactive.de/documentation/creator/latest/articles/getting-started/designer.html", BuilderEditorStyles.IndentLarge);
-                BuilderGUILayout.DrawLink("How to extend the Creator using a template", "https://developers.innoactive.de/documentation/creator/latest/articles/developer/01-introduction.html", BuilderEditorStyles.IndentLarge);
+                BuilderGUILayout.DrawLink("Video tutorials", "https://www.youtube.com/playlist?list=PLDebLYuCiIXSsh80SDe23iJc8fdmNeq27", BuilderEditorStyles.IndentLarge);
+                BuilderGUILayout.DrawLink("VR Builder documentation", "https://www.mindport.co/documentation", BuilderEditorStyles.IndentLarge);
 
-                GUILayout.Label("Need Help?", BuilderEditorStyles.Header);
+                GUILayout.Label("Community", BuilderEditorStyles.Header);
 
-                BuilderGUILayout.DrawLink("In-depth webinar on how the Creator works", "https://vimeo.com/417328541/93a752e72c", BuilderEditorStyles.IndentLarge);
-                BuilderGUILayout.DrawLink("Visit our developer community", "https://innoactive.io/creator/community", BuilderEditorStyles.IndentLarge);
-                BuilderGUILayout.DrawLink("Contact Us for Support", "https://www.innoactive.io/support", BuilderEditorStyles.IndentLarge);
-
-                GUILayout.Space(BuilderEditorStyles.Indent);
-
-                GUILayout.Label("Also, if you are facing any issues, don't hesitate to reach out to us for support", BuilderEditorStyles.Label);
+                BuilderGUILayout.DrawLink("Community", "http://community.mindport.co", BuilderEditorStyles.IndentLarge);
+                BuilderGUILayout.DrawLink("Contact us", "mailto:info@mindport.co", BuilderEditorStyles.IndentLarge);
             GUILayout.EndArea();
         }
     }

@@ -11,7 +11,7 @@ namespace VRBuilder.Editor.BuilderMenu
         /// <summary>
         /// Setup the current unity scene to be a functioning process scene.
         /// </summary>
-        [MenuItem("Tools/VR Builder/Setup Process Scene", false, 2)]
+        [MenuItem("Tools/VR Builder/Setup Scene for VR Process", false, 2)]
         public static void SetupScene()
         {
             ProcessSceneSetup.Run();
