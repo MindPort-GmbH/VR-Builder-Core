@@ -59,6 +59,8 @@ namespace VRBuilder.Editor.UI.Wizard
             {
                 installXRInteractionComponent = false;
                 ShouldRestart = false;
+
+                EditorGUILayout.HelpBox("VR Builder will not work properly until an interaction component is installed.", MessageType.Warning);
             }
         }
 
@@ -79,7 +81,7 @@ namespace VRBuilder.Editor.UI.Wizard
             }
 
             GUILayout.Space(16);
-            GUILayout.Label("More than one interaction component may cause issues, please ensure only one is present.", BuilderEditorStyles.Paragraph);
+            EditorGUILayout.HelpBox("More than one interaction component may cause issues, please ensure only one is present in a given project.", MessageType.Warning);
         }
 
         public override void Apply()
