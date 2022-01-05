@@ -21,9 +21,6 @@ namespace VRBuilder.Editor.XRUtils
         public override string Package { get; } = "com.unity.xr.management";
 
         /// <inheritdoc/>
-        public override string Version { get; internal set; } = "4.0.1";
-
-        /// <inheritdoc/>
         public override int Priority { get; } = 1;
 
         public XRManagementPackageEnabler()
