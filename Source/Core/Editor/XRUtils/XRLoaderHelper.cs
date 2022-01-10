@@ -25,7 +25,7 @@ namespace VRBuilder.Editor.XRUtils
         internal const string IsXRLoaderInitialized = "IsXRLoaderInitialized";
         private const string OculusXRPackage = "com.unity.xr.oculus";
         private const string WindowsXRPackage = "com.unity.xr.windowsmr@4.5.0";
-        private const string XRManagementPackage = "com.unity.xr.management@4.0.1";
+        private const string XRManagementPackage = "com.unity.xr.management";
         private const string OpenXRPackage = "com.unity.xr.openxr";
 
         public enum XRSDK
