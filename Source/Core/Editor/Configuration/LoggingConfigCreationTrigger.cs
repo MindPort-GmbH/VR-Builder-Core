@@ -22,12 +22,12 @@ namespace VRBuilder.Editor.Configuration
             if (instance == null)
             {
                 instance = ScriptableObject.CreateInstance<LifeCycleLoggingConfig>();
-                if (Directory.Exists("Assets/MindPort/VRBuilder/Resources") == false)
+                if (Directory.Exists("Assets/MindPort/VR Builder/Resources") == false)
                 {
-                    Directory.CreateDirectory("Assets/MindPort/VRBuilder/Resources");
+                    Directory.CreateDirectory("Assets/MindPort/VR Builder/Resources");
                 }
                 
-                AssetDatabase.CreateAsset(instance, "Assets/MindPort/VRBuilder/Resources/LifeCycleLoggingConfig.asset");
+                AssetDatabase.CreateAsset(instance, "Assets/MindPort/VR Builder/Resources/LifeCycleLoggingConfig.asset");
                 AssetDatabase.SaveAssets();
             }
         }

@@ -9,9 +9,9 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// Training drawer for boolean members.
+    /// Process drawer for boolean members.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(bool))]
+    [DefaultProcessDrawer(typeof(bool))]
     internal class BoolDrawer : AbstractDrawer
     {
         /// <inheritdoc />

@@ -71,7 +71,7 @@ namespace VRBuilder.Core.Behaviors
         }
 
         /// <param name="targetObject">Object to enable.</param>
-        public EnableGameObjectBehavior(ISceneObject targetObject) : this(TrainingReferenceUtils.GetNameFrom(targetObject))
+        public EnableGameObjectBehavior(ISceneObject targetObject) : this(ProcessReferenceUtils.GetNameFrom(targetObject))
         {
         }
 
@@ -83,12 +83,12 @@ namespace VRBuilder.Core.Behaviors
         }
 
         /// <inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new ActivatingProcess(Data);
         }
 
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new DeactivatingProcess(Data);
         }

@@ -68,12 +68,7 @@ namespace VRBuilder.Editor.UI.Wizard
 
                 if (selectedLoader == XRLoader.Other)
                 {
-                    GUILayout.Label("The VR Builder does not provide an automated setup for your device. You need to refer to your device's vendor documentation in order to enable a compatible loader in the Unity's XR Plugin Management.", BuilderEditorStyles.Paragraph);
-
-                    GUILayout.BeginHorizontal();
-                        GUILayout.Label("Please tell us which VR Hardware you are using:", BuilderEditorStyles.Label);
-                        otherHardwareText = BuilderGUILayout.DrawTextField(otherHardwareText, -1,GUILayout.Width(window.width * 0.4f));
-                    GUILayout.EndHorizontal();
+                    GUILayout.Label("VR Builder does not provide an automated setup for your device. You need to refer to your device's vendor documentation in order to enable a compatible loader in the Unity's XR Plugin Management.", BuilderEditorStyles.Paragraph);
                 }
             }
             GUILayout.EndArea();

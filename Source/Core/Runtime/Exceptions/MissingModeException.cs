@@ -6,7 +6,7 @@ using System;
 
 namespace VRBuilder.Core.Exceptions
 {
-    public class MissingModeException : TrainingException
+    public class MissingModeException : ProcessException
     {
         public MissingModeException()
         {

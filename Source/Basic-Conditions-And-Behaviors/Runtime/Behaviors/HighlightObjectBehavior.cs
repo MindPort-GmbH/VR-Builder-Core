@@ -24,7 +24,7 @@ namespace VRBuilder.Core.Behaviors
         {
             /// <summary>
             /// <see cref="ModeParameter{T}"/> of the highlight color.
-            /// Training modes can change the highlight color.
+            /// Process modes can change the highlight color.
             /// </summary>
             public ModeParameter<Color> CustomHighlightColor { get; set; }
 
@@ -108,18 +108,18 @@ namespace VRBuilder.Core.Behaviors
         {
         }
 
-        public HighlightObjectBehavior(IHighlightProperty target, Color highlightColor, string name = "Highlight Object") : this(TrainingReferenceUtils.GetNameFrom(target), highlightColor, name)
+        public HighlightObjectBehavior(IHighlightProperty target, Color highlightColor, string name = "Highlight Object") : this(ProcessReferenceUtils.GetNameFrom(target), highlightColor, name)
         {
         }
 
         /// <inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new ActivatingProcess(Data);
         }
 
         /// <inheritdoc />
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new DeactivatingProcess(Data);
         }

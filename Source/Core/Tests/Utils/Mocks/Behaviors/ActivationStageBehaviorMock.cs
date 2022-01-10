@@ -25,7 +25,7 @@ namespace VRBuilder.Tests.Utils.Mocks
             public string Name { get; set; }
         }
 
-        private class HasExecutionStageProcess : Process<EntityData>
+        private class HasExecutionStageProcess : StageProcess<EntityData>
         {
             private BehaviorExecutionStages executionStages;
 
@@ -61,12 +61,12 @@ namespace VRBuilder.Tests.Utils.Mocks
             Data.Name = name;
         }
 
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new HasExecutionStageProcess(BehaviorExecutionStages.Activation, Data);
         }
 
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new HasExecutionStageProcess(BehaviorExecutionStages.Deactivation, Data);
         }

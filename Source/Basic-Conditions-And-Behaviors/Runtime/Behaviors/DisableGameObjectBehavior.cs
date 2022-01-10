@@ -47,7 +47,7 @@ namespace VRBuilder.Core.Behaviors
         }
 
         /// <inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new ActivatingProcess(Data);
         }
@@ -57,7 +57,7 @@ namespace VRBuilder.Core.Behaviors
         }
 
         /// <param name="targetObject">scene object to disable.</param>
-        public DisableGameObjectBehavior(ISceneObject targetObject) : this(TrainingReferenceUtils.GetNameFrom(targetObject))
+        public DisableGameObjectBehavior(ISceneObject targetObject) : this(ProcessReferenceUtils.GetNameFrom(targetObject))
         {
         }
 

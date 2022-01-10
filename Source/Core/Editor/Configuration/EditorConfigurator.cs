@@ -16,7 +16,7 @@ using VRBuilder.Core.Conditions;
 namespace VRBuilder.Editor.Configuration
 {
     /// <summary>
-    /// Configurator to set the training editor configuration which is used by the training creation editor tools (like Step Inspector).
+    /// Configurator to set the process editor configuration which is used by the process creation editor tools (like Step Inspector).
     /// </summary>
     public static class EditorConfigurator
     {
@@ -36,7 +36,7 @@ namespace VRBuilder.Editor.Configuration
             {
                 string listOfDefinitions = string.Join("', '", definitions.Select(definition => definition.FullName).ToArray());
                 Debug.LogErrorFormat(
-                    "There is more than one final implementation of training editor configurations in this Unity project: '{0}'."
+                    "There is more than one final implementation of process editor configurations in this Unity project: '{0}'."
                     + " Remove all editor configurations except for '{1}' and the one you want to use."
                     + " '{2}' was selected as current editor configuration.",
                     listOfDefinitions,

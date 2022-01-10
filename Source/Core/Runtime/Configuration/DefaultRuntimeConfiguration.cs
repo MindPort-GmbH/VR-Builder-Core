@@ -15,7 +15,7 @@ using VRBuilder.Core.Serialization.NewtonsoftJson;
 namespace VRBuilder.Core.Configuration
 {
     /// <summary>
-    /// Training runtime configuration which is used if no other was implemented.
+    /// Process runtime configuration which is used if no other was implemented.
     /// </summary>
     public class DefaultRuntimeConfiguration : BaseRuntimeConfiguration
     {
@@ -32,18 +32,18 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <inheritdoc />
-        public override TrainingSceneObject Trainee
+        public override ProcessSceneObject User
         {
             get
             {
-                TrainingSceneObject trainee = GameObject.FindObjectOfType<TraineeSceneObject>();
+                ProcessSceneObject user = GameObject.FindObjectOfType<UserSceneObject>();
 
-                if (trainee == null)
+                if (user == null)
                 {
-                    throw new Exception("Could not find a TraineeSceneObject in the scene.");
+                    throw new Exception("Could not find a UserSceneObject in the scene.");
                 }
 
-                return trainee;
+                return user;
             }
         }
 
@@ -54,7 +54,7 @@ namespace VRBuilder.Core.Configuration
             {
                 if (instructionPlayer == null || instructionPlayer.Equals(null))
                 {
-                    instructionPlayer = Trainee.gameObject.AddComponent<AudioSource>();
+                    instructionPlayer = User.gameObject.AddComponent<AudioSource>();
                 }
 
                 return instructionPlayer;

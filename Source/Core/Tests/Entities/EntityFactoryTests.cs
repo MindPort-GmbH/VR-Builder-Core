@@ -59,14 +59,14 @@ namespace VRBuilder.Tests
         }
 
         [Test]
-        public void CreateACourse()
+        public void CreateAProcess()
         {
-            string courseName = "Test Course";
-            ICourse course = EntityFactory.CreateCourse(courseName);
+            string processName = "Test Process";
+            IProcess process = EntityFactory.CreateProcess(processName);
 
-            Assert.NotNull(course);
-            Assert.That(course is ICourse);
-            Assert.That(course.Data.Name == courseName);
+            Assert.NotNull(process);
+            Assert.That(process is IProcess);
+            Assert.That(process.Data.Name == processName);
         }
     }
 }

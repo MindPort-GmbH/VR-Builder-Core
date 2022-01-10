@@ -25,18 +25,18 @@ namespace VRBuilder.BasicInteraction.Builders
         /// Get grab step builder.
         /// </summary>
         /// <param name="name">Name of the step.</param>
-        /// <param name="objectsToGrab">List of objects that have to be grabbed before training chapter continues.</param>
+        /// <param name="objectsToGrab">List of objects that have to be grabbed before chapter continues.</param>
         /// <returns>Configured builder.</returns>
         public static BasicStepBuilder Grab(string name, params IGrabbableProperty[] objectsToGrab)
         {
-            return Grab(name, objectsToGrab.Select(TrainingReferenceUtils.GetNameFrom).ToArray());
+            return Grab(name, objectsToGrab.Select(ProcessReferenceUtils.GetNameFrom).ToArray());
         }
 
         /// <summary>
         /// Get grab step builder.
         /// </summary>
         /// <param name="name">Name of the step.</param>
-        /// <param name="objectsToGrab">List of objects that have to be grabbed before training chapter continues.</param>
+        /// <param name="objectsToGrab">List of objects that have to be grabbed before chapter continues.</param>
         /// <returns>Configured builder.</returns>
         public static BasicStepBuilder Grab(string name, params string[] objectsToGrab)
         {
@@ -118,7 +118,7 @@ namespace VRBuilder.BasicInteraction.Builders
         /// <returns>Configured builder.</returns>
         public static BasicStepBuilder Touch(string name, params ISceneObject[] objectsToTouch)
         {
-            return Touch(name, objectsToTouch.Select(TrainingReferenceUtils.GetNameFrom).ToArray());
+            return Touch(name, objectsToTouch.Select(ProcessReferenceUtils.GetNameFrom).ToArray());
         }
 
         /// <summary>

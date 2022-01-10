@@ -20,7 +20,7 @@ namespace VRBuilder.Tests
         {
             // Create reference
             GameObject obj = new GameObject("MyObject");
-            TrainingSceneObject reference = obj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject reference = obj.AddComponent<ProcessSceneObject>();
 
             // Await end of frame
             yield return new WaitForFixedUpdate();
@@ -39,7 +39,7 @@ namespace VRBuilder.Tests
             // Create reference
             GameObject obj = new GameObject("MyObject");
             obj.SetActive(false);
-            TrainingSceneObject reference = obj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject reference = obj.AddComponent<ProcessSceneObject>();
             reference.ChangeUniqueName("Test");
             obj.SetActive(true);
 
@@ -64,7 +64,7 @@ namespace VRBuilder.Tests
             // Create reference
             GameObject obj = new GameObject("MyObject");
             obj.SetActive(false);
-            TrainingSceneObject reference = obj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject reference = obj.AddComponent<ProcessSceneObject>();
             reference.ChangeUniqueName("Test");
 
             reference.ChangeUniqueName("Test2");
@@ -88,7 +88,7 @@ namespace VRBuilder.Tests
         {
             // Create reference
             GameObject obj = new GameObject("MyObject");
-            TrainingSceneObject reference = obj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject reference = obj.AddComponent<ProcessSceneObject>();
             reference.ChangeUniqueName("Test");
 
             // Await end of frame
@@ -106,7 +106,7 @@ namespace VRBuilder.Tests
         {
             // Create reference
             GameObject obj = new GameObject("MyObject");
-            TrainingSceneObject reference = obj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject reference = obj.AddComponent<ProcessSceneObject>();
             reference.ChangeUniqueName("Test");
 
             // Await end of frame
@@ -126,14 +126,14 @@ namespace VRBuilder.Tests
         {
             // Create reference
             GameObject obj1 = new GameObject("MyObject");
-            TrainingSceneObject reference1 = obj1.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject reference1 = obj1.AddComponent<ProcessSceneObject>();
             reference1.ChangeUniqueName("Test");
 
             RuntimeConfigurator.Configuration.SceneObjectRegistry.Unregister(reference1);
 
             // Create reference
             GameObject obj2 = new GameObject("MyObject");
-            TrainingSceneObject reference2 = obj2.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject reference2 = obj2.AddComponent<ProcessSceneObject>();
             reference2.ChangeUniqueName("Test");
 
             // Assert that new added reference can be found
@@ -153,7 +153,7 @@ namespace VRBuilder.Tests
         {
             // Create reference
             GameObject obj = new GameObject("MyObject");
-            TrainingSceneObject reference = obj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject reference = obj.AddComponent<ProcessSceneObject>();
             reference.ChangeUniqueName("Test");
 
             // Assert that exception is thrown
@@ -175,7 +175,7 @@ namespace VRBuilder.Tests
         {
             // Create reference
             GameObject obj = new GameObject("MyObject");
-            TrainingSceneObject reference = obj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject reference = obj.AddComponent<ProcessSceneObject>();
             reference.ChangeUniqueName("Test");
 
             Object.DestroyImmediate(obj);
@@ -195,9 +195,9 @@ namespace VRBuilder.Tests
             // Given two references,
             GameObject obj = new GameObject("MyObject");
             obj.SetActive(false);
-            TrainingSceneObject reference1 = obj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject reference1 = obj.AddComponent<ProcessSceneObject>();
             reference1.ChangeUniqueName("Test");
-            TrainingSceneObject reference2 = obj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject reference2 = obj.AddComponent<ProcessSceneObject>();
 
             // When we change the unique name of the second reference to the unique name of the first reference,
             reference2.ChangeUniqueName("Test");

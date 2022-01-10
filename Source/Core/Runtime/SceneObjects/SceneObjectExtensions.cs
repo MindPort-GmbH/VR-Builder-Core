@@ -44,37 +44,37 @@ namespace VRBuilder.Core.Properties
         /// <param name="sceneObject"><see cref="ISceneObject"/> to whom the type <typeparamref name="T"/> will be added.</param>
         /// <typeparam name="T">The type of <see cref="ISceneObjectProperty"/> to be added to <paramref name="sceneObject"/>.</typeparam>
         /// <returns>A reference to the <see cref="ISceneObjectProperty"/> added to <paramref name="sceneObject"/>.</returns>
-        public static ISceneObjectProperty AddTrainingProperty<T>(this ISceneObject sceneObject)
+        public static ISceneObjectProperty AddProcessProperty<T>(this ISceneObject sceneObject)
         {
-            return AddTrainingProperty(sceneObject, typeof(T));
+            return AddProcessProperty(sceneObject, typeof(T));
         }
 
         /// <summary>
-        /// Adds a type of <paramref name="trainingProperty"/> into this <see cref="ISceneObject"/>.
+        /// Adds a type of <paramref name="processProperty"/> into this <see cref="ISceneObject"/>.
         /// </summary>
-        /// <param name="sceneObject"><see cref="ISceneObject"/> to whom the <paramref name="trainingProperty"/> will be added.</param>
-        /// <param name="trainingProperty">Typo of <see cref="ISceneObjectProperty"/> to be added to <paramref name="sceneObject"/>.</param>
+        /// <param name="sceneObject"><see cref="ISceneObject"/> to whom the <paramref name="processProperty"/> will be added.</param>
+        /// <param name="processProperty">Typo of <see cref="ISceneObjectProperty"/> to be added to <paramref name="sceneObject"/>.</param>
         /// <returns>A reference to the <see cref="ISceneObjectProperty"/> added to <paramref name="sceneObject"/>.</returns>
-        public static ISceneObjectProperty AddTrainingProperty(this ISceneObject sceneObject, Type trainingProperty)
+        public static ISceneObjectProperty AddProcessProperty(this ISceneObject sceneObject, Type processProperty)
         {
-            if (AreParametersNullOrInvalid(sceneObject, trainingProperty))
+            if (AreParametersNullOrInvalid(sceneObject, processProperty))
             {
                 return null;
             }
 
-            ISceneObjectProperty sceneObjectProperty = sceneObject.GameObject.GetComponent(trainingProperty) as ISceneObjectProperty;
+            ISceneObjectProperty sceneObjectProperty = sceneObject.GameObject.GetComponent(processProperty) as ISceneObjectProperty;
 
             if (sceneObjectProperty != null)
             {
                 return sceneObjectProperty;
             }
 
-            if (trainingProperty.IsInterface)
+            if (processProperty.IsInterface)
             {
                 // If it is an interface just take the first public found concrete implementation.
                 Type propertyType = ReflectionUtils
                     .GetAllTypes()
-                    .Where(trainingProperty.IsAssignableFrom)
+                    .Where(processProperty.IsAssignableFrom)
                     .Where(type => type.Assembly.GetReferencedAssemblies().All(assemblyName =>  assemblyName.Name != "UnityEditor" && assemblyName.Name != "nunit.framework"))
                     .First(type => type.IsClass && type.IsPublic && type.IsAbstract == false);
 
@@ -82,50 +82,50 @@ namespace VRBuilder.Core.Properties
             }
             else
             {
-                sceneObjectProperty = sceneObject.GameObject.AddComponent(trainingProperty) as ISceneObjectProperty;
+                sceneObjectProperty = sceneObject.GameObject.AddComponent(processProperty) as ISceneObjectProperty;
             }
 
             return sceneObjectProperty;
         }
 
         /// <summary>
-        /// Removes type of <paramref name="trainingProperty"/> from this <see cref="ISceneObject"/>.
+        /// Removes type of <paramref name="processProperty"/> from this <see cref="ISceneObject"/>.
         /// </summary>
-        /// <param name="sceneObject"><see cref="ISceneObject"/> from whom the <paramref name="trainingProperty"/> will be removed.</param>
-        /// <param name="trainingProperty"><see cref="ISceneObjectProperty"/> to be removed from <paramref name="sceneObject"/>.</param>
-        /// <param name="removeDependencies">If true, this method also removes other components that are marked as `RequiredComponent` by <paramref name="trainingProperty"/>.</param>
-        /// <param name="excludedFromBeingRemoved">The training properties in this list will not be removed if any is a dependency of <paramref name="trainingProperty"/>. Only relevant if <paramref name="removeDependencies"/> is true.</param>
-        public static void RemoveTrainingProperty(this ISceneObject sceneObject, Component trainingProperty, bool removeDependencies = false, IEnumerable<Component> excludedFromBeingRemoved = null)
+        /// <param name="sceneObject"><see cref="ISceneObject"/> from whom the <paramref name="processProperty"/> will be removed.</param>
+        /// <param name="processProperty"><see cref="ISceneObjectProperty"/> to be removed from <paramref name="sceneObject"/>.</param>
+        /// <param name="removeDependencies">If true, this method also removes other components that are marked as `RequiredComponent` by <paramref name="processProperty"/>.</param>
+        /// <param name="excludedFromBeingRemoved">The process properties in this list will not be removed if any is a dependency of <paramref name="processProperty"/>. Only relevant if <paramref name="removeDependencies"/> is true.</param>
+        public static void RemoveProcessProperty(this ISceneObject sceneObject, Component processProperty, bool removeDependencies = false, IEnumerable<Component> excludedFromBeingRemoved = null)
         {
-            Type trainingPropertyType = trainingProperty.GetType();
-            RemoveTrainingProperty(sceneObject, trainingPropertyType, removeDependencies, excludedFromBeingRemoved);
+            Type processPropertyType = processProperty.GetType();
+            RemoveProcessProperty(sceneObject, processPropertyType, removeDependencies, excludedFromBeingRemoved);
         }
 
         /// <summary>
-        /// Removes type of <paramref name="trainingProperty"/> from this <see cref="ISceneObject"/>.
+        /// Removes type of <paramref name="processProperty"/> from this <see cref="ISceneObject"/>.
         /// </summary>
-        /// <param name="sceneObject"><see cref="ISceneObject"/> from whom the <paramref name="trainingProperty"/> will be removed.</param>
-        /// <param name="trainingProperty">Typo of <see cref="ISceneObjectProperty"/> to be removed from <paramref name="sceneObject"/>.</param>
-        /// <param name="removeDependencies">If true, this method also removes other components that are marked as `RequiredComponent` by <paramref name="trainingProperty"/>.</param>
-        /// <param name="excludedFromBeingRemoved">The training properties in this list will not be removed if any is a dependency of <paramref name="trainingProperty"/>. Only relevant if <paramref name="removeDependencies"/> is true.</param>
-        public static void RemoveTrainingProperty(this ISceneObject sceneObject, Type trainingProperty, bool removeDependencies = false, IEnumerable<Component> excludedFromBeingRemoved = null)
+        /// <param name="sceneObject"><see cref="ISceneObject"/> from whom the <paramref name="processProperty"/> will be removed.</param>
+        /// <param name="processProperty">Typo of <see cref="ISceneObjectProperty"/> to be removed from <paramref name="sceneObject"/>.</param>
+        /// <param name="removeDependencies">If true, this method also removes other components that are marked as `RequiredComponent` by <paramref name="processProperty"/>.</param>
+        /// <param name="excludedFromBeingRemoved">The process properties in this list will not be removed if any is a dependency of <paramref name="processProperty"/>. Only relevant if <paramref name="removeDependencies"/> is true.</param>
+        public static void RemoveProcessProperty(this ISceneObject sceneObject, Type processProperty, bool removeDependencies = false, IEnumerable<Component> excludedFromBeingRemoved = null)
         {
-            Component trainingComponent = sceneObject.GameObject.GetComponent(trainingProperty);
+            Component processComponent = sceneObject.GameObject.GetComponent(processProperty);
 
-            if (AreParametersNullOrInvalid(sceneObject, trainingProperty) || trainingComponent == null)
+            if (AreParametersNullOrInvalid(sceneObject, processProperty) || processComponent == null)
             {
                 return;
             }
 
             IEnumerable<Type> typesToIgnore = GetTypesFromComponents(excludedFromBeingRemoved);
-            RemoveProperty(sceneObject, trainingProperty, removeDependencies, typesToIgnore);
+            RemoveProperty(sceneObject, processProperty, removeDependencies, typesToIgnore);
         }
 
         private static void RemoveProperty(ISceneObject sceneObject, Type typeToRemove, bool removeDependencies, IEnumerable<Type> typesToIgnore)
         {
-            IEnumerable<Component> trainingProperties = sceneObject.GameObject.GetComponents(typeof(Component)).Where(component => component.GetType() != typeToRemove);
+            IEnumerable<Component> processProperties = sceneObject.GameObject.GetComponents(typeof(Component)).Where(component => component.GetType() != typeToRemove);
 
-            foreach (Component component in trainingProperties)
+            foreach (Component component in processProperties)
             {
                 if (IsTypeDependencyOfComponent(typeToRemove, component))
                 {
@@ -133,12 +133,12 @@ namespace VRBuilder.Core.Properties
                 }
             }
 
-            Component trainingComponent = sceneObject.GameObject.GetComponent(typeToRemove);
+            Component processComponent = sceneObject.GameObject.GetComponent(typeToRemove);
 
 #if UNITY_EDITOR
-            Object.DestroyImmediate(trainingComponent);
+            Object.DestroyImmediate(processComponent);
 #else
-            Object.Destroy(trainingComponent);
+            Object.Destroy(processComponent);
 #endif
 
             if (removeDependencies)
@@ -160,9 +160,9 @@ namespace VRBuilder.Core.Properties
             }
         }
 
-        private static bool AreParametersNullOrInvalid(ISceneObject sceneObject, Type trainingProperty)
+        private static bool AreParametersNullOrInvalid(ISceneObject sceneObject, Type processProperty)
         {
-            return sceneObject == null || sceneObject.GameObject == null || trainingProperty == null || typeof(ISceneObjectProperty).IsAssignableFrom(trainingProperty) == false;
+            return sceneObject == null || sceneObject.GameObject == null || processProperty == null || typeof(ISceneObjectProperty).IsAssignableFrom(processProperty) == false;
         }
 
         private static bool IsTypeDependencyOfComponent(Type type, Component component)
@@ -178,9 +178,9 @@ namespace VRBuilder.Core.Properties
             return requireComponents.Any(requireComponent => requireComponent.m_Type0 == type || requireComponent.m_Type1 == type || requireComponent.m_Type2 == type);
         }
 
-        private static HashSet<Type> GetAllDependenciesFrom(Type trainingProperty)
+        private static HashSet<Type> GetAllDependenciesFrom(Type processProperty)
         {
-            RequireComponent[] requireComponents = trainingProperty.GetCustomAttributes(typeof(RequireComponent), false) as RequireComponent[];
+            RequireComponent[] requireComponents = processProperty.GetCustomAttributes(typeof(RequireComponent), false) as RequireComponent[];
 
             if (requireComponents == null || requireComponents.Length == 0)
             {

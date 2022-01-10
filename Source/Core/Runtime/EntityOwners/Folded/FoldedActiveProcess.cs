@@ -10,7 +10,7 @@ namespace VRBuilder.Core.EntityOwners.FoldedEntityCollection
     /// <summary>
     /// An active process over a sequence of entities.
     /// </summary>
-    internal class FoldedActiveProcess<TEntity> : Process<IEntitySequenceDataWithMode<TEntity>> where TEntity : IEntity
+    internal class FoldedActiveProcess<TEntity> : StageProcess<IEntitySequenceDataWithMode<TEntity>> where TEntity : IEntity
     {
         public FoldedActiveProcess(IEntitySequenceDataWithMode<TEntity> data) : base(data)
         {

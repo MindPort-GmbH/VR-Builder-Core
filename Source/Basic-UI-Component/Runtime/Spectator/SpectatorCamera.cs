@@ -5,16 +5,16 @@ using UnityEngine;
 namespace VRBuilder.UX
 {
     /// <summary>
-    /// Spectator camera which sets its viewpoint to the one of the trainee.
+    /// Spectator camera which sets its viewpoint to the one of the user.
     /// </summary>
     [RequireComponent(typeof(Camera))]
     public class SpectatorCamera : MonoBehaviour
     {
-        private GameObject trainee;
+        private GameObject user;
 
         protected virtual void Start()
         {
-            trainee = RuntimeConfigurator.Configuration.Trainee.GameObject;
+            user = RuntimeConfigurator.Configuration.User.GameObject;
         }
 
         protected virtual void Update()
@@ -23,15 +23,15 @@ namespace VRBuilder.UX
         }
 
         /// <summary>
-        /// Sets the position and rotation of the spectator camera to the one of the trainee.
+        /// Sets the position and rotation of the spectator camera to the one of the user.
         /// </summary>
         protected virtual void UpdateCameraPositionAndRotation()
         {
-            if (trainee == null)
+            if (user == null)
             {
                 try
                 {
-                    trainee = RuntimeConfigurator.Configuration.Trainee.GameObject;
+                    user = RuntimeConfigurator.Configuration.User.GameObject;
                 }
                 catch (NullReferenceException)
                 {
@@ -39,7 +39,7 @@ namespace VRBuilder.UX
                 }
             }
 
-            transform.SetPositionAndRotation(trainee.transform.position, trainee.transform.rotation);
+            transform.SetPositionAndRotation(user.transform.position, user.transform.rotation);
         }
     }
 }

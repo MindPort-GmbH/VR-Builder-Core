@@ -56,7 +56,7 @@ namespace VRBuilder.Core.Behaviors
             public bool IsBlocking { get; set; }
         }
 
-        private class PlayAudioProcess : Process<EntityData>
+        private class PlayAudioProcess : StageProcess<EntityData>
         {
             private readonly BehaviorExecutionStages executionStages;
 
@@ -135,13 +135,13 @@ namespace VRBuilder.Core.Behaviors
         }
 
         /// <inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new PlayAudioProcess(BehaviorExecutionStages.Activation, Data);
         }
 
         /// <inheritdoc />
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new PlayAudioProcess(BehaviorExecutionStages.Deactivation, Data);
         }

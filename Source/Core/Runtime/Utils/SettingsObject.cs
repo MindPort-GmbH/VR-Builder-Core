@@ -47,11 +47,11 @@ namespace VRBuilder.Core.Runtime.Utils
                 // Create an instance
                 settings = CreateInstance<T>();
 #if UNITY_EDITOR
-                if (!Directory.Exists("Assets/MindPort/VRBuilder/Resources"))
+                if (!Directory.Exists("Assets/MindPort/VR Builder/Resources"))
                 {
-                    Directory.CreateDirectory("Assets/MindPort/VRBuilder/Resources");
+                    Directory.CreateDirectory("Assets/MindPort/VR Builder/Resources");
                 }
-                AssetDatabase.CreateAsset(settings, $"Assets/MindPort/VRBuilder/Resources/{typeof(T).Name}.asset");
+                AssetDatabase.CreateAsset(settings, $"Assets/MindPort/VR Builder/Resources/{typeof(T).Name}.asset");
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
 #endif

@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -37,25 +37,25 @@ namespace VRBuilder.Core
         }
 
         /// <inheritdoc />
-        public virtual IProcess GetActivatingProcess()
+        public virtual IStageProcess GetActivatingProcess()
         {
             return new EmptyProcess();
         }
 
         /// <inheritdoc />
-        public virtual IProcess GetActiveProcess()
+        public virtual IStageProcess GetActiveProcess()
         {
             return new EmptyProcess();
         }
 
         /// <inheritdoc />
-        public virtual IProcess GetDeactivatingProcess()
+        public virtual IStageProcess GetDeactivatingProcess()
         {
             return new EmptyProcess();
         }
 
         /// <summary>
-        /// Override this method if your behavior or condition supports changing between training modes (<see cref="IMode"/>).
+        /// Override this method if your behavior or condition supports changing between process modes (<see cref="IMode"/>).
         /// By default returns an empty configurator that does nothing.
         /// </summary>
         protected virtual IConfigurator GetConfigurator()

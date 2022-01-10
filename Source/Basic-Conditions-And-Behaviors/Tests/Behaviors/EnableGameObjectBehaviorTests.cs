@@ -16,31 +16,31 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator GameObjectIsEnabledAfterActivation()
         {
-            // Given an active training scene object and a training with enable game object behavior,
-            TrainingSceneObject toEnable = TestingUtils.CreateSceneObject("toEnable");
+            // Given an active process object and a process with enable game object behavior,
+            ProcessSceneObject toEnable = TestingUtils.CreateSceneObject("toEnable");
             toEnable.GameObject.SetActive(false);
 
             EndlessConditionMock trigger = new EndlessConditionMock();
 
-            ICourse course = new LinearTrainingBuilder("Training")
+            IProcess process = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
-                    .AddStep(new BasicCourseStepBuilder("Step")
+                    .AddStep(new BasicProcessStepBuilder("Step")
                         .Enable(toEnable)
                         .AddCondition(trigger)))
                 .Build();
 
-            course.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
+            process.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
-            CourseRunner.Initialize(course);
-            CourseRunner.Run();
+            ProcessRunner.Initialize(process);
+            ProcessRunner.Run();
 
             // When the behavior is activated
-            CourseRunner.Initialize(course);
-            CourseRunner.Run();
+            ProcessRunner.Initialize(process);
+            ProcessRunner.Run();
 
-            yield return new WaitUntil(()=> course.Data.FirstChapter.Data.Steps[0].LifeCycle.Stage == Stage.Active);
+            yield return new WaitUntil(()=> process.Data.FirstChapter.Data.Steps[0].LifeCycle.Stage == Stage.Active);
 
-            // Then the training scene object is enabled.
+            // Then the process object is enabled.
             Assert.True(toEnable.GameObject.activeSelf);
 
             // Cleanup
@@ -52,33 +52,33 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator GameObjectStaysEnabled()
         {
-            // Given an active training scene object and a training with enalbe game object condition,
-            TrainingSceneObject toEnable = TestingUtils.CreateSceneObject("toEnable");
+            // Given an active process object and a process with enalbe game object condition,
+            ProcessSceneObject toEnable = TestingUtils.CreateSceneObject("toEnable");
             toEnable.GameObject.SetActive(false);
 
             EndlessConditionMock trigger = new EndlessConditionMock();
 
-            ICourse course = new LinearTrainingBuilder("Training")
+            IProcess process = new LinearProcessBuilder("Process")
                 .AddChapter(new LinearChapterBuilder("Chapter")
-                    .AddStep(new BasicCourseStepBuilder("Step")
+                    .AddStep(new BasicProcessStepBuilder("Step")
                         .Enable(toEnable))
-                    .AddStep(new BasicCourseStepBuilder("Step")
+                    .AddStep(new BasicProcessStepBuilder("Step")
                         .AddCondition(trigger)))
                 .Build();
 
-            course.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
+            process.Configure(RuntimeConfigurator.Configuration.Modes.CurrentMode);
 
             // When the behavior is activated and after the step is completed
-            CourseRunner.Initialize(course);
-            CourseRunner.Run();
+            ProcessRunner.Initialize(process);
+            ProcessRunner.Run();
 
-            yield return new WaitUntil(()=> course.Data.FirstChapter.Data.Steps[0].LifeCycle.Stage == Stage.Active);
+            yield return new WaitUntil(()=> process.Data.FirstChapter.Data.Steps[0].LifeCycle.Stage == Stage.Active);
 
             trigger.Autocomplete();
 
-            yield return new WaitUntil(()=> course.Data.FirstChapter.Data.Steps[0].LifeCycle.Stage == Stage.Inactive);
+            yield return new WaitUntil(()=> process.Data.FirstChapter.Data.Steps[0].LifeCycle.Stage == Stage.Inactive);
 
-            // Then the training scene object stays enabled.
+            // Then the process object stays enabled.
             Assert.True(toEnable.GameObject.activeSelf);
 
             // Cleanup
@@ -88,8 +88,8 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardInactiveBehavior()
         {
-            // Given an inactive training scene object and an EnableGameObjectBehavior,
-            TrainingSceneObject toEnable = TestingUtils.CreateSceneObject("ToEnable");
+            // Given an inactive process object and an EnableGameObjectBehavior,
+            ProcessSceneObject toEnable = TestingUtils.CreateSceneObject("ToEnable");
             toEnable.GameObject.SetActive(false);
 
             EnableGameObjectBehavior behavior = new EnableGameObjectBehavior(toEnable);
@@ -109,8 +109,8 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardInactiveBehaviorAndActivateIt()
         {
-            // Given an inactive training scene object and a EnableGameObjectBehavior,
-            TrainingSceneObject toEnable = TestingUtils.CreateSceneObject("ToEnable");
+            // Given an inactive process object and a EnableGameObjectBehavior,
+            ProcessSceneObject toEnable = TestingUtils.CreateSceneObject("ToEnable");
             toEnable.GameObject.SetActive(false);
 
             EnableGameObjectBehavior behavior = new EnableGameObjectBehavior(toEnable);
@@ -132,8 +132,8 @@ namespace VRBuilder.Core.Tests.Behaviors
         [UnityTest]
         public IEnumerator FastForwardActivatingBehavior()
         {
-            // Given an inactive training scene object and an active EnableGameObjectBehavior,
-            TrainingSceneObject toEnable = TestingUtils.CreateSceneObject("ToEnable");
+            // Given an inactive process object and an active EnableGameObjectBehavior,
+            ProcessSceneObject toEnable = TestingUtils.CreateSceneObject("ToEnable");
             toEnable.GameObject.SetActive(false);
 
             EnableGameObjectBehavior behavior = new EnableGameObjectBehavior(toEnable);

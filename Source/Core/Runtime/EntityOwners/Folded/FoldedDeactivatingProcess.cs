@@ -12,7 +12,7 @@ namespace VRBuilder.Core.EntityOwners.FoldedEntityCollection
     /// <summary>
     /// A process over entities' sequence which deactivates entities in an opposite order.
     /// </summary>
-    internal class FoldedDeactivatingProcess<TEntity> : Process<IEntitySequenceDataWithMode<TEntity>> where TEntity : IEntity
+    internal class FoldedDeactivatingProcess<TEntity> : StageProcess<IEntitySequenceDataWithMode<TEntity>> where TEntity : IEntity
     {
         private IEnumerator<TEntity> enumerator;
 

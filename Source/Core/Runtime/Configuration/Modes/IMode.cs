@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -7,23 +7,23 @@
 namespace VRBuilder.Core.Configuration.Modes
 {
     /// <summary>
-    /// The interface of a training mode. A training mode determines if an entity has to be skipped and provides configurable entities with parameters.
+    /// The interface of a process mode. A process mode determines if an entity has to be skipped and provides configurable entities with parameters.
     /// </summary>
     public interface IMode
     {
         /// <summary>
-        /// The name of this training mode.
+        /// The name of this process mode.
         /// </summary>
         string Name { get; }
 
         /// <summary>
-        /// Returns whether the given <see cref="IOptional"/> type should be skipped in this training mode.
+        /// Returns whether the given <see cref="IOptional"/> type should be skipped in this process mode.
         /// </summary>
         /// <typeparam name="ISkippable">The actual type implementing ISkippable.</typeparam>
         bool CheckIfSkipped<TOptional>() where TOptional : IOptional;
 
         /// <summary>
-        /// Returns whether the given type should be skipped in this training mode.
+        /// Returns whether the given type should be skipped in this process mode.
         /// </summary>
         /// <param name="type">The type to check.</param>
         bool CheckIfSkipped(Type type);

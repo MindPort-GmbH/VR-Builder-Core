@@ -11,7 +11,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Default drawer for `Vector3`.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(Vector3))]
+    [DefaultProcessDrawer(typeof(Vector3))]
     internal class Vector3Drawer : AbstractDrawer
     {
         /// <inheritdoc />

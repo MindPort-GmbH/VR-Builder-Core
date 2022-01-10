@@ -16,7 +16,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Simple base drawer class.
     /// </summary>
-    public abstract class AbstractDrawer : ITrainingDrawer
+    public abstract class AbstractDrawer : IProcessDrawer
     {
         /// <inheritdoc />
         public Rect Draw(Rect rect, object currentValue, Action<object> changeValueCallback, string label)
@@ -73,7 +73,7 @@ namespace VRBuilder.Editor.UI.Drawers
             Action doCallback = () => assignValueCallback(getNewValueCallback());
             // ReSharper disable once ImplicitlyCapturedClosure
             Action undoCallback = () => assignValueCallback(getOldValueCallback());
-            RevertableChangesHandler.Do(new CourseCommand(doCallback, undoCallback));
+            RevertableChangesHandler.Do(new ProcessCommand(doCallback, undoCallback));
         }
     }
 }

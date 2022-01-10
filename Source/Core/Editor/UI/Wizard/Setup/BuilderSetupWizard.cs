@@ -9,12 +9,14 @@ using System.Collections.Generic;
 using System.Linq;
 using VRBuilder.Editor.PackageManager;
 using VRBuilder.Editor.XRUtils;
+using VRBuilder.Core.Utils;
+using VRBuilder.Core.Configuration;
 
 namespace VRBuilder.Editor.UI.Wizard
 {
     /// <summary>
-    /// Wizard which guides the user through setting up a new training project,
-    /// including a training course, scene and XR hardware.
+    /// Wizard which guides the user through setting up a new project,
+    /// including a process, scene and XR hardware.
     /// </summary>
     ///
 #if UNITY_2019_4_OR_NEWER && !UNITY_EDITOR_OSX
@@ -52,7 +54,7 @@ namespace VRBuilder.Editor.UI.Wizard
         }
 
 #if UNITY_2019_4_OR_NEWER && !UNITY_EDITOR_OSX
-        [MenuItem("Tools/VR Builder/Create New Course...", false, 0)]
+        [MenuItem("Tools/VR Builder/Create New Process...", false, 0)]
 #endif
         internal static void Show()
         {
@@ -60,20 +62,15 @@ namespace VRBuilder.Editor.UI.Wizard
             List<WizardPage> pages = new List<WizardPage>()
             {
                 new WelcomePage(),
-                new TrainingSceneSetupPage(),
-                //new AnalyticsPage(),
+                new ProcessSceneSetupPage(),
                 new AllAboutPage()
-            };
+            };            
 
             int xrSetupIndex = 2;
-#if CREATOR_PRO
-            if (CreatorPro.Account.UserAccount.IsAllowedToUsePro() == false)
-            {
-                pages.Insert(1, new CreatorPro.Core.CreatorLoginPage());
-                xrSetupIndex++;
-            }
-#endif
-            bool isShowingXRSetupPage = EditorReflectionUtils.AssemblyExists(XRDefaultAssemblyName);
+            int interactionComponentSetupIndex = 1;
+            bool isShowingInteractionComponentPage = ReflectionUtils.GetConcreteImplementationsOf<IInteractionComponentConfiguration>().Count() != 1;
+
+            bool isShowingXRSetupPage = isShowingInteractionComponentPage == false && IsXRInteractionComponent();
             isShowingXRSetupPage &= EditorReflectionUtils.AssemblyExists(XRAssemblyName) == false;
             isShowingXRSetupPage &= XRLoaderHelper.GetCurrentXRConfiguration()
                 .Contains(XRLoaderHelper.XRConfiguration.XRLegacy) == false;
@@ -83,10 +80,22 @@ namespace VRBuilder.Editor.UI.Wizard
                 pages.Insert(xrSetupIndex, new XRSDKSetupPage());
             }
 
+            if(isShowingInteractionComponentPage)
+            {
+                pages.Insert(interactionComponentSetupIndex, new InteractionComponentPage());
+            }
+
             wizard.WizardClosing += OnWizardClosing;
 
-            wizard.Setup("VR Builder - VR Training Setup Wizard", pages);
+            wizard.Setup("VR Builder - VR Process Setup Wizard", pages);
             wizard.ShowModalUtility();
+        }
+
+        private static bool IsXRInteractionComponent()
+        {
+            Type interactionComponentType = ReflectionUtils.GetConcreteImplementationsOf<IInteractionComponentConfiguration>().First();
+            IInteractionComponentConfiguration interactionComponentConfiguration = ReflectionUtils.CreateInstanceOfType(interactionComponentType) as IInteractionComponentConfiguration;
+            return interactionComponentConfiguration.IsXRInteractionComponent;
         }
 
         private static void OnWizardClosing(object sender, EventArgs args)

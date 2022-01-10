@@ -9,7 +9,7 @@ namespace VRBuilder.Core.Conditions
     /// <summary>
     /// An abstract class for processes for Active <see cref="Stage"/> of <see cref="ICompletableEntity"/>.
     /// </summary>
-    public abstract class BaseActiveProcessOverCompletable<TData> : Process<TData> where TData : class, ICompletableData
+    public abstract class BaseActiveProcessOverCompletable<TData> : StageProcess<TData> where TData : class, ICompletableData
     {
         protected BaseActiveProcessOverCompletable(TData data) : base(data)
         {

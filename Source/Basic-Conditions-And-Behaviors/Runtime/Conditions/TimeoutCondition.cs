@@ -29,7 +29,7 @@ namespace VRBuilder.Core.Conditions
 
             /// <inheritdoc />
             [DataMember]
-            [HideInTrainingInspector]
+            [HideInProcessInspector]
             public string Name { get; set; }
 
             /// <inheritdoc />
@@ -69,7 +69,7 @@ namespace VRBuilder.Core.Conditions
         }
 
         /// <inheritdoc />
-        public override IProcess GetActiveProcess()
+        public override IStageProcess GetActiveProcess()
         {
             return new ActiveProcess(Data);
         }

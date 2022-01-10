@@ -16,7 +16,7 @@ namespace VRBuilder.Core
     {
         private bool deactivateAfterActivation;
         private IEnumerator update;
-        private IProcess process;
+        private IStageProcess process;
 
         private bool IsCurrentStageProcessFinished => update == null;
 
@@ -47,7 +47,7 @@ namespace VRBuilder.Core
         {
             if (Stage != Stage.Inactive)
             {
-                throw new InvalidStateException("Training entity can only be activated when not running yet");
+                throw new InvalidStateException("Process entity can only be activated when not running yet");
             }
 
             StartActivating();
@@ -64,7 +64,7 @@ namespace VRBuilder.Core
             }
             else if (Stage != Stage.Active)
             {
-                throw new InvalidStateException("Training entity can only be deactivated when already running");
+                throw new InvalidStateException("Process entity can only be deactivated when already running");
             }
             else
             {

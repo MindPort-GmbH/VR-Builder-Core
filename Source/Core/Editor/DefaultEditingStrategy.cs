@@ -12,109 +12,109 @@ using VRBuilder.Editor.Configuration;
 namespace VRBuilder.Editor
 {
     /// <summary>
-    /// This strategy is used by default and it handles interaction between course assets and various Builder windows.
+    /// This strategy is used by default and it handles interaction between process assets and various Builder windows.
     /// </summary>
     internal class DefaultEditingStrategy : IEditingStrategy
     {
-        private CourseWindow courseWindow;
+        private ProcessWindow processWindow;
         private StepWindow stepWindow;
 
-        public ICourse CurrentCourse { get; protected set; }
+        public IProcess CurrentProcess { get; protected set; }
         public IChapter CurrentChapter { get; protected set; }
 
         /// <inheritdoc/>
-        public void HandleNewCourseWindow(CourseWindow window)
+        public void HandleNewProcessWindow(ProcessWindow window)
         {
-            courseWindow = window;
-            courseWindow.SetCourse(CurrentCourse);
+            processWindow = window;
+            processWindow.SetProcess(CurrentProcess);
         }
 
         /// <inheritdoc/>
         public void HandleNewStepWindow(StepWindow window)
         {
             stepWindow = window;
-            if (courseWindow == null || courseWindow.Equals(null))
+            if (processWindow == null || processWindow.Equals(null))
             {
                 HandleCurrentStepChanged(null);
             }
             else
             {
-                HandleCurrentStepChanged(courseWindow.GetChapter().ChapterMetadata.LastSelectedStep);
+                HandleCurrentStepChanged(processWindow.GetChapter().ChapterMetadata.LastSelectedStep);
             }
         }
 
         /// <inheritdoc/>
-        public void HandleCurrentCourseModified()
+        public void HandleCurrentProcessModified()
         {
         }
 
         /// <inheritdoc/>
-        public void HandleCourseWindowClosed(CourseWindow window)
+        public void HandleProcessWindowClosed(ProcessWindow window)
         {
-            if (courseWindow != window)
+            if (processWindow != window)
             {
                 return;
             }
 
-            if (CurrentCourse != null)
+            if (CurrentProcess != null)
             {
-                CourseAssetManager.Save(CurrentCourse);
+                ProcessAssetManager.Save(CurrentProcess);
             }
         }
 
         /// <inheritdoc/>
         public void HandleStepWindowClosed(StepWindow window)
         {
-            if (CurrentCourse != null)
+            if (CurrentProcess != null)
             {
-                CourseAssetManager.Save(CurrentCourse);
+                ProcessAssetManager.Save(CurrentProcess);
             }
 
             stepWindow = null;
         }
 
         /// <inheritdoc/>
-        public void HandleStartEditingCourse()
+        public void HandleStartEditingProcess()
         {
-            if (courseWindow == null)
+            if (processWindow == null)
             {
-                courseWindow = EditorWindow.GetWindow<CourseWindow>();
-                courseWindow.minSize = new Vector2(400f, 100f);
+                processWindow = EditorWindow.GetWindow<ProcessWindow>();
+                processWindow.minSize = new Vector2(400f, 100f);
             }
             else
             {
-                courseWindow.Focus();
+                processWindow.Focus();
             }
         }
 
         /// <inheritdoc/>
-        public void HandleCurrentCourseChanged(string courseName)
+        public void HandleCurrentProcessChanged(string processName)
         {
-            if (CurrentCourse != null)
+            if (CurrentProcess != null)
             {
-                CourseAssetManager.Save(CurrentCourse);
+                ProcessAssetManager.Save(CurrentProcess);
             }
 
-            EditorPrefs.SetString(GlobalEditorHandler.LastEditedCourseNameKey, courseName);
-            LoadCourse(CourseAssetManager.Load(courseName));
+            EditorPrefs.SetString(GlobalEditorHandler.LastEditedProcessNameKey, processName);
+            LoadProcess(ProcessAssetManager.Load(processName));
         }
 
-        private void LoadCourse(ICourse newCourse)
+        private void LoadProcess(IProcess newProcess)
         {
-            CurrentCourse = newCourse;
+            CurrentProcess = newProcess;
             CurrentChapter = null;
 
-            if (newCourse != null && EditorConfigurator.Instance.Validation.IsAllowedToValidate())
+            if (newProcess != null && EditorConfigurator.Instance.Validation.IsAllowedToValidate())
             {
-                EditorConfigurator.Instance.Validation.Validate(newCourse.Data, newCourse);
+                EditorConfigurator.Instance.Validation.Validate(newProcess.Data, newProcess);
             }
 
-            if (courseWindow != null)
+            if (processWindow != null)
             {
-                courseWindow.SetCourse(CurrentCourse);
+                processWindow.SetProcess(CurrentProcess);
                 if (stepWindow != null)
                 {
-                    stepWindow.SetStep(courseWindow.GetChapter()?.ChapterMetadata.LastSelectedStep);
+                    stepWindow.SetStep(processWindow.GetChapter()?.ChapterMetadata.LastSelectedStep);
                 }
             }
             else if (stepWindow != null)
@@ -126,14 +126,14 @@ namespace VRBuilder.Editor
         /// <inheritdoc/>
         public void HandleCurrentStepModified(IStep step)
         {
-            courseWindow.GetChapter().ChapterMetadata.LastSelectedStep = step;
+            processWindow.GetChapter().ChapterMetadata.LastSelectedStep = step;
 
             if (EditorConfigurator.Instance.Validation.IsAllowedToValidate())
             {
-                EditorConfigurator.Instance.Validation.Validate(step.Data, CurrentCourse);
+                EditorConfigurator.Instance.Validation.Validate(step.Data, CurrentProcess);
             }
 
-            courseWindow.RefreshChapterRepresentation();
+            processWindow.RefreshChapterRepresentation();
         }
 
         /// <inheritdoc/>
@@ -143,7 +143,7 @@ namespace VRBuilder.Editor
             {
                 if (step != null && EditorConfigurator.Instance.Validation.IsAllowedToValidate())
                 {
-                    EditorConfigurator.Instance.Validation.Validate(step.Data, CurrentCourse);
+                    EditorConfigurator.Instance.Validation.Validate(step.Data, CurrentProcess);
                 }
                 stepWindow.SetStep(step);
             }
@@ -166,18 +166,18 @@ namespace VRBuilder.Editor
         /// <inheritdoc/>
         public void HandleProjectIsGoingToUnload()
         {
-            if (CurrentCourse != null)
+            if (CurrentProcess != null)
             {
-                CourseAssetManager.Save(CurrentCourse);
+                ProcessAssetManager.Save(CurrentProcess);
             }
         }
 
         /// <inheritdoc/>
         public void HandleProjectIsGoingToSave()
         {
-            if (CurrentCourse != null)
+            if (CurrentProcess != null)
             {
-                CourseAssetManager.Save(CurrentCourse);
+                ProcessAssetManager.Save(CurrentProcess);
             }
         }
 

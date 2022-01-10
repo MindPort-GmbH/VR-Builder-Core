@@ -8,7 +8,7 @@ using UnityEngine;
 namespace VRBuilder.Core.Utils.Logging
 {
     /// <summary>
-    /// ScriptableObject which allows you to configure what of the course life cycle should be logged.
+    /// ScriptableObject which allows you to configure what of the process life cycle should be logged.
     /// </summary>
     public class LifeCycleLoggingConfig : SettingsObject<LifeCycleLoggingConfig>
     {

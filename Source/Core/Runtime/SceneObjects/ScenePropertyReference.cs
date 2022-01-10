@@ -10,7 +10,7 @@ using VRBuilder.Core.Properties;
 namespace VRBuilder.Core.SceneObjects
 {
     /// <summary>
-    /// Weak reference to a property of a training scene object with the same unique name.
+    /// Weak reference to a property of a process object with the same unique name.
     /// </summary>
     [Serializable]
     [DataContract(IsReference = true)]
@@ -52,7 +52,7 @@ namespace VRBuilder.Core.SceneObjects
 
             ISceneObject sceneObject = RuntimeConfigurator.Configuration.SceneObjectRegistry.GetByName(UniqueName);
 
-            // Can't find training scene object with given UniqueName, value is null.
+            // Can't find process object with given UniqueName, value is null.
             if (sceneObject == null)
             {
                 return value;

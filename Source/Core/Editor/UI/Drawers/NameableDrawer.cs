@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using VRBuilder.Core;
 using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.Conditions;
-using VRBuilder.Editor.CourseValidation;
+using VRBuilder.Editor.ProcessValidation;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// Drawer for values implementing INameable interface.
     /// Instead of drawing a plain text as a label, it draws a TextField with the name.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(INamedData))]
+    [DefaultProcessDrawer(typeof(INamedData))]
     public class NameableDrawer : ObjectDrawer
     {
         /// <inheritdoc />

@@ -14,23 +14,23 @@ namespace VRBuilder.Core.Tests.Conditions
         [SetUp]
         public void SetUpRangeSceneObject()
         {
-            // Setup collider training scene object
-            TargetTrainingSceneObject = TargetPositionObject.AddComponent<TrainingSceneObject>();
+            // Setup collider process object
+            TargetProcessSceneObject = TargetPositionObject.AddComponent<ProcessSceneObject>();
             TargetPositionObject.AddComponent<TransformInRangeDetectorProperty>();
         }
 
         [SetUp]
         public void SetUpTrackedSceneObject()
         {
-            // Setup tracked training scene object
-            TrackedTrainingSceneObject = TrackedObject.AddComponent<TrainingSceneObject>();
+            // Setup tracked process object
+            TrackedProcessSceneObject = TrackedObject.AddComponent<ProcessSceneObject>();
         }
 
         [UnityTest]
         public IEnumerator CompleteWhenTargetObjectIsAtZeroRange()
         {
             // Activate in range condition
-            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedTrainingSceneObject, TargetTrainingSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
+            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedProcessSceneObject, TargetProcessSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
             condition.LifeCycle.Activate();
 
             while (condition.LifeCycle.Stage != Stage.Active)
@@ -56,7 +56,7 @@ namespace VRBuilder.Core.Tests.Conditions
         public IEnumerator CompleteWhenTargetObjectIsInsideRange()
         {
             // Activate in range condition
-            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedTrainingSceneObject, TargetTrainingSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
+            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedProcessSceneObject, TargetProcessSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
             condition.LifeCycle.Activate();
 
             while (condition.LifeCycle.Stage != Stage.Active)
@@ -86,7 +86,7 @@ namespace VRBuilder.Core.Tests.Conditions
             yield return null;
 
             // Activate in range condition
-            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedTrainingSceneObject, TargetTrainingSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
+            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedProcessSceneObject, TargetProcessSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
             condition.LifeCycle.Activate();
 
             while (condition.IsCompleted == false)
@@ -107,7 +107,7 @@ namespace VRBuilder.Core.Tests.Conditions
             yield return null;
 
             // Activate in range condition
-            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedTrainingSceneObject, TargetTrainingSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
+            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedProcessSceneObject, TargetProcessSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
             condition.LifeCycle.Activate();
 
             while (condition.IsCompleted == false)
@@ -127,7 +127,7 @@ namespace VRBuilder.Core.Tests.Conditions
             const float targetDuration = 0.1f;
 
             // Activate in range condition
-            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedTrainingSceneObject, TargetTrainingSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5, targetDuration);
+            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedProcessSceneObject, TargetProcessSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5, targetDuration);
             condition.LifeCycle.Activate();
 
             while (condition.LifeCycle.Stage != Stage.Active)
@@ -163,7 +163,7 @@ namespace VRBuilder.Core.Tests.Conditions
             const float targetDuration = 0.1f;
 
             // Activate in range condition
-            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedTrainingSceneObject, TargetTrainingSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5, targetDuration);
+            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedProcessSceneObject, TargetProcessSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5, targetDuration);
             condition.LifeCycle.Activate();
 
             while (condition.LifeCycle.Stage != Stage.Active)
@@ -199,7 +199,7 @@ namespace VRBuilder.Core.Tests.Conditions
             const float targetDuration = 0.1f;
 
             // Activate range condition
-            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedTrainingSceneObject, TargetTrainingSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5, targetDuration);
+            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedProcessSceneObject, TargetProcessSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5, targetDuration);
             condition.LifeCycle.Activate();
 
             while (condition.LifeCycle.Stage != Stage.Active)
@@ -236,7 +236,7 @@ namespace VRBuilder.Core.Tests.Conditions
         public IEnumerator NotCompletedTest()
         {
             // Activate range condition
-            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedTrainingSceneObject, TargetTrainingSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
+            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedProcessSceneObject, TargetProcessSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
             condition.LifeCycle.Activate();
             yield return null;
 
@@ -250,10 +250,10 @@ namespace VRBuilder.Core.Tests.Conditions
             // In addition to setup phase, also setup an additional object
             GameObject wrongObj = new GameObject("Wrong Object");
             wrongObj.transform.position = PositionFarFromTarget;
-            TrainingSceneObject wrongTrainingSceneObject = wrongObj.AddComponent<TrainingSceneObject>();
+            ProcessSceneObject wrongProcessSceneObject = wrongObj.AddComponent<ProcessSceneObject>();
 
             // Activate range condition
-            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedTrainingSceneObject, TargetTrainingSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
+            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedProcessSceneObject, TargetProcessSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
             condition.LifeCycle.Activate();
 
             while (condition.LifeCycle.Stage != Stage.Active)
@@ -263,7 +263,7 @@ namespace VRBuilder.Core.Tests.Conditions
             }
 
             // Move wrong object to the target position
-            wrongTrainingSceneObject.transform.position = TargetPositionObject.transform.position;
+            wrongProcessSceneObject.transform.position = TargetPositionObject.transform.position;
 
             float startTime = Time.time;
             while (Time.time < startTime + 0.1f)
@@ -280,7 +280,7 @@ namespace VRBuilder.Core.Tests.Conditions
         public IEnumerator AutoCompleteActive()
         {
             // Given an object in range condition,
-            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedTrainingSceneObject, TargetTrainingSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
+            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedProcessSceneObject, TargetProcessSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
 
             // When you activate and autocomplete it,
             condition.LifeCycle.Activate();
@@ -296,14 +296,14 @@ namespace VRBuilder.Core.Tests.Conditions
             // Then the condition is complete and the object is moved
             Assert.AreEqual(Stage.Active, condition.LifeCycle.Stage);
             Assert.IsTrue(condition.IsCompleted);
-            Assert.IsTrue(TrackedTrainingSceneObject.GameObject.transform.position == TargetTrainingSceneObject.GameObject.transform.position);
+            Assert.IsTrue(TrackedProcessSceneObject.GameObject.transform.position == TargetProcessSceneObject.GameObject.transform.position);
         }
 
         [UnityTest]
         public IEnumerator FastForwardDoesNotCompleteCondition()
         {
             // Given an object in range condition,
-            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedTrainingSceneObject, TargetTrainingSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
+            ObjectInRangeCondition condition = new ObjectInRangeCondition(TrackedProcessSceneObject, TargetProcessSceneObject.GetProperty<TransformInRangeDetectorProperty>(), 5);
 
             // When you activate it,
             condition.LifeCycle.Activate();
@@ -320,7 +320,7 @@ namespace VRBuilder.Core.Tests.Conditions
             // Then nothing happens.
             Assert.AreEqual(Stage.Active, condition.LifeCycle.Stage);
             Assert.IsFalse(condition.IsCompleted);
-            Assert.IsFalse(TrackedTrainingSceneObject.GameObject.transform.position == TargetTrainingSceneObject.GameObject.transform.position);
+            Assert.IsFalse(TrackedProcessSceneObject.GameObject.transform.position == TargetProcessSceneObject.GameObject.transform.position);
         }
     }
 }

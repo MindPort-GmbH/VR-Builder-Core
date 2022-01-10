@@ -9,7 +9,7 @@ namespace VRBuilder.Core
     /// <summary>
     /// A convenience class for processes that happen instantly. You only have to implement the <see cref="Start"/> method.
     /// </summary>
-    public abstract class InstantProcess<TData> : Process<TData> where TData : class, IData
+    public abstract class InstantProcess<TData> : StageProcess<TData> where TData : class, IData
     {
         protected InstantProcess(TData data) : base(data)
         {

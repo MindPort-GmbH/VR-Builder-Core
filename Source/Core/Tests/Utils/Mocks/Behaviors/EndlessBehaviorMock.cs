@@ -20,7 +20,7 @@ namespace VRBuilder.Tests.Utils.Mocks
             public bool IsBlocking { get; set; }
         }
 
-        private class LoopProcess : IProcess
+        private class LoopProcess : IStageProcess
         {
             public void Start()
             {
@@ -45,12 +45,12 @@ namespace VRBuilder.Tests.Utils.Mocks
             }
         }
 
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new LoopProcess();
         }
 
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new LoopProcess();
         }

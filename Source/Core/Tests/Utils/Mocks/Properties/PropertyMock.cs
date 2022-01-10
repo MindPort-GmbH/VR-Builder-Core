@@ -7,9 +7,9 @@ using VRBuilder.Core.Properties;
 namespace VRBuilder.Tests.Utils.Mocks
 {
     /// <summary>
-    /// Mock of a simple <see cref="TrainingSceneObjectProperty"/>.
+    /// Mock of a simple <see cref="ProcessSceneObjectProperty"/>.
     /// </summary>
-    public class PropertyMock : TrainingSceneObjectProperty
+    public class PropertyMock : ProcessSceneObjectProperty
     {
 
     }

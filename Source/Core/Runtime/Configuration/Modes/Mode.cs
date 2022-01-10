@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -9,7 +9,7 @@ using System.Linq;
 namespace VRBuilder.Core.Configuration.Modes
 {
     /// <summary>
-    /// A training mode that is defined by its name, IConfigurables activation policy and a collection of parameters.
+    /// A process mode that is defined by its name, IConfigurables activation policy and a collection of parameters.
     /// Immutable.
     /// </summary>
     public sealed class Mode : IMode
@@ -24,9 +24,9 @@ namespace VRBuilder.Core.Configuration.Modes
         /// </summary>
         private readonly TypeRule<IOptional> entitiesToSkip;
 
-        /// <param name="name">Name of the training mode.</param>
+        /// <param name="name">Name of the process mode.</param>
         /// <param name="entitiesToSkip">A type rule which determines if an <see cref="IOptional"/> has to be skipped, depending on its type.</param>
-        /// <param name="parameters">A string-to-object dictionary of training mode parameters.</param>
+        /// <param name="parameters">A string-to-object dictionary of process mode parameters.</param>
         public Mode(string name, TypeRule<IOptional> entitiesToSkip, Dictionary<string, object> parameters = null)
         {
             Name = name;

@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace VRBuilder.Editor.UI.Drawers
 {
-    [DefaultTrainingDrawer(typeof(TransitionCollection))]
+    [DefaultProcessDrawer(typeof(TransitionCollection))]
     internal class TransitionCollectionDrawer : DataOwnerDrawer
     {
         public override GUIContent GetLabel(MemberInfo memberInfo, object memberOwner)

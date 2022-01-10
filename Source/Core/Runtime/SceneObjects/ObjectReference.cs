@@ -10,7 +10,7 @@ using VRBuilder.Core.Runtime.Properties;
 namespace VRBuilder.Core.SceneObjects
 {
     /// <summary>
-    /// Base class for references to training scene objects and their properties.
+    /// Base class for references to process objects and their properties.
     /// </summary>
     [DataContract(IsReference = true)]
     public abstract class ObjectReference<T> : UniqueNameReference, ICanBeEmpty where T : class

@@ -9,9 +9,9 @@ using UnityEngine;
 namespace VRBuilder.Editor.UI.Drawers
 {
     /// <summary>
-    /// Training drawer for 'Vector2'.
+    /// Process drawer for 'Vector2'.
     /// </summary>
-    [DefaultTrainingDrawer(typeof(Vector2))]
+    [DefaultProcessDrawer(typeof(Vector2))]
     internal class Vector2Drawer : AbstractDrawer
     {
         /// <inheritdoc />

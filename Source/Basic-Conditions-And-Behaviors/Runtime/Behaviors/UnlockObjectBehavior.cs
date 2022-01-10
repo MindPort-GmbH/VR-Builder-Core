@@ -80,11 +80,11 @@ namespace VRBuilder.Core.Behaviors
         {
         }
 
-        public UnlockObjectBehavior(ISceneObject target) : this(TrainingReferenceUtils.GetNameFrom(target))
+        public UnlockObjectBehavior(ISceneObject target) : this(ProcessReferenceUtils.GetNameFrom(target))
         {
         }
 
-        public UnlockObjectBehavior(ISceneObject target, bool isOnlyUnlockedInStep) : this(TrainingReferenceUtils.GetNameFrom(target), isOnlyUnlockedInStep: isOnlyUnlockedInStep)
+        public UnlockObjectBehavior(ISceneObject target, bool isOnlyUnlockedInStep) : this(ProcessReferenceUtils.GetNameFrom(target), isOnlyUnlockedInStep: isOnlyUnlockedInStep)
         {
         }
 
@@ -96,13 +96,13 @@ namespace VRBuilder.Core.Behaviors
         }
 
         /// <inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new ActivatingProcess(Data);
         }
 
         /// <inheritdoc />
-        public override IProcess GetDeactivatingProcess()
+        public override IStageProcess GetDeactivatingProcess()
         {
             return new DeactivatingProcess(Data);
         }

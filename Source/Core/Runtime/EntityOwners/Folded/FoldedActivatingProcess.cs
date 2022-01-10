@@ -10,7 +10,7 @@ namespace VRBuilder.Core.EntityOwners.FoldedEntityCollection
     /// <summary>
     /// An activating process over an entities' sequence which activates all entities in order.
     /// </summary>
-    internal class FoldedActivatingProcess<TEntity> : Process<IEntitySequenceDataWithMode<TEntity>> where TEntity : IEntity
+    internal class FoldedActivatingProcess<TEntity> : StageProcess<IEntitySequenceDataWithMode<TEntity>> where TEntity : IEntity
     {
         private IEnumerator<TEntity> enumerator;
 

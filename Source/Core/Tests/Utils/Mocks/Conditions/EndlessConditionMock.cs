@@ -39,7 +39,7 @@ namespace VRBuilder.Tests.Utils.Mocks
             }
         }
 
-        public override IProcess GetActiveProcess()
+        public override IStageProcess GetActiveProcess()
         {
             return new ActiveProcess(Data);
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace VRBuilder.Core.Properties
 {
-    public class ColliderWithTriggerProperty : TrainingSceneObjectProperty
+    public class ColliderWithTriggerProperty : ProcessSceneObjectProperty
     {
         public class ColliderWithTriggerEventArgs : EventArgs
         {

@@ -44,7 +44,7 @@ namespace VRBuilder.Core.Behaviors
             Data.Name = name;
         }
 
-        private class ActivatingProcess : Process<EntityData>
+        private class ActivatingProcess : StageProcess<EntityData>
         {
             public ActivatingProcess(EntityData data) : base(data)
             {
@@ -78,7 +78,7 @@ namespace VRBuilder.Core.Behaviors
         }
 
         /// <inheritdoc />
-        public override IProcess GetActivatingProcess()
+        public override IStageProcess GetActivatingProcess()
         {
             return new ActivatingProcess(Data);
         }

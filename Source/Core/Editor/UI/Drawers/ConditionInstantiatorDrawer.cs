@@ -15,7 +15,7 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Draws a dropdown button with all <see cref="InstantiationOption{ICondition}"/> in the project, and creates a new instance of choosen condition on click.
     /// </summary>
-    [InstantiatorTrainingDrawer(typeof(ICondition))]
+    [InstantiatorProcessDrawer(typeof(ICondition))]
     internal class ConditionInstantiatorDrawer : AbstractInstantiatorDrawer<ICondition>
     {
         /// <inheritdoc />
