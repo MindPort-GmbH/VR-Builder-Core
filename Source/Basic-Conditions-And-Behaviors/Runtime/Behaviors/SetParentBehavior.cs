@@ -23,6 +23,10 @@ namespace VRBuilder.Core.Behaviors
             [DataMember]
             public SceneObjectReference Parent { get; set; }
 
+            [DataMember]
+            [DisplayName("Snap to parent transform")]
+            public bool SnapToParentTransform { get; set; }
+
             public Metadata Metadata { get; set; }
             public string Name { get; set; }
         }
@@ -33,10 +37,11 @@ namespace VRBuilder.Core.Behaviors
         {
         }
 
-        public SetParentBehavior(SceneObjectReference target, SceneObjectReference parent)
+        public SetParentBehavior(SceneObjectReference target, SceneObjectReference parent, bool snapToParentTransform = false)
         {
             Data.Target = target;
             Data.Parent = parent;
+            Data.SnapToParentTransform = snapToParentTransform;
         }
 
         private class ActivatingProcess : StageProcess<EntityData>
@@ -65,7 +70,13 @@ namespace VRBuilder.Core.Behaviors
                 }
                 else
                 {
-                    Data.Target.Value.GameObject.transform.SetParent(Data.Parent.Value.GameObject.transform);
+                    Data.Target.Value.GameObject.transform.SetParent(Data.Parent.Value.GameObject.transform, true);                   
+                    
+                    if(Data.SnapToParentTransform)
+                    {
+                        Data.Target.Value.GameObject.transform.localPosition = Vector3.zero;
+                        Data.Target.Value.GameObject.transform.localRotation = Quaternion.identity;
+                    }
                 }
             }
 
