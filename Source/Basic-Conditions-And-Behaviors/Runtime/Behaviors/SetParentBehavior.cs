@@ -70,19 +70,46 @@ namespace VRBuilder.Core.Behaviors
                 }
                 else
                 {
-                    Data.Target.Value.GameObject.transform.SetParent(Data.Parent.Value.GameObject.transform, true);                   
-                    
-                    if(Data.SnapToParentTransform)
+                    if (HasScaleIssues())
                     {
-                        Data.Target.Value.GameObject.transform.localPosition = Vector3.zero;
-                        Data.Target.Value.GameObject.transform.localRotation = Quaternion.identity;
+                        Debug.LogWarning($"'{Data.Target.Value.GameObject.name}' is being parented to a hierarchy that has changes in rotation and scale. This may result in a distorted object after parenting.");
                     }
+
+                    if (Data.SnapToParentTransform)
+                    {
+                        Data.Target.Value.GameObject.transform.SetPositionAndRotation(Data.Parent.Value.GameObject.transform.position, Data.Parent.Value.GameObject.transform.rotation);
+                    }
+
+                    Data.Target.Value.GameObject.transform.SetParent(Data.Parent.Value.GameObject.transform, true);
                 }
             }
 
             /// <inheritdoc />
             public override void FastForward()
             {
+            }
+
+            private bool HasScaleIssues()
+            {
+                Transform currentTransform = Data.Target.Value.GameObject.transform;
+                Transform parentTransform = Data.Parent.Value.GameObject.transform;
+
+                bool changesScale = currentTransform.localScale != Vector3.one;
+                bool changesRotation = currentTransform.rotation != parentTransform.rotation && Data.SnapToParentTransform == false; 
+
+                while (parentTransform != null)
+                {
+                    changesScale |= parentTransform.localScale != Vector3.one;
+
+                    if (parentTransform.parent != null)
+                    {
+                        changesRotation |= parentTransform.rotation != parentTransform.parent.rotation;
+                    }
+
+                    parentTransform = parentTransform.parent;
+                }
+
+                return changesScale && changesRotation;
             }
         }
 
