@@ -4,6 +4,7 @@ using System.Collections;
 using System.Runtime.Serialization;
 using VRBuilder.Core.Attributes;
 using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Utils;
 
 namespace VRBuilder.Core.Behaviors
 {
@@ -33,14 +34,18 @@ namespace VRBuilder.Core.Behaviors
 
         // Handle data initialization in the constructor.
         [JsonConstructor]
-        public SetParentBehavior() : this(new SceneObjectReference(), new SceneObjectReference())
+        public SetParentBehavior() : this("", "")
         {
         }
 
-        public SetParentBehavior(SceneObjectReference target, SceneObjectReference parent, bool snapToParentTransform = false)
+        public SetParentBehavior(ISceneObject target, ISceneObject parent, bool snapToParentTransform = false) : this(ProcessReferenceUtils.GetNameFrom(target), ProcessReferenceUtils.GetNameFrom(parent), snapToParentTransform)
         {
-            Data.Target = target;
-            Data.Parent = parent;
+        }
+
+        public SetParentBehavior(string target, string parent, bool snapToParentTransform = false)
+        {
+            Data.Target = new SceneObjectReference(target);
+            Data.Parent = new SceneObjectReference(parent);
             Data.SnapToParentTransform = snapToParentTransform;
         }
 
