@@ -26,7 +26,6 @@ namespace VRBuilder.Core.SceneObjects
         {
             if (string.IsNullOrEmpty(UniqueName))
             {
-                Debug.LogWarningFormat("Scene object for name {0} not found", UniqueName);
                 return null;
             }
 

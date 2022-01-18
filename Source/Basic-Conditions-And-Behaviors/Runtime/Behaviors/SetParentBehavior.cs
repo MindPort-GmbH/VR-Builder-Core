@@ -8,7 +8,9 @@ using VRBuilder.Core.Utils;
 
 namespace VRBuilder.Core.Behaviors
 {
-    // This behavior changes the parent of a game object in the scene hierarchy.
+    /// <summary>
+    /// This behavior changes the parent of a game object in the scene hierarchy. It can accept a null parent, in which case the object will be unparented.
+    /// </summary>
     [DataContract(IsReference = true)]
     public class SetParentBehavior : Behavior<SetParentBehavior.EntityData>
     {

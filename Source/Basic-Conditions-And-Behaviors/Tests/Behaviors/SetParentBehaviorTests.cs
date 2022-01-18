@@ -88,9 +88,9 @@ namespace VRBuilder.Core.Tests.Behaviors
             }
 
             // Then the target object has been parented, and it snaps to the parent's position.
-            Assert.AreEqual(parent.transform, target.transform.parent);
-            Assert.IsTrue(parent.transform.position == target.transform.position);
-            Assert.IsTrue((parent.transform.rotation == target.transform.rotation));
+            Assert.AreEqual(parent.transform, target.transform.parent);            
+            Assert.IsTrue((parent.transform.position - target.transform.position).sqrMagnitude < 0.001f);
+            Assert.IsTrue(Quaternion.Dot(parent.transform.rotation, target.transform.rotation) > 0.999f);
         }
 
         [UnityTest]
@@ -113,10 +113,32 @@ namespace VRBuilder.Core.Tests.Behaviors
                 behavior.Update();
             }
 
-            // Then the target object has been parented, and it snaps to the parent's position.
+            // Then the target object has not been parented, and its position stays the same.
             Assert.AreEqual(parent.transform, target.transform.parent);
-            Assert.IsTrue(originalPosition == target.transform.position);
-            Assert.IsTrue((originalRotation == target.transform.rotation));
+            Assert.IsTrue((originalPosition - target.transform.position).sqrMagnitude < 0.001f);
+            Assert.IsTrue(Quaternion.Dot(originalRotation, target.transform.rotation) > 0.999f);
+        }
+
+        [UnityTest]
+        public IEnumerator ObjectSetToRootIfParentNotSet()
+        {
+            // Given a set parent behavior,
+            ProcessSceneObject target = SpawnTestObject("Target", Vector3.zero, Quaternion.identity, Vector3.one);
+            ProcessSceneObject parent = SpawnTestObject("Parent", Vector3.zero, Quaternion.identity, Vector3.one);
+            target.transform.SetParent(parent.transform);
+            IBehavior behavior = new SetParentBehavior(target, null);
+
+            // When the behavior completes,
+            behavior.LifeCycle.Activate();
+
+            while (behavior.LifeCycle.Stage != Stage.Active)
+            {
+                yield return null;
+                behavior.Update();
+            }
+
+            // Then the target object has been unparented.
+            Assert.AreEqual(null, target.transform.parent);
         }
     }
 }
