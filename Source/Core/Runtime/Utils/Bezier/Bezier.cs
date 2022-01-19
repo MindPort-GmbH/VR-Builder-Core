@@ -1,6 +1,8 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace VRBuilder.Core.Utils
+namespace VRBuilder.Core.Utils.Bezier
 {
     /// <summary>
     /// Bezier curve formulas.
@@ -43,6 +45,27 @@ namespace VRBuilder.Core.Utils
                 3f * oneMinusT * oneMinusT * (p1 - p0) +
                 6f * oneMinusT * t * (p2 - p1) +
                 3f * t * t * (p3 - p2);
+        }
+
+        public static IEnumerable<float> GetArcLength(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, int resolution)
+        {
+            List<Vector3> points = new List<Vector3>();
+            float length = 0f;
+            List<float> lengths = new List<float>();
+            lengths.Add(0f);
+
+            for (int i = 0; i <= resolution; ++i)
+            {
+                points.Add(GetPoint(p0, p1, p2, p3, i / (float)resolution));
+            }
+
+            for (int i = 0; i < points.Count - 1; ++i)
+            {
+                length += Vector3.Distance(points[i], points[i + 1]);
+                lengths.Add(length);   
+            }
+
+            return lengths;
         }
     }
 }

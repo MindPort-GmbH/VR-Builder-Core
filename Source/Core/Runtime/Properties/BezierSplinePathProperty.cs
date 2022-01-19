@@ -1,5 +1,5 @@
 using UnityEngine;
-using VRBuilder.Core.Utils;
+using VRBuilder.Core.Utils.Bezier;
 
 namespace VRBuilder.Core.Properties
 {    

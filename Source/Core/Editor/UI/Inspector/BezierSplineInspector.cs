@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEngine;
-using VRBuilder.Core.Utils;
+using VRBuilder.Core.Utils.Bezier;
 
 namespace VRBuilder.Editor.Core.UI
 {
@@ -34,13 +34,15 @@ namespace VRBuilder.Editor.Core.UI
 		{
 			spline = target as BezierSpline;
 			EditorGUI.BeginChangeCheck();
-			bool loop = EditorGUILayout.Toggle("Loop", spline.Loop);
+			bool loop = EditorGUILayout.Toggle("Loop", spline.Loop);            
 			if (EditorGUI.EndChangeCheck())
 			{
 				Undo.RecordObject(spline, "Toggle Loop");
 				EditorUtility.SetDirty(spline);
 				spline.Loop = loop;
 			}
+            spline.LinearVelocity = EditorGUILayout.Toggle("Linear velocity", spline.LinearVelocity);
+
 			if (selectedIndex >= 0 && selectedIndex < spline.ControlPointCount)
 			{
 				DrawSelectedPointInspector();

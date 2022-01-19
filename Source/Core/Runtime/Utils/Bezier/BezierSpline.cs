@@ -1,7 +1,9 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace VRBuilder.Core.Utils
+namespace VRBuilder.Core.Utils.Bezier
 {
     /// <summary>
     /// Class that generates a Bezier spline.
@@ -16,6 +18,13 @@ namespace VRBuilder.Core.Utils
 
 		[SerializeField]
 		private bool loop;
+
+        [SerializeField]
+        private bool linearVelocity;
+
+        private bool isArcLengthDirty = true;
+        private float[][] arcLengths;
+        private float totalLength;
 
 		public bool Loop
 		{
@@ -33,6 +42,18 @@ namespace VRBuilder.Core.Utils
 				}
 			}
 		}
+
+        public bool LinearVelocity
+        {
+            get
+            {
+                return linearVelocity;
+            }
+            set
+            {
+                linearVelocity = value;
+            }
+        }
 
 		public int ControlPointCount
 		{
@@ -86,6 +107,8 @@ namespace VRBuilder.Core.Utils
 			}
 			points[index] = point;
 			EnforceMode(index);
+            isArcLengthDirty = true;
+            Debug.Log("Control point set");
 		}
 		public BezierControlPointMode GetControlPointMode(int index)
 		{
@@ -165,39 +188,113 @@ namespace VRBuilder.Core.Utils
 			}
 		}
 
-		public Vector3 GetPoint(float t)
+        private void GetLinearPosition(ref float t, out int curve)
+        {
+            float progress = t * totalLength;
+            curve = 0;
+
+            while (progress - arcLengths[curve].Last() > 0)
+            {
+                progress -= arcLengths[curve].Last();
+                curve++;
+            }
+
+            int waypointIndex = Array.IndexOf(arcLengths[curve], arcLengths[curve].Where(wp => wp <= progress).Max());
+
+            float minDistance = arcLengths[curve][waypointIndex];
+
+            if(waypointIndex == arcLengths[curve].Length - 1)
+            {
+                t = 1f;
+            }
+            else
+            {
+                float maxDistance = arcLengths[curve][waypointIndex + 1];
+                float distance = maxDistance - minDistance;
+                float partialDistance = progress - minDistance;
+                t = Mathf.Lerp(waypointIndex / (float)(arcLengths[curve].Length - 1), (waypointIndex + 1) / (float)(arcLengths[curve].Length - 1), partialDistance / distance);
+            }
+        }
+
+        public Vector3 GetPoint(float t)
 		{
 			int i;
-			if (t >= 1f)
-			{
-				t = 1f;
-				i = points.Length - 4;
-			}
-			else
-			{
-				t = Mathf.Clamp01(t) * CurveCount;
-				i = (int)t;
-				t -= i;
-				i *= 3;
-			}
-			return transform.TransformPoint(Bezier.GetPoint(points[i], points[i + 1], points[i + 2], points[i + 3], t));
+
+            if (linearVelocity)
+            {
+                if (isArcLengthDirty)
+                {
+                    CalculateArcLengths();
+                }
+
+                t = Mathf.Clamp01(t);
+                GetLinearPosition(ref t, out i);
+                i *= 3;
+            }
+            else
+            {
+                if (t >= 1f)
+                {
+                    t = 1f;
+                    i = points.Length - 4;
+                }
+                else
+                {
+                    t = Mathf.Clamp01(t) * CurveCount;
+                    i = (int)t;
+                    t -= i;
+                    i *= 3;
+                }
+            }
+
+            return transform.TransformPoint(Bezier.GetPoint(points[i], points[i + 1], points[i + 2], points[i + 3], t));
 		}
 
-		public Vector3 GetVelocity(float t)
+        private void CalculateArcLengths()
+        {
+            Array.Resize(ref arcLengths, CurveCount);
+            totalLength = 0;
+
+            for (int i = 0; i < CurveCount; ++i)
+            {
+                int p = i * 3;
+                arcLengths[i] = Bezier.GetArcLength(points[p], points[p + 1], points[p + 2], points[p + 3], 100).ToArray();
+                totalLength += arcLengths[i].Last();
+            }
+
+            isArcLengthDirty = false;
+        }
+
+        public Vector3 GetVelocity(float t)
 		{
 			int i;
-			if (t >= 1f)
-			{
-				t = 1f;
-				i = points.Length - 4;
-			}
-			else
-			{
-				t = Mathf.Clamp01(t) * CurveCount;
-				i = (int)t;
-				t -= i;
-				i *= 3;
-			}
+
+            if (linearVelocity)
+            {
+                if (isArcLengthDirty)
+                {
+                    CalculateArcLengths();
+                }
+
+                t = Mathf.Clamp01(t);
+                GetLinearPosition(ref t, out i);
+                i *= 3;
+            }
+            else
+            {
+                if (t >= 1f)
+                {
+                    t = 1f;
+                    i = points.Length - 4;
+                }
+                else
+                {
+                    t = Mathf.Clamp01(t) * CurveCount;
+                    i = (int)t;
+                    t -= i;
+                    i *= 3;
+                }
+            }
 			return transform.TransformPoint(Bezier.GetFirstDerivative(points[i], points[i + 1], points[i + 2], points[i + 3], t)) - transform.position;
 		}
 
