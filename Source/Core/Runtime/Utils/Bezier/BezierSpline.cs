@@ -24,9 +24,9 @@ namespace VRBuilder.Core.Utils.Bezier
         [SerializeField]
         private int curveResolution = 100;
 
-        private bool isArcLengthDirty = true;
+        private bool isLengthDirty = true;
         private float[][] arcLengths;
-        private float totalLength;        
+        private float splineLength;        
 
         /// <summary>
         /// If true, the spline will form a loop.
@@ -150,7 +150,7 @@ namespace VRBuilder.Core.Utils.Bezier
 			}
 			points[index] = point;
 			EnforceMode(index);
-            isArcLengthDirty = true;
+            isLengthDirty = true;
 		}
 
         /// <summary>
@@ -242,6 +242,7 @@ namespace VRBuilder.Core.Utils.Bezier
                     i *= 3;
                 }
             }
+
             return transform.TransformPoint(Bezier.GetFirstDerivative(points[i], points[i + 1], points[i + 2], points[i + 3], t)) - transform.position;
         }
 
@@ -326,54 +327,54 @@ namespace VRBuilder.Core.Utils.Bezier
 			points[enforcedIndex] = middle + enforcedTangent;
 		}
 
-        private void GetLinearPosition(ref float t, out int curve)
+        private void GetLinearPosition(ref float t, out int currentCurve)
         {
-            if (isArcLengthDirty || arcLengths == null)
+            if (isLengthDirty || arcLengths == null || arcLengths.Length == 0)
             {
                 CalculateArcLengths();
             }
 
-            float progress = t * totalLength;
-            curve = 0;
+            float distanceOnCurve = t * splineLength;
+            currentCurve = 0;
 
-            while (curve < arcLengths.Length && progress - arcLengths[curve].Last() > 0)
+            while (currentCurve < arcLengths.Length && distanceOnCurve - arcLengths[currentCurve].Last() > 0)
             {
-                progress -= arcLengths[curve].Last();
-                curve++;
+                distanceOnCurve -= arcLengths[currentCurve].Last();
+                currentCurve++;
             }
 
-            curve = Mathf.Clamp(curve, 0, arcLengths.Length - 1);
+            currentCurve = Mathf.Clamp(currentCurve, 0, arcLengths.Length - 1);
 
-            int waypointIndex = Array.IndexOf(arcLengths[curve], arcLengths[curve].Where(wp => wp <= progress).Max());
+            int waypointIndex = Array.IndexOf(arcLengths[currentCurve], arcLengths[currentCurve].Where(wp => wp <= distanceOnCurve).Max());
 
-            float minDistance = arcLengths[curve][waypointIndex];
+            float waypointBefore = arcLengths[currentCurve][waypointIndex];
 
-            if(waypointIndex == arcLengths[curve].Length - 1)
+            if(waypointIndex == arcLengths[currentCurve].Length - 1)
             {
                 t = 1f;
             }
             else
             {
-                float maxDistance = arcLengths[curve][waypointIndex + 1];
-                float distance = maxDistance - minDistance;
-                float partialDistance = progress - minDistance;
-                t = Mathf.Lerp(waypointIndex / (float)(arcLengths[curve].Length - 1), (waypointIndex + 1) / (float)(arcLengths[curve].Length - 1), partialDistance / distance);
+                float waypointAfter = arcLengths[currentCurve][waypointIndex + 1];
+                float waypointDistance = waypointAfter - waypointBefore;
+                float partialDistance = distanceOnCurve - waypointBefore;
+                t = Mathf.Lerp(waypointIndex / (float)(arcLengths[currentCurve].Length - 1), (waypointIndex + 1) / (float)(arcLengths[currentCurve].Length - 1), partialDistance / waypointDistance);
             }
         }
 
         private void CalculateArcLengths()
         {
             Array.Resize(ref arcLengths, CurveCount);
-            totalLength = 0;
+            splineLength = 0;
 
             for (int i = 0; i < CurveCount; ++i)
             {
                 int p = i * 3;
                 arcLengths[i] = Bezier.GetArcLength(points[p], points[p + 1], points[p + 2], points[p + 3], CurveResolution).ToArray();
-                totalLength += arcLengths[i].Last();
+                splineLength += arcLengths[i].Last();
             }
 
-            isArcLengthDirty = false;
+            isLengthDirty = false;
         }
 
 		public void Reset()
