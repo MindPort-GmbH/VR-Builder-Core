@@ -43,6 +43,11 @@ namespace VRBuilder.Editor.Core.UI
 			}
             spline.LinearVelocity = EditorGUILayout.Toggle("Approximate Linear Velocity", spline.LinearVelocity);
 
+            if(spline.LinearVelocity)
+            {
+                spline.CurveResolution = EditorGUILayout.IntField("Uniformity", Mathf.Clamp(spline.CurveResolution, 1, spline.CurveResolution));
+            }
+
 			if (selectedIndex >= 0 && selectedIndex < spline.ControlPointCount)
 			{
 				DrawSelectedPointInspector();

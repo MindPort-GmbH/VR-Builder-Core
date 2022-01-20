@@ -21,10 +21,16 @@ namespace VRBuilder.Core.Utils.Bezier
         [SerializeField]
         private bool linearVelocity;
 
+        [SerializeField]
+        private int curveResolution = 100;
+
         private bool isArcLengthDirty = true;
         private float[][] arcLengths;
         private float totalLength;        
 
+        /// <summary>
+        /// If true, the spline will form a loop.
+        /// </summary>
 		public bool Loop
 		{
 			get
@@ -42,6 +48,9 @@ namespace VRBuilder.Core.Utils.Bezier
 			}
 		}
 
+        /// <summary>
+        /// If true, the t parameter will be applied linearly, with some approximation.
+        /// </summary>
         public bool LinearVelocity
         {
             get
@@ -54,6 +63,24 @@ namespace VRBuilder.Core.Utils.Bezier
             }
         }
 
+        /// <summary>
+        /// The amount of segments the curve will be divided in for the linear approximation.
+        /// </summary>
+        public int CurveResolution
+        {
+            get
+            {
+                return curveResolution;
+            }
+            set
+            {
+                curveResolution = value;
+            }
+        }
+
+        /// <summary>
+        /// Amount of control points in the spline.
+        /// </summary>
 		public int ControlPointCount
 		{
 			get
@@ -62,11 +89,28 @@ namespace VRBuilder.Core.Utils.Bezier
 			}
 		}
 
+        /// <summary>
+        /// Returns curve count.
+        /// </summary>
+        public int CurveCount
+        {
+            get
+            {
+                return (points.Length - 1) / 3;
+            }
+        }
+
+        /// <summary>
+        /// Returns the control point at the given index.
+        /// </summary>
 		public Vector3 GetControlPoint(int index)
 		{
 			return points[index];
 		}
 
+        /// <summary>
+        /// Sets the control point at the given index.
+        /// </summary>
 		public void SetControlPoint(int index, Vector3 point)
 		{
 			if (index % 3 == 0)
@@ -107,14 +151,20 @@ namespace VRBuilder.Core.Utils.Bezier
 			points[index] = point;
 			EnforceMode(index);
             isArcLengthDirty = true;
-            Debug.Log("Control point set");
 		}
+
+        /// <summary>
+        /// Returns control point mode.
+        /// </summary>
 		public BezierControlPointMode GetControlPointMode(int index)
 		{
 			return modes[(index + 1) / 3];
 		}
 
-		public void SetControlPointMode(int index, BezierControlPointMode mode)
+        /// <summary>
+        /// Sets control point mode.
+        /// </summary>
+        public void SetControlPointMode(int index, BezierControlPointMode mode)
 		{
 			int modeIndex = (index + 1) / 3;
 			modes[modeIndex] = mode;
@@ -132,7 +182,104 @@ namespace VRBuilder.Core.Utils.Bezier
 			EnforceMode(index);
 		}
 
-		private void EnforceMode(int index)
+        /// <summary>
+        /// Returns the point at the given position.
+        /// </summary>
+        public Vector3 GetPoint(float t)
+        {
+            int i;
+
+            if (linearVelocity)
+            {
+                t = Mathf.Clamp01(t);
+                GetLinearPosition(ref t, out i);
+                i *= 3;
+            }
+            else
+            {
+                if (t >= 1f)
+                {
+                    t = 1f;
+                    i = points.Length - 4;
+                }
+                else
+                {
+                    t = Mathf.Clamp01(t) * CurveCount;
+                    i = (int)t;
+                    t -= i;
+                    i *= 3;
+                }
+            }
+
+            return transform.TransformPoint(Bezier.GetPoint(points[i], points[i + 1], points[i + 2], points[i + 3], t));
+        }
+
+        /// <summary>
+        /// Returns velocity at the given position.
+        /// </summary>
+        public Vector3 GetVelocity(float t)
+        {
+            int i;
+
+            if (linearVelocity)
+            {
+                t = Mathf.Clamp01(t);
+                GetLinearPosition(ref t, out i);
+                i *= 3;
+            }
+            else
+            {
+                if (t >= 1f)
+                {
+                    t = 1f;
+                    i = points.Length - 4;
+                }
+                else
+                {
+                    t = Mathf.Clamp01(t) * CurveCount;
+                    i = (int)t;
+                    t -= i;
+                    i *= 3;
+                }
+            }
+            return transform.TransformPoint(Bezier.GetFirstDerivative(points[i], points[i + 1], points[i + 2], points[i + 3], t)) - transform.position;
+        }
+
+        /// <summary>
+        /// Returns direction at the given position.
+        /// </summary>
+		public Vector3 GetDirection(float t)
+        {
+            return GetVelocity(t).normalized;
+        }
+
+        /// <summary>
+        /// Adds a new curve to the spline.
+        /// </summary>
+		public void AddCurve()
+        {
+            Vector3 point = points[points.Length - 1];
+            Array.Resize(ref points, points.Length + 3);
+            point.x += 1f;
+            points[points.Length - 3] = point;
+            point.x += 1f;
+            points[points.Length - 2] = point;
+            point.x += 1f;
+            points[points.Length - 1] = point;
+
+            Array.Resize(ref modes, modes.Length + 1);
+            modes[modes.Length - 1] = modes[modes.Length - 2];
+            EnforceMode(points.Length - 4);
+
+            if (loop)
+            {
+                points[points.Length - 1] = points[0];
+                modes[modes.Length - 1] = modes[0];
+                EnforceMode(0);
+            }
+        }
+
+        private void EnforceMode(int index)
 		{
 			int modeIndex = (index + 1) / 3;
 			BezierControlPointMode mode = modes[modeIndex];
@@ -179,14 +326,6 @@ namespace VRBuilder.Core.Utils.Bezier
 			points[enforcedIndex] = middle + enforcedTangent;
 		}
 
-		public int CurveCount
-		{
-			get
-			{
-				return (points.Length - 1) / 3;
-			}
-		}
-
         private void GetLinearPosition(ref float t, out int curve)
         {
             if (isArcLengthDirty || arcLengths == null)
@@ -222,35 +361,6 @@ namespace VRBuilder.Core.Utils.Bezier
             }
         }
 
-        public Vector3 GetPoint(float t)
-		{
-			int i;
-
-            if (linearVelocity)
-            {
-                t = Mathf.Clamp01(t);
-                GetLinearPosition(ref t, out i);
-                i *= 3;
-            }
-            else
-            {
-                if (t >= 1f)
-                {
-                    t = 1f;
-                    i = points.Length - 4;
-                }
-                else
-                {
-                    t = Mathf.Clamp01(t) * CurveCount;
-                    i = (int)t;
-                    t -= i;
-                    i *= 3;
-                }
-            }
-
-            return transform.TransformPoint(Bezier.GetPoint(points[i], points[i + 1], points[i + 2], points[i + 3], t));
-		}
-
         private void CalculateArcLengths()
         {
             Array.Resize(ref arcLengths, CurveCount);
@@ -259,68 +369,12 @@ namespace VRBuilder.Core.Utils.Bezier
             for (int i = 0; i < CurveCount; ++i)
             {
                 int p = i * 3;
-                arcLengths[i] = Bezier.GetArcLength(points[p], points[p + 1], points[p + 2], points[p + 3], 100).ToArray();
+                arcLengths[i] = Bezier.GetArcLength(points[p], points[p + 1], points[p + 2], points[p + 3], CurveResolution).ToArray();
                 totalLength += arcLengths[i].Last();
             }
 
             isArcLengthDirty = false;
         }
-
-        public Vector3 GetVelocity(float t)
-		{
-			int i;
-
-            if (linearVelocity)
-            {
-                t = Mathf.Clamp01(t);
-                GetLinearPosition(ref t, out i);
-                i *= 3;
-            }
-            else
-            {
-                if (t >= 1f)
-                {
-                    t = 1f;
-                    i = points.Length - 4;
-                }
-                else
-                {
-                    t = Mathf.Clamp01(t) * CurveCount;
-                    i = (int)t;
-                    t -= i;
-                    i *= 3;
-                }
-            }
-			return transform.TransformPoint(Bezier.GetFirstDerivative(points[i], points[i + 1], points[i + 2], points[i + 3], t)) - transform.position;
-		}
-
-		public Vector3 GetDirection(float t)
-		{
-			return GetVelocity(t).normalized;
-		}
-
-		public void AddCurve()
-		{
-			Vector3 point = points[points.Length - 1];
-			Array.Resize(ref points, points.Length + 3);
-			point.x += 1f;
-			points[points.Length - 3] = point;
-			point.x += 1f;
-			points[points.Length - 2] = point;
-			point.x += 1f;
-			points[points.Length - 1] = point;
-
-			Array.Resize(ref modes, modes.Length + 1);
-			modes[modes.Length - 1] = modes[modes.Length - 2];
-			EnforceMode(points.Length - 4);
-
-			if (loop)
-			{
-				points[points.Length - 1] = points[0];
-				modes[modes.Length - 1] = modes[0];
-				EnforceMode(0);
-			}
-		}
 
 		public void Reset()
 		{
