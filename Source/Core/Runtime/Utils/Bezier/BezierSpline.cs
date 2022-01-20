@@ -1,6 +1,5 @@
 using UnityEngine;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace VRBuilder.Core.Utils.Bezier
@@ -24,7 +23,7 @@ namespace VRBuilder.Core.Utils.Bezier
 
         private bool isArcLengthDirty = true;
         private float[][] arcLengths;
-        private float totalLength;
+        private float totalLength;        
 
 		public bool Loop
 		{
@@ -190,14 +189,21 @@ namespace VRBuilder.Core.Utils.Bezier
 
         private void GetLinearPosition(ref float t, out int curve)
         {
+            if (isArcLengthDirty || arcLengths == null)
+            {
+                CalculateArcLengths();
+            }
+
             float progress = t * totalLength;
             curve = 0;
 
-            while (progress - arcLengths[curve].Last() > 0)
+            while (curve < arcLengths.Length && progress - arcLengths[curve].Last() > 0)
             {
                 progress -= arcLengths[curve].Last();
                 curve++;
             }
+
+            curve = Mathf.Clamp(curve, 0, arcLengths.Length - 1);
 
             int waypointIndex = Array.IndexOf(arcLengths[curve], arcLengths[curve].Where(wp => wp <= progress).Max());
 
@@ -222,11 +228,6 @@ namespace VRBuilder.Core.Utils.Bezier
 
             if (linearVelocity)
             {
-                if (isArcLengthDirty)
-                {
-                    CalculateArcLengths();
-                }
-
                 t = Mathf.Clamp01(t);
                 GetLinearPosition(ref t, out i);
                 i *= 3;
@@ -271,11 +272,6 @@ namespace VRBuilder.Core.Utils.Bezier
 
             if (linearVelocity)
             {
-                if (isArcLengthDirty)
-                {
-                    CalculateArcLengths();
-                }
-
                 t = Mathf.Clamp01(t);
                 GetLinearPosition(ref t, out i);
                 i *= 3;

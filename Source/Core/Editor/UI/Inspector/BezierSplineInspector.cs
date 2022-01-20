@@ -41,7 +41,7 @@ namespace VRBuilder.Editor.Core.UI
 				EditorUtility.SetDirty(spline);
 				spline.Loop = loop;
 			}
-            spline.LinearVelocity = EditorGUILayout.Toggle("Linear velocity", spline.LinearVelocity);
+            spline.LinearVelocity = EditorGUILayout.Toggle("Approximate Linear Velocity", spline.LinearVelocity);
 
 			if (selectedIndex >= 0 && selectedIndex < spline.ControlPointCount)
 			{
