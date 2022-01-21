@@ -34,13 +34,20 @@ namespace VRBuilder.Editor.Core.UI
 		{
 			spline = target as BezierSpline;
 			EditorGUI.BeginChangeCheck();
-			bool loop = EditorGUILayout.Toggle("Loop", spline.Loop);
+			bool loop = EditorGUILayout.Toggle("Loop", spline.Loop);            
 			if (EditorGUI.EndChangeCheck())
 			{
 				Undo.RecordObject(spline, "Toggle Loop");
 				EditorUtility.SetDirty(spline);
 				spline.Loop = loop;
 			}
+            spline.LinearVelocity = EditorGUILayout.Toggle("Approximate Linear Velocity", spline.LinearVelocity);
+
+            if(spline.LinearVelocity)
+            {
+                spline.CurveResolution = EditorGUILayout.IntField("Granularity of Approximation", Mathf.Clamp(spline.CurveResolution, 2, spline.CurveResolution));
+            }
+
 			if (selectedIndex >= 0 && selectedIndex < spline.ControlPointCount)
 			{
 				DrawSelectedPointInspector();
