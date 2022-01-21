@@ -358,7 +358,7 @@ namespace VRBuilder.Core.Utils
                 float waypointAfter = arcLengths[currentCurve][waypointIndex + 1];
                 float waypointDistance = waypointAfter - waypointBefore;
                 float partialDistance = distanceOnCurve - waypointBefore;
-                t = Mathf.Lerp(waypointIndex / (float)(arcLengths[currentCurve].Length - 1), (waypointIndex + 1) / (float)(arcLengths[currentCurve].Length - 1), partialDistance / waypointDistance);
+                t = Mathf.Lerp(waypointIndex / (float)(arcLengths[currentCurve].Length - 1), (waypointIndex + 1) / (float)(arcLengths[currentCurve].Length - 1), waypointDistance == 0 ? 0f : partialDistance / waypointDistance);
             }
         }
 

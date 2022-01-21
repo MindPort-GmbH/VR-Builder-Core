@@ -45,7 +45,7 @@ namespace VRBuilder.Editor.Core.UI
 
             if(spline.LinearVelocity)
             {
-                spline.CurveResolution = EditorGUILayout.IntField("Uniformity", Mathf.Clamp(spline.CurveResolution, 1, spline.CurveResolution));
+                spline.CurveResolution = EditorGUILayout.IntField("Granularity of Approximation", Mathf.Clamp(spline.CurveResolution, 2, spline.CurveResolution));
             }
 
 			if (selectedIndex >= 0 && selectedIndex < spline.ControlPointCount)
