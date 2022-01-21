@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace VRBuilder.Core.Utils.Bezier
+namespace VRBuilder.Core.Utils
 {
     /// <summary>
     /// Bezier curve formulas.

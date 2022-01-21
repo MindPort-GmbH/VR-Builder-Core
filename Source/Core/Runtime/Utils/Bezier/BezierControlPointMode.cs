@@ -1,4 +1,4 @@
-namespace VRBuilder.Core.Utils.Bezier
+namespace VRBuilder.Core.Utils
 {
     /// <summary>
     /// Control point modes for <see cref="BezierSpline"/>.

@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEngine;
-using VRBuilder.Core.Utils.Bezier;
+using VRBuilder.Core.Utils;
 
 namespace VRBuilder.Editor.Core.UI
 {

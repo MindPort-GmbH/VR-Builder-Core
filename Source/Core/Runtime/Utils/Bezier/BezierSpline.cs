@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 
-namespace VRBuilder.Core.Utils.Bezier
+namespace VRBuilder.Core.Utils
 {
     /// <summary>
     /// Class that generates a Bezier spline.
