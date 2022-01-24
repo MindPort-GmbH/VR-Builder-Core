@@ -22,8 +22,8 @@ namespace VRBuilder.Editor.UI.Drawers
     [DefaultProcessDrawer(typeof(UniqueNameReference))]
     internal class UniqueNameReferenceDrawer : AbstractDrawer
     {
-        private bool isUndoOperation;
-        private const string undoGroupName = "brotcat";
+        protected bool isUndoOperation;
+        protected const string undoGroupName = "brotcat";
 
         private readonly HashSet<string> missingUniqueNames = new HashSet<string>();
 
@@ -110,7 +110,7 @@ namespace VRBuilder.Editor.UI.Drawers
             }
         }
 
-        private string GetIDFromSelectedObject(GameObject selectedSceneObject, Type valueType, string oldUniqueName)
+        protected string GetIDFromSelectedObject(GameObject selectedSceneObject, Type valueType, string oldUniqueName)
         {
             string newUniqueName = string.Empty;
 
@@ -234,7 +234,7 @@ namespace VRBuilder.Editor.UI.Drawers
             isUndoOperation = true;
         }
 
-        private Rect AddNewRectLine(ref Rect currentRect)
+        protected Rect AddNewRectLine(ref Rect currentRect)
         {
             Rect newRectLine = currentRect;
             newRectLine.height = EditorDrawingHelper.SingleLineHeight;

@@ -22,6 +22,7 @@ namespace VRBuilder.Core.Behaviors
         {
             [DataMember]
             [DisplayName("Property")]
+            [UsesSpecificProcessDrawer("FloatPropertyDrawer")]
             public ScenePropertyReference<IValueProperty<float>> ValueProperty { get; set; }
 
             [DataMember]
