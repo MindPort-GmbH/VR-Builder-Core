@@ -44,7 +44,6 @@ namespace VRBuilder.Core.Behaviors
             /// <inheritdoc />
             public override void Start()
             {
-                Data.ValueProperty.Value.SetValue(Data.NewValue);
             }
 
             /// <inheritdoc />
@@ -56,6 +55,7 @@ namespace VRBuilder.Core.Behaviors
             /// <inheritdoc />
             public override void End()
             {
+                Data.ValueProperty.Value.SetValue(Data.NewValue);
             }
 
             /// <inheritdoc />
@@ -78,7 +78,7 @@ namespace VRBuilder.Core.Behaviors
             Data.NewValue = value;
         }
 
-        public SetValueBehavior(IPathProperty property, T value, string name = "Set Value") : this(ProcessReferenceUtils.GetNameFrom(property), value, name)
+        public SetValueBehavior(IValueProperty<T> property, T value, string name = "Set Value") : this(ProcessReferenceUtils.GetNameFrom(property), value, name)
         {
         }
 

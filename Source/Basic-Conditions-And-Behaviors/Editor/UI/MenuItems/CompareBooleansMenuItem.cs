@@ -12,7 +12,7 @@ namespace VRBuilder.Editor.UI.Conditions
         /// <inheritdoc />
         public override ICondition GetNewItem()
         {
-            return new CompareValuesCondition<bool>("Compare Booleans");
+            return new CompareBooleansCondition();
         }
     }
 }
