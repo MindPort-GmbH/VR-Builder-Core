@@ -13,12 +13,12 @@ namespace VRBuilder.Core.Properties
         /// Default value set in the inspector.
         /// </summary>
         [SerializeField]
-        protected T defaultValue;
+        protected TimeSpan defaultValue;
 
         /// <summary>
         /// Currently stored value.
         /// </summary>
-        protected T storedValue;
+        protected TimeSpan storedValue;
 
         private void Start()
         {

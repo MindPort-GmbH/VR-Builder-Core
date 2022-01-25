@@ -11,7 +11,7 @@ namespace VRBuilder.Core.Behaviors
     /// A behavior that plays audio.
     /// </summary>
     [DataContract(IsReference = true)]
-    public class SetFloatBehavior : Behavior<SetFloatBehavior.EntityData>
+    public class SetValueBehavior<T> : Behavior<SetValueBehavior<T>.EntityData>
     {
         /// <summary>
         /// The "play audio" behavior's data.
@@ -23,11 +23,11 @@ namespace VRBuilder.Core.Behaviors
             [DataMember]
             [DisplayName("Property")]
             [UsesSpecificProcessDrawer("FloatPropertyDrawer")]
-            public ScenePropertyReference<IValueProperty<float>> ValueProperty { get; set; }
+            public ScenePropertyReference<IValueProperty<T>> ValueProperty { get; set; }
 
             [DataMember]
             [DisplayName("Value")]
-            public float FloatValue { get; set; }
+            public T StoredValue { get; set; }
 
             /// <inheritdoc />
             public Metadata Metadata { get; set; }
@@ -45,7 +45,7 @@ namespace VRBuilder.Core.Behaviors
             /// <inheritdoc />
             public override void Start()
             {
-                Data.ValueProperty.Value.SetValue(Data.FloatValue);
+                Data.ValueProperty.Value.SetValue(Data.StoredValue);
             }
 
             /// <inheritdoc />
@@ -65,17 +65,17 @@ namespace VRBuilder.Core.Behaviors
             }
         }
 
-        public SetFloatBehavior() : this("", 0f)
+        public SetValueBehavior() : this("", default)
         {
         }
 
-        public SetFloatBehavior(string propertyName, float value, string name = "Set Float")
+        public SetValueBehavior(string propertyName, T value, string name = "Set Value")
         {
-            Data.ValueProperty = new ScenePropertyReference<IValueProperty<float>>(propertyName);
-            Data.FloatValue = value;
+            Data.ValueProperty = new ScenePropertyReference<IValueProperty<T>>(propertyName);
+            Data.StoredValue = value;
         }
 
-        public SetFloatBehavior(IPathProperty property, float value, string name = "Set Float") : this(ProcessReferenceUtils.GetNameFrom(property), value, name)
+        public SetValueBehavior(IPathProperty property, T value, string name = "Set Value") : this(ProcessReferenceUtils.GetNameFrom(property), value, name)
         {
         }
 
