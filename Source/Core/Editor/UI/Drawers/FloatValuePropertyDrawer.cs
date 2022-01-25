@@ -36,11 +36,11 @@ namespace VRBuilder.Editor.UI.Drawers
                     }
 
                     GameObject property = new GameObject(propertyName);
-                    property.AddComponent<FloatValueProperty>();
+                    property.AddComponent<NumberValueProperty>();
                     property.transform.SetParent(dataObject.transform);
 
                     string oldUniqueName = reference.UniqueName;
-                    string newUniqueName = GetIDFromSelectedObject(property, typeof(FloatValueProperty), oldUniqueName);
+                    string newUniqueName = GetIDFromSelectedObject(property, typeof(NumberValueProperty), oldUniqueName);
 
                     if (reference.UniqueName != newUniqueName)
                     {
