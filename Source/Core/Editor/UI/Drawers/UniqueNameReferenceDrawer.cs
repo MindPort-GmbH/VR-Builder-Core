@@ -199,7 +199,7 @@ namespace VRBuilder.Editor.UI.Drawers
             }
         }
 
-        private void SceneObjectAutomaticSetup(GameObject selectedSceneObject, Type valueType)
+        protected void SceneObjectAutomaticSetup(GameObject selectedSceneObject, Type valueType)
         {
             ISceneObject sceneObject = selectedSceneObject.GetComponent<ProcessSceneObject>() ?? selectedSceneObject.AddComponent<ProcessSceneObject>();
 

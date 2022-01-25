@@ -8,26 +8,25 @@ using VRBuilder.Core.Utils;
 namespace VRBuilder.Core.Behaviors
 {
     /// <summary>
-    /// A behavior that plays audio.
+    /// A behavior that sets a value property to a specified value.
     /// </summary>
     [DataContract(IsReference = true)]
     public class SetValueBehavior<T> : Behavior<SetValueBehavior<T>.EntityData>
     {
         /// <summary>
-        /// The "play audio" behavior's data.
+        /// The <see cref="SetValueBehavior{T}"/> behavior data.
         /// </summary>
-        [DisplayName("Set Float")]
+        [DisplayName("Set Value")]
         [DataContract(IsReference = true)]
         public class EntityData : IBehaviorData
         {
             [DataMember]
             [DisplayName("Property")]
-            [UsesSpecificProcessDrawer("FloatPropertyDrawer")]
             public ScenePropertyReference<IValueProperty<T>> ValueProperty { get; set; }
 
             [DataMember]
             [DisplayName("Value")]
-            public T StoredValue { get; set; }
+            public T NewValue { get; set; }
 
             /// <inheritdoc />
             public Metadata Metadata { get; set; }
@@ -45,7 +44,7 @@ namespace VRBuilder.Core.Behaviors
             /// <inheritdoc />
             public override void Start()
             {
-                Data.ValueProperty.Value.SetValue(Data.StoredValue);
+                Data.ValueProperty.Value.SetValue(Data.NewValue);
             }
 
             /// <inheritdoc />
@@ -69,10 +68,14 @@ namespace VRBuilder.Core.Behaviors
         {
         }
 
+        public SetValueBehavior(string name) : this ("", default, name)
+        {
+        }
+
         public SetValueBehavior(string propertyName, T value, string name = "Set Value")
         {
             Data.ValueProperty = new ScenePropertyReference<IValueProperty<T>>(propertyName);
-            Data.StoredValue = value;
+            Data.NewValue = value;
         }
 
         public SetValueBehavior(IPathProperty property, T value, string name = "Set Value") : this(ProcessReferenceUtils.GetNameFrom(property), value, name)

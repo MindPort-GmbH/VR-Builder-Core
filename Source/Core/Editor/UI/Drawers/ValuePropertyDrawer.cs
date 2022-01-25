@@ -1,13 +1,14 @@
 using System;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-using VRBuilder.Core.Properties;
 using VRBuilder.Core.SceneObjects;
+using VRBuilder.Core.Utils;
 using VRBuilder.Editor.UndoRedo;
 
 namespace VRBuilder.Editor.UI.Drawers
 {
-    internal class FloatPropertyDrawer : UniqueNameReferenceDrawer
+    internal class ValuePropertyDrawer : UniqueNameReferenceDrawer
     {
         string propertyName = "";
 
@@ -17,6 +18,8 @@ namespace VRBuilder.Editor.UI.Drawers
             rect = base.Draw(rect, currentValue, changeValueCallback, label);
 
             UniqueNameReference reference = currentValue as UniqueNameReference;
+            PropertyInfo valueProperty = currentValue.GetType().GetProperty("Value");
+            Type valueType = ReflectionUtils.GetDeclaredTypeOfPropertyOrField(valueProperty);
 
             if (string.IsNullOrEmpty(reference.UniqueName))
             {
@@ -24,7 +27,7 @@ namespace VRBuilder.Editor.UI.Drawers
 
                 GUILayout.BeginArea(newLine);
                 GUILayout.BeginHorizontal();
-
+                
                 propertyName = EditorGUILayout.TextField("New property", propertyName, GUILayout.Height(EditorDrawingHelper.SingleLineHeight));
 
                 if (GUILayout.Button("Create", GUILayout.Width(64), GUILayout.Height(EditorDrawingHelper.SingleLineHeight)))
@@ -36,11 +39,11 @@ namespace VRBuilder.Editor.UI.Drawers
                     }
 
                     GameObject property = new GameObject(propertyName);
-                    property.AddComponent<NumberValueProperty>();
+                    SceneObjectAutomaticSetup(property, valueType);
                     property.transform.SetParent(dataObject.transform);
 
                     string oldUniqueName = reference.UniqueName;
-                    string newUniqueName = GetIDFromSelectedObject(property, typeof(NumberValueProperty), oldUniqueName);
+                    string newUniqueName = GetIDFromSelectedObject(property, valueType, oldUniqueName);
 
                     if (reference.UniqueName != newUniqueName)
                     {
@@ -69,7 +72,7 @@ namespace VRBuilder.Editor.UI.Drawers
                 GUILayout.EndArea();
             }
 
-            return rect;            
+            return rect;
         }
     }
 }
