@@ -20,12 +20,12 @@ namespace VRBuilder.Editor.UI.Drawers
     /// Process drawer for <see cref="UniqueNameReference"/> members.
     /// </summary>
     [DefaultProcessDrawer(typeof(UniqueNameReference))]
-    internal class UniqueNameReferenceDrawer : AbstractDrawer
+    public class UniqueNameReferenceDrawer : AbstractDrawer
     {
         protected bool isUndoOperation;
         protected const string undoGroupName = "brotcat";
 
-        private readonly HashSet<string> missingUniqueNames = new HashSet<string>();
+        protected readonly HashSet<string> missingUniqueNames = new HashSet<string>();
 
         /// <inheritdoc />
         public override Rect Draw(Rect rect, object currentValue, Action<object> changeValueCallback, GUIContent label)
@@ -85,7 +85,7 @@ namespace VRBuilder.Editor.UI.Drawers
             return rect;
         }
 
-        private GameObject GetGameObjectFromID(string objectUniqueName)
+        protected GameObject GetGameObjectFromID(string objectUniqueName)
         {
             if (string.IsNullOrEmpty(objectUniqueName))
             {
@@ -172,7 +172,7 @@ namespace VRBuilder.Editor.UI.Drawers
             return string.Empty;
         }
 
-        private void CheckForMisconfigurationIssues(GameObject selectedSceneObject, Type valueType, ref Rect originalRect, ref Rect guiLineRect)
+        protected void CheckForMisconfigurationIssues(GameObject selectedSceneObject, Type valueType, ref Rect originalRect, ref Rect guiLineRect)
         {
             if (selectedSceneObject != null && selectedSceneObject.GetComponent(valueType) == null)
             {

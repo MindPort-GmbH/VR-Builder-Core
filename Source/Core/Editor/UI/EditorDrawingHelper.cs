@@ -11,7 +11,7 @@ namespace VRBuilder.Editor.UI
     /// <summary>
     /// Helper class for drawing primitives in custom editors.
     /// </summary>
-    internal static class EditorDrawingHelper
+    public static class EditorDrawingHelper
     {
         private static readonly Vector2 addComponentButtonSize = new Vector2(228, 22);
         private static readonly Vector2 addHelpButtonSize = new Vector2(20, 22);
