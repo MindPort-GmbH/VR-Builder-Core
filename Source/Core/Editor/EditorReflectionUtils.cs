@@ -17,7 +17,7 @@ namespace VRBuilder.Editor
     /// <summary>
     /// Helper class for reflection.
     /// </summary>
-    internal static class EditorReflectionUtils
+    public static class EditorReflectionUtils
     {
         private static readonly Dictionary<Type, IEnumerable<MemberInfo>> fieldAndPropertiesToDrawCache = new Dictionary<Type, IEnumerable<MemberInfo>>();
         private static readonly Dictionary<MemberInfo, HashSet<Attribute>> membersAttributesCache = new Dictionary<MemberInfo, HashSet<Attribute>>();

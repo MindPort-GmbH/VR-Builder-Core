@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using VRBuilder.Core.Behaviors;
 using VRBuilder.Core.SceneObjects;
+using VRBuilder.Tests.Utils;
 
 namespace VRBuilder.Core.Tests.Behaviors
 {
@@ -140,5 +141,126 @@ namespace VRBuilder.Core.Tests.Behaviors
             // Then the target object has been unparented.
             Assert.AreEqual(null, target.transform.parent);
         }
+
+        [UnityTest]
+        [TestCaseSource(nameof(snapTestCases))]
+        public IEnumerator FastForwardInactiveBehaviorAndActivateIt(Vector3 parentPosition, Quaternion parentRotation)
+        {
+            // Given a set parent behavior,
+            Vector3 originalPosition = new Vector3(456, 42, -22);
+            Quaternion originalRotation = Quaternion.Euler(34, -56, 190);
+            ProcessSceneObject target = SpawnTestObject("Target", originalPosition, originalRotation, Vector3.one);
+            ProcessSceneObject parent = SpawnTestObject("Parent", parentPosition, parentRotation, Vector3.one);
+            IBehavior behavior = new SetParentBehavior(target, parent, true);
+
+            // When we mark it to fast-forward and activate it,
+            behavior.LifeCycle.MarkToFastForward();
+            behavior.LifeCycle.Activate();
+
+            // Then it autocompletes immediately.
+            Assert.AreEqual(Stage.Active, behavior.LifeCycle.Stage);
+            Assert.IsTrue((parentPosition - target.transform.position).sqrMagnitude < 0.001f);
+            Assert.IsTrue(Quaternion.Dot(parentRotation, target.transform.rotation) > 0.999f);
+            Assert.AreEqual(parent.transform, target.transform.parent);
+
+            yield break;
+        }
+
+        [UnityTest]
+        [TestCaseSource(nameof(snapTestCases))]
+        public IEnumerator FastForwardInactiveBehaviorAndDeactivateIt(Vector3 parentPosition, Quaternion parentRotation)
+        {
+            // Given a set parent behavior,
+            Vector3 originalPosition = new Vector3(456, 42, -22);
+            Quaternion originalRotation = Quaternion.Euler(34, -56, 190);
+            ProcessSceneObject target = SpawnTestObject("Target", originalPosition, originalRotation, Vector3.one);
+            ProcessSceneObject parent = SpawnTestObject("Parent", parentPosition, parentRotation, Vector3.one);
+            IBehavior behavior = new SetParentBehavior(target, parent, true);
+
+            // When we mark it to fast-forward, activate and immediately deactivate it,
+            behavior.LifeCycle.MarkToFastForward();
+            behavior.LifeCycle.Activate();
+
+            while (behavior.LifeCycle.Stage != Stage.Active)
+            {
+                yield return null;
+                behavior.Update();
+            }
+
+            behavior.LifeCycle.Deactivate();
+
+            // Then it autocompletes immediately.
+            Assert.AreEqual(Stage.Inactive, behavior.LifeCycle.Stage);
+            Assert.IsTrue((parentPosition - target.transform.position).sqrMagnitude < 0.001f);
+            Assert.IsTrue(Quaternion.Dot(parentRotation, target.transform.rotation) > 0.999f);
+            Assert.AreEqual(parent.transform, target.transform.parent);
+        }
+
+        [UnityTest]
+        [TestCaseSource(nameof(snapTestCases))]
+        public IEnumerator FastForwardActivatingBehavior(Vector3 parentPosition, Quaternion parentRotation)
+        {
+            // Given a set parent behavior,
+            Vector3 originalPosition = new Vector3(456, 42, -22);
+            Quaternion originalRotation = Quaternion.Euler(34, -56, 190);
+            ProcessSceneObject target = SpawnTestObject("Target", originalPosition, originalRotation, Vector3.one);
+            ProcessSceneObject parent = SpawnTestObject("Parent", parentPosition, parentRotation, Vector3.one);
+            IBehavior behavior = new SetParentBehavior(target, parent, true);
+
+            behavior.LifeCycle.Activate();
+
+            while (behavior.LifeCycle.Stage != Stage.Activating)
+            {
+                yield return null;
+                behavior.Update();
+            }
+
+            // When we mark it to fast-forward,
+            behavior.LifeCycle.MarkToFastForward();
+
+            // Then it autocompletes immediately.
+            Assert.AreEqual(Stage.Active, behavior.LifeCycle.Stage);
+            Assert.IsTrue((parentPosition - target.transform.position).sqrMagnitude < 0.001f);
+            Assert.IsTrue(Quaternion.Dot(parentRotation, target.transform.rotation) > 0.999f);
+            Assert.AreEqual(parent.transform, target.transform.parent);
+        }
+
+        [UnityTest]
+        [TestCaseSource(nameof(snapTestCases))]
+        public IEnumerator FastForwardDeactivatingBehavior(Vector3 parentPosition, Quaternion parentRotation)
+        {
+            // Given a set parent behavior,
+            Vector3 originalPosition = new Vector3(456, 42, -22);
+            Quaternion originalRotation = Quaternion.Euler(34, -56, 190);
+            ProcessSceneObject target = SpawnTestObject("Target", originalPosition, originalRotation, Vector3.one);
+            ProcessSceneObject parent = SpawnTestObject("Parent", parentPosition, parentRotation, Vector3.one);
+            IBehavior behavior = new SetParentBehavior(target, parent, true);
+
+            behavior.LifeCycle.Activate();
+
+            while (behavior.LifeCycle.Stage != Stage.Active)
+            {
+                yield return null;
+                behavior.Update();
+            }
+
+            behavior.LifeCycle.Deactivate();
+
+            while (behavior.LifeCycle.Stage != Stage.Deactivating)
+            {
+                yield return null;
+                behavior.Update();
+            }
+
+            // When we mark it to fast-forward,
+            behavior.LifeCycle.MarkToFastForward();
+
+            // Then it autocompletes immediately.
+            Assert.AreEqual(Stage.Inactive, behavior.LifeCycle.Stage);
+            Assert.IsTrue((parentPosition - target.transform.position).sqrMagnitude < 0.001f);
+            Assert.IsTrue(Quaternion.Dot(parentRotation, target.transform.rotation) > 0.999f);
+            Assert.AreEqual(parent.transform, target.transform.parent);
+        }
+
     }
 }
