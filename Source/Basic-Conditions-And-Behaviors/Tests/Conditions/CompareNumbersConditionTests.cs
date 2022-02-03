@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 using VRBuilder.Core.Conditions;
 using VRBuilder.Core.ProcessUtils;
@@ -19,5 +20,10 @@ namespace VRBuilder.Core.Tests.Conditions
             property.SetValue(value);
             return property;
         }
+
+        protected static TestCaseData[] CompareValuesTestCases = new TestCaseData[]
+        {
+            new TestCaseData(44f, -32f, true, true, new GreaterThanOperation<float>()).Returns(null),
+        };
     }
 }

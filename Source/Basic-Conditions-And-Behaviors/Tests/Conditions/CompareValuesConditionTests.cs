@@ -2,7 +2,6 @@ using NUnit.Framework;
 using System;
 using System.Collections;
 using UnityEngine.TestTools;
-using VRBuilder.Core;
 using VRBuilder.Core.Conditions;
 using VRBuilder.Core.ProcessUtils;
 using VRBuilder.Core.Properties;
@@ -17,6 +16,7 @@ namespace VRBuilder.Core.Tests.Conditions
         // TODO Constructor tests
 
         [UnityTest]
+        [TestCaseSource("CompareValuesTestCases")]
         public IEnumerator ConditionIsFulfilledWhenExpected(T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IProcessVariableOperation<T, bool> operationType)
         {
             // Given a condition,
