@@ -13,8 +13,53 @@ namespace VRBuilder.Core.Tests.Conditions
     {
         protected abstract IDataProperty<T> CreateValueProperty(string name, T value);
 
-        // TODO Constructor tests
+        [UnityTest]
+        [TestCaseSource("CompareValuesTestCases")]
+        public IEnumerator CreateByReference(T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IProcessVariableOperation<T, bool> operationType)
+        {
+            // Given the necessary parameters,
+            IDataProperty<T> leftProperty = CreateValueProperty("Left Property Object", leftValue);
+            IDataProperty<T> rightProperty = CreateValueProperty("Left Property Object", rightValue);
 
+            // When we create the condition passing process objects by reference,
+            CompareValuesCondition<T> condition = new CompareValuesCondition<T>(leftProperty, rightProperty, leftValue, rightValue, isLeftConst, isRightConst, operationType);
+
+            // Then all properties of the condition are properly assigned.
+            Assert.AreEqual(leftProperty, condition.Data.LeftValueProperty.Value);
+            Assert.AreEqual(rightProperty, condition.Data.RightValueProperty.Value);
+            Assert.AreEqual(leftValue, condition.Data.LeftValue);
+            Assert.AreEqual(rightValue, condition.Data.RightValue);
+            Assert.AreEqual(isLeftConst, condition.Data.IsLeftConst);
+            Assert.AreEqual(isRightConst, condition.Data.IsRightConst);
+            Assert.AreEqual(operationType, condition.Data.Operation);
+
+            yield break;
+        }
+
+        [UnityTest]
+        [TestCaseSource("CompareValuesTestCases")]
+        public IEnumerator CreateByName(T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IProcessVariableOperation<T, bool> operationType)
+        {
+            // Given the necessary parameters,
+            IDataProperty<T> leftProperty = CreateValueProperty("Left Property Object", leftValue);
+            IDataProperty<T> rightProperty = CreateValueProperty("Left Property Object", rightValue);
+            string leftPropertyName = leftProperty.SceneObject.UniqueName;
+            string rightPropertyName = rightProperty.SceneObject.UniqueName;
+
+            // When we create the behavior passing process objects by name,
+            CompareValuesCondition<T> condition = new CompareValuesCondition<T>(leftPropertyName, rightPropertyName, leftValue, rightValue, isLeftConst, isRightConst, operationType);
+
+            // Then all properties of the behavior are properly assigned.
+            Assert.AreEqual(leftProperty, condition.Data.LeftValueProperty.Value);
+            Assert.AreEqual(rightProperty, condition.Data.RightValueProperty.Value);
+            Assert.AreEqual(leftValue, condition.Data.LeftValue);
+            Assert.AreEqual(rightValue, condition.Data.RightValue);
+            Assert.AreEqual(isLeftConst, condition.Data.IsLeftConst);
+            Assert.AreEqual(isRightConst, condition.Data.IsRightConst);
+            Assert.AreEqual(operationType, condition.Data.Operation);
+
+            yield break;
+        }
         [UnityTest]
         [TestCaseSource("CompareValuesTestCases")]
         public IEnumerator ConditionIsFulfilledWhenExpected(T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IProcessVariableOperation<T, bool> operationType)
@@ -32,8 +77,7 @@ namespace VRBuilder.Core.Tests.Conditions
                 condition.Update();
             }
 
-            // When a value changes,
-            // TODO
+            // When the condition is fulfilled,
 
             while (condition.IsCompleted == false)
             {
@@ -41,7 +85,7 @@ namespace VRBuilder.Core.Tests.Conditions
                 condition.Update();
             }
 
-            // Then the condition updates accordingly.
+            // Then the condition completes.
             Assert.IsTrue(condition.IsCompleted);
         }
     }
