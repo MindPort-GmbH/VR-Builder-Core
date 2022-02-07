@@ -51,9 +51,6 @@ namespace VRBuilder.Editor.Core.UI.Drawers
                     case Operator.Or:
                         data.Operation = new OrOperation();
                         break;
-                    case Operator.Xor:
-                        data.Operation = new XorOperation();
-                        break;
                 }
 
                 changeValueCallback(data);
@@ -79,10 +76,6 @@ namespace VRBuilder.Editor.Core.UI.Drawers
             else if (data.Operation.GetType() == typeof(OrOperation))
             {
                 currentOperator = Operator.Or;
-            }
-            else if (data.Operation.GetType() == typeof(XorOperation))
-            {
-                currentOperator = Operator.Xor;
             }
 
             return currentOperator;
