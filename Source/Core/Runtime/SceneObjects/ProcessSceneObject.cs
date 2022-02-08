@@ -153,11 +153,6 @@ namespace VRBuilder.Core.SceneObjects
 
         public void ChangeUniqueName(string newName)
         {
-            if (newName == UniqueName)
-            {
-                return;
-            }
-
             if (RuntimeConfigurator.Configuration.SceneObjectRegistry.ContainsName(newName))
             {
                 Debug.LogErrorFormat("An object with a name '{0}' is already registered. The new name is ignored. The name is still '{1}'.", newName, UniqueName);
