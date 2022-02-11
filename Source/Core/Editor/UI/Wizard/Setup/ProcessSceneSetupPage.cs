@@ -92,8 +92,6 @@ namespace VRBuilder.Editor.UI.Wizard
                     loadDemoScene = false;
             }
 
-                EditorGUILayout.Space();
-
                 if(EditorReflectionUtils.AssemblyExists("VRBuilder.Editor.DemoScene"))
                 {
                     loadDemoScene = GUILayout.Toggle(loadDemoScene, "Load Demo Scene", BuilderEditorStyles.RadioButton);

@@ -54,7 +54,7 @@ namespace VRBuilder.Editor.UI.Wizard
         }
 
 #if UNITY_2019_4_OR_NEWER && !UNITY_EDITOR_OSX
-        [MenuItem("Tools/VR Builder/Create New Process...", false, 0)]
+        [MenuItem("Tools/VR Builder/New Process Wizard...", false, 0)]
 #endif
         internal static void Show()
         {

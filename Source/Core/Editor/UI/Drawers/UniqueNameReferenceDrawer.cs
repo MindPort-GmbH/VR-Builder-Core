@@ -20,12 +20,12 @@ namespace VRBuilder.Editor.UI.Drawers
     /// Process drawer for <see cref="UniqueNameReference"/> members.
     /// </summary>
     [DefaultProcessDrawer(typeof(UniqueNameReference))]
-    internal class UniqueNameReferenceDrawer : AbstractDrawer
+    public class UniqueNameReferenceDrawer : AbstractDrawer
     {
-        private bool isUndoOperation;
-        private const string undoGroupName = "brotcat";
+        protected bool isUndoOperation;
+        protected const string undoGroupName = "brotcat";
 
-        private readonly HashSet<string> missingUniqueNames = new HashSet<string>();
+        protected readonly HashSet<string> missingUniqueNames = new HashSet<string>();
 
         /// <inheritdoc />
         public override Rect Draw(Rect rect, object currentValue, Action<object> changeValueCallback, GUIContent label)
@@ -85,7 +85,7 @@ namespace VRBuilder.Editor.UI.Drawers
             return rect;
         }
 
-        private GameObject GetGameObjectFromID(string objectUniqueName)
+        protected GameObject GetGameObjectFromID(string objectUniqueName)
         {
             if (string.IsNullOrEmpty(objectUniqueName))
             {
@@ -110,7 +110,7 @@ namespace VRBuilder.Editor.UI.Drawers
             }
         }
 
-        private string GetIDFromSelectedObject(GameObject selectedSceneObject, Type valueType, string oldUniqueName)
+        protected string GetIDFromSelectedObject(GameObject selectedSceneObject, Type valueType, string oldUniqueName)
         {
             string newUniqueName = string.Empty;
 
@@ -172,7 +172,7 @@ namespace VRBuilder.Editor.UI.Drawers
             return string.Empty;
         }
 
-        private void CheckForMisconfigurationIssues(GameObject selectedSceneObject, Type valueType, ref Rect originalRect, ref Rect guiLineRect)
+        protected void CheckForMisconfigurationIssues(GameObject selectedSceneObject, Type valueType, ref Rect originalRect, ref Rect guiLineRect)
         {
             if (selectedSceneObject != null && selectedSceneObject.GetComponent(valueType) == null)
             {
@@ -199,7 +199,7 @@ namespace VRBuilder.Editor.UI.Drawers
             }
         }
 
-        private void SceneObjectAutomaticSetup(GameObject selectedSceneObject, Type valueType)
+        protected void SceneObjectAutomaticSetup(GameObject selectedSceneObject, Type valueType)
         {
             ISceneObject sceneObject = selectedSceneObject.GetComponent<ProcessSceneObject>() ?? selectedSceneObject.AddComponent<ProcessSceneObject>();
 
@@ -234,7 +234,7 @@ namespace VRBuilder.Editor.UI.Drawers
             isUndoOperation = true;
         }
 
-        private Rect AddNewRectLine(ref Rect currentRect)
+        protected Rect AddNewRectLine(ref Rect currentRect)
         {
             Rect newRectLine = currentRect;
             newRectLine.height = EditorDrawingHelper.SingleLineHeight;

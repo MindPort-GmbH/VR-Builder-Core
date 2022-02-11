@@ -11,7 +11,7 @@ using VRBuilder.Core.Utils;
 
 namespace VRBuilder.Editor.UI.Drawers
 {
-    internal static class DrawerLocator
+    public static class DrawerLocator
     {
         private static readonly Dictionary<Type, IProcessDrawer> allDrawers;
         private static readonly Dictionary<Type, IProcessDrawer> defaultDrawers;

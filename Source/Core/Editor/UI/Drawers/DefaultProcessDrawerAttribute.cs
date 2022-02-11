@@ -9,8 +9,8 @@ namespace VRBuilder.Editor.UI.Drawers
     /// <summary>
     /// Marks a Process drawer as a default drawer for a given type.
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class)]
-    internal class DefaultProcessDrawerAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Class, Inherited = false)]
+    public class DefaultProcessDrawerAttribute : Attribute
     {
         /// <summary>
         /// Objects of which type can be processed  by this Process drawer.
