@@ -12,7 +12,7 @@ namespace VRBuilder.Editor.BuilderMenu
         /// <summary>
         /// Open the Workflow Editor window.
         /// </summary>
-        [MenuItem("Tools/VR Builder/Open Workflow Editor", false, 2)]
+        [MenuItem("Tools/VR Builder/Workflow Editor", false, 2)]
         [MenuItem("Window/VR Builder/Workflow Editor", false, 100)]
         private static void OpenWorkflowEditor()
         {

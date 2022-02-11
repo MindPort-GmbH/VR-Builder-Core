@@ -67,6 +67,16 @@ namespace VRBuilder.Core.SceneObjects
             }
 
             this.SetSuitableName();
+
+            if(IsRegistered == false)
+            {
+                RuntimeConfigurator.Configuration.SceneObjectRegistry.Register(this);
+
+                if (UniqueNameChanged != null)
+                {
+                    UniqueNameChanged.Invoke(this, new SceneObjectNameChanged(UniqueName, UniqueName));
+                }
+            }
         }
 
         private void OnDestroy()

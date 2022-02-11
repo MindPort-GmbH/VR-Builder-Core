@@ -10,7 +10,7 @@ namespace VRBuilder.Core.Tests.Conditions
     {
         protected override ICondition CreateDefaultCondition()
         {
-            return new CompareValuesCondition<bool>("", "", true, false, true, true, new XorOperation());
+            return new CompareValuesCondition<bool>("", "", true, false, true, true, new OrOperation());
         }
 
         protected override IDataProperty<bool> CreateValueProperty(string name, bool value)
@@ -27,12 +27,10 @@ namespace VRBuilder.Core.Tests.Conditions
             new TestCaseData(false, true, true, true, new NotEqualToOperation<bool>()).Returns(null),
             new TestCaseData(true, true, true, true, new AndOperation()).Returns(null),
             new TestCaseData(false, true, true, true, new OrOperation()).Returns(null),
-            new TestCaseData(false, true, true, true, new XorOperation()).Returns(null),
             new TestCaseData(true, true, false, false, new EqualToOperation<bool>()).Returns(null),
             new TestCaseData(false, true, false, false, new NotEqualToOperation<bool>()).Returns(null),
             new TestCaseData(true, true, false, false, new AndOperation()).Returns(null),
             new TestCaseData(false, true, false, false, new OrOperation()).Returns(null),
-            new TestCaseData(false, true, false, false, new XorOperation()).Returns(null),
         };
     }
 }
