@@ -6,11 +6,11 @@ We too believe in the value of open source and will continue to support this app
 
 This guide was originally part of the Innoactive Creator documentation. As some functionalities of VR Builder are similar to the original Creator, it may also be useful to check the [documentation for the Innoactive Creator](https://developers.innoactive.de/documentation/creator/v2.11.1/).
 
-# Getting Started with VR Builder
+## Getting Started with VR Builder
 
 This guide outlines the first steps after successfully importing VR Builder. It will help you to create your first basic process in 5 steps. During the process, you will get familiar with the basic user interface of the Unity Editor and VR Builder. You will also learn the basic concepts required to successfully create a process using VR Builder.
 
-## Step 1: Create Process
+### Step 1: Create Process
 
 In case you are new to Unity, you see an empty Unity project, which usually includes a **Scene** window, a **Hierarchy** of 3D objects of your scene. This is currently empty and only contains a `Main Camera` and `Directional Light`, the Inspector (might also be empty currently), and on the lower end of the Unity window, a **Project Hierarchy and Console** window (see figure 1).
 
@@ -21,13 +21,13 @@ After importing VR Builder, you will have a new element in the `Tools` menu, cal
 
   > After Importing, the `Create New Process` Wizard should open. In case it is not open, select `Create New Process...` from the menu `Tools > VR Builder`.
 
-## Step 2: Select Demo Scene
+### Step 2: Select Demo Scene
 
 The Wizard helps you to setup your project. You can start from an empty scene, but for the sake of this guide, we start with a simple demo scene.
 
 > Select `Import step-by-step demo scene` in `Step 1: Setup Process`
 
-## Step 3: Configure Hardware
+### Step 3: Configure Hardware
 
 > in the Wizard, select the Head-Mounted Device you want to run the process for in `Step 2: Setup Hardware`.
 
@@ -43,14 +43,14 @@ You see a new Scene was loaded: In the Scene window you see a `sphere`. New is t
 We recommend you place both windows as illustrated in the image above.
 The ***Workflow Editor*** contains two circles, the large one represents the initial state of a workflow (see Fig. 2) and the small one is an outgoing connection currently not connected to anything.
 
-## Step 4: Create a Simple Process Application
+### Step 4: Create a Simple Process Application
 
 Let's take a minute to give an outlook on the process that will be built in this step. Often, want users to perform a sequence of physical actions in a certain order. Here, we want the user to:
 
 1. Grab the sphere (which is visually highlighted)
 2. Place it at a specific position
 
-### Create the Workflow
+#### Create the Workflow
 
 A right-click into an empty area of the ***Workflow Editor*** window displays a contextual menu.
 
@@ -118,8 +118,24 @@ A new object `Sphere_SnapZone` appeared in the ***Hierarchy*** window.
 Go back to the ***Step inspector*** window.
 > drag-and-drop the sphere_SnapZone object into the ‘Zone to snap into’ property of the ‘snap object’ condition.
 
-## Step 5: Start Course
+### Step 5: Start Course
 
 Connect your Head-Mounted Device and start the application by hitting the play button in the top-center of the Unity window. Grab your controllers, move the controllers in VR into the solid Sphere object and press the 'select' button. This is usually different for every controller. The manual of you hardware should give you more information about how to find the correct controller button. When you have successfully grabbed the sphere, move it over to the 'snap zone' and release the button.
 
 Congratulations! You successfully built a minimal application using VR Builder.
+
+## Add-ons
+
+We are constantly developing new add-ons to expand the functionalities of VR Builder and provide ready-made solutions to tackle a variety of use cases. 
+Feel free to browse our collection of add-ons and integrations [here](https://www.mindport.co/vr-builder-add-ons-and-integrations).
+
+## Contact
+
+Join our official [Discord server](http://community.mindport.co) for quick support from the developers and fellow users. Suggest and vote on new ideas to influence the future of the VR Builder.
+
+Make sure to review [VR Builder](https://assetstore.unity.com/packages/tools/visual-scripting/vr-builder-201913) if you like it. It will help us immensely.
+
+If you have any issues, please contact [contact@mindport.co](mailto:contact@mindport.co). We’d love to get your feedback, both positive and constructive. By sharing your feedback you help us improve - thank you in advance!
+Let’s build something extraordinary!
+
+You can also visit our website at [mindport.co](http://www.mindport.co).
