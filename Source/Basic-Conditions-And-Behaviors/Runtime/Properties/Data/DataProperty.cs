@@ -7,11 +7,12 @@ namespace VRBuilder.Core.Properties
     /// Base implementation for process data properties.
     /// </summary>    
     [DisallowMultipleComponent]
-    public abstract class DataProperty<T> : ProcessSceneObjectProperty, IDataProperty<T> where T : IEquatable<T>
+    public abstract class DataProperty<T> : ProcessSceneObjectProperty, IDataProperty<T>
     {
-        /// <inheritdoc/>
-        [SerializeField]
-        protected T defaultValue;
+        /// <summary>
+        /// Defines a default value for the property.
+        /// </summary>
+        public abstract T DefaultValue { get; }
 
         /// <inheritdoc/>
         protected T storedValue;
@@ -36,7 +37,7 @@ namespace VRBuilder.Core.Properties
         /// <inheritdoc/>
         public void ResetValue()
         {
-            SetValue(defaultValue);
+            SetValue(DefaultValue);
             ValueReset?.Invoke(this, EventArgs.Empty); 
         }
 

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace VRBuilder.Core.Properties
 {
     /// <summary>
@@ -5,5 +7,10 @@ namespace VRBuilder.Core.Properties
     /// </summary>
     public class BooleanDataProperty : DataProperty<bool>
     {
+        [SerializeField]
+        private bool defaultValue;
+
+        /// <inheritdoc/>
+        public override bool DefaultValue => defaultValue;
     }
 }
