@@ -45,7 +45,7 @@ namespace VRBuilder.Editor.UI.Wizard
         {
             GUILayout.Label("Missing Interaction Component", BuilderEditorStyles.Header);
 
-            GUILayout.Label("No interaction component has been found in the project. You can install the default XR Interaction component if you desire so.", BuilderEditorStyles.Paragraph);
+            GUILayout.Label("No interaction component has been found in the project. You can install the default XR Interaction component (based on Unity's XR Interaction Toolkit 1.0.0pre2) and VR Builder will be ready for use. If you want to install another Interaction Component on your own, please skip for now.", BuilderEditorStyles.Paragraph);
 
             GUILayout.Space(16);
 
@@ -62,6 +62,16 @@ namespace VRBuilder.Editor.UI.Wizard
 
                 EditorGUILayout.HelpBox("VR Builder will not work properly until an interaction component is installed.", MessageType.Warning);
             }
+
+            GUILayout.Space(16);
+
+            GUILayout.Label("More interaction components, such as integrations with our partners, are avaliable on our Add-ons and Integrations page.", BuilderEditorStyles.Paragraph);
+            BuilderGUILayout.DrawLink("Add-ons and Integrations", "https://www.mindport.co/vr-builder-add-ons-and-integrations", BuilderEditorStyles.Indent);
+
+            GUILayout.Space(16);
+
+            GUILayout.Label("Here you can find comprehensive guides on how to install non-default interaction components.", BuilderEditorStyles.Paragraph);
+            BuilderGUILayout.DrawLink("How to setup VR Builder with Interhaptics VR Interaction Essentials", "https://www.mindport.co/vr-builder-add-ons-and-integrations", BuilderEditorStyles.Indent);
         }
 
         private void HandleMultipleInteractionComponents()
