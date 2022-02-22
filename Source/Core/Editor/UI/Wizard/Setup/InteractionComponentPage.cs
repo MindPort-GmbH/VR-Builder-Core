@@ -71,7 +71,7 @@ namespace VRBuilder.Editor.UI.Wizard
             GUILayout.Space(16);
 
             GUILayout.Label("Here you can find comprehensive guides on how to install non-default interaction components.", BuilderEditorStyles.Paragraph);
-            BuilderGUILayout.DrawLink("How to setup VR Builder with Interhaptics VR Interaction Essentials", "https://www.mindport.co/vr-builder-add-ons-and-integrations", BuilderEditorStyles.Indent);
+            BuilderGUILayout.DrawLink("How to setup VR Builder with Interhaptics VR Interaction Essentials", "https://www.mindport.co/vr-builder-learning-path/interhaptics-integration", BuilderEditorStyles.Indent);
         }
 
         private void HandleMultipleInteractionComponents()
