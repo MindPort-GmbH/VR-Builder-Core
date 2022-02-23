@@ -50,7 +50,7 @@ namespace VRBuilder.UX
         {
             try
             {
-                user = RuntimeConfigurator.Configuration.User.GameObject.transform;
+                user = RuntimeConfigurator.Configuration.LocalUser.GameObject.transform;
                 canvas = GetComponentInChildren<Canvas>();
                 canvas.worldCamera = Camera.main;
 

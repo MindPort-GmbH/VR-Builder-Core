@@ -36,7 +36,7 @@ namespace VRBuilder.ProcessController
             {
                 try
                 {
-                    user = RuntimeConfigurator.Configuration.User.GameObject;
+                    user = RuntimeConfigurator.Configuration.LocalUser.GameObject;
                 }
                 catch (NullReferenceException)
                 {

@@ -1,10 +1,11 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
 using System;
 using VRBuilder.Core.SceneObjects;
 using UnityEngine;
+using VRBuilder.Core.Properties;
 
 namespace VRBuilder.Core.Configuration
 {
@@ -26,7 +27,11 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <inheritdoc />
-        public override ProcessSceneObject User => Configuration.User;
+        [Obsolete("Use LocalUser instead.")]
+        public override ProcessSceneObject User => Configuration.LocalUser;
+
+        /// <inheritdoc />
+        public override UserSceneObject LocalUser => Configuration.LocalUser;
 
         /// <inheritdoc />
         public override AudioSource InstructionPlayer => Configuration.InstructionPlayer;

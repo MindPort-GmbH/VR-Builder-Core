@@ -131,7 +131,7 @@ namespace VRBuilder.Core.Behaviors
 
                 if (Data.IsAboveUser)
                 {
-                    spawnPosition = RuntimeConfigurator.Configuration.User.GameObject.transform.position;
+                    spawnPosition = RuntimeConfigurator.Configuration.LocalUser.GameObject.transform.position;
                     spawnPosition.y += distanceAboveUser;
                 }
                 else

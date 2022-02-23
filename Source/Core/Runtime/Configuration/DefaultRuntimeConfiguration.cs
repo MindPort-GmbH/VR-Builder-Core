@@ -32,11 +32,15 @@ namespace VRBuilder.Core.Configuration
         }
 
         /// <inheritdoc />
-        public override ProcessSceneObject User
+        [Obsolete("Use LocalUser instead.")]
+        public override ProcessSceneObject User => LocalUser;
+
+        /// <inheritdoc />
+        public override UserSceneObject LocalUser
         {
             get
             {
-                ProcessSceneObject user = GameObject.FindObjectOfType<UserSceneObject>();
+                UserSceneObject user = GameObject.FindObjectOfType<UserSceneObject>();
 
                 if (user == null)
                 {
@@ -54,7 +58,7 @@ namespace VRBuilder.Core.Configuration
             {
                 if (instructionPlayer == null || instructionPlayer.Equals(null))
                 {
-                    instructionPlayer = User.gameObject.AddComponent<AudioSource>();
+                    instructionPlayer = LocalUser.gameObject.AddComponent<AudioSource>();
                 }
 
                 return instructionPlayer;

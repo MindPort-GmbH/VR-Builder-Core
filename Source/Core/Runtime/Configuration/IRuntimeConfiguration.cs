@@ -5,6 +5,7 @@
 using System;
 using UnityEngine;
 using VRBuilder.Core.Configuration.Modes;
+using VRBuilder.Core.Properties;
 using VRBuilder.Core.SceneObjects;
 using VRBuilder.Core.Serialization;
 
@@ -34,7 +35,13 @@ namespace VRBuilder.Core.Configuration
         /// <summary>
         /// User scene object.
         /// </summary>
+        [Obsolete("Use LocalUser instead.")]
         ProcessSceneObject User { get; }
+
+        /// <summary>
+        /// Local user scene object.
+        /// </summary>
+        UserSceneObject LocalUser { get; }
 
         /// <summary>
         /// Default audio source to play audio from.

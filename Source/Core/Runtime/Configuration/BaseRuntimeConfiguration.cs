@@ -9,6 +9,7 @@ using VRBuilder.Core.RestrictiveEnvironment;
 using VRBuilder.Core.SceneObjects;
 using VRBuilder.Core.Serialization;
 using UnityEngine;
+using VRBuilder.Core.Properties;
 
 namespace VRBuilder.Core.Configuration
 {
@@ -80,7 +81,11 @@ namespace VRBuilder.Core.Configuration
         public IModeHandler Modes { get; protected set; }
 
         /// <inheritdoc />
+        [Obsolete("Use LocalUser instead.")]
         public abstract ProcessSceneObject User { get; }
+
+        /// <inheritdoc />
+        public abstract UserSceneObject LocalUser { get; }
 
         /// <inheritdoc />
         public abstract AudioSource InstructionPlayer { get; }
