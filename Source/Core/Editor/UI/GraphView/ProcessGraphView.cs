@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
+using VRBuilder.Core;
 
 namespace VRBuilder.Editor.UI.Graphics
 {
     public class ProcessGraphView : GraphView
     {
         private Vector2 defaultNodeSize = new Vector2(200, 300);
+
+        public ProcessNode EntryNode { get; private set; }
+
         public ProcessGraphView()
         {
             styleSheets.Add(Resources.Load<StyleSheet>("ProcessGraph"));
@@ -22,7 +26,8 @@ namespace VRBuilder.Editor.UI.Graphics
             Insert(0, grid);
             grid.StretchToParentSize();
 
-            AddElement(CreateEntryPointNode());
+            EntryNode = CreateEntryPointNode();
+            AddElement(EntryNode);
         }
 
         private ProcessNode CreateEntryPointNode()
@@ -45,11 +50,6 @@ namespace VRBuilder.Editor.UI.Graphics
             return node;
         }
 
-        public void CreateNode(string nodeName)
-        {
-            AddElement(CreateStepNode(nodeName));   
-        }
-
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {
             List<Port> compatiblePorts = new List<Port>();
@@ -64,7 +64,7 @@ namespace VRBuilder.Editor.UI.Graphics
             return compatiblePorts;
         }
 
-        private void AddTransitionPort(ProcessNode node)
+        public Port AddTransitionPort(ProcessNode node)
         {
             Port port = CreatePort(node, Direction.Output);
 
@@ -73,14 +73,16 @@ namespace VRBuilder.Editor.UI.Graphics
 
             node.outputContainer.Add(port);
             node.RefreshExpandedState();
-            node.RefreshPorts();            
+            node.RefreshPorts();
+
+            return port;
         }
 
-        internal ProcessNode CreateStepNode(string nodeName)
+        internal ProcessNode CreateStepNode(IStep step)
         {
             ProcessNode node = new ProcessNode
             {
-                title = nodeName,
+                title = step.Data.Name,
                 GUID = Guid.NewGuid().ToString(),
             };
 
@@ -91,7 +93,6 @@ namespace VRBuilder.Editor.UI.Graphics
             Button addTransitionButton = new Button(() => { AddTransitionPort(node); });
             addTransitionButton.text = "New Transition";
             node.titleContainer.Add(addTransitionButton);  
-
 
             node.RefreshExpandedState();
             node.RefreshPorts();
