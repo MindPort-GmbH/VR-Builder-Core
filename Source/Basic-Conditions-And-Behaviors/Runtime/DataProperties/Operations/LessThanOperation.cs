@@ -3,9 +3,9 @@ using System;
 namespace VRBuilder.Core.ProcessUtils
 {
     /// <summary>
-    /// True if left <= right.
+    /// True if left < right.
     /// </summary>
-    public class LessThanOrEqualOperation<T> : IProcessVariableOperation<T, bool> where T : IComparable<T>
+    public class LessThanOperation<T> : IOperationCommand<T, bool> where T : IComparable<T>
     {
         /// <inheritdoc/>
         public bool Execute(T leftOperand, T rightOperand)
