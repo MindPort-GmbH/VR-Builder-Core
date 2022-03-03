@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using VRBuilder.Core.Utils.Logging;
 
 namespace VRBuilder.Core.Properties
 {
@@ -49,8 +50,18 @@ namespace VRBuilder.Core.Properties
                 return;
             }
 
+            if(LifeCycleLoggingConfig.Instance.LogDataPropertyChanges)
+            {
+                Debug.Log($"{GetType().Name} on '{SceneObject.UniqueName}' changed from {ValueToString(storedValue)} to {ValueToString(value)}.");
+            }
+
             storedValue = value;
             ValueChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual string ValueToString(T value)
+        {
+            return value.ToString();
         }
     }
 }
