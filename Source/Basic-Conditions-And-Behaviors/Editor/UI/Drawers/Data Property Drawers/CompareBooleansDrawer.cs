@@ -18,7 +18,6 @@ namespace VRBuilder.Editor.Core.UI.Drawers
             NotEqualTo,
             And,
             Or,
-            Xor,
         }
 
         /// <inheritdoc/>

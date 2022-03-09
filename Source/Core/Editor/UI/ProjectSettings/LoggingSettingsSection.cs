@@ -1,4 +1,4 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
@@ -26,6 +26,7 @@ namespace VRBuilder.Editor.UI
             config.LogBehaviors = GUILayout.Toggle(config.LogBehaviors, "Log Behaviors output", BuilderEditorStyles.Toggle);
             config.LogTransitions = GUILayout.Toggle(config.LogTransitions, "Log Transition output", BuilderEditorStyles.Toggle);
             config.LogConditions = GUILayout.Toggle(config.LogConditions, "Log Condition output", BuilderEditorStyles.Toggle);
+            config.LogDataPropertyChanges = GUILayout.Toggle(config.LogDataPropertyChanges, "Log Data Property changes", BuilderEditorStyles.Toggle);
         }
 
         ~LoggingSettingsSection()

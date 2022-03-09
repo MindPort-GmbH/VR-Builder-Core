@@ -3,7 +3,7 @@ namespace VRBuilder.Core.ProcessUtils
     /// <summary>
     /// "And" boolean operation.
     /// </summary>
-    public class AndOperation : IProcessVariableOperation<bool, bool>
+    public class AndOperation : IOperationCommand<bool, bool>
     {
         /// <inheritdoc/>
         public bool Execute(bool leftOperand, bool rightOperand)

@@ -34,7 +34,7 @@ namespace VRBuilder.Core.Conditions
 
             [DataMember]
             [HideInProcessInspector]
-            public IProcessVariableOperation<T, bool> Operation { get; set; }
+            public IOperationCommand<T, bool> Operation { get; set; }
 
             [DataMember]
             [HideInProcessInspector]
@@ -84,12 +84,12 @@ namespace VRBuilder.Core.Conditions
         {
         }
 
-        public CompareValuesCondition(IDataProperty<T> leftProperty, IDataProperty<T> rightProperty, T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IProcessVariableOperation<T, bool> operation, string name = "Compare Values") :
+        public CompareValuesCondition(IDataProperty<T> leftProperty, IDataProperty<T> rightProperty, T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IOperationCommand<T, bool> operation, string name = "Compare Values") :
             this(ProcessReferenceUtils.GetNameFrom(leftProperty), ProcessReferenceUtils.GetNameFrom(rightProperty), leftValue, rightValue, isLeftConst, isRightConst, operation, name)
         { 
         }          
 
-        public CompareValuesCondition(string leftPropertyName, string rightPropertyName, T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IProcessVariableOperation<T, bool> operation, string name = "Compare Values")
+        public CompareValuesCondition(string leftPropertyName, string rightPropertyName, T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IOperationCommand<T, bool> operation, string name = "Compare Values")
         {
             Data.LeftValueProperty = new ScenePropertyReference<IDataProperty<T>>(leftPropertyName);
             Data.RightValueProperty = new ScenePropertyReference<IDataProperty<T>>(rightPropertyName);

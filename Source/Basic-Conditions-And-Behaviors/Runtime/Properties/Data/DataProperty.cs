@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using VRBuilder.Core.Utils.Logging;
 
 namespace VRBuilder.Core.Properties
 {
@@ -7,11 +8,12 @@ namespace VRBuilder.Core.Properties
     /// Base implementation for process data properties.
     /// </summary>    
     [DisallowMultipleComponent]
-    public abstract class DataProperty<T> : ProcessSceneObjectProperty, IDataProperty<T> where T : IEquatable<T>
+    public abstract class DataProperty<T> : ProcessSceneObjectProperty, IDataProperty<T>
     {
-        /// <inheritdoc/>
-        [SerializeField]
-        protected T defaultValue;
+        /// <summary>
+        /// Defines a default value for the property.
+        /// </summary>
+        public abstract T DefaultValue { get; }
 
         /// <inheritdoc/>
         protected T storedValue;
@@ -36,7 +38,7 @@ namespace VRBuilder.Core.Properties
         /// <inheritdoc/>
         public void ResetValue()
         {
-            SetValue(defaultValue);
+            SetValue(DefaultValue);
             ValueReset?.Invoke(this, EventArgs.Empty); 
         }
 
@@ -48,8 +50,18 @@ namespace VRBuilder.Core.Properties
                 return;
             }
 
+            if(LifeCycleLoggingConfig.Instance.LogDataPropertyChanges)
+            {
+                Debug.Log($"{GetType().Name} on '{SceneObject.UniqueName}' changed from {ValueToString(storedValue)} to {ValueToString(value)}.");
+            }
+
             storedValue = value;
             ValueChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        protected virtual string ValueToString(T value)
+        {
+            return value.ToString();
         }
     }
 }
