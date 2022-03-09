@@ -69,7 +69,7 @@ namespace VRBuilder.Core.Properties
                 return sceneObjectProperty;
             }
 
-            if (processProperty.IsInterface)
+            if (processProperty.IsInterface || processProperty.IsAbstract)
             {
                 // If it is an interface just take the first public found concrete implementation.
                 Type propertyType = ReflectionUtils

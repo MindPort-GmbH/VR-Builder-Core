@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace VRBuilder.Core.Properties
 {
     /// <summary>
@@ -5,5 +7,10 @@ namespace VRBuilder.Core.Properties
     /// </summary>
     public class TextDataProperty : DataProperty<string>
     {
+        [SerializeField]
+        private string defaultValue;
+
+        /// <inheritdoc/>
+        public override string DefaultValue => defaultValue;
     }
 }

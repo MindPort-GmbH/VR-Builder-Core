@@ -1,11 +1,11 @@
 namespace VRBuilder.Core.ProcessUtils
 {
     /// <summary>
-    /// An operation on process variables.
+    /// A command that executes an operation between two values.
     /// </summary>
     /// <typeparam name="TOperand">Type of the operands.</typeparam>
     /// <typeparam name="TResult">Type of the returned result.</typeparam>
-    public interface IProcessVariableOperation<TOperand, TResult>
+    public interface IOperationCommand<TOperand, TResult>
     {
         /// <summary>
         /// Executes the operation on the provided operands.

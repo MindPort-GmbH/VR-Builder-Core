@@ -1,9 +1,8 @@
-﻿// Copyright (c) 2013-2019 Innoactive GmbH
+// Copyright (c) 2013-2019 Innoactive GmbH
 // Licensed under the Apache License, Version 2.0
 // Modifications copyright (c) 2021 MindPort GmbH
 
 using VRBuilder.Core.Runtime.Utils;
-using UnityEngine;
 
 namespace VRBuilder.Core.Utils.Logging
 {
@@ -36,5 +35,10 @@ namespace VRBuilder.Core.Utils.Logging
         /// True, if transitions are allowed to be logged.
         /// </summary>
         public bool LogTransitions = false;
+
+        /// <summary>
+        /// True, if data property changes are allowed to be logged.
+        /// </summary>
+        public bool LogDataPropertyChanges = false;
     }
 }

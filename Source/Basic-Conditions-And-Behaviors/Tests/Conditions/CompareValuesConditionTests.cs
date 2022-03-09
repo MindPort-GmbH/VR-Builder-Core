@@ -15,7 +15,7 @@ namespace VRBuilder.Core.Tests.Conditions
 
         [UnityTest]
         [TestCaseSource("CompareValuesTestCases")]
-        public IEnumerator CreateByReference(T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IProcessVariableOperation<T, bool> operationType)
+        public IEnumerator CreateByReference(T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IOperationCommand<T, bool> operationType)
         {
             // Given the necessary parameters,
             IDataProperty<T> leftProperty = CreateValueProperty("Left Property Object", leftValue);
@@ -38,7 +38,7 @@ namespace VRBuilder.Core.Tests.Conditions
 
         [UnityTest]
         [TestCaseSource("CompareValuesTestCases")]
-        public IEnumerator CreateByName(T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IProcessVariableOperation<T, bool> operationType)
+        public IEnumerator CreateByName(T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IOperationCommand<T, bool> operationType)
         {
             // Given the necessary parameters,
             IDataProperty<T> leftProperty = CreateValueProperty("Left Property Object", leftValue);
@@ -62,7 +62,7 @@ namespace VRBuilder.Core.Tests.Conditions
         }
         [UnityTest]
         [TestCaseSource("CompareValuesTestCases")]
-        public IEnumerator ConditionIsFulfilledWhenExpected(T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IProcessVariableOperation<T, bool> operationType)
+        public IEnumerator ConditionIsFulfilledWhenExpected(T leftValue, T rightValue, bool isLeftConst, bool isRightConst, IOperationCommand<T, bool> operationType)
         {
             // Given a condition,
             IDataProperty<T> leftProperty = CreateValueProperty("Left Property Object", leftValue);
