@@ -197,7 +197,7 @@ namespace VRBuilder.Editor.PackageManager
         /// </summary>
         public static string GetInstalledPackageVersion(string package)
         {
-            return Packages.First(packageInfo => package.Contains(packageInfo.name))?.version;
+            return Packages?.First(packageInfo => package.Contains(packageInfo.name))?.version;
         }
 
         private static bool IsPackageInstalled(string package)
