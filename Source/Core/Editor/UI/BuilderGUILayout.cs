@@ -100,7 +100,7 @@ namespace VRBuilder.Editor.UI
                 isDisabled = disabledEntries.Contains(entries[i]);
 
                 EditorGUI.BeginDisabledGroup(isDisabled);
-                if (GUILayout.Toggle(entries[i].Equals(selection), content[i], BuilderEditorStyles.Toggle))
+                if (GUILayout.Toggle(entries[i].Equals(selection), content[i], BuilderEditorStyles.RadioButton))
                 {
                     if (!selection.Equals(entries[i]))
                     {
