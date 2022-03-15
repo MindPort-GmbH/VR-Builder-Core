@@ -61,6 +61,11 @@ namespace VRBuilder.Core.SceneObjects
 
         protected void Awake()
         {
+            if(RuntimeConfigurator.Exists == false)
+            {
+                return;
+            }
+
             if (IsRegistered)
             {
                 return;
