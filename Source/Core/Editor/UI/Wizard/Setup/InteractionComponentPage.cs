@@ -100,7 +100,7 @@ namespace VRBuilder.Editor.UI.Wizard
 
             if (installXRInteractionComponent)
             {
-                EditorUtility.DisplayDialog($"Enabling XR Interaction Component", "Wait until the setup is done.", "Continue");
+                EditorUtility.DisplayDialog($"Enabling XR Interaction Component", "Wait until the setup is done.\n\nIMPORTANT: XR Interaction Toolkit will ask to automatically update the interaction layer, should you decide to do so, manual fixes will be required for teleporting to work. ", "Continue");
                 PackageOperationsManager.LoadPackage(xrInteractionComponentPackage);
             }
         }
