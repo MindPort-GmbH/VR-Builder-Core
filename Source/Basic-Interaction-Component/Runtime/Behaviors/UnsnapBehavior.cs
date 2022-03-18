@@ -35,14 +35,15 @@ namespace VRBuilder.BasicInteraction.Behaviors
         {
         }
 
-        public UnsnapBehavior(ISnappableProperty snappedObject, ISnapZoneProperty snapZone) : this(ProcessReferenceUtils.GetNameFrom(snappedObject), ProcessReferenceUtils.GetNameFrom(snapZone))
+        public UnsnapBehavior(ISnappableProperty snappedObject, ISnapZoneProperty snapZone, string name = "Unsnap") : this(ProcessReferenceUtils.GetNameFrom(snappedObject), ProcessReferenceUtils.GetNameFrom(snapZone), name)
         {
         }
 
-        public UnsnapBehavior(string snappedObjectName, string snapZoneName)
+        public UnsnapBehavior(string snappedObjectName, string snapZoneName, string name = "Unsnap")
         {
             Data.SnappedObject = new ScenePropertyReference<ISnappableProperty>(snappedObjectName);
             Data.SnapZone = new ScenePropertyReference<ISnapZoneProperty>(snapZoneName);
+            Data.Name = name;
         }
 
         private class ActivatingProcess : StageProcess<EntityData>
